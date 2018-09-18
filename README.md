@@ -5,7 +5,7 @@ metodi POST,INSERT,DELETE,UPDATE. Il protocollo utilizzato per la comunicazione 
 La libreria utilizza il concetto di componente. La pagina è formata da componenti ed esse
 sono gestite attraverso l'oggetto principale `App`. 
             
-##Componenti base
+## Componenti base
 
 ###Dashboard
 La componente dashboard permette di creare interfacce complesse attraverso
