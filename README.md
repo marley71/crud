@@ -7,19 +7,19 @@ sono gestite attraverso l'oggetto principale `App`.
             
 ## Componenti base
 
-###Dashboard
+### Dashboard
 La componente dashboard permette di creare interfacce complesse attraverso
 l'utilizzo di una composizione di views che interagiscono tra di loro.
 <a href="dashboards">Vai</a>
 
-###View
+### View
 La componente View rappresenta una collezione di dati che possono essere passati manualmente o 
 attraverso un server, utilizzando le route che usano le convenzioni REST. A questi dati 
 vengono associati dei componenti di tipo `Render`. 
-<a href="views">Vai</a>
+<a href="docs/views">Vai</a>
 
 
-###Render
+### Render
 Una componente Render rappresenta il dato secondo controlli standard html o plugins 
 di varia complessità.
 
