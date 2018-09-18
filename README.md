@@ -10,13 +10,13 @@ sono gestite attraverso l'oggetto principale `App`.
 ### Dashboard
 La componente dashboard permette di creare interfacce complesse attraverso
 l'utilizzo di una composizione di views che interagiscono tra di loro.
-<a href="dashboards">Vai</a>
+<a href="docs/dashboards.md">Vai</a>
 
 ### View
 La componente View rappresenta una collezione di dati che possono essere passati manualmente o 
 attraverso un server, utilizzando le route che usano le convenzioni REST. A questi dati 
 vengono associati dei componenti di tipo `Render`. 
-<a href="docs/views">Vai</a>
+<a href="docs/views.md">Vai</a>
 
 
 ### Render
@@ -35,28 +35,28 @@ Quando è in modalità edit e search permette la modifica dei dati. La modalità
 ma aggiunge la presenza e la gestione di un operatore della search. Nella modalità search il 
 nome del campo, per convenzione, viene trasformato come s_{nome_campo}. 
 
-<a href="renders">Vai</a>
+<a href="docs/renders.md">Vai</a>
 
-###ItemViewTemplate
+### ItemViewTemplate
 Permette di costruire un template di contorno per l'oggetto `Render`. Viene utilizzato dalle view
-<a href="item-structure">Vai</a>
+<a href="docs/item-structure.md">Vai</a>
 
-##Routes
+## Routes
 `Route` classe che incapsula l'interazione con il server sia per il recupero sia per la spedizione per i dati.
 In genere viene utilizzata da una view e dalle azioni.
-<a href="routes">Vai</a>
+<a href="docs/routes.md">Vai</a>
 
-##App
+## App
 rappresenta l'oggetto per la gestione della pagina e delle sue varie componenti javascript.
-<a href="app">Vai</a>
+<a href="docs/app.md">Vai</a>
 
 
-##Actions
+## Actions
 
 Le azioni raccolgono le interazioni con l'operatore con l'interfaccia.
- <a href="actions">Vai</a>
+ <a href="docs/actions.md">Vai</a>
 
-##Server
+## Server
 Classe che rappresenta un wrapper delle chiamate ajax di jquery.
-<a href="server">Vai</a>
+<a href="docs/server.md">Vai</a>
 
