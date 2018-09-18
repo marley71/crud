@@ -1,0 +1,18 @@
+site_name: Cupparis4
+
+pages:
+    - Home: index.md
+    - Dashboards: dashboards.md
+    - Views: views.md
+    - ItemStructure: item-structure.md
+    - Renders: renders.md
+    - Routes: routes.md
+    - Confs: confs.md
+    - Actions : actions.md
+    - Server : server.md
+    - App : app.md
+
+theme: readthedocs
+
+extra:
+  name : "ciao"
