@@ -1,6 +1,6 @@
 #Renders
 
-La classe principale delle componenti Renders è la classe `CoreRender`. 
+La classe principale delle componenti Renders è la classe `Render`. 
 
 La visualizzazione dell'oggetto render avviene con due metodi principali:
 
@@ -9,17 +9,17 @@ La visualizzazione dell'oggetto render avviene con due metodi principali:
 componente
 
 
-##CoreRender
+##Render
 
-La classe CoreRender definisce alcune metodi di uso generale e i metodi che i veri oggetti Render
+La classe Render definisce alcune metodi di uso generale e i metodi che i veri oggetti Render
 devono ridefinire per funzionare. Dobbiamo considerarla come la classe astratta che definisce l'interfaccia
 da definire nei vari oggetti Render concreti.
 
 il modo è definito nelle costanti
 ```javascript
-CoreRender.VIEW = 'view';
-CoreRender.EDIT = 'edit';
-CoreRender.SEARCH = 'search';
+Render.VIEW = 'view';
+Render.EDIT = 'edit';
+Render.SEARCH = 'search';
 ```
 
 ###Proprietà

@@ -4,16 +4,16 @@ Le Confs sono nate per creare configurazioni iniziali per le views di uso genera
 Questo permette di avere, con pochissimo codice, la configurazione
 della view da utilizzare e modificare solo dove occorre. 
 
-##CoreConf
+##Conf
 
-La Classe CoreConfs è la classe base che ereditano tutte le confs. Il costrutture 
+La Classe Conf è la classe base che ereditano tutte le confs. Il costrutture 
 accetta un vettore associativo per la sostituizione di proprietà della configurazione che 
 andiamo ad instanziare. 
 
 ###Proprietà
 - `routeName`: Indica la route da utilizzare per il caricamento dei dati della view. 
 Su routeName verrà utilizzata la convenzione del metodo statico 
-<a href="/routes#">CoreRoute.factory(routeName)</a>. 
+<a href="/routes#">Route.factory(routeName)</a>. 
 - `viewClass`: Indica la classe view da utilizzare. Esempio *ViewList*
 - `actions`: Vettore di azioni presenti nella view. La visualizzazione delle actions 
 sarà compito della view secondo le sue strategie di visualizzazione.
@@ -46,7 +46,7 @@ implementato di default.
 Rappresenta la configurazione base utilizzare nella creazione di una Views.
 
 ```javascript
-var ListConfs = CoreConf.extend({
+var ListConfs = Conf.extend({
     routeName : 'list',
     viewClass : 'ViewList',
     actions : ['actionDelete','actionMultiDelete','actionEdit','actionView','actionInsert'],
@@ -73,7 +73,7 @@ var ListConfs = CoreConf.extend({
 ##- EditConfs
 
 ```javascript
-var EditConfs = CoreConf.extend({
+var EditConfs = Conf.extend({
     viewClass : 'ViewEdit',
     actions : ['actionSave','actionBack'],
     extra_actions : {},
@@ -114,7 +114,7 @@ var InsertConfs = EditConfs.extend({
 ##- SearchConfs
 
 ```javascript
-var SearchConfs = CoreConf.extend({
+var SearchConfs = Conf.extend({
     viewClass : 'ViewSearch',
     actions : ['actionSearch','actionReset'],
     extra_actions : {},
@@ -126,7 +126,7 @@ var SearchConfs = CoreConf.extend({
 ##- ViewConfs
 
 ```javascript
-var ViewConfs = CoreConf.extend({
+var ViewConfs = Conf.extend({
     viewClass : 'ViewView',
     labels: 'left',
     actions : [],

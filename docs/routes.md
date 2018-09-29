@@ -1,13 +1,13 @@
 # Routes
 
-##CoreRoute
+##Route
 Class base per la gestione delle route verso il backend. Sono state definite
 alcune route delle principali di interazioni con il backend
  secondo le specifiche REST.
 
 ###Proprietà
 
-- `className` default "CoreRoute" variabile di comodo per riconoscere in quale route ci troviamo
+- `className` default "Route" variabile di comodo per riconoscere in quale route ci troviamo
 - `method` default null rappresenta il metodo usato per la chiamata ajax, può essere get o post
 - `url` default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
     Le parti variabili devono essere racchiuse tra parentesi graffe. Per esempio : /action/{var1}/print è un
@@ -51,13 +51,13 @@ della classe RouteListMia. In altre parole sul nome passato al metodo factory vi
 applicata la funziona 'pascal case' concatenato con il prefisso *Route*
 
 
-- `CoreRoute.factory(type,attrs)` questo metodo istanzia una Route di tipo type
+- `Route.factory(type,attrs)` questo metodo istanzia una Route di tipo type
 passando al costruttore gli attrs. Alla variabile type viene applicata la trasformazione
 pascal case e aggiunto il prefisso *Route*. Per esempio se vogliamo istanziare un oggetto chiamato RouteList si chiama il metodo
 statico :
 
 ```javascript
-var r = CoreRoute.factory('list',{
+var r = Route.factory('list',{
     values : {
         modelName : 'user'
     }

@@ -4,7 +4,7 @@ pages:
     - Home: index.md
     - Dashboards: dashboards.md
     - Views: views.md
-    - ItemStructure: item-structure.md
+    - ItemStructure: templates.md
     - Renders: renders.md
     - Routes: routes.md
     - Confs: confs.md

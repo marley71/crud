@@ -2,7 +2,7 @@
 
 La view rappesenta un contenitore di controlli html associate ad un modello di dati.
 Questo modello viene utilizzato per discriminare la route per il recupero dei dati.
-La classe principale di una View è `CoreView`. Da essa sono derivate le classi:
+La classe principale di una View è `View`. Da essa sono derivate le classi:
     - `RecordView` per la gestione di dati provenienti da record di un modello
     - `CollectionView` per la gestione di una collezione di record di un modello
 La view accetta come parametro una configurazione. 
@@ -15,7 +15,7 @@ Nella configurazione vengono definiti:
   - `CollectionAction` che agisce sulla collezione dei dati
 
 
-## CoreView
+## View
 
 Rappresenta la classe Principale
 	
@@ -79,7 +79,7 @@ vettore nome azioni da istanziare nella view
 
 ####render
 dopo aver caricato eventuale risorse esterne come css,plugins javascript chiama la funzione _render della view
-La CoreView ha il metodo _render astratto
+La View ha il metodo _render astratto
 
 ###Eventi
 

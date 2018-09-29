@@ -3,9 +3,9 @@
 Le dashboard sono composizioni di views. E' il componente dove verrà implementato
 il codice per la gestione e le dipendenze tra più viste. 
 
-##CoreDashboard
+##Dashboard
 
-CoreDashboard è la classe principale da cui ereditano tutte le dashboard che andremo
+Dashboard è la classe principale da cui ereditano tutte le dashboard che andremo
 a creare. {{config.extra.name}}
 
 

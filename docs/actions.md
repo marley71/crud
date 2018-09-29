@@ -1,7 +1,7 @@
 #Actions
 
 
-##CoreAction
+##Action
 Classe principale delle azioni. Le azioni rappresentano l'aggancio per le interazioni con 
 l'utente sulle views, dashboard oppure semplici bottoni html. Da questa classe
 sono state definite altri due azioni generali la RecordAction e la CollectionAction che
@@ -190,7 +190,7 @@ var actionSave = RecordAction.extend({
         if (self.view.constraintKey && self.view.constraintValue)
             rname += '_constraint';
 
-        r = CoreRoute.factory(rname);
+        r = Route.factory(rname);
 
         var rkeys = r.getKeys();
         r.values = {};
@@ -251,7 +251,7 @@ var actionDelete = RecordAction.extend({
         var self = this;
         var view = self.view;
         jQuery.confirmDialog('Sei sicuro di voler cancellare l\'elemento?').ok(function () {
-            var r = CoreRoute.factory('delete');
+            var r = Route.factory('delete');
             r.values = {
                 modelName: self.view.modelName,
                 pk : self.modelData.id
@@ -288,7 +288,7 @@ var actionMultiDelete = CollectionAction.extend({
         if (num === 0)
             return ;
         jQuery.confirmDialog('Sei sicuro di voler cancellare (' + num + ') elementi selezionati?').ok(function () {
-            var r = CoreRoute.factory('multi_delete');
+            var r = Route.factory('multi_delete');
             r.values = {
                 modelName: self.view.modelName
             };
