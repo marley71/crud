@@ -7,6 +7,11 @@ sono gestite attraverso l'oggetto principale `App`.
             
 ##Componenti base
 
+###Component
+Oggetto astratto principale, tutti gli altri ereditano da questa classe
+
+
+
 ###Dashboard
 La componente dashboard permette di creare interfacce complesse attraverso
 l'utilizzo di una composizione di views che interagiscono tra di loro.

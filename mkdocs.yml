@@ -2,6 +2,7 @@ site_name: Cupparis4
 
 pages:
     - Home: index.md
+    - Component : component.md
     - Dashboards: dashboards.md
     - Views: views.md
     - ItemStructure: templates.md

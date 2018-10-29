@@ -1,17 +1,11 @@
-#Renders
+#Render
 
-La classe principale delle componenti Renders è la classe `Render`. 
+La classe `Render` rappresenta la classe per la gestione di un singolo dato. La classe render
+può essere utilizzata in maniera singola, ma il loro utilizzo reale è come componenti dei singoli
+dati di una view. Dentro la view un render può essere usato n 3 modi differenti, in modalità edit, search,
+view. La visualizzazione dell'oggetto render avviene con il metodo draw().
 
-La visualizzazione dell'oggetto render avviene con due metodi principali:
-
-- `render` dove viene preparato l'html e aggiunto al dom della pagina
-- `finalize` dove e' possibile agganciare eventuali eventi html per la gestione del comportamento del 
-componente
-
-
-##Render
-
-La classe Render definisce alcune metodi di uso generale e i metodi che i veri oggetti Render
+La classe Render definisce alcuni metodi di uso generale e i metodi che i veri oggetti Render
 devono ridefinire per funzionare. Dobbiamo considerarla come la classe astratta che definisce l'interfaccia
 da definire nei vari oggetti Render concreti.
 
@@ -22,158 +16,32 @@ Render.EDIT = 'edit';
 Render.SEARCH = 'search';
 ```
 
-###Proprietà
+##Proprietà
 
-* `_modeBeforeFunctionName` contiene il metodo da chiamare in automatico prima di effettuare il render html
-```javascript
-{
-    'view'   : '_beforeView',
-    'edit'   : '_beforeEdit',
-    'search' : '_beforeSearch'
-}
-```
-* `_modeRenderFunctionName` contiene il metodo da chiamare per la renderizzazione dell'html
-```javascript
-{
-    'view'   : '_renderView',
-    'edit'   : '_renderEdit',
-    'search' : '_renderSearch'
-}
-```
-* `_modeFinalizeFunctionName` contiene il metodo da chiamare dopo il render dell'html.
-```javascript
-{
-    'view'   : '_finalizeView',
-    'edit'   : '_finalizeEdit',
-    'search' : '_finalizeSearch'
-}
-```
-* `key` default null // chiave dell'oggetto render (il campo del db)
-* `type` default null,                // type dell'oggetto per gestire le Gerarchie di classi
-* `className` defult 'Render',       // nome della Classe reale dell'oggetto
-* `classData` default null,           // nome per il tipo di caricamento dati e config da utilizzare nelle views per permettere caricamenti custom per oggetti particolari
-* `classTemplate` default : null,       // nome utilizzato per la composozione del templateid da caricare
-* `element_selector` default '[data-render_element]' selettore per trovare il container html di tutto l'elemento
-* `control_selector` default '[data-render_control]',
-* `caption_selector` defult '[data-render_caption]',
-* `operator_selector` default '[data-control_operator]',
+- key : null,                 // nome dell'oggetto render (il campo del db)
+- type : null,                // type dell'oggetto per gestire le Gerarchie di classi
+- className : 'Render',       // nome della Classe reale dell'oggetto
+- element_selector : '[data-render_element]',
+- control_selector : '[data-render_control]',
+- caption_selector : '[data-render_caption]',
+- operator_selector : '[data-control_operator]',
+- operator : null,
 
-* `value` default : null,           // valore oggetto
-* `mode` default 'edit',          // modo in edit controllo di form, default edit
-* `templateId` defaul tnull,      // id del template sorgente da renderizzare,
-* `templateItemId` default null,  // id del template in caso di oggetti che sono vettori di valori
-* `container` default null,       // id del container html dove verrà renderizzato l'oggetto Render
-* `pluginsPath` default  '',
-* `resources `: // vettore risorse da caricare prima di chiamare il finalize default in base al mode
-```javascript
-    search : [],
-    edit : [],
-    view : []
-```
-
-###Metodi
+- value : null,           // valore oggetto
+- app : null,
+- resources : [],         // vettore risorse da caricare prima di chiamare il finalize
+- metadata : {},       // array associativo metadati che descrivono il dato
 
 
+##Metodi
+
+- init : function (key,attributes) 
+- _setHtmlAttributes : function(el)
+- change : function ()
+- clear : function ()
+- setMetadata : function (metadata)
 
 
-- render : `function (container)`
-*container* rappresenta un container jquery (facoltativo). Il metodo render chiama in sequenza. 
-
-+ in modo view
-    - `_beforeView`
-    - `_renderView`
-+ in modo edit
-    - `_beforeEdit`
-    - `_renderEdit`
-+ in modo search
-    - `_beforeSearch`
-    - `_renderSearch`
-
-
-- finalize : `function (callback)`
-Il metodo chiama la il metodo in base al `mode`. Il parametro callback rappresenta una funzione
-che viene chiamata quando il metodo finalize è terminato. Il metodo  viene chiamato dopo che sono 
-state caricate tutte le risorse
-
-+ in modo view
-    - `_finalizeView`
-+ in modo edit
-    - `_finalizeEdit`
-+ in modo search
-    - `_finalizeSearch`
-
-
-- show : `function (callback)`
-Il metodo chiama in sequenza render e finalize. E' uno shortcut 
- 
- 
-
-
-
-
-
-  
-####getTemplate : `function (templateString)` 
-
-ritorna jquery html con il  template associato in base al mode oppure passando 
-il template nel parametro templateString. Il template automatico viene calcolato come '_'+mode+'Template'. 
-Ad esempio se vogliamo definire l'html della view di un nostro componente Render, 
-basta definire un metodo chiamato 
-_viewTemplate. 
-     *
-        
-    getJObject : function () {
-        var self = this;
-        return jQuery(self['_'+self.mode+'Template']());
-    },
-
-    getHtml : function () {
-        return this.getJObject().outerHTML;
-    },
-
-    _beforeEdit : function() {
-        return true;
-    },
-
-    _beforeView : function() {
-        return true;
-    },
-
-    _beforeSearch : function() {
-        return true;
-    },
-
-    triggerEvent : function (name,params,callback) {
-        EventManager.trigger(name,params,callback);
-    },
-
-    _setHtmlAttributes : function(el) {
-        var self = this;
-        for(var k in self.htmlAttributes) {
-            el.attr(k,self.htmlAttributes[k]);
-        }
-    },
-    _loadExternalResources : function (resources,callback) {
-        var self = this;
-        EventManager.trigger('loadResources',{
-                resources: resources
-            },
-            callback);
-    },
-    
-    trigger : function (eventName) {
-        
-    },
-    on : function (eventName) {
-        
-    },
-    change : function () {
-        // change event
-    },
-
-    clear : function () {
-        throw this.className + ": <clear> method must be overloaded "
-    }
     
 #Render Implementati
 
@@ -183,28 +51,470 @@ aspetto o funzionalità. A questi definiti se ne possono aggiungere altri usando
 l'erediaretà. I renders vengono istanziati in automatico dalle views, oppure possono
 essere istanziati manualmente.
 
-##- RenderAutocomplete.js
+#RenderAutocomplete
 
 Questo render permette il popolamento di una chiave con riferimento ad una tabella
 esterna permettendo la ricerca e inserendo la chiave_id  selezionata nel input nascosto.
-Le risorse esterne per il funzionamento di questo render sono:
-```javascript
-resources : {
-    'edit' : ['typeahead/bootstrap3-typeahead.min.js','typeahead/typeahead.bundle.js','typeahead/typeaheadjs.css']
-}
+Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
+
+il suo template di default:
+```html
+<div class="input-group">
+    <span style="height:19px" class="input-group-addon" id="basic-addon1" data-render_autocomplete_view data-lang="autocomplete-nonselezionato"></span>
+    <input data-render_control type="hidden" name="" value="">
+    <div data-render_element class="autosuggest" data-minLength="1" data-queryURL="">
+        <input data-render_autocomplete_input type="text" name="src" placeholder="" class="form-control typeahead" />
+    </div>
+</div>
 ```
 
 
-##- RenderBelongsto.js
+##Proprietà
+
+- `autocomplete_view_selector` : '[data-render_autocomplete_view]',
+- `autocomplete_input_selector` : '[data-render_autocomplete_input]',
+
+- `fields` : [],                // campi da visualizzare dopo la selezione
+- metadata : {
+        modelData : null,           // dati del modello selezionato
+        autocompleteModel : null,   // nome modello da utilizzare nelle chiamate rest per la popolazione dei dati
+        method : null,              // eventuale parametro da mandare in get nella chiamata rest
+        separator : null,           // separatore da utillare nella visualizzazione dei campi in caso siano piu' di uno
+        n_items : null,             // numero di items da richiedere
+        model_description : []
+    },
+- resources : vettore delle risorse esterne che ha bisogno per funzionare. Questo render si appoggia a
+typeahead bootstrap.
+
+```javascript
+resources : [
+        'typeahead/bootstrap3-typeahead.min.js',
+        'typeahead/typeahead.bundle.js',
+        'typeahead/typeaheadjs.css'
+]
+```
+
+
+##Metodi
+
+- `_getLabelValue` : function ()
+    /**
+     * ritorna il nome dell'inputview, tiene conto del fatto che si potrebbe trovare in un hasmany
+     * e il nome potrebbe avere le []
+     */
+
+- `_getInputViewName` : function () 
+
+- `_getFieldValue` : function() 
+
+- `_createUrl` : function () 
+
+- `_renderSelectedValue` : function () 
+
+- `getAutocompleteRow` : function (element) 
+
+- `ev_selected` : function (datum) 
+
+- `getValue` : function () 
+
+
+
+
+
+
+# RenderBelongsto.js
 
 Questo render è solo per la visualizzazione di dati più complessi che non sono formati da un solo
 valore, in genere viene utilizzato per la rappresentazione di campi di una tabella
-esterna rispetto a campo corrente.
+esterna rispetto a campo corrente, istanza
 
-##- RenderDateSelect.js
+var RenderBelongsto =  Render.extend({
+    itemViewTemplate : null,
+    separator : null,
+    fields: {},
+    nullLabel : '',
+
+
+    getValue : function () {
+        var self = this;
+        return self.value;
+    },
+
+});
+
+var RenderBelongstoView = RenderBelongsto.extend({
+    render : function(callback) {
+        var self = this;
+
+        if (!self.value) {
+            jQuery(self.container).find('[data-render_element]').html(self.nullLabel);
+            return ;
+        }
+
+        if (self.itemTemplate()) {
+            var tpl = Component.parseHtml(self.itemTemplate());
+            var html = jQuery.getTemplate(tpl,self.value);
+            jQuery(self.container).find('[data-render_element]').html(html);
+            return ;
+        }
+
+        var separator = self.separator?self.separator:" ";
+        var label = "";
+        for (var fi in self.fields) {
+            var field = self.fields[fi];
+            label+= self.value[field];
+            if (fi < self.fields.length-1)
+                label+= separator;
+        }
+
+        jQuery(self.container).find('[data-render_element]').html(label);
+        return callback();
+
+    },
+
+    template : function () {
+        return `<div data-render_element></div>`
+    },
+
+    itemTemplate : function () {
+        return false;
+    }
+})
+
+
+# RenderDateSelect.js
 
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza le selectbox html per l'inserimento di una data.
+
+RenderDateSelect = Render.extend({
+    year_selector    : '[data-render_year]',
+    month_selector    : '[data-render_month]',
+    day_selector    : '[data-render_day]',
+    picker_selector : '[data-render_picker]',
+    h24 : true,
+    operator : null,
+    time : false,
+    dateFormat : 'YYYY-MM-DD',
+    timeFormat : 'H:i:s',
+    resources :[
+        'moment-with-locales.min.js',
+    ],
+
+
+
+    selectProps : {
+        active : ['day','month','year'],    // select active in dateType select
+        startYear : (new Date().getFullYear()) -3,
+        endYear : (new Date().getFullYear()) +3,
+    },
+
+    _setDateControls : function () {
+        var self = this;
+        var active = self.selectProps.active?self.selectProps.active:[];
+        var currentYear = parseInt(new Date().getFullYear());
+        var startYear = self.selectProps.startYear;
+        var endYear = self.selectProps.endYear;
+        var elD = self.jQe().find(self.day_selector);
+
+        //NO VALUE
+        var opt = jQuery('<option>').attr({
+            value : ''
+        });
+        opt.html(self.app.translate('app.giorno'));
+        elD.append(opt);
+
+        for (var i=1;i<=31;i++) {
+            i = Utility.padDate(i, 2)
+            var opt = jQuery('<option>').attr({
+                value : i
+            });
+            opt.html(i);
+            elD.append(opt);
+        }
+        if (jQuery.inArray('day',active) < 0) {
+            self.jQe().find('[data-render_day_container]').addClass('hide');
+            elD.addClass('hide');
+        }
+
+        //MONTH
+        var elM = self.jQe().find(self.month_selector);
+        //NO VALUE
+        var opt = jQuery('<option>').attr({
+            value : ''
+        });
+        opt.html(self.app.translate('app.mese'));
+        elM.append(opt);
+
+        for (var i=1;i<=12;i++) {
+            i = Utility.padDate(i, 2)
+            var opt = jQuery('<option>').attr({
+                value : i
+            });
+            opt.html(i);
+            elM.append(opt);
+        }
+        if (jQuery.inArray('month',active) < 0) {
+            self.jQe().find('[data-render_month_container]').addClass('hide');
+            elD.addClass('hide');
+        }
+
+        //YEAR
+        var elY = self.jQe().find(self.year_selector);
+        //NO VALUE
+        var opt = jQuery('<option>').attr({
+            value : ''
+        });
+        opt.html(self.app.translate('app.anno'));
+        elY.append(opt);
+
+        for (var i=endYear;i>startYear;i--) {
+            var opt = jQuery('<option>').attr({
+                value : i
+            });
+            opt.html(i);
+            elY.append(opt);
+        }
+        if (jQuery.inArray('year',active) < 0) {
+            self.jQe().find('[data-render_year_container]').addClass('hide');
+            elD.addClass('hide');
+        }
+    },
+
+
+
+    // _dbDateToArray : function (value) {
+    //     var self = this;
+    //     if (!value)
+    //         return ['','',''];
+    //     var tmpData = value;
+    //     if (tmpData.indexOf(' ') >= 0) {
+    //         tmpData = tmpData.split(' ')[0];
+    //     }
+    //     if (tmpData.indexOf('T') >= 0) {
+    //         tmpData = tmpData.split('T')[0];
+    //     }
+    //
+    //     var sdate = tmpData.split("-");
+    //     if (sdate[1] && sdate[1].length == 1) {
+    //         sdate[1] = "0"+sdate[1];
+    //     }
+    //     if (sdate[2] && sdate[2].length == 1) {
+    //         sdate[2] = "0"+sdate[2];
+    //     }
+    //     return sdate;
+    // },
+    _changeDate : function () {
+
+        var self = this;
+        var active = self.active?self.active:['day','month','year'];
+        var options = '';
+        var year =  jQuery(self.container).find(self.year_selector);
+        var month = jQuery(self.container).find(self.month_selector);
+        var day =  jQuery(self.container).find(self.day_selector);
+
+        var selected = "";
+
+        var maxDay = 28;
+        if (month.val() == '04' || month.val() == '06' || month.val() == '09' || month.val() == '11') {
+            maxDay = 30;
+        } else if (month.val() != '02') {
+            maxDay = 31
+        } else if (year.val() % 4 == 0 || year.val() % 100 == 0)
+            maxDay = 29;
+
+
+        for (var i = 1; i <= maxDay; i++) {
+            var j = Utility.padDate(i,2);
+            if (day.val() == j)
+                selected = ' selected="selected" ';
+            options += '<option value="' + j + '"' + selected + '>' + j + '</option>';
+            selected = '';
+        }
+
+        var ex_day = day.val();
+        day.empty();
+        day.append(options);
+        if (ex_day <= maxDay)
+            day.val(ex_day);
+
+        var finalDate = jQuery(self.container).find(self.control_selector);//jQuery('input[name="'+key+'"]');
+        var d = finalDate.val().split(" ");
+        var t = ""; // tempo in caso di campo datetime
+        if (d.length > 1)
+            t = d[1];
+
+        var date = '';
+
+        //FORZARE YEAR, MONTH E DAY VAL SE NON ATTIVI
+        var yearVal = jQuery.inArray('year',active) < 0 ? '0000' : year.val();
+        var monthVal = jQuery.inArray('month',active) < 0 ? '00' : month.val();
+        var dayVal = jQuery.inArray('day',active) < 0 ? '00' : day.val();
+        if (yearVal == '' || monthVal == '' || dayVal == '') {
+            date = ''//finalDate.val('');
+        } else {
+            var date =  yearVal + '-' + monthVal + '-' + dayVal;//finalDate.val(yearVal + '-' + monthVal + '-' + dayVal);
+        }
+        if (t != "")
+            date += ' ' + t;
+        finalDate.attr('value',date).val(date);
+        self.change();
+        return;
+    },
+
+    setValue : function (value) {
+        var self = this;
+        if (!value) {
+            self.jQe(self.control_selector).val('');
+            self.jQe(self.year_selector).val('');
+            self.jQe(self.month_selector).val('');
+            self.jQe(self.day_selector).val('');
+            return
+        }
+        var d = value;
+        if ( !( value instanceof moment) ) {
+            d = new moment(value);
+        }
+        self.jQe(self.control_selector).val(d.format(self.dateFormat));
+        self.jQe(self.year_selector).val(d.format('YYYY')).attr('selected','selected');
+        self.jQe(self.month_selector).val(d.format('MM')).attr('selected','selected');
+        self.jQe(self.day_selector).val(d.format('DD')).attr('selected','selected');
+        return;
+
+        // self.jQe(self.control_selector).val(value);
+        // var d = self._dbDateToArray(value);
+        // self.jQe(self.year_selector).val(d[0]).attr('selected','selected');
+        // self.jQe(self.month_selector).val(d[1]).attr('selected','selected');
+        // self.jQe(self.day_selector).val(d[2]).attr('selected','selected');
+    },
+    getValue : function () {
+        var self = this;
+        return jQuery(self.container).find(self.control_selector).val();
+    },
+
+    clear : function () {
+        this.setValue('');
+    }
+});
+
+RenderDateSelectEdit = RenderDateSelect.extend({
+
+    render : function(callback) {
+        var self = this;
+        var el = self.jQe().find(self.control_selector);
+        el.attr("name", self.key).attr('value',self.value);
+        self._setDateControls();
+        return callback();
+    },
+
+    finalize : function(callback) {
+        var self = this;
+        self.jQe().find(self.year_selector+","+self.month_selector+","+self.day_selector).change(function () {
+            self._changeDate();
+            var sdate = jQuery(self.year_selector).val() + "-" + jQuery(self.month_selector).val() + "-" + jQuery(self.day_selector).val();
+            //self.setValue(sdate);
+        });
+        self.setValue(self.value);
+        return callback();
+    },
+
+    template : function () {
+        return `
+            <div data-render_element  class="input-group">
+                <input data-render_control="" type="hidden" />
+                <div class="input-group-btn" data-render_day_container>
+                    <select class="form-control" data-render_day>
+                    
+                    </select>
+                </div>
+                <div class="input-group-btn" data-render_month_container>
+                    <select class="form-control" data-render_month>
+                    
+                    </select>
+                </div>
+                <div class="input-group-btn" data-render_year_container>
+                    <select class="form-control" data-render_year>
+                    
+                    </select>
+                </div>
+            </div>
+            `
+    },
+})
+
+RenderDateSelectSearch = RenderDateSelectEdit.extend({
+    render : function(callback) {
+        var self = this;
+        var el = self.jQe().find(self.control_selector);
+        el.attr("name", 's_' + self.key + '[]').attr("value", self.value);
+        jQuery('<input>').attr({
+            type: 'hidden',
+            name: 's_' + self.key + "_operator",
+            'data-control_operator' : self.key,
+            value : self.operator
+        }).appendTo(self.jQe());
+        self._setDateControls();
+        return callback();
+    },
+})
+
+RenderDateSelectView = RenderDateSelect.extend({
+    dateFormat : 'YYYY-MM-DD',
+    displayDateFormat : 'DD/MM/YYYY',
+    timeFormat : 'HH:mm:ss',
+    displayTimeFormat : 'HH:mm:ss',
+    invalidDateString : '',
+    time : true,
+    resources :[
+        //'bootstrap-daterangepicker/moment.js',
+        'moment-with-locales.min.js'
+    ],
+    finalize : function (callback) {
+        var self = this;
+        self.setValue(self.value);
+        return callback();
+    },
+    _toDate : function (value) {
+        var self = this;
+        var d = moment(value,self.getFormat());
+        d.locale(self.app.getLocale());
+        if (!d.isValid()) {
+            this.app.log.warn("[" + value + "] Data non valida ");
+            return null;
+        }
+        return d;
+    },
+    getFormat : function() {
+        var self = this;
+        return self.dateFormat + (self.time?' ' + self.timeFormat:'')
+    },
+
+    getDisplayFormat : function() {
+        var self = this;
+        return self.displayDateFormat + (self.time?' ' + self.displayTimeFormat:'')
+    },
+    getValue : function () {
+        var self = this;
+        return self.value;
+    },
+    setValue : function (value) {
+        var self = this;
+        var d = self._toDate(value);
+        var el = self.jQe().find(self.element_selector);
+        if (!d) {
+            el.html(self.invalidDateString);
+        } else {
+            el.html(d.format(self.getDisplayFormat()));
+        }
+        self.value = value;
+    },
+    template : function () {
+        return `
+            <span data-render_element></span>
+        `
+    }
+})
+
 
 ##- RenderDatePicker.js
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
@@ -226,9 +536,14 @@ resources : {
 }
 ```
 
+
+
+
 ##- RenderDateFormatted.js
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza il picker nativo del broswer associato al type=date, se supportato.
+
+
 
 
 ##- RenderBetweenDate.js
