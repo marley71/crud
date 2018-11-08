@@ -1,7 +1,6 @@
-# Server
+# Template
 
-Classe per le comunicazioni ajax con il backend
-
+Classe che estende `Component` e incapsula il template per la visualizzazione di un render
 
 ##Proprietà
 

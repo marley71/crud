@@ -28,316 +28,206 @@ e azioni che agiscono su una collezione di record.
 
 ###Metodi
 
-- init : function (params) 
-costruttore. Il parametro *params* rappresenta i parametri da sovrascrivere
+- execute : metodo chiamato quando l'azione viene cliccata
+- template : metodo che restituisce i template di tipo button o link 
+- buttonTemplate : template con type button
+- linkTemplate : template con type link
+- callback : se definita viene chiamata al termi dell'execute
+- _getData : ritorna i valori di instanza di tutti gli attributi html dell'azione
 
-    func : function () {
-        throw "func must be overloaded!";
-    },
-
-    getTemplate : function (templateString) {
-        var self = this;
-        var tpl = templateString?templateString:self["_"+self.controlType+"Template"]();
-        var div = document.createElement("div");
-        jQuery(div).html(jQuery.parseHTML(tpl));
-        return jQuery(div);
-    },
-
-    render : function () {
-        var self = this;
-        var tpl = self.getTemplate();
-        var data = self._getData();
-
-        jQuery.renderTemplate(tpl,self.container,data);
-    },
-
-    html : function () {
-        var self = this;
-        var tpl = self.getTemplate();
-        var data = self._getData();
-        return jQuery.getTemplate(tpl,data);
-    },
-    _getData : function () {
-        var self = this;
-        var data = {};
-        for (var i in self._htmlProperties) {
-            var key = self._htmlProperties[i];
-            if (_.isFunction(self[key])) {
-                data[key] = self[key]();
-            } else {
-                data[key] = self[key];
-            }
-        }
-        if (self.controlType == 'link') {
-            data[self.htmlEvent] = null;
-            data['href'] = self.func();
-        }
-        return data;
-    },
-    callback : function (json) {
-
-    }
     
 ##RecordAction
 
+Le recordAction sono quelle utilizzate nelle liste per ogni record
+
 ###Proprietà
 
-type : 'record',
-    cssClass : 'btn btn-default btn-xs btn-group',
-    _buttonTemplate : function () {
-        var special_attrs = `"{'` + this.htmlEvent + `':` + this.htmlEvent + `,'title':title,'data-params':params}"`;
-        return `
-                <button  type="button" data-visible=visible data-class="cssClass"  data-attrs=`+ special_attrs + ` data-addclass="enabled?'':'disabled'">
-                    <i data-remove="!icon" data-class="icon"></i>
-                    <span data-field="text"></span>
-                </button>    
-            `;
-    },
-    _linkTemplate : function () {
-        return `
-                <a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
-                    <i data-remove="!icon" data-class="icon"></i>
-                    <span data-field="text"></span>
-                </a>   
-            `
-    }
+- className : 'RecordAction',
+- type : 'record',
+- cssClass : 'btn btn-default btn-xs btn-group',
 
+- _buttonTemplate : function ()
+```html
+<button data-action type="button" data-visible=visible data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" data-addclass="enabled?'':'disabled'">
+    <i data-remove="!icon" data-class="icon"></i>
+    <span data-field="text"></span>
+</button> 
+```
+
+- _linkTemplate : function () 
+```html
+<a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
+    <i data-remove="!icon" data-class="icon"></i>
+    <span data-field="text"></span>
+</a>   
+```
 
 ##CollectionAction
 
 
 ###Proprietà
 
-type : 'collection',
-    _buttonTemplate : function () {
-        var special_attrs = `"{'` + this.htmlEvent + `':` + this.htmlEvent + `,'title':title,'data-params':params}"`;
-        return `
-                <button  type="button" data-visible=visible data-class="cssClass"  data-attrs=`+ special_attrs + ` data-addclass="enabled?'':'disabled'">
-                    <i data-remove="!icon" data-class="icon"></i>
-                    <span data-field="text"></span>
-                </button>    
-            `;
-    },
-    _linkTemplate : function () {
-        return `
-                <a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
-                    <i data-remove="!icon" data-class="icon"></i>
-                    <span data-field="text"></span>
-                </a>   
-            `;
-    }
-    
-    
+- className : 'CollectionAction'
+- type : 'collection'
+- buttonTemplate : 
+```html
+<button data-action type="button" data-visible=visible data-attrs="{'title':title,'data-params':params,'target':target}" data-class="cssClass" data-addclass="enabled?'':'disabled'">
+    <i data-remove="!icon" data-class="icon"></i>
+    <span data-field="text"></span>
+</button> 
+```
+- linkTemplate : 
+```html
+<a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
+    <i data-remove="!icon" data-class="icon"></i>
+    <span data-field="text"></span>
+</a>  
+```
 
-Sono state definite le azioni generali per le view presenti nella libreria.
-
-    
-ci sono 4 azioni principali già implementate
-
-- delete
-- deleteSelected
-- insert
-- save
-- view
+#Action Implementate
 
 
-var actionEdit = RecordAction.extend({
-    title : 'Modifica',
-    icon : 'fa fa-edit',
-    func : function () {
-        var self = this;
-        var constraintSuffix = '';
-        if (self.view.constraint) {
-            constraintSuffix = '/' + self.view.constraintKey + '/' + self.view.constraintValue;
-        }
-        document.location.href=Server.getUrl('/edit/' + self.view.modelName + '/' + self.modelData.id + constraintSuffix);
-    }
-})
+## - ActionEdit:
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  l'edit di un record all'interno della lista. 
+
+Proprietà
+
+-className : 'ActionEdit',
+     title : 'Modifica',
+     icon : 'fa fa-edit',
+     multiText : 'Modifica',
+     routeName : 'page_edit'
+
+Metodi 
+
+- execute - utilizza la route per una pagina in edit per richiamare la pagina nuova
 
 
-var actionInsert = CollectionAction.extend({
-    title : 'Inserisci',
-    icon : 'fa fa-plus text-success',
-    cssClass : 'btn btn-default btn-xs text-success',
-    text : 'Nuovo',
-    func : function () {
-        var self = this;
-        var constraintSuffix = '';
-        if (self.view.constraintKey && self.view.constraintValue) {
-            constraintSuffix = '/' + self.view.constraintKey + '/' + self.view.constraintValue;
-        }
-        document.location.href=Server.getUrl('/insert/' + self.view.modelName + constraintSuffix);
-    }
-})
+## - ActionInsert
+Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.
 
-var actionSave = RecordAction.extend({
+Proprietà
+
+-className : 'ActionInsert',
+     title : 'Inserisci',
+     icon : 'fa fa-plus text-success',
+     cssClass : 'btn btn-default btn-xs text-success',
+     text : 'Nuovo',
+     multiText : 'Nuovo',
+     routeName : 'page_insert',
+     
+Metodi
+
+- execute - utilizza al route per una pagina in insert per richiamare la pagina nuova
+
+## - ActionSave
+
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per salvare le modifiche
+
+
+className : 'ActionSave',
     title : 'Salva',
     text : 'Salva',
-    func : function () {
-        var self = this;
-        if (!self.view.valid()) {
-            log.debug('actionSave form Data view is not valid!');
-            return;
-        }
-        var r = null;
-        var rname = null;
-        if (self.view.pk) {
-            rname = 'update';
-        } else {
-            rname = 'save';
-        }
+    multiText : 'Salva',
 
-        if (self.view.constraintKey && self.view.constraintValue)
-            rname += '_constraint';
+- execute - utilizza le route update o save a seconda se il modello dati è in modifica o insert
 
-        r = Route.factory(rname);
 
-        var rkeys = r.getKeys();
-        r.values = {};
-        for (var i in rkeys)
-            r.values[rkeys[i]] = self.view[rkeys[i]];
+## - ActionBack
 
-        r.params = self.view.getFormData();
-        jQuery.waitStart();
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
 
-        Server.route(r,function (json) {
-            jQuery.waitEnd();
-            self.callback(json)
-        })
-
-        // var params = self.view.getFormData();
-        // params = jQuery.extend(params,r.extra_params);
-        // jQuery.waitStart();
-        // r.params = params;
-        // Server.route(r,function (json) {
-        //     jQuery.waitEnd();
-        //     self.callback(json)
-        // })
-    },
-    callback : function (json) {
-        if (json.error) {
-            jQuery.errorDialog(json.msg);
-            return;
-        }
-        app.renderView(this.view.keyId);
-    }
-})
-
-var actionBack = RecordAction.extend({
+className : 'ActionBack',
     title : 'Indietro',
     text : 'Torna indietro',
-    func : function () {
-        window.history.back();
-    }
-})
 
-var actionView = RecordAction.extend({
-    title :'Visualizza',
-    icon:  'fa fa-list-alt',
-    func : function () {
-        var self = this;
-        var constraintSuffix = '';
-        if (self.view.constraint) {
-            constraintSuffix = '/' + self.view.constraintKey + '/' + self.view.constraintValue;
-        }
-        document.location.href=Server.getUrl('/view/' + self.view.modelName + '/' + self.modelData.id + constraintSuffix);
-    }
-})
-
-var actionDelete = RecordAction.extend({
-    title : 'Cancella',
-    icon:  'fa fa-remove text-danger',
-    func : function () {
-        var self = this;
-        var view = self.view;
-        jQuery.confirmDialog('Sei sicuro di voler cancellare l\'elemento?').ok(function () {
-            var r = Route.factory('delete');
-            r.values = {
-                modelName: self.view.modelName,
-                pk : self.modelData.id
-            };
-            jQuery.waitStart();
-            //var params = r.extra_params;
-            //r.params = r.extra_params;
-            Server.route(r,function (json) {
-                jQuery.waitEnd();
-                self.callback(json);
-            })
-        });
-    },
-    callback : function (json) {
-        if (json.error) {
-            jQuery.errorDialog(json.msg);
-            return;
-        }
-        app.renderView(this.view.keyId);
-    }
-})
+- execute esegue sostanzialmente un history.back();
 
 
-var actionMultiDelete = CollectionAction.extend({
-    title : 'Cancella selezionati',
-    icon:  'fa fa-trash text-danger',
-    cssClass : 'btn btn-default btn-xs text-danger',
-    text : 'Selezionati',
-    needSelection : true,
-    func : function () {
-        var self = this;
-        var checked = self.view.getChecked();
-        var num = checked.length;
-        if (num === 0)
-            return ;
-        jQuery.confirmDialog('Sei sicuro di voler cancellare (' + num + ') elementi selezionati?').ok(function () {
-            var r = Route.factory('multi_delete');
-            r.values = {
-                modelName: self.view.modelName
-            };
-            jQuery.waitStart();
-            r.params = {'ids': checked};
-            //console.log('MULTIDELETE',checked);
-            Server.route(r,function (json) {
-                jQuery.waitEnd();
-                self.callback(json);
-            })
-        });
-    },
-    callback : function (json) {
-        if (json.error) {
-            jQuery.errorDialog(json.msg);
-            return;
-        }
-        app.renderView(this.view.keyId);
-    }
-});
+## - ActionView
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la visualizzazione di un record all'interno della lista.
 
-var actionSearch = CollectionAction.extend({
-    title : 'Ricerca',
-    icon:  'fa fa-search',
-    cssClass : 'btn btn-xs btn-default text-info',
-    text : 'Cerca',
-    func : function () {
-        var self = this;
-        var view = self.view;
-        var params = view.getParams();
-        params.page = 1;
-        window.location.href = window.location.origin + Server.getUrl(window.location.pathname + '?' + jQuery.param(params));
-        return ;
-    }
-});
+Proprietà
+
+- className : 'ActionView',
+                 title :'Visualizza',
+                 icon:  'fa fa-list-alt',
+                 multiText : 'Visualizza',
+                 routeName : 'page_view',
+     
+Metodi
+
+- execute - utilizza al route per una pagina in view per richiamare la pagina nuova
 
 
-var actionReset =  CollectionAction.extend({
-    title : 'Annulla filtri ricerca',
-    cssClass : 'btn btn-xs btn-default',
-    text : 'Annulla filtri',
-    func : function () {
-        console.log(this);
-        this.view.resetForm();
-        this.callback();
-        //var params = {viewKey:viewKey}
-        //EventManager.trigger(this.action,params);
-    }
-});
+## - ActionDelete
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.
+
+Proprietà
+
+- className : 'ActionDelete',
+      title : 'Cancella',
+      icon:  'fa fa-remove text-danger',
+      multiText : 'Cancella',
+     
+Metodi
+
+- execute - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
+- callback - metodo richiamata alla fine della execute
+
+
+## - ActionMultiDelete
+Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.
+
+Proprietà
+
+- className : 'ActionMultiDelete',
+      title : 'Cancella selezionati',
+      icon:  'fa fa-trash text-danger',
+      cssClass : 'btn btn-default btn-xs text-danger',
+      text : 'Selezionati',
+      needSelection : true,
+      multiText : 'Cancella Selezionati',
+     
+Metodi
+
+- execute - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
+- callback - metodo richiamata alla fine della execute
+
+
+## - ActionSearch
+Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.
+
+Proprietà
+
+- className : 'ActionSearch',
+      title : 'Ricerca',
+      icon:  'fa fa-search',
+      cssClass : 'btn btn-xs btn-default text-info',
+      text : 'Cerca',
+     
+Metodi
+
+- execute - richiama la pagina con i parametri in get presenti nella form della vista
+
+
+## - ActionReset
+Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search il reset dei parametri di 
+ricerca impostati
+
+Proprietà
+
+- className : 'ActionReset',
+      title : 'Annulla filtri ricerca',
+      cssClass : 'btn btn-xs btn-default',
+      text : 'Annulla filtri',
+     
+Metodi
+
+- execute - richiama il metodo clear su tutti i renders della view e richiama la callback
+- callback - metodo chiamato dopo il reset dei controlli
+
+
 
 
 var actionNextPage = CollectionAction.extend({
@@ -437,8 +327,5 @@ var actionPerPage = CollectionAction.extend({
             `
     },
 });
-
-#Azioni implementate
-La libreria mette a disposizione già delle azioni di uso comune
 
 

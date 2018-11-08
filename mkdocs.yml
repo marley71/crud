@@ -5,11 +5,11 @@ pages:
     - Component : component.md
     - Dashboards: dashboards.md
     - Views: views.md
-    - ItemStructure: templates.md
+    - Templates: templates.md
     - Renders: renders.md
-    - Routes: routes.md
-    - Confs: confs.md
     - Actions : actions.md
+    - Confs: confs.md
+    - Routes: routes.md
     - Server : server.md
     - App : app.md
 

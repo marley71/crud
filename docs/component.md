@@ -2,6 +2,11 @@
 
 La classe principale di tutte le componenti `Component`, definisce il comportamento
 generale che un componente deve avere nella visualizzazione di un html e dati associati
+più tutta la logica per la gestione del dato.
+La classe ha un metodo `template` che ritorna html del componente. Il template viene marcato
+con dei marcatori (attributi di tag dal formato data-{marcatore}). Avere questi marcatori permette
+la possibilità di stravolgere completamente il template di base avendo solo l'obbligo di mantenere
+questi marcatori per la costruzione dell'html finale.
 
 
 ###Proprietà

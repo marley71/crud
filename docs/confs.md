@@ -49,7 +49,7 @@ Rappresenta la configurazione base utilizzare nella creazione di una Views.
 var ListConfs = Conf.extend({
     routeName : 'list',
     viewClass : 'ViewList',
-    actions : ['actionDelete','actionMultiDelete','actionEdit','actionView','actionInsert'],
+    actions : ['ActionDelete','ActionMultiDelete','ActionEdit','ActionView','ActionInsert'],
     extra_actions : {},
     fields : [],
     detail_fields: {},
@@ -75,7 +75,7 @@ var ListConfs = Conf.extend({
 ```javascript
 var EditConfs = Conf.extend({
     viewClass : 'ViewEdit',
-    actions : ['actionSave','actionBack'],
+    actions : ['ActionSave','ActionBack'],
     extra_actions : {},
     labels: 'left',
     fields: [],
@@ -116,7 +116,7 @@ var InsertConfs = EditConfs.extend({
 ```javascript
 var SearchConfs = Conf.extend({
     viewClass : 'ViewSearch',
-    actions : ['actionSearch','actionReset'],
+    actions : ['ActionSearch','ActionReset'],
     extra_actions : {},
     fields:[],
     fields_type : {},

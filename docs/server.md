@@ -1,11 +1,11 @@
 # Server
 
-Classe per le comunicazioni ajax con il backend
+Classe per le comunicazioni ajax con il backend e' un wrapper delle chiamate jQuery
 
 
 ##Proprietà
 
-###subdomain
+###static subdomain : null
 proprietà che permette di avere una base comune in tutti gli url codificati dentro
 javascript. E' il prefisso.  Esempio se il nostro sito si trova sotto una sottodominio
 http://dominio.it/sottodominio  settiamo il subdomain=sottodominio
