@@ -54,7 +54,7 @@ var ListConfs = Conf.extend({
     fields : [],
     detail_fields: {},
     pagination : true,
-    fields_type: {
+    fields_config: {
         id :            {type:'hidden'},
         created_at:     {type:'hidden'},
         updated_at:     {type:'hidden'},
@@ -79,7 +79,7 @@ var EditConfs = Conf.extend({
     extra_actions : {},
     labels: 'left',
     fields: [],
-    fields_type: {
+    fields_config: {
         id: {type:'input'},
         created_at: {type:'hidden'},
         updated_at: {type:'hidden'},
@@ -119,7 +119,7 @@ var SearchConfs = Conf.extend({
     actions : ['ActionSearch','ActionReset'],
     extra_actions : {},
     fields:[],
-    fields_type : {},
+    fields_config : {},
 });
 ```
 
@@ -132,7 +132,7 @@ var ViewConfs = Conf.extend({
     actions : [],
     extra_actions : {},
     fields : [],
-    fields_type: {
+    fields_config: {
         attivo: {type: 'swap'},
         fotos : {type: 'hasmany_upload_image'},
         attachments: {type: 'hasmany_upload_attachment'},

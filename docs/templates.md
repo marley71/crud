@@ -1,28 +1,98 @@
 # Template
 
-Classe che estende `Component` e incapsula il template per la visualizzazione di un render
+Classe che estende `Component` e incapsula il template per la visualizzazione di un render,
+all'interno di una vista.
 
-##Proprietà
 
-###subdomain
-proprietà che permette di avere una base comune in tutti gli url codificati dentro
-javascript. E' il prefisso.  Esempio se il nostro sito si trova sotto una sottodominio
-http://dominio.it/sottodominio  settiamo il subdomain=sottodominio
-  
+Metodi
 
-##Metodi
+- html() : ritorna l'html del template 
 
-###static getUrl(url) 
-Ritorna l'url reale combinato con il subdomain.
 
-###static get(url, params, callback)
-Esegue una chiamata ajax al server in GET con i parametri *params* e ritorna il
-risultato json chiamando la *callback*
+Template.factory : metodo statico per creare un template a partire nome
+e attrs secondo la convenzione sui nomi 
 
-###static post(url, params, callback)
-Esegue una chiamata ajax al server in POST con i parametri *params* e ritorna il
-risultato json chiamando la *callback*
+Template.getRenderContainer : ritorna l'elemento dom destinato
+a contenere il render
 
-###static route(route,callback)
-Esegue una chiamata ajax al server utilizzando l'oggetto *route* passato e ritorna
-il risultato chiamando la *callback*
+
+##Template Implementati
+
+##TemplateLeft
+Utilizzato soprattuto dalle views edit,insert,view
+
+Metodi 
+
+- template() 
+```html
+<div class="view-field clearfix">
+    <div class="col col-sm-12 view-msg" data-label="msg">
+            
+    </div>
+    <div class="col col-sm-4">
+        <div class="col col-sm-10">
+
+            <label data-html_label data-label="label"></label>
+        
+        </div>
+    </div>
+    
+ 
+    <div class="col col-sm-8" data-render>
+            
+    </div>
+    <div class="col col-sm-12">
+        <small data-label="addedLabel" class="view-addedLabel"></small>
+    </div>
+    <div class="col col-sm-12 view-field-error text-danger" data-label="error">
+            
+    </div>
+</div>
+```
+
+##TemplateTop
+Utilizzato soprattutto dalle views edit,insert,view per i controlli
+che hanno bisogno di spazio
+
+Metodi 
+
+- template() 
+```html
+<div class="view-field clearfix">
+    <div class="col col-sm-12">
+        <label data-label="label">
+
+        </label>
+    </div>
+    <div class="col col-sm-12 view-msg" data-label="msg">
+
+    </div>
+    <div class="col col-sm-12" data-render>
+
+    </div>
+    <div class="col col-sm-12 view-field-error" data-label="error">
+
+    </div>
+</div>
+```
+
+##TemplateNo 
+nessun template solo un div  utilizzato soprattutto dalla viewlist
+
+Metodi 
+
+- template() 
+```html
+<div class="col col-xs-12" data-render>
+</div>
+```
+
+##TemplateSimple
+nessun template solo un div utilizzato soprattutto dalla viewlist
+Metodi 
+
+- template() 
+```html
+<div data-render>
+</div>
+```

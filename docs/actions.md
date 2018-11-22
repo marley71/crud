@@ -28,12 +28,12 @@ e azioni che agiscono su una collezione di record.
 
 ###Metodi
 
-- execute : metodo chiamato quando l'azione viene cliccata
-- template : metodo che restituisce i template di tipo button o link 
-- buttonTemplate : template con type button
-- linkTemplate : template con type link
-- callback : se definita viene chiamata al termi dell'execute
-- _getData : ritorna i valori di instanza di tutti gli attributi html dell'azione
+- `execute` : metodo chiamato quando l'azione viene cliccata
+- `template` : metodo che restituisce i template di tipo button o link 
+- `buttonTemplate` : template con type button
+- `linkTemplate` : template con type link
+- `callback` : se definita viene chiamata al termi dell'execute
+- `_getData` : ritorna i valori di instanza di tutti gli attributi html dell'azione
 
     
 ##RecordAction
@@ -42,11 +42,11 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 
 ###Proprietà
 
-- className : 'RecordAction',
-- type : 'record',
-- cssClass : 'btn btn-default btn-xs btn-group',
+- `className` : 'RecordAction',
+- `type` : 'record',
+- `cssClass` : 'btn btn-default btn-xs btn-group',
 
-- _buttonTemplate : function ()
+- `buttonTemplate` : function ()
 ```html
 <button data-action type="button" data-visible=visible data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" data-addclass="enabled?'':'disabled'">
     <i data-remove="!icon" data-class="icon"></i>
@@ -54,7 +54,7 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 </button> 
 ```
 
-- _linkTemplate : function () 
+- `linkTemplate` : function () 
 ```html
 <a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
     <i data-remove="!icon" data-class="icon"></i>
@@ -67,16 +67,16 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 
 ###Proprietà
 
-- className : 'CollectionAction'
-- type : 'collection'
-- buttonTemplate : 
+- `className` : 'CollectionAction'
+- `type` : 'collection'
+- `buttonTemplate` : 
 ```html
 <button data-action type="button" data-visible=visible data-attrs="{'title':title,'data-params':params,'target':target}" data-class="cssClass" data-addclass="enabled?'':'disabled'">
     <i data-remove="!icon" data-class="icon"></i>
     <span data-field="text"></span>
 </button> 
 ```
-- linkTemplate : 
+- `linkTemplate` : 
 ```html
 <a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
     <i data-remove="!icon" data-class="icon"></i>
@@ -92,15 +92,15 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  l'ed
 
 Proprietà
 
--className : 'ActionEdit',
-     title : 'Modifica',
-     icon : 'fa fa-edit',
-     multiText : 'Modifica',
-     routeName : 'page_edit'
+- `className` : 'ActionEdit'
+- `title` : 'Modifica',
+- `icon` : 'fa fa-edit',
+- `multiText` : 'Modifica',
+- `routeName` : 'page_edit'
 
 Metodi 
 
-- execute - utilizza la route per una pagina in edit per richiamare la pagina nuova
+- `execute` - utilizza la route per una pagina in edit per richiamare la pagina nuova
 
 
 ## - ActionInsert
@@ -108,40 +108,40 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  
 
 Proprietà
 
--className : 'ActionInsert',
-     title : 'Inserisci',
-     icon : 'fa fa-plus text-success',
-     cssClass : 'btn btn-default btn-xs text-success',
-     text : 'Nuovo',
-     multiText : 'Nuovo',
-     routeName : 'page_insert',
+- `className` : 'ActionInsert',
+- `title` : 'Inserisci',
+- `icon` : 'fa fa-plus text-success',
+- `cssClass` : 'btn btn-default btn-xs text-success',
+- `text` : 'Nuovo',
+- `multiText` : 'Nuovo',
+- `routeName` : 'page_insert',
      
 Metodi
 
-- execute - utilizza al route per una pagina in insert per richiamare la pagina nuova
+- `execute` - utilizza al route per una pagina in insert per richiamare la pagina nuova
 
 ## - ActionSave
 
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per salvare le modifiche
 
 
-className : 'ActionSave',
-    title : 'Salva',
-    text : 'Salva',
-    multiText : 'Salva',
+- `className` : 'ActionSave',
+- `title` : 'Salva',
+- `text` : 'Salva',
+- `multiText` : 'Salva',
 
-- execute - utilizza le route update o save a seconda se il modello dati è in modifica o insert
+- `execute` - utilizza le route update o save a seconda se il modello dati è in modifica o insert
 
 
 ## - ActionBack
 
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
 
-className : 'ActionBack',
-    title : 'Indietro',
-    text : 'Torna indietro',
+- `className` : 'ActionBack',
+- `title` : 'Indietro',
+- `text` : 'Torna indietro',
 
-- execute esegue sostanzialmente un history.back();
+- `execute` esegue sostanzialmente un history.back();
 
 
 ## - ActionView
@@ -149,15 +149,15 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 
 Proprietà
 
-- className : 'ActionView',
-                 title :'Visualizza',
-                 icon:  'fa fa-list-alt',
-                 multiText : 'Visualizza',
-                 routeName : 'page_view',
+- `className` : 'ActionView',
+- `title` :'Visualizza',
+- `icon`:  'fa fa-list-alt',
+- `multiText` : 'Visualizza',
+- `routeName` : 'page_view',
      
 Metodi
 
-- execute - utilizza al route per una pagina in view per richiamare la pagina nuova
+- `execute` - utilizza al route per una pagina in view per richiamare la pagina nuova
 
 
 ## - ActionDelete
@@ -165,15 +165,15 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 
 Proprietà
 
-- className : 'ActionDelete',
-      title : 'Cancella',
-      icon:  'fa fa-remove text-danger',
-      multiText : 'Cancella',
+- `className` : 'ActionDelete',
+- `title` : 'Cancella',
+- `icon`:  'fa fa-remove text-danger',
+- `multiText` : 'Cancella',
      
 Metodi
 
-- execute - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
-- callback - metodo richiamata alla fine della execute
+- `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
+- `callback` - metodo richiamata alla fine della execute
 
 
 ## - ActionMultiDelete
@@ -181,18 +181,18 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  
 
 Proprietà
 
-- className : 'ActionMultiDelete',
-      title : 'Cancella selezionati',
-      icon:  'fa fa-trash text-danger',
-      cssClass : 'btn btn-default btn-xs text-danger',
-      text : 'Selezionati',
-      needSelection : true,
-      multiText : 'Cancella Selezionati',
+- `className` : 'ActionMultiDelete',
+- `title` : 'Cancella selezionati',
+- `icon`:  'fa fa-trash text-danger',
+- `cssClass` : 'btn btn-default btn-xs text-danger',
+- `text` : 'Selezionati',
+- `needSelection` : true,
+- `multiText` : 'Cancella Selezionati',
      
 Metodi
 
-- execute - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
-- callback - metodo richiamata alla fine della execute
+- `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
+- `callback` - metodo richiamata alla fine della execute
 
 
 ## - ActionSearch
@@ -200,15 +200,15 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search
 
 Proprietà
 
-- className : 'ActionSearch',
-      title : 'Ricerca',
-      icon:  'fa fa-search',
-      cssClass : 'btn btn-xs btn-default text-info',
-      text : 'Cerca',
+- `className` : 'ActionSearch',
+- `title` : 'Ricerca',
+- `icon`:  'fa fa-search',
+- `cssClass` : 'btn btn-xs btn-default text-info',
+- `text` : 'Cerca',
      
 Metodi
 
-- execute - richiama la pagina con i parametri in get presenti nella form della vista
+- `execute` - richiama la pagina con i parametri in get presenti nella form della vista
 
 
 ## - ActionReset
@@ -217,115 +217,67 @@ ricerca impostati
 
 Proprietà
 
-- className : 'ActionReset',
-      title : 'Annulla filtri ricerca',
-      cssClass : 'btn btn-xs btn-default',
-      text : 'Annulla filtri',
+- `className` : 'ActionReset',
+- `title` : 'Annulla filtri ricerca',
+- `cssClass` : 'btn btn-xs btn-default',
+- `text` : 'Annulla filtri',
      
 Metodi
 
-- execute - richiama il metodo clear su tutti i renders della view e richiama la callback
-- callback - metodo chiamato dopo il reset dei controlli
+- `execute` - richiama il metodo clear su tutti i renders della view e richiama la callback
+- `callback` - metodo chiamato dopo il reset dei controlli
 
 
 
 
-var actionNextPage = CollectionAction.extend({
-    icon : 'fa fa-angle-right',
-    cssClass : 'btn btn-default btn-xs',
-    func : function () {
-        var r =  this.view.getRoute();// Route.factory(viewList.config.routeName);
-        if (this.view.data.pagination.current_page < this.view.data.pagination.last_page) {
-            r.params['page'] = this.view.data.pagination.current_page +1;
-            this.view.setRoute(r);
-            app.renderView(this.view.keyId);
-            this.callback();
-        }
-    }
-});
+## - ActionNextPage
+nextpage del navigatore di una lista
 
-var actionPrevPage = CollectionAction.extend({
-    icon : 'fa fa-angle-left',
-    cssClass : 'btn btn-default btn-xs',
-    func : function () {
-        var r =  this.view.getRoute();// Route.factory(viewList.config.routeName);
-        if (this.view.data.pagination.current_page > 1) {
-            r.params['page'] = this.view.data.pagination.current_page - 1;
-            this.view.setRoute(r);
-            app.renderView(this.view.keyId);
-            this.callback();
-        }
+Proprietà    
+- `icon` : 'fa fa-angle-right',
+- `cssClass` : 'btn btn-default btn-xs',
 
-    }
-});
+Metodi 
+
+- `execute` : incrementa di uno il parametro page della route associata alla lista
+
+## - ActionPrevPage
+Pagina precendente di una view
+
+Proprietà
+
+- `icon` : 'fa fa-angle-left',
+- `cssClass` : 'btn btn-default btn-xs'
+
+- `execute` : Decrementa di uno il parametro page della route associata alla lista
 
 
-var actionFirstPage = CollectionAction.extend({
-    icon : 'fa fa fa-angle-double-left',
-    cssClass : 'btn btn-default btn-xs',
-    func : function () {
-        var r =  this.view.getRoute();// Route.factory(viewList.config.routeName);
-        if (this.view.data.pagination.current_page > 1) {
-            r.params['page'] = 1;
-            this.view.setRoute(r);
-            app.renderView(this.view.keyId);
-            this.callback();
-        }
+## - ActionFirstPage
 
-    }
-});
+- `icon` : 'fa fa fa-angle-double-left',
+- `cssClass` : 'btn btn-default btn-xs',
+- `execute` : Setta il parametro page a uno della route associata alla lista
 
-var actionLastPage = CollectionAction.extend({
-    icon : 'fa fa fa-angle-double-right',
-    cssClass : 'btn btn-default btn-xs',
-    func : function () {
-        var r =  this.view.getRoute();// Route.factory(viewList.config.routeName);
-        if (this.view.data.pagination.current_page < this.view.data.pagination.last_page) {
-            r.params['page'] = this.view.data.pagination.last_page;
-            this.view.setRoute(r);
-            app.renderView(this.view.keyId);
-            this.callback();
-        }
+## - actionLastPage
 
-    }
-});
+- `icon` : 'fa fa fa-angle-double-right',
+- `cssClass` : 'btn btn-default btn-xs',
+- `execute` : Setta il parametro page all'ultima pagina della route associata alla lista
 
-var actionPerPage = CollectionAction.extend({
-    icon : 'fa fa fa-angle-double-right',
-    htmlEvent : 'onchange',
-    cssClass : 'btn btn-default btn-xs',
-    init : function (params) {
-        this._super(params);
-        this._htmlProperties.push('pagination');
-    },
-    func : function () {
-        var self = this;
-        var r =  this.view.getRoute();// Route.factory(viewList.config.routeName);
-        //console.log('html',self.container,jQuery(self.container).html());
-        r.params['page'] = 1;
-        r.params['paginateNumber'] = jQuery(self.container).find('select').val();
-        this.view.setRoute(r);
-        app.renderView(this.view.keyId);
-        this.callback();
+## - actionPerPage
 
-    },
-    _getData : function () {
-        var data = this._super();
-        data.pagination.pagination_order = _.sortBy(_.keys(data.pagination.pagination_steps), function (num) {
-            return parseInt(num);
-        });
-        return data;
-    },
-    _buttonTemplate : function () {
-        var special_attrs = `"{'` + this.htmlEvent + `':` + this.htmlEvent + `,'title':title,'data-params':params}"`;
-        return `
-                <select data-field="pagination.per_page" data-source="pagination.pagination_steps" 
-                        data-sourceorder="pagination.pagination_order"
-                        data-attrs=`+ special_attrs + `  class="pagination-input">
-        
-                </select>  
-            `
-    },
-});
+- `icon` : 'fa fa fa-angle-double-right',
+- `htmlEvent` : 'onchange',
+- `cssClass` : 'btn btn-default btn-xs',
+- `execute` : setta il parametro page e paginateNumber della route associata alla lista
 
+- `_getData` : setta i valori della select prendendoli da data.pagination.pagination_steps
 
+- `buttonTemplate` : 
+```html
+<select data-field="pagination.per_page" data-source="pagination.pagination_steps" 
+        data-sourceorder="pagination.pagination_order"
+        data-attrs=`+ special_attrs + `  class="pagination-input">
+
+</select>  
+```

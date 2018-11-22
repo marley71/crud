@@ -18,26 +18,26 @@ Render.SEARCH = 'search';
 
 ####Proprietà
 
-- key : null - nome dell'oggetto render (il campo del db)
-- type : null - type dell'oggetto per gestire le Gerarchie di classi
-- className : 'Render' - nome della Classe reale dell'oggetto
+- `key` : null - nome dell'oggetto render (il campo del db)
+- `type` : null - type dell'oggetto per gestire le Gerarchie di classi
+- `className` : 'Render' - nome della Classe reale dell'oggetto
 
-- element_selector : '[data-render_element]' - marcatore html dell'elemento
-- control_selector : '[data-render_control]' - marcatore html del controllo html (input, select, ecc)
-- operator_selector : '[data-control_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
+- `element_selector` : '[data-render_element]' - marcatore html dell'elemento
+- `control_selector` : '[data-render_control]' - marcatore html del controllo html (input, select, ecc)
+- `operator_selector` : '[data-control_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
 search
-- operator : null - valore operatore
+- `operator` : null - valore operatore
 
-- value : null - valore oggetto
-- app : null - identificatore dell'oggetto app della pagina
-- resources : [] - vettore risorse da caricare prima di chiamare il finalize
-- metadata : {} - array associativo metadati che descrivono il dato
+- `value` : null - valore oggetto
+- `app` : null - identificatore dell'oggetto app della pagina
+- `resources` : [] - vettore risorse da caricare prima di chiamare il finalize
+- `metadata` : {} - array associativo metadati che descrivono il dato
 
 
 ####Metodi
 
-- init : function (key,attributes) - ridefinizione del costruttore rispetto al Component. 
-- _setHtmlAttributes : function(el)
+- `init(key,attributes)` - ridefinizione del costruttore rispetto al Component. 
+- _setHtmlAttributes(el)
 - change : function ()
 - clear : function ()
 - setMetadata : function (metadata)
@@ -348,19 +348,68 @@ resources : {
 }
 ```
 
+## - RenderDatePickerEdit
 
+####template
+```html
+<div data-render_element>
+    <input data-render_control="" type="hidden" />
+    <div class="input-group">
+        <input data-render_picker class="form-control text-right" autocomplete="off" />
+        <a data-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
+    </div>
+</div>
+```
+## - RenderDatePickerView
 
+####template
+
+```html
+<span data-render_element></span>
+```
 
 #RenderDateFormatted
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza il picker nativo del broswer associato al type=date, se supportato.
 
+## - RenderDateFormattedEdit
+
+####template
+```html
+<div class="clearfix" data-render_element>
+    <input data-render_control="" type="hidden" />
+    <div class="col col-xs-6">
+        <input data-date_formatted class="form-control" type="date" />
+    </div>
+    <div class="col col-xs-6">
+        <input data-time_formatted class="form-control hide" type="time"/>
+    </div>
+</div>
+```
 
 
 
 #RenderBetweenDate
 
 Questo render serve per la gestione di un range di date.
+
+## -  RenderBetweenDateEdit
+
+####template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
 
 #RenderCaptcha
 

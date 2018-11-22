@@ -249,6 +249,25 @@ caricamento dei dati e la RouteSave per il salvataggio
 E' una view per la modifica di un record. Utilizza la route RouteEdit per il caricamento
 e la RouteUpdate per il salvataggio
 
+
+####template 
+
+```html
+<div class="well" data-edit-main>
+    <div data-alert class="alert alert-success hide"></div>
+    <form name="data_form" class="model-edit">
+        <div data-hidden_fields></div>
+        <div data-view_elements>
+            
+        </div>
+        <div data-view_action >
+            <div data-field="data" data-self>
+
+            </div>
+        </div>
+    </form>
+</div>
+```
 ##- ViewSearch
 E' una view per effettuare una ricerca.
 
