@@ -1,19 +1,29 @@
 #Component
 
-La classe principale di tutte le componenti `Component`, definisce il comportamento
+La classe principale di tutte le componenti grafiche `Component`, definisce il comportamento
 generale che un componente deve avere nella visualizzazione di un html e dati associati
-più tutta la logica per la gestione del dato.
+più tutta la logica per la gestione del dato e delle interazioni utente.
+
 La classe ha un metodo `template` che ritorna html del componente. Il template viene marcato
 con dei marcatori (attributi di tag dal formato data-{marcatore}). Avere questi marcatori permette
 la possibilità di stravolgere completamente il template di base avendo solo l'obbligo di mantenere
 questi marcatori per la costruzione dell'html finale.
 
+Nell'oggetto componente è stato inserito anche la possibilità di avere dei traits che ne permette l'estensione
+con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
+I traits sono stati differenziati in traits che agiscono sui templates e traits generali per l'aggiunta di 
+funzionalità custom.
 
 ###Proprietà
-- `className` : 'Component'
-- `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'],
-- `traitsTemplate` : [],
-- `traits` : [],
+- `className` : 'Component'. Questa proprietà è stata introdotta a causa della possibilità di poter estendere 
+le classi con un trucchetto e che rende impossibile saper a runtime in quale classe ci si trovi.
+- `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'], vettore di traits definiti di default
+in particolare :
+    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template
+    - `TraitTemplate`
+    - `TraitPlaceholder`
+- `traitsTemplate` : [] vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere visualizzato il template
+- `traits` : [] traits per estendere funzionalità del component senza ridefinirne la classe.
 - `container` : null,
 
 ###Metodi

@@ -37,10 +37,10 @@ search
 ####Metodi
 
 - `init(key,attributes)` - ridefinizione del costruttore rispetto al Component. 
-- _setHtmlAttributes(el)
-- change : function ()
-- clear : function ()
-- setMetadata : function (metadata)
+- `_setHtmlAttributes`(el)
+- `change` : function ()
+- `clear` : function ()
+- `setMetadata` : function (metadata)
 
 
 Render.factory = function (key,options) è un metodo statico che permette di creare un Render
@@ -88,26 +88,28 @@ il suo template di default:
 
 
 ####Proprietà
-- routeName : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server
+- `routeName` : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server
 - `autocomplete_view_selector` : '[data-render_autocomplete_view]' - marcatore dove verrà visualizzato
 le info della entry scelta
 - `autocomplete_input_selector` : '[data-render_autocomplete_input]' - marcatore dove verrà agganciato
 il plugins typehead di bootstrap.
 
 - `fields` : [],                // campi da visualizzare dopo la selezione
-- metadata : {
-        modelData : null,           // dati del modello selezionato
-        autocompleteModel : null,   // nome modello da utilizzare nelle chiamate rest per la popolazione dei dati
-        method : null,              // eventuale parametro da mandare in get nella chiamata rest
-        separator : null,           // separatore da utillare nella visualizzazione dei campi in caso siano piu' di uno
-        n_items : null,             // numero di items da richiedere
-        model_description : []
-    },
-- resources : vettore delle risorse esterne che ha bisogno per funzionare. Questo render si appoggia a
-typeahead bootstrap.
-
+- `metadata` :
 ```javascript
-resources : [
+{
+    modelData : null,           // dati del modello selezionato
+    autocompleteModel : null,   // nome modello da utilizzare nelle chiamate rest per la popolazione dei dati
+    method : null,              // eventuale parametro da mandare in get nella chiamata rest
+    separator : null,           // separatore da utillare nella visualizzazione dei campi in caso siano piu' di uno
+    n_items : null,             // numero di items da richiedere
+    model_description : []
+}
+```
+- `resources` : vettore delle risorse esterne che ha bisogno per funzionare. Questo render si appoggia a
+typeahead bootstrap.
+```javascript
+[
         'typeahead/bootstrap3-typeahead.min.js',
         'typeahead/typeahead.bundle.js',
         'typeahead/typeaheadjs.css'
@@ -117,8 +119,7 @@ resources : [
 
 ####Metodi
 
-- `_getLabelValue` : function ()
-    /**
+- `_getLabelValue()` : 
      * ritorna il nome dell'inputview, tiene conto del fatto che si potrebbe trovare in un hasmany
      * e il nome potrebbe avere le []
      */
@@ -136,9 +137,6 @@ resources : [
 - `ev_selected` : function (datum) 
 
 - `getValue` : function () 
-
-
-
 
 
 
@@ -188,44 +186,16 @@ clienti con questi dati
 
 });
 
-var RenderBelongstoView = RenderBelongsto.extend({
-    render : function(callback) {
-        var self = this;
+##RenderBelongstoView
 
-        if (!self.value) {
-            jQuery(self.container).find('[data-render_element]').html(self.nullLabel);
-            return ;
-        }
-
-        if (self.itemTemplate()) {
-            var tpl = Component.parseHtml(self.itemTemplate());
-            var html = jQuery.getTemplate(tpl,self.value);
-            jQuery(self.container).find('[data-render_element]').html(html);
-            return ;
-        }
-
-        var separator = self.separator?self.separator:" ";
-        var label = "";
-        for (var fi in self.fields) {
-            var field = self.fields[fi];
-            label+= self.value[field];
-            if (fi < self.fields.length-1)
-                label+= separator;
-        }
-
-        jQuery(self.container).find('[data-render_element]').html(label);
-        return callback();
-
-    },
-
-    template : function () {
+- template() : function () {
         return `<div data-render_element></div>`
     },
 
-    itemTemplate : function () {
+-itemTemplate : function () {
         return false;
     }
-})
+
 
 
 #RenderDateSelect
@@ -415,6 +385,24 @@ Questo render serve per la gestione di un range di date.
 
 Questo render incapsula il captca con il suo relativo reload
 
+marcatori
+
+- captcha_img_selector : '[data-captcha_img]'
+
+- template() 
+```html
+<div class="row">
+    <div class="col-sm-4" data-captcha_img  >
+
+    </div>
+    <div class="col-sm-4">
+            <input data-render_control="" class="form-control" type="text" name="" value="">
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-sm btn-default" type="button" data-button_reload>Reload</button>
+    </div>
+</div>
+```
 #RenderRadio
 
 - caption_selector : '[data-render_caption]' - marcatore 

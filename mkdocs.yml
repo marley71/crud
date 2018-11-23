@@ -12,6 +12,7 @@ pages:
     - Routes: routes.md
     - Server : server.md
     - App : app.md
+    - Esempi Views : esempi_views.md
 
 theme: readthedocs
 
