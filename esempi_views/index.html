@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Esempi Views - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Esempi Views";
+    var mkdocs_page_input_path = "esempi_views.md";
+    var mkdocs_page_url = "/esempi_views/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Esempi Views</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#view-che-lavorano-con-liste-di-dati">View che lavorano con liste di dati</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-lista-con-dati-json">- Lista con dati json</a></li>
+        
+            <li><a class="toctree-l3" href="#-lista-con-dati-json-con-intestazioni-header-custom">- Lista con dati json con intestazioni header custom</a></li>
+        
+            <li><a class="toctree-l3" href="#views-che-lavorano-con-singolo-record">Views che lavorano con singolo record</a></li>
+        
+            <li><a class="toctree-l3" href="#-vista-in-modalita-edit-con-azione-actionsave-ridefinita">- Vista in modalità edit con azione ActionSave ridefinita</a></li>
+        
+            <li><a class="toctree-l3" href="#-vista-in-modalita-edit-con-azione-custom-e-template-custom">- Vista in modalità edit con azione custom e template custom</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Esempi Views</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="view-che-lavorano-con-liste-di-dati">View che lavorano con liste di dati</h1>
+<h2 id="-lista-con-dati-json">- Lista con dati json</h2>
+<pre><code class="javascript">// definisco i miei dati
+var mydata = {
+    value :  [
+        {
+            text : 100,
+            intero : '1',
+            stringa : 'prova'
+        },
+        {
+            text : 2,
+            intero : '1',
+            stringa : 'fprova2'
+        },
+    ]
+}
+
+// creo una configurazione per la view lista
+var myList = new ConfList({
+    fields : ['stringa','intero','text'], // campi che voglio visualizzare
+    container : '#test_container1',  // container dove verrà disegnata la view
+    modelName : 'dummy', // modelname dummy, uso sempre questo per i dati dinamici
+    routeName : null, // nessuna route verso il server i dati ci sono già
+    pagination : false, // se voglio o no il navigatore per la paginazione
+    actions : [], //azioni che si possono fare sui singoli record  o lista
+    data : mydata // dati della lista
+});
+
+// aggiungo la lista
+var vkey = app.addView(myList);
+// la renderizzo 
+app.renderView(vkey);
+
+</code></pre>
+
+<p><a href="http://laravel51.dev.it/help/example?theme=cupparis4#views-view_list" target="_blank"> Vai </a></p>
+<h2 id="-lista-con-dati-json-con-intestazioni-header-custom">- Lista con dati json con intestazioni header custom</h2>
+<pre><code class="javascript">// definisco i miei dati
+var mydata = {
+    value :  [
+        {
+            text : 100,
+            intero : '1',
+            stringa : 'prova'
+        },
+        {
+            text : 2,
+            intero : '1',
+            stringa : 'fprova2'
+        },
+    ]
+}
+
+// creo una configurazione per la view lista
+var myList = new ConfList({
+    fields : ['stringa','intero','text'], // campi che voglio visualizzare
+    container : '#test_container1',  // container dove verrà disegnata la view
+    modelName : 'dummy', // modelname dummy, uso sempre questo per i dati dinamici
+    routeName : null, // nessuna route verso il server, i dati ci sono già
+    pagination : false, // se voglio o no il navigatore per la paginazione
+    actions : [], //azioni che si possono fare sui singoli record  o lista
+    data : mydata, // dati della lista
+    labels : {
+        'dummy.stringa.label' : 'campo stringa'
+    }
+});
+
+// aggiungo la lista
+var vkey = app.addView(myList);
+// la renderizzo 
+app.renderView(vkey);
+</code></pre>
+
+<h2 id="views-che-lavorano-con-singolo-record">Views che lavorano con singolo record</h2>
+<h2 id="-vista-in-modalita-edit-con-azione-actionsave-ridefinita">- Vista in modalità edit con azione ActionSave ridefinita</h2>
+<pre><code class="javascript">
+// definisco i miei dati che propongo nella view. Un solo record
+var mydata =  {
+    value : {  // valori del mio ipotetico modello dati
+        text : &quot;testo &quot;,
+        intero : 1,
+        stringa : 'prova'
+    },
+    metadata : {  // metadata dei miei valori, in questo caso il campo intero può avere solo 2 valori
+        intero : {
+            domainValues : {
+                0 : 'Zero',
+                1 : 'Uno'
+            }
+        }
+    }
+}
+// definisco la configurazione della mia vista
+var myList = new ConfInsert({
+    fields : ['stringa','intero','text'],  //campi che voglio visualizzare
+    container : '#test_container1',        // container dove verrà disegnata la vista
+    modelName : 'dummy',                    // model name per dati dinamici
+    routeName : null,                       // nessuna route verso il server, i dati ci sono già
+    actions : ['ActionSave','ActionMia'],   //azione save presente nella libreria
+    data : mydata,
+    fields_config : {                       // configurazione campi
+        intero : {                          // dico che il campo intero e' una select
+            type : 'select'
+        },
+        text : {
+            type : 'textarea'
+        }
+    },
+    custom_actions : {   // ridefiniamo l'azione ActionSave presente in libreria per inserire il nostro comportamento
+        ActionSave : ActionSave.extend({
+            execute : function () {
+                alert(JSON.stringify(this.view.getFormData()))
+            }
+        })  
+    },
+    autorender : true, // dico che la view la voglio renderizzare appena l'aggiungo
+});
+app.addView(myList);
+
+</code></pre>
+
+<h2 id="-vista-in-modalita-edit-con-azione-custom-e-template-custom">- Vista in modalità edit con azione custom e template custom</h2>
+<pre><code class="javascript">
+// definisco i miei dati che propongo nella view. Un solo record
+var mydata =  {
+    value : {  // valori del mio ipotetico modello dati
+        text : &quot;testo &quot;,
+        intero : 1,
+        stringa : 'prova'
+    },
+    metadata : {  // metadata dei miei valori, in questo caso il campo intero può avere solo 2 valori
+        intero : {
+            domainValues : {
+                0 : 'Zero',
+                1 : 'Uno'
+            }
+        }
+    }
+}
+// definisco la configurazione della mia vista
+var myList = new ConfInsert({
+    fields : ['stringa','intero','text'],  //campi che voglio visualizzare
+    container : '#test_container1',        // container dove verrà disegnata la vista
+    modelName : 'dummy',                    // model name per dati dinamici
+    routeName : null,                       // nessuna route verso il server, i dati ci sono già
+    actions : ['ActionMia'],               //azione save presente nella libreria
+    data : mydata,
+    fields_config : {                       // configurazione campi
+        intero : {                          // dico che il campo intero e' una select
+            type : 'select'
+        },
+        text : {
+            type : 'textarea'
+        }
+    },
+    custom_actions : {
+        ActionMia : RecordAction.extend({
+            text : 'mia',
+            title : 'azione custom',
+            execute : function () {
+                alert(JSON.stringify(this.view.getFormData()))
+            }
+        })  
+    },
+    labels : {
+        'app.mialabel' : 'Questa e\' una vista con template personale rispetto a quello standard',  
+    },
+    template : function () {
+        return `
+        &lt;div class=&quot;well&quot; data-edit-main&gt;
+            &lt;div data-alert class=&quot;alert alert-success hide&quot;&gt;&lt;/div&gt;
+            &lt;div data-label=&quot;app.mialabel&quot;&gt;&lt;/div&gt;
+            &lt;form name=&quot;data_form&quot; class=&quot;model-edit&quot;&gt;
+                &lt;div data-hidden_fields&gt;
+                    &lt;!-- qui dentro verrano disegnati i renders speciali hidden --&gt;
+                &lt;/div&gt;
+                &lt;div data-view_elements&gt;
+                    &lt;!-- qui dentro verrano disegnati i renders --&gt;
+                &lt;/div&gt;
+                &lt;div data-view_action &gt;
+                    &lt;!-- qui dentro verrano disegnate le azioni definite --&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    `
+    },
+    autorender : true, // dico che la view la voglio renderizzare appena l'aggiungo
+});
+app.addView(myList);
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../app/" class="btn btn-neutral" title="App"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../app/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Confs - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Confs";
+    var mkdocs_page_input_path = "confs.md";
+    var mkdocs_page_url = "/confs/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Confs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#confs">Confs</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#conf">Conf</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#configurazioni-implementate">Configurazioni implementate</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-listconfs">- ListConfs</a></li>
+        
+            <li><a class="toctree-l3" href="#-editconfs">- EditConfs</a></li>
+        
+            <li><a class="toctree-l3" href="#-insertconfs">- InsertConfs</a></li>
+        
+            <li><a class="toctree-l3" href="#-searchconfs">- SearchConfs</a></li>
+        
+            <li><a class="toctree-l3" href="#-viewconfs">- ViewConfs</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Confs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="confs">Confs</h1>
+<p>Le Confs sono nate per creare configurazioni iniziali per le views di uso generale.
+Questo permette di avere, con pochissimo codice, la configurazione
+della view da utilizzare e modificare solo dove occorre. </p>
+<h2 id="conf">Conf</h2>
+<p>La Classe Conf è la classe base che ereditano tutte le confs. Il costrutture 
+accetta un vettore associativo per la sostituizione di proprietà della configurazione che 
+andiamo ad instanziare. </p>
+<h3 id="proprieta">Proprietà</h3>
+<ul>
+<li><code>routeName</code>: Indica la route da utilizzare per il caricamento dei dati della view. 
+Su routeName verrà utilizzata la convenzione del metodo statico 
+<a href="/routes#">Route.factory(routeName)</a>. </li>
+<li><code>viewClass</code>: Indica la classe view da utilizzare. Esempio <em>ViewList</em></li>
+<li><code>actions</code>: Vettore di azioni presenti nella view. La visualizzazione delle actions 
+sarà compito della view secondo le sue strategie di visualizzazione.</li>
+<li><code>extra_actions</code>: Vettore di azioni con la loro definizione nel caso in cui 
+nel vettore actions  siano indicate azioni custom o azioni che ridefiniscono quelle
+di default.</li>
+<li><code>fields</code>: Il Vettore dei campi che deve essere gestito dalla views.</li>
+<li><code>detail_fields</code>: Il Vettore di campi che hanno anche un dettaglio. Sono campi particali
+come le aggregazioni, totale di una lista di records.</li>
+<li><code>pagination</code>: Valido solo per le liste, contiene le informazioni sulla paginazione
+dei risultati.</li>
+<li><code>fields_type</code> : Vettore della definizione del tipo di tutti i campi presenti in <em>fields</em> 
+con le loro eventuali estensioni.</li>
+<li><code>dependencies</code>: Vettore associativo di oggetti Dipendence per permettere l'interazione
+tra due campi diversi. </li>
+<li><code>fields_structure</code> : Indica la classe struttura da utilizzare per renderizzare i
+campi. </li>
+</ul>
+<h3 id="metodi">Metodi</h3>
+<ul>
+<li><code>__costruct(attrs)</code>: attrs rappresenta il vettore associativo per la ridefinizione
+di alcune proprietà di confs.</li>
+</ul>
+<h1 id="configurazioni-implementate">Configurazioni implementate</h1>
+<p>Nella libreria ci sono già delle configurazioni di uso comune per ogni oggetto vista 
+implementato di default.</p>
+<h2 id="-listconfs">- ListConfs</h2>
+<p>Rappresenta la configurazione base utilizzare nella creazione di una Views.</p>
+<pre><code class="javascript">var ListConfs = Conf.extend({
+    routeName : 'list',
+    viewClass : 'ViewList',
+    actions : ['ActionDelete','ActionMultiDelete','ActionEdit','ActionView','ActionInsert'],
+    extra_actions : {},
+    fields : [],
+    detail_fields: {},
+    pagination : true,
+    fields_config: {
+        id :            {type:'hidden'},
+        created_at:     {type:'hidden'},
+        updated_at:     {type:'hidden'},
+        deleted_at:     {type:'hidden'},
+        created_by:     {type:'hidden'},
+        updated_by:     {type:'hidden'},
+        descrizione :   {type:'hidden'},
+        activated:      {type: 'swap','mode': 'edit'},
+        verified:       {type: 'swap','mode': 'edit'},
+        fotos:          {type: 'hasmany_upload_image',limit:1},
+        attachments:    {type: 'hasmany_upload_attachment',limit:1},
+        data:           {type: 'date_picker'}
+    }
+});
+</code></pre>
+
+<h2 id="-editconfs">- EditConfs</h2>
+<pre><code class="javascript">var EditConfs = Conf.extend({
+    viewClass : 'ViewEdit',
+    actions : ['ActionSave','ActionBack'],
+    extra_actions : {},
+    labels: 'left',
+    fields: [],
+    fields_config: {
+        id: {type:'input'},
+        created_at: {type:'hidden'},
+        updated_at: {type:'hidden'},
+        deleted_at: {type:'hidden'},
+        created_by: {type:'hidden'},
+        updated_by: {type:'hidden'},
+        activated:  {type: 'radio'},
+        descrizione: {type: 'texthtml'},
+        body: {type: 'texthtml'},
+        note: {type: 'texthtml'},
+        fotos: {type: 'hasmany_upload_image', 'label': 'no'},
+        attachments: {type: 'hasmany_upload_attachment', 'label': 'no'},
+        data: {type: 'date_picker'},
+        data_formatted: {type:'hidden'},
+        status: {type:'hidden'},
+        token: {type:'hidden'},
+        captcha: {type: 'captcha'},
+    },
+    dependencies : {}
+});
+</code></pre>
+
+<h2 id="-insertconfs">- InsertConfs</h2>
+<pre><code class="javascript">var InsertConfs = EditConfs.extend({
+    viewClass : 'ViewInsert',
+});
+</code></pre>
+
+<h2 id="-searchconfs">- SearchConfs</h2>
+<pre><code class="javascript">var SearchConfs = Conf.extend({
+    viewClass : 'ViewSearch',
+    actions : ['ActionSearch','ActionReset'],
+    extra_actions : {},
+    fields:[],
+    fields_config : {},
+});
+</code></pre>
+
+<h2 id="-viewconfs">- ViewConfs</h2>
+<pre><code class="javascript">var ViewConfs = Conf.extend({
+    viewClass : 'ViewView',
+    labels: 'left',
+    actions : [],
+    extra_actions : {},
+    fields : [],
+    fields_config: {
+        attivo: {type: 'swap'},
+        fotos : {type: 'hasmany_upload_image'},
+        attachments: {type: 'hasmany_upload_attachment'},
+        id: {type:'hidden'},
+        created_at: {type:'hidden'},
+        updated_at: {type:'hidden'},
+        deleted_at: {type:'hidden'},
+        created_by: {type:'hidden'},
+        updated_by: {type:'hidden'}
+    }
+});
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../routes/" class="btn btn-neutral float-right" title="Routes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../actions/" class="btn btn-neutral" title="Actions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../actions/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../routes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

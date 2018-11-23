@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Dashboards - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Dashboards";
+    var mkdocs_page_input_path = "dashboards.md";
+    var mkdocs_page_url = "/dashboards/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Dashboards</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#dashboard">Dashboard</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#proprieta">Proprietà</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#dashboards-implementate">Dashboards implementate.</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-dashboardlist">- DashboardList</a></li>
+        
+            <li><a class="toctree-l3" href="#-dashboardedit">- DashboardEdit</a></li>
+        
+            <li><a class="toctree-l3" href="#-dashboardinsert">- DashboardInsert</a></li>
+        
+            <li><a class="toctree-l3" href="#-dashboardtab">- DashboardTab</a></li>
+        
+            <li><a class="toctree-l3" href="#-dashboard2col">- Dashboard2Col</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Dashboards</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Le dashboards sono composizioni di views. In questo componente si inserisce tutta la logica 
+di interazioni tra le views che contiene e le loro dipendendenze.</p>
+<h1 id="dashboard">Dashboard</h1>
+<p><code>Dashboard</code> è la classe principale da cui ereditano tutte le dashboard che andremo
+a creare. Estende la class <code>Component</code></p>
+<h3 id="proprieta">Proprietà</h3>
+<ul>
+<li><code>container</code>       : null - rappresenta il container di destinazione dove disegnare le views</li>
+<li><code>className</code>       : 'Dashboard' - serve per poter definire a runtime la classe in cui ci si trova</li>
+<li><code>modelName</code>       : null - il modello dei dati che vogliamo gestire,</li>
+<li><code>viewKeys</code>        : [] - array delle key associate ad ogni view</li>
+<li><code>labelContext</code>    : null - contesto nel reperimento delle traduzioni delle label</li>
+</ul>
+<h1 id="dashboards-implementate">Dashboards implementate.</h1>
+<p>La libreria mette a disposizione alcune dashboard di uso comune, possono essere 
+ridefinite per le proprie esigenze oppure se ne possono creare delle nuove.</p>
+<h2 id="-dashboardlist">- DashboardList</h2>
+<p>La DashboardList è formata da una <code>ViewSearch</code> collegata ad una <code>ViewList</code> contornata
+da semplice html. In questo modo si è creata una dashboard che permette la lista
+e la ricerca degli elementi della lista e paginazione. </p>
+<h4 id="proprieta_1">Proprietà</h4>
+<ul>
+<li><code>searchKey</code> : chiave che identifica la view che gestisce la search</li>
+<li><code>listKey</code> : chiave che identifica la view che gestisce la lista</li>
+</ul>
+<h4 id="marcatori">marcatori</h4>
+<ul>
+<li><code>data-view_search</code> : contentitore dove verrà disegnata la view associata alla search</li>
+<li><code>data-view_list</code>: contenitore dove verrà disegnata la view associata alla lista</li>
+</ul>
+<h4 id="template">template</h4>
+<pre><code class="html">&lt;div id=&quot;tabContent&quot;&gt;
+    &lt;div class=&quot;collapse in&quot; data-collapse_list&gt;
+        &lt;header id=&quot;page-header&quot;&gt;
+            &lt;div class=&quot;panel panel-default&quot;&gt;
+                &lt;div class=&quot;panel-heading&quot;&gt;
+                      &lt;span class=&quot;title elipsis&quot;&gt; 
+                        &lt;strong data-label=&quot;modelMetadata.singular&quot;&gt;&lt;/strong&gt;
+                      &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;padding-15&quot;&gt;
+            &lt;div data-view_search&gt;&lt;/div&gt;
+            &lt;div data-view_list&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Per instanziare una DashboardList basta scrivere il seguente codice:</p>
+<pre><code class="javascript">var dash = new DashboardList({
+    modelName : 'test',
+    container : '#test_container1',
+});
+dash.draw();
+</code></pre>
+
+<ul>
+<li><code>modelName</code> rappresenta il modello dei dati che vogliamo gestire nella view che viene utlizzato
+dalle routes delle due view per reperire i dati con cui popolare le viste.</li>
+<li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
+</ul>
+<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_list" target="_blank">Esempio</a></p>
+<h2 id="-dashboardedit">- DashboardEdit</h2>
+<p>La DashboardEdit è formata da un solo componente, una ViewEdit all'interno contornata
+da semplice html. </p>
+<ul>
+<li>Proprietà<ul>
+<li>editKey : chiave che identifica la view che gestisce l'edit</li>
+</ul>
+</li>
+</ul>
+<p>marcatori</p>
+<ul>
+<li>data-view_edit : contentitore dove verrà disegnata la view associata all'edit</li>
+</ul>
+<p>template</p>
+<pre><code class="html">&lt;div&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot;&gt;
+              &lt;span class=&quot;title elipsis&quot;&gt; 
+                &lt;strong data-label=&quot;modelMetadata.singular&quot;&gt;&lt;/strong&gt;
+              &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div data-view_edit &gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Per instanziarla basta scrivere il seguente codice:</p>
+<pre><code class="javascript">var dash = new DashboardEdit({
+    modelName : 'test',
+    pk : 1,
+    container : '#test_container1',
+});
+dash.draw();
+</code></pre>
+
+<ul>
+<li><code>modelName</code> rappresenta il modello dei dati che vogliamo gestire nella view che viene utlizzato
+dalla route della view per reperire i dati con cui popolare la vista.</li>
+<li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
+<li><code>pk</code> : chiave del record da caricare</li>
+</ul>
+<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_edit" target="_blank">Esempio</a></p>
+<h2 id="-dashboardinsert">- DashboardInsert</h2>
+<p>La DashboardInsert è formata da un solo componente, una ViewInsert all'interno contornata
+da semplice html. </p>
+<ul>
+<li>Proprietà<ul>
+<li>insertKey : chiave che identifica la view che gestisce l'insert</li>
+</ul>
+</li>
+</ul>
+<p>marcatori</p>
+<ul>
+<li>data-view_insert : contentitore dove verrà disegnata la view associata all'insert</li>
+</ul>
+<p>template </p>
+<pre><code class="html">&lt;div&gt;
+    &lt;div class=&quot;panel panel-default&quot;&gt;
+        &lt;div class=&quot;panel-heading&quot;&gt;
+              &lt;span class=&quot;title elipsis&quot;&gt; 
+                &lt;strong data-label=&quot;modelMetadata.singular&quot;&gt;&lt;/strong&gt;
+              &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;           
+    &lt;div data-view_insert&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Per instanziarla basta scrivere il seguente codice:</p>
+<pre><code class="javascript">var dash = new DashboardInsert({
+    modelName : 'test',
+    container : '#test_container1',
+});
+dash.draw();
+</code></pre>
+
+<ul>
+<li><code>modelName</code> rappresenta il modello dei dati che vogliamo gestire nella view che viene utlizzato
+dalla route della view per reperire i dati con cui popolare la vista.</li>
+<li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
+</ul>
+<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_insert" target="_blank">Esempio</a></p>
+<h2 id="-dashboardtab">- DashboardTab</h2>
+<p>La DashboardTab è formata da 5 viste che interagiscono tra di loro:</p>
+<ul>
+<li>una <code>ViewSearch</code> che permette di ricercare gli elementi della <code>ViewList</code>. </li>
+<li>una <code>ViewList</code>: Visualizza i risultati e contiene delle azioni cliccabili su ogni 
+record. Le azioni sono delete,edit,view,create.</li>
+<li>una <code>ViewEdit</code>: Viene mostrata quando viene premuto il tasto modifica nella ViewList
+e permette la modifica del record</li>
+<li>una <code>ViewInsert</code>: Viene mostrata quando viene premuto il tasto nuovo e permette la
+creazione di un nuovo record</li>
+<li>
+<p>una <code>ViewView</code>:Viene mostrata in una modal quando viene cliccato l'azione vista.</p>
+</li>
+<li>
+<p>Proprietà</p>
+<ul>
+<li>insertKey : chiave che identifica la view che gestisce l'insert</li>
+<li>editKey : chiave che identifica la view che gestisce l'edit</li>
+<li>searchKey : chiave che identifica la view che gestisce la search</li>
+<li>listKey : chiave che identifica la view che gestisce la lista</li>
+</ul>
+</li>
+<li>
+<p>Metodi </p>
+<ul>
+<li>showEdit : metodo per la visualizzazione di edit</li>
+<li>showInsert : </li>
+<li>showList</li>
+<li>showDialog </li>
+</ul>
+</li>
+</ul>
+<h3 id="marcatori_1">marcatori</h3>
+<ul>
+<li><code>data-view_search</code> : contentitore dove verrà disegnata la view associata alla search</li>
+<li><code>data-view_list</code> : contentitore dove verrà disegnata la view associata alla lista</li>
+<li><code>data-view_insert</code> : contentitore dove verrà disegnata la view associata all'insert</li>
+<li><code>data-view_edit</code> : contentitore dove verrà disegnata la view associata all'edit</li>
+<li><code>data-view_view</code> : contentitore dove verrà disegnata la view associata alla vista</li>
+</ul>
+<p>template</p>
+<pre><code class="html">&lt;div class=&quot;tab-content&quot;&gt; 
+    &lt;header&gt;
+        &lt;div class=&quot;panel panel-default&quot;&gt;
+            &lt;div class=&quot;panel-heading&quot;&gt;
+                  &lt;span class=&quot;title elipsis&quot;&gt;
+                        &lt;strong data-label=&quot;modelMetadata.singular&quot;&gt;&lt;/strong&gt;
+                  &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;collapse in&quot; data-collapse_list&gt;
+        &lt;div class=&quot;padding-15&quot;&gt;
+            &lt;div data-view_search&gt;
+            &lt;/div&gt;
+            &lt;div data-view_list&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;collapse&quot; data-collapse_edit&gt;
+        &lt;div class=&quot;padding-15&quot;&gt;
+            &lt;div data-view_edit&gt;&lt;/div&gt;
+            &lt;div data-view_insert&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div data-view_dialog class=&quot;modal fade&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+            &lt;div class=&quot;modal-content&quot;&gt;
+                &lt;div class=&quot;modal-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;
+                            aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/button&gt;
+                    &lt;h4 class=&quot;modal-title&quot; data-label=&quot;modelMetadata.singular&quot; &gt;&lt;/h4&gt;
+                &lt;/div&gt; 
+                &lt;div class=&quot;modal-body&quot;&gt;
+                    &lt;div data-view_view&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;modal-footer&quot;&gt;
+                    &lt;button data-button=&quot;cancel&quot; type=&quot;button&quot; class=&quot;btn btn-primary &quot;
+                          data-dismiss=&quot;modal&quot;&gt;Annulla
+                    &lt;/button&gt;
+                    &lt;button data-button=&quot;ok&quot; type=&quot;button&quot; class=&quot;btn btn-primary&quot;
+                            data-dismiss=&quot;modal&quot;&gt;Ok
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- /.modal-content --&gt;
+        &lt;/div&gt;
+        &lt;!-- /.modal-dialog --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="-dashboard2col">- Dashboard2Col</h2>
+<p>La Dashboard2Col è come la DashboardTab ma organizzata su 2 colonne. La ViewView
+non viene mostrata in modal
+Anche questa dashboar contiene 5 viste :</p>
+<ul>
+<li>una <code>ViewSearch</code> che permette di ricercare gli elementi della <code>ViewList</code>. </li>
+<li>una <code>ViewList</code>: Visualizza i risultati e contiene delle azioni cliccabili su ogni 
+record. Le azioni sono delete,edit,view,create.</li>
+<li>una <code>ViewEdit</code>: Viene mostrata quando viene premuto il tasto modifica nella ViewList
+e permette la modifica del record</li>
+<li>una <code>ViewInsert</code>: Viene mostrata quando viene premuto il tasto nuovo e permette la
+creazione di un nuovo record</li>
+<li>
+<p>una <code>ViewView</code>:Viene mostrata quando viene cliccato l'azione vista.</p>
+</li>
+<li>
+<p>Proprietà</p>
+<ul>
+<li>insertKey : chiave che identifica la view che gestisce l'insert</li>
+<li>editKey : chiave che identifica la view che gestisce l'edit</li>
+<li>searchKey : chiave che identifica la view che gestisce la search</li>
+<li>listKey : chiave che identifica la view che gestisce la lista</li>
+</ul>
+</li>
+<li>
+<p>Metodi </p>
+<ul>
+<li>showEdit : metodo per la visualizzazione di edit</li>
+<li>showInsert : </li>
+<li>showList</li>
+<li>showDialog </li>
+</ul>
+</li>
+</ul>
+<h3 id="marcatori_2">marcatori</h3>
+<ul>
+<li><code>data-view_search</code> : contentitore dove verrà disegnata la view associata alla search</li>
+<li><code>data-view_list</code> : contentitore dove verrà disegnata la view associata alla lista</li>
+<li><code>data-view_insert</code> : contentitore dove verrà disegnata la view associata all'insert</li>
+<li><code>data-view_edit</code> : contentitore dove verrà disegnata la view associata all'edit</li>
+<li><code>data-view_view</code> : contentitore dove verrà disegnata la view associata alla vista</li>
+</ul>
+<p>template</p>
+<pre><code class="html">&lt;div class=&quot;tab-content&quot;&gt; 
+    &lt;header &gt;
+        &lt;div class=&quot;panel panel-default&quot;&gt;
+            &lt;div class=&quot;panel-heading&quot;&gt;
+                  &lt;span class=&quot;title elipsis&quot;&gt;
+                        &lt;strong data-label=&quot;modelMetada.singular&quot;&gt;&lt;/strong&gt;
+                  &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;col col-xs-6&quot;&gt;
+            &lt;div data-view_search &gt;&lt;/div&gt;
+            &lt;div data-view_list&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;col col-xs-6&quot;&gt;
+            &lt;div data-view_container=&quot;edit&quot;&gt;
+                &lt;h4 data-edit_title&gt;&lt;/h4&gt;
+                &lt;div data-view_edit&gt;
+
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div data-view_container=&quot;insert&quot;&gt;
+                &lt;h4 data-insert_title&gt;&lt;/h4&gt;
+                &lt;div data-view_insert &gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div data-view_container=&quot;view&quot;&gt;
+                &lt;h4 data-view_title&gt;&lt;/h4&gt;
+                &lt;div data-view_view&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../views/" class="btn btn-neutral float-right" title="Views">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../component/" class="btn btn-neutral" title="Component"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../component/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../views/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

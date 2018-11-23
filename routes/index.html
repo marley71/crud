@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Routes - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Routes";
+    var mkdocs_page_input_path = "routes.md";
+    var mkdocs_page_url = "/routes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Routes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#routes">Routes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#route">Route</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#route-implementate">Route Implementate</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-routelist">- RouteList</a></li>
+        
+            <li><a class="toctree-l3" href="#-routeedit">- RouteEdit</a></li>
+        
+            <li><a class="toctree-l3" href="#-routesearch">- RouteSearch</a></li>
+        
+            <li><a class="toctree-l3" href="#-routeinsert">- RouteInsert</a></li>
+        
+            <li><a class="toctree-l3" href="#-routesave">- RouteSave</a></li>
+        
+            <li><a class="toctree-l3" href="#-routeupdate">- RouteUpdate</a></li>
+        
+            <li><a class="toctree-l3" href="#-routeview">- RouteView</a></li>
+        
+            <li><a class="toctree-l3" href="#-routedelete">- RouteDelete</a></li>
+        
+            <li><a class="toctree-l3" href="#-routemultidelete">- RouteMultiDelete</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Routes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="routes">Routes</h1>
+<h2 id="route">Route</h2>
+<p>Class base per la gestione delle route verso il backend. Sono state definite
+alcune route delle principali di interazioni con il backend
+ secondo le specifiche REST.</p>
+<h3 id="proprieta">Proprietà</h3>
+<ul>
+<li><code>className</code> default "Route" variabile di comodo per riconoscere in quale route ci troviamo</li>
+<li><code>method</code> default null rappresenta il metodo usato per la chiamata ajax, può essere get o post</li>
+<li><code>url</code> default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
+    Le parti variabili devono essere racchiuse tra parentesi graffe. Per esempio : /action/{var1}/print è un
+    url in cui {var1} verrà sostituita con il valore che l'oggetto Route ha in quel momento.</li>
+<li><code>resultType</code> default  null tipo di risultato, può essere record o list</li>
+<li><code>protocol</code> default null nome della classe protocollo da utilizzare per applicare eventuali
+ elaborazioni sui dati dopo averli ricevuti. Di default sono stati implementati due protocolli: <ul>
+<li>ListProtocol</li>
+<li>RecordProtocol</li>
+</ul>
+</li>
+<li><code>extraParams</code>  : {}, parametri statici da aggiungere sempre alla chiamata prima di eseguire la richiesta 
+al server.</li>
+<li><code>values</code> : {}, vettore associativo con il valore dei parametri per la costruzione dell'url</li>
+<li><code>params</code> :{} vettore associativo dei parametri passati nella richiesta. Prima
+della richiesta vengono sommati agli extraParams</li>
+</ul>
+<h3 id="metodi">Metodi</h3>
+<ul>
+<li>
+<p><code>__costruct(attrs)</code> costruttore. Accetta come parametro un vettore associativo che permette
+di sovrascrivere le proprietà dell'oggetto creato.</p>
+</li>
+<li>
+<p><code>getUrl(values)</code> ritorna url esatto valorizzando le variabili parametriche tra {} 
+presenti nella stringa url. Il parametro <em>values</em> è il vettore associativo dei valori
+attuali per valorizzare le variabili. Se non viene passato prende i valori presenti
+nell'oggetto nel vettore values</p>
+</li>
+<li>
+<p><code>getParams</code> ritorna tutti i parametri che verranno passati nella richiesta. L'unione
+tra params ed extra_params dell'oggetto</p>
+</li>
+<li>
+<p><code>getKeys</code> ritorna un vettore con tutte le keys necessarie per la composizione dell'ulr
+della route che devono essere valorizzati per ritornare l'url esatto. Peer esempio 
+se url e' fatto come /pippo/{param1}/{param2} ritorna ['param1','param2']</p>
+</li>
+</ul>
+<h1 id="route-implementate">Route Implementate</h1>
+<p>La libreria contiene già delle route per l'uso comune che vengono utilizzate dalle views
+e dalle actions. Per la creazione di una route è stato realizzato un pseduo metodo statico
+chiamato factory. Se vogliamo utilizzare il metodo factory dobbiamo rispettare la convenzione
+sui nomi. Chiamare il factory('list') il metodo cercherà l'esistenza della classe
+RouteList, se chiamiamo il factory('list_mia') il metodo cercherà l'esistenza
+della classe RouteListMia. In altre parole sul nome passato al metodo factory viene
+applicata la funziona 'pascal case' concatenato con il prefisso <em>Route</em></p>
+<ul>
+<li><code>Route.factory(type,attrs)</code> questo metodo istanzia una Route di tipo type
+passando al costruttore gli attrs. Alla variabile type viene applicata la trasformazione
+pascal case e aggiunto il prefisso <em>Route</em>. Per esempio se vogliamo istanziare un oggetto chiamato RouteList si chiama il metodo
+statico :</li>
+</ul>
+<pre><code class="javascript">var r = Route.factory('list',{
+    values : {
+        modelName : 'user'
+    }
+});
+</code></pre>
+
+<p>Questo codice crea un'instanza della classe RouteList e il vettore associativo values
+prenderà come valori quelli passati.</p>
+<h2 id="-routelist">- RouteList</h2>
+<p>la route è stata creata per recuperare una lista di record del modello specificato.
+Nel vettore <em>values</em> deve essere presente la chiave:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}&quot;,
+    &quot;protocol&quot;: &quot;list&quot;,
+    &quot;resultType&quot;: &quot;list&quot;,
+    &quot;method&quot;: &quot;get&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;
+    ]
+}
+</code></pre>
+
+<h2 id="-routeedit">- RouteEdit</h2>
+<p>La route carica i dati di un record per la modifica.
+Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+<li><code>pk</code>: rappresenta l'id che identifica il record specifico</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/{pk}/edit&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;get&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;,
+        &quot;pk&quot;
+    ]
+}
+</code></pre>
+
+<h2 id="-routesearch">- RouteSearch</h2>
+<p>La route che chiede i dati di un record per la ricerca.
+Nel vettore <em>values</em> deve essere presente la chiave:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/search&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;get&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;
+    ]
+}
+</code></pre>
+
+<h2 id="-routeinsert">- RouteInsert</h2>
+<p>La route che chiede i dati di un record per l'inserimento.
+Nel vettore <em>values</em> deve essere presente la chiave:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/create&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;get&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;
+    ]
+}
+</code></pre>
+
+<h2 id="-routesave">- RouteSave</h2>
+<p>La route che invia i dati di un record per crearlo. I dati del modello verranno passati
+come params. In questa route viene aggiunto sempre un parametro chiamato _method='POST' che 
+serve a simulare il metodo save REST attraverso la chiamata http.</p>
+<p>Nel vettore <em>values</em> deve essere presente la chiave:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/create&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;post&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;
+    ],
+    &quot;extra_params&quot;: {
+        &quot;_method&quot;: &quot;POST&quot;
+    }
+}
+</code></pre>
+
+<h2 id="-routeupdate">- RouteUpdate</h2>
+<p>La route che invia i dati di un record per la modifica. I dati del modello verranno passati
+come params. In questa route viene aggiunto sempre un parametro chiamato _method='PUT' che 
+serve a simulare il metodo put REST attraverso la chiamata http.
+Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+<li><code>pk</code>: rappresenta l'id che identifica il record specifico</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/{pk}&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;post&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;,
+        &quot;pk&quot;
+    ],
+    &quot;extra_params&quot;: {
+        &quot;_method&quot;: &quot;PUT&quot;
+    }
+}
+</code></pre>
+
+<h2 id="-routeview">- RouteView</h2>
+<p>La route che chiede i dati di un record in modalità lettura.
+Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+<li><code>pk</code>: rappresenta l'id che identifica il record specifico</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/{pk}&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;get&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;,
+        &quot;pk&quot;
+    ]
+}
+</code></pre>
+
+<h2 id="-routedelete">- RouteDelete</h2>
+<p>La route che rimuove un record. In questa route viene aggiunto sempre un parametro chiamato 
+_method='DELETE' che serve a simulare il metodo delete REST attraverso la chiamata http.
+Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+<li><code>pk</code>: rappresenta l'id che identifica il record specifico</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/{pk}&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;post&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;,
+        &quot;pk&quot;
+    ],
+    &quot;extra_params&quot;: {
+        &quot;_method&quot;: &quot;DELETE&quot;
+    }
+}
+</code></pre>
+
+<h2 id="-routemultidelete">- RouteMultiDelete</h2>
+<p>La route che rimuove una lista di record. La lista viene passata come vettore di id
+nei params.
+Nel vettore <em>values</em> deve essere presente la chiave:</p>
+<ul>
+<li><code>modelName</code>: rappresenta il nome del modello.</li>
+</ul>
+<pre><code class="javascript">{
+    &quot;url&quot;: &quot;/api/json/{modelName}/deleteall&quot;,
+    &quot;protocol&quot;: &quot;record&quot;,
+    &quot;resultType&quot;: &quot;record&quot;,
+    &quot;method&quot;: &quot;post&quot;,
+    &quot;keys&quot;: [
+        &quot;modelName&quot;
+    ]
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../server/" class="btn btn-neutral float-right" title="Server">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../confs/" class="btn btn-neutral" title="Confs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../confs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../server/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

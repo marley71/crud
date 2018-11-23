@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Renders - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Renders";
+    var mkdocs_page_input_path = "renders.md";
+    var mkdocs_page_url = "/renders/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Renders</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#render">Render</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#proprieta">Proprietà</a></li>
+        
+            <li><a class="toctree-l3" href="#metodi">Metodi</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#render-implementati">Render Implementati</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderautocomplete">RenderAutocomplete</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-renderautocompleteedit">- RenderAutocompleteEdit</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#renderbelongsto">RenderBelongsto</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-renderbelongstoview">- RenderBelongstoView</a></li>
+        
+            <li><a class="toctree-l3" href="#renderbelongstoview">RenderBelongstoView</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#renderdateselect">RenderDateSelect</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-dateselectcommon">- DateSelectCommon</a></li>
+        
+            <li><a class="toctree-l3" href="#-renderdateselectedit">- RenderDateSelectEdit</a></li>
+        
+            <li><a class="toctree-l3" href="#-renderdateselectsearch">- RenderDateSelectSearch</a></li>
+        
+            <li><a class="toctree-l3" href="#-renderdateselectview">- RenderDateSelectView</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#renderdatepicker">RenderDatePicker</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-renderdatepickeredit">- RenderDatePickerEdit</a></li>
+        
+            <li><a class="toctree-l3" href="#-renderdatepickerview">- RenderDatePickerView</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#renderdateformatted">RenderDateFormatted</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-renderdateformattededit">- RenderDateFormattedEdit</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#renderbetweendate">RenderBetweenDate</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-renderbetweendateedit">-  RenderBetweenDateEdit</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#rendercaptcha">RenderCaptcha</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderradio">RenderRadio</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendercheckbox">RenderCheckbox</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendercustom">RenderCustom</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderdecimal">RenderDecimal</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderfaicon">RenderFaicon</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderhasmany">RenderHasmany</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderhasmanythrough">RenderHasmanyThrough</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderhasmanyupload">RenderHasmanyUpload</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderimage">RenderImage</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderinput">RenderInput</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderinputhelped">RenderInputHelped</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendermap">RenderMap</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendermultiupload">RenderMultiUpload</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderselect">RenderSelect</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderswap">RenderSwap</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendertext">RenderText</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendertextarea">RenderTextarea</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendertexthtml">RenderTexthtml</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rendertime">RenderTime</a></li>
+    
+
+    <li class="toctree-l2"><a href="#renderupload">RenderUpload</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Renders</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="render">Render</h1>
+<p>La classe <code>Render</code> estende la classe <code>Component</code> e rappresenta la classe per la gestione di un 
+singolo dato. La classe render può essere utilizzata in maniera diretta, ma il loro utilizzo reale è 
+come componenti dei singoli dati di una view. Dentro la view un render può essere usato in 3 modi differenti, 
+in modalità edit, search, view. La visualizzazione dell'oggetto render avviene con il metodo draw().</p>
+<p>La classe Render deve essere consideata come una specie di classe astratta edefinisce alcuni metodi di uso generale e 
+i metodi che i veri oggetti Render devono ridefinire per funzionare. Dobbiamo considerarla come la classe astratta che 
+definisce l'interfaccia da definire nei vari oggetti Render concreti.</p>
+<p>il modo è definito nelle costanti</p>
+<pre><code class="javascript">Render.VIEW = 'view';
+Render.EDIT = 'edit';
+Render.SEARCH = 'search';
+</code></pre>
+
+<h4 id="proprieta">Proprietà</h4>
+<ul>
+<li><code>key</code> : null - nome dell'oggetto render (il campo del db)</li>
+<li><code>type</code> : null - type dell'oggetto per gestire le Gerarchie di classi</li>
+<li>
+<p><code>className</code> : 'Render' - nome della Classe reale dell'oggetto</p>
+</li>
+<li>
+<p><code>element_selector</code> : '[data-render_element]' - marcatore html dell'elemento</p>
+</li>
+<li><code>control_selector</code> : '[data-render_control]' - marcatore html del controllo html (input, select, ecc)</li>
+<li><code>operator_selector</code> : '[data-control_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
+search</li>
+<li>
+<p><code>operator</code> : null - valore operatore</p>
+</li>
+<li>
+<p><code>value</code> : null - valore oggetto</p>
+</li>
+<li><code>app</code> : null - identificatore dell'oggetto app della pagina</li>
+<li><code>resources</code> : [] - vettore risorse da caricare prima di chiamare il finalize</li>
+<li><code>metadata</code> : {} - array associativo metadati che descrivono il dato</li>
+</ul>
+<h4 id="metodi">Metodi</h4>
+<ul>
+<li><code>init(key,attributes)</code> - ridefinizione del costruttore rispetto al Component. </li>
+<li><code>_setHtmlAttributes</code>(el)</li>
+<li><code>change</code> : function ()</li>
+<li><code>clear</code> : function ()</li>
+<li><code>setMetadata</code> : function (metadata)</li>
+</ul>
+<p>Render.factory = function (key,options) è un metodo statico che permette di creare un Render
+- key è il nome del campo da creare
+- options vettore associativo delle opzioni del render. La factory prende
+options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono
+ prende come default 'input' come type ed 'edit' come mode.
+Il nome da cercare deve rispettare questa convezione:
+"Render"+pascalCase(options.type)+pascalCase(options.mode) esempio</p>
+<pre><code class="javascript">var r = Render.factory('field', {
+    type : 'input_helped',
+    mode : 'edit'
+})
+// la factory cercherà la definizione della classe 'RenderInputHelpedEdit'
+</code></pre>
+
+<h1 id="render-implementati">Render Implementati</h1>
+<p>La libreria mette a disposizione dei renders di default per gli usi più comuni.
+Questi possono essere ridefiniti, in caso vogliamo cambiare, nella nostra applicazione,
+aspetto o funzionalità. A questi definiti se ne possono aggiungere altri usando
+l'erediaretà. I renders vengono istanziati in automatico dalle views, oppure possono
+essere istanziati manualmente.</p>
+<h1 id="renderautocomplete">RenderAutocomplete</h1>
+<p>Questo render è stato pensato per il popolamento di una chiave con riferimento ad una tabella
+esterna permettendo la ricerca e inserendo la chiave_id  selezionata nel input nascosto.
+Esiste solo in modalità edit che si chiama <code>RenderAutocompleteEdit</code></p>
+<h2 id="-renderautocompleteedit">- RenderAutocompleteEdit</h2>
+<p>il suo template di default:</p>
+<pre><code class="html">&lt;div class=&quot;input-group&quot;&gt;
+    &lt;span style=&quot;height:19px&quot; class=&quot;input-group-addon&quot; id=&quot;basic-addon1&quot; data-render_autocomplete_view data-lang=&quot;autocomplete-nonselezionato&quot;&gt;&lt;/span&gt;
+    &lt;input data-render_control type=&quot;hidden&quot; name=&quot;&quot; value=&quot;&quot;&gt;
+    &lt;div data-render_element class=&quot;autosuggest&quot; data-minLength=&quot;1&quot; data-queryURL=&quot;&quot;&gt;
+        &lt;input data-render_autocomplete_input type=&quot;text&quot; name=&quot;src&quot; placeholder=&quot;&quot; class=&quot;form-control typeahead&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h4 id="proprieta_1">Proprietà</h4>
+<ul>
+<li><code>routeName</code> : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server</li>
+<li><code>autocomplete_view_selector</code> : '[data-render_autocomplete_view]' - marcatore dove verrà visualizzato
+le info della entry scelta</li>
+<li>
+<p><code>autocomplete_input_selector</code> : '[data-render_autocomplete_input]' - marcatore dove verrà agganciato
+il plugins typehead di bootstrap.</p>
+</li>
+<li>
+<p><code>fields</code> : [],                // campi da visualizzare dopo la selezione</p>
+</li>
+<li><code>metadata</code> :</li>
+</ul>
+<pre><code class="javascript">{
+    modelData : null,           // dati del modello selezionato
+    autocompleteModel : null,   // nome modello da utilizzare nelle chiamate rest per la popolazione dei dati
+    method : null,              // eventuale parametro da mandare in get nella chiamata rest
+    separator : null,           // separatore da utillare nella visualizzazione dei campi in caso siano piu' di uno
+    n_items : null,             // numero di items da richiedere
+    model_description : []
+}
+</code></pre>
+
+<ul>
+<li><code>resources</code> : vettore delle risorse esterne che ha bisogno per funzionare. Questo render si appoggia a
+typeahead bootstrap.</li>
+</ul>
+<pre><code class="javascript">[
+        'typeahead/bootstrap3-typeahead.min.js',
+        'typeahead/typeahead.bundle.js',
+        'typeahead/typeaheadjs.css'
+]
+</code></pre>
+
+<h4 id="metodi_1">Metodi</h4>
+<ul>
+<li>
+<p><code>_getLabelValue()</code> : </p>
+<ul>
+<li>ritorna il nome dell'inputview, tiene conto del fatto che si potrebbe trovare in un hasmany</li>
+<li>e il nome potrebbe avere le []
+ */</li>
+</ul>
+</li>
+<li>
+<p><code>_getInputViewName</code> : function () </p>
+</li>
+<li>
+<p><code>_getFieldValue</code> : function() </p>
+</li>
+<li>
+<p><code>_createUrl</code> : function () </p>
+</li>
+<li>
+<p><code>_renderSelectedValue</code> : function () </p>
+</li>
+<li>
+<p><code>getAutocompleteRow</code> : function (element) </p>
+</li>
+<li>
+<p><code>ev_selected</code> : function (datum) </p>
+</li>
+<li>
+<p><code>getValue</code> : function () </p>
+</li>
+</ul>
+<h1 id="renderbelongsto">RenderBelongsto</h1>
+<p>Questo render è solo per la visualizzazione di dati più complessi che non sono formati da un solo
+valore, in genere viene utilizzato per la rappresentazione di campi di una tabella
+esterna rispetto a campo corrente, istanza</p>
+<h2 id="-renderbelongstoview">- RenderBelongstoView</h2>
+<p>marcatori
+- data-render_element</p>
+<p>template generale</p>
+<pre><code class="html">    &lt;div data-render_element&gt;&lt;/div&gt;
+</code></pre>
+
+<p>itemTemplate : vuoto. Da definire solo se si vuole avere una visualizzazinoe particolare
+dei campi. Per esempio supponiamo che il nostro belongsto punti ad una tabella 
+clienti con questi dati</p>
+<pre><code class="javascript">{
+    nome : 'nome',
+    cognome : 'cognome',
+}
+</code></pre>
+
+<pre><code class="html">&lt;div&gt;
+    &lt;span data-field=&quot;cognome&quot;&gt;&lt;/span&gt; altro campo &lt;span data-field=&quot;nome&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h4 id="proprieta_2">Proprietà</h4>
+<ul>
+<li>separator : null,</li>
+<li>fields: [],</li>
+<li>
+<p>nullLabel : '',</p>
+<p>getValue : function () {
+    var self = this;
+    return self.value;
+},</p>
+</li>
+</ul>
+<p>});</p>
+<h2 id="renderbelongstoview">RenderBelongstoView</h2>
+<ul>
+<li>template() : function () {
+        return <code>&lt;div data-render_element&gt;&lt;/div&gt;</code>
+    },</li>
+</ul>
+<p>-itemTemplate : function () {
+        return false;
+    }</p>
+<h1 id="renderdateselect">RenderDateSelect</h1>
+<p>Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
+utilizza le selectbox html per l'inserimento di una data.
+E' fromato da una classe base <code>DateSelectCommon</code> che ha i metodi comuni alle 3 viste.</p>
+<h2 id="-dateselectcommon">- DateSelectCommon</h2>
+<h4 id="proprieta_3">Proprietà</h4>
+<ul>
+<li>year_selector    : '[data-render_year]',</li>
+<li>month_selector    : '[data-render_month]',</li>
+<li>day_selector    : '[data-render_day]',</li>
+<li>picker_selector : '[data-render_picker]',</li>
+<li>h24 : true,</li>
+<li>time : false,</li>
+<li>dateFormat : 'YYYY-MM-DD',</li>
+<li>timeFormat : 'H:i:s',</li>
+<li>resources :[
+    'moment-with-locales.min.js',
+]</li>
+<li>selectProps : {
+        active : ['day','month','year'],    // select active in dateType select
+        startYear : (new Date().getFullYear()) -3,
+        endYear : (new Date().getFullYear()) +3,
+    },</li>
+</ul>
+<h4 id="metodi_2">Metodi</h4>
+<ul>
+<li>_setDateControls : function () - </li>
+<li>_changeDate : function () - </li>
+<li>setValue : function (value) </li>
+<li>getValue : function () </li>
+<li>clear : function ()</li>
+<li>getDisplayFormat : function()</li>
+<li>getFormat : function () </li>
+</ul>
+<h2 id="-renderdateselectedit">- RenderDateSelectEdit</h2>
+<p>Estende DateSelectCommon e si preoccupa della gestione della data in modalità edit.</p>
+<h4 id="marcatori">marcatori:</h4>
+<ul>
+<li><code>data-render_element</code> : container di tutto il render</li>
+<li><code>data-render_control</code> : input per la form che conterrà il valore da spedire</li>
+<li><code>data-render_day_container</code></li>
+<li><code>data-render_day</code> : select associata al giorno</li>
+<li><code>data-render_month_container</code></li>
+<li><code>data-render_month</code> : select associata al mese</li>
+<li><code>data-render_year_container</code></li>
+<li><code>data-render_year</code> : select associata all'anno</li>
+</ul>
+<h4 id="template">template</h4>
+<pre><code class="html">&lt;div data-render_element  class=&quot;input-group&quot;&gt;
+    &lt;input data-render_control=&quot;&quot; type=&quot;hidden&quot; /&gt;
+    &lt;div class=&quot;input-group-btn&quot; data-render_day_container&gt;
+        &lt;select class=&quot;form-control&quot; data-render_day&gt;
+
+        &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;input-group-btn&quot; data-render_month_container&gt;
+        &lt;select class=&quot;form-control&quot; data-render_month&gt;
+
+        &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;input-group-btn&quot; data-render_year_container&gt;
+        &lt;select class=&quot;form-control&quot; data-render_year&gt;
+
+        &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="-renderdateselectsearch">- RenderDateSelectSearch</h2>
+<p>Estende <code>RenderDateSelectEdit</code> ridefinendo al render dove aggiunge il controllo per l'operatore di ricerca
+e cambia i nomi per la convenzione con view search</p>
+<h2 id="-renderdateselectview">- RenderDateSelectView</h2>
+<p>Estende <code>DateSelectCommon</code>  </p>
+<p>marcatori</p>
+<ul>
+<li>data-render_element: container dove verrà visualizzata la data</li>
+</ul>
+<p>template </p>
+<pre><code class="html">&lt;span data-render_element&gt;&lt;/span&gt;
+</code></pre>
+
+<h4 id="metodi_3">Metodi</h4>
+<ul>
+<li>getValue</li>
+<li>setValue</li>
+</ul>
+<h1 id="renderdatepicker">RenderDatePicker</h1>
+<p>Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
+utilizza il picker bootstrap per l'inserimento di una data.</p>
+<pre><code class="javascript">resources : {
+    edit :  [
+        'bootstrap-daterangepicker/daterangepicker.css',
+        'bootstrap-daterangepicker/moment.js',
+        'bootstrap-daterangepicker/daterangepicker.js',
+    ],
+    search : [
+        'bootstrap-daterangepicker/daterangepicker.css',
+        'bootstrap-daterangepicker/moment.js',
+        'bootstrap-daterangepicker/daterangepicker.js',
+    ],
+    view : []
+}
+</code></pre>
+
+<h2 id="-renderdatepickeredit">- RenderDatePickerEdit</h2>
+<h4 id="template_1">template</h4>
+<pre><code class="html">&lt;div data-render_element&gt;
+    &lt;input data-render_control=&quot;&quot; type=&quot;hidden&quot; /&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+        &lt;input data-render_picker class=&quot;form-control text-right&quot; autocomplete=&quot;off&quot; /&gt;
+        &lt;a data-clear class=&quot;input-group-addon&quot; href=&quot;javascript:void(0)&quot;&gt;&lt;span &gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="-renderdatepickerview">- RenderDatePickerView</h2>
+<h4 id="template_2">template</h4>
+<pre><code class="html">&lt;span data-render_element&gt;&lt;/span&gt;
+</code></pre>
+
+<h1 id="renderdateformatted">RenderDateFormatted</h1>
+<p>Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
+utilizza il picker nativo del broswer associato al type=date, se supportato.</p>
+<h2 id="-renderdateformattededit">- RenderDateFormattedEdit</h2>
+<h4 id="template_3">template</h4>
+<pre><code class="html">&lt;div class=&quot;clearfix&quot; data-render_element&gt;
+    &lt;input data-render_control=&quot;&quot; type=&quot;hidden&quot; /&gt;
+    &lt;div class=&quot;col col-xs-6&quot;&gt;
+        &lt;input data-date_formatted class=&quot;form-control&quot; type=&quot;date&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col-xs-6&quot;&gt;
+        &lt;input data-time_formatted class=&quot;form-control hide&quot; type=&quot;time&quot;/&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h1 id="renderbetweendate">RenderBetweenDate</h1>
+<p>Questo render serve per la gestione di un range di date.</p>
+<h2 id="-renderbetweendateedit">-  RenderBetweenDateEdit</h2>
+<h4 id="template_4">template</h4>
+<pre><code class="html">&lt;div&gt;
+    &lt;div class=&quot;col col-xs-6&quot;&gt;
+        &lt;div data-label=&quot;app.dal&quot;&gt;&lt;/div&gt;
+        &lt;div data-render_start&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col-xs-6&quot; &gt;
+        &lt;div data-label=&quot;app.al&quot;&gt;&lt;/div&gt;
+        &lt;div data-render_end&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h1 id="rendercaptcha">RenderCaptcha</h1>
+<p>Questo render incapsula il captca con il suo relativo reload</p>
+<p>marcatori</p>
+<ul>
+<li>
+<p>captcha_img_selector : '[data-captcha_img]'</p>
+</li>
+<li>
+<p>template() </p>
+</li>
+</ul>
+<pre><code class="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-sm-4&quot; data-captcha_img  &gt;
+
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-4&quot;&gt;
+            &lt;input data-render_control=&quot;&quot; class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-sm-4&quot;&gt;
+        &lt;button class=&quot;btn btn-sm btn-default&quot; type=&quot;button&quot; data-button_reload&gt;Reload&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h1 id="renderradio">RenderRadio</h1>
+<ul>
+<li>caption_selector : '[data-render_caption]' - marcatore </li>
+</ul>
+<h1 id="rendercheckbox">RenderCheckbox</h1>
+<h1 id="rendercustom">RenderCustom</h1>
+<p>Oggetto per chi vuole poter modificare l'html da renderizzare. Qui si può inserire
+tutto quello che si vuole utilizzando che chiamate render e finalize.</p>
+<h1 id="renderdecimal">RenderDecimal</h1>
+<p>Oggetto per la gestione dei decimali con parte intera e decimale gestiti separatamente.</p>
+<h1 id="renderfaicon">RenderFaicon</h1>
+<h1 id="renderhasmany">RenderHasmany</h1>
+<p>Oggetto per la gestione delle relazioni esterne. Permette l'inserimento e visualizzazione
+di relazioni esterne in un'unica form.</p>
+<h1 id="renderhasmanythrough">RenderHasmanyThrough</h1>
+<p>Oggetto per la gestione degli hasmany trought...</p>
+<h1 id="renderhasmanyupload">RenderHasmanyUpload</h1>
+<p>Oggetto per la gestione di hasmany che prevedo un upload di una immagini o allegati
+come pdf,csv,ecc.</p>
+<h1 id="renderimage">RenderImage</h1>
+<p>Oggetto per la renderizzazione di un'immagine proveniente da campo.</p>
+<h1 id="renderinput">RenderInput</h1>
+<p>oggetto per la gestione degli input standard.</p>
+<h1 id="renderinputhelped">RenderInputHelped</h1>
+<p>Oggetto che prevede un input e dei tasti per inserimenti generali, in genere usato
+per input che prendono un'insieme di valori predefinito.</p>
+<h1 id="rendermap">RenderMap</h1>
+<p>Oggetto per la visualizzazione e la selezione di coordinate gps basato su googlemaps</p>
+<h1 id="rendermultiupload">RenderMultiUpload</h1>
+<h1 id="renderselect">RenderSelect</h1>
+<p>Oggetto per la selezione di un valore utilizzando le select</p>
+<h1 id="renderswap">RenderSwap</h1>
+<h1 id="rendertext">RenderText</h1>
+<h1 id="rendertextarea">RenderTextarea</h1>
+<h1 id="rendertexthtml">RenderTexthtml</h1>
+<h1 id="rendertime">RenderTime</h1>
+<h1 id="renderupload">RenderUpload</h1>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../actions/" class="btn btn-neutral float-right" title="Actions">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../templates/" class="btn btn-neutral" title="Templates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../actions/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

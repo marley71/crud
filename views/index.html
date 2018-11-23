@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Views - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Views";
+    var mkdocs_page_input_path = "views.md";
+    var mkdocs_page_url = "/views/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Views</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#view">View</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#proprieta">Proprietà</a></li>
+        
+            <li><a class="toctree-l3" href="#metodi">Metodi</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#recordview">RecordView</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#proprieta_1">Proprietà</a></li>
+        
+            <li><a class="toctree-l3" href="#metodi_1">Metodi</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#collectionview">CollectionView</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#proprieta_2">Proprietà</a></li>
+        
+            <li><a class="toctree-l3" href="#metodi_2">Metodi</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#views-implementate">Views Implementate</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#-viewlist">- ViewList</a></li>
+        
+            <li><a class="toctree-l3" href="#-viewinsert">- ViewInsert</a></li>
+        
+            <li><a class="toctree-l3" href="#-viewedit">- ViewEdit</a></li>
+        
+            <li><a class="toctree-l3" href="#-viewsearch">- ViewSearch</a></li>
+        
+            <li><a class="toctree-l3" href="#-viewview">- ViewView</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Views</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="view">View</h2>
+<p>La <code>View</code> estende la classe <code>Component</code> rappesenta il contenitore di dati html associate ad un 
+modello di dati.
+Questo modello viene utilizzato per discriminare la route per il recupero dei dati.
+Da essa sono derivate le classi:
+    - <code>RecordView</code> per la gestione di dati provenienti da record di un modello
+    - <code>CollectionView</code> per la gestione di una collezione di record di un modello</p>
+<p>La view accetta come parametro una configurazione. </p>
+<p>Nella configurazione vengono definiti:
+- i campi da visualizzare, quali Render utilizzare per ogni dato
+- le azioni disponibili che si possono effettuare. In caso di view che gestisce una 
+  collezione di records esistono due tipi di azioni
+  - <code>RecordAction</code> definite sul singolo record
+  - <code>CollectionAction</code> che agisce sulla collezione dei dati</p>
+<p>Rappresenta la classe Principale</p>
+<h3 id="proprieta">Proprietà</h3>
+<ul>
+<li>
+<p><code>modelName</code> <em>default null</em> rappresenta il nome del modello dei dati gestito</p>
+</li>
+<li>
+<p><code>dummyModel</code> <em>default 'dummy'</em>  Questo nome è del modello dummy per view che contiene dati calcolati manualmente senza comunicazione con 
+il server attraverso la route</p>
+</li>
+<li>
+<p><code>renderObjs</code> <em>default []</em> Array degli oggetti <em>Render</em> presenti nella view</p>
+</li>
+<li>
+<p><code>data</code> <em>default {}</em> Array associativo contente i dati della view</p>
+</li>
+<li>
+<p><code>type</code> <em>default null</em> Tipo di view, </p>
+</li>
+<li>
+<p><code>jQe</code> <em>default null</em> Oggetto jQuery che punta al container della view</p>
+</li>
+<li>
+<p><code>defaultRenderType</code> <em>default null</em></p>
+</li>
+<li>
+<p><code>connectedObjs</code>       : {},</p>
+</li>
+<li><code>keyId</code>               : null,     // identificativo univoco della view creata e assegnata dall'oggetto App   </li>
+<li><code>app</code>                : null,      // oggetto app proprietario della view</li>
+<li><code>viewTypeToRenderType</code> :          // mapping delle viste con i tipi default dei render</li>
+</ul>
+<pre><code class="javascript">{
+    'list'      : BaseElement.VIEW,
+    'edit'      : BaseElement.EDIT,
+    'search'    : BaseElement.SEARCH,
+    'view'      : BaseElement.VIEW,
+    'calendar'  : BaseElement.VIEW,
+    'csv'       : BaseElement.EDIT
+}
+</code></pre>
+
+<ul>
+<li>
+<p><code>resources</code> : [] - vettore delle risorse esterne da caricare prima di visualizzare la view</p>
+</li>
+<li>
+<p><code>route</code> : null - oggetto route associata view</p>
+</li>
+<li>
+<p><code>routeName</code> : null - nome della classe Route da agganciare ( vedere Route.factory per la convenzione sui nomi) </p>
+</li>
+<li>
+<p><code>actions</code> : [] - vettore nome azioni da istanziare nella view</p>
+</li>
+</ul>
+<h3 id="metodi">Metodi</h3>
+<ul>
+<li>
+<p><code>draw(callback)</code> metodo per la renderizzazione della view. callback e' la chiamata che
+viene effettuata alla fine se passata. La sequenza delle chiamate attraverso le callback:
+Se all'interno di questi metodi non viene chiamata la callback viene interrotto il flusso di chiamate.
+Utilizzare questa tecnica per interrompere la visualizzazione o il comportamento della view.</p>
+<ul>
+<li>beforeLoadData(callback)</li>
+<li>loadData(callback)</li>
+<li>afterLoadData(callback)</li>
+<li>_prepareContainer()</li>
+<li>beforeRender(callback)</li>
+<li>render(callback)</li>
+<li>afterRender(callback)</li>
+<li>beforeFinalize(callback)</li>
+<li>_loadExternalResources(callback)</li>
+<li>finalize(callback)</li>
+<li>afterFinalize(callback)</li>
+</ul>
+</li>
+<li>
+<p><code>beforeLoadData(callback)</code> - metodo viene chiamato prima che la view carichi i dati</p>
+</li>
+<li><code>loadData(callback)</code> - metodo chiamato per il caricamento dei dati attraverso la route</li>
+<li><code>afterLoadData(callback)</code> - metodo chiamato dopo che i dati sono stati caricati</li>
+<li><code>_prepareContainer()</code> - metodo dove viene iniettato l'html presente nel template</li>
+<li><code>beforeRender(callback)</code> - metodo chiamato prima di chiamare utilizzabile per eventuali manipolazioni</li>
+<li><code>render(callback)</code> - questo metodo è utilizzato per disegnare la struttura html</li>
+<li><code>afterRender(callback)</code> - chiamato dopo il render</li>
+<li><code>beforeFinalize(callback)</code></li>
+<li><code>_loadExternalResources(callback)</code> - chiamata per il caricamento delle risorse esterne</li>
+<li><code>finalize(callback)</code> - metodo per la creazione e il disegno dei renders della view</li>
+<li><code>afterFinalize(callback)</code> - metodo per agganciare eventuali eventi personali e modifiche custom</li>
+<li><code>delete()</code> - metodo chiamato prima di cancellare la view per dare la possibilità alla view di 
+cancellare eventuali oggetti creati </li>
+<li><code>setRoute(route)</code> - metodo per settare l'oggetto route interno alla view</li>
+<li><code>getRoute()</code> - ritorna la route istanziata della view</li>
+<li><code>setId(id)</code> - setta l'identificativo della view</li>
+<li><code>setData(data)</code> - setta i dati della dall'esterno</li>
+<li><code>getFormData(data)</code> - ritorna i dati di una form html in un vettore associativo se esiste</li>
+<li><code>getItemTemplate(key)</code> - Istanzia e ritorna il template associato all'oggetto Render associato alla
+key<ul>
+<li>key : nome del campo di cui si vuole il template</li>
+</ul>
+</li>
+<li>_getRenderMode(key) - (privata) restituisce la modalita' in cui verra' disegnato l'oggetto render 
+in base alla configurazione dell'oggetto nell fields_config della view</li>
+<li>_getRenderType(key) - (privata) ritorna il type del render in base al type definito nella fields_config della view
+o alla configurazione di default</li>
+<li>_getDefaultRenderConfig(key) - ritorna la configurazione di default dell'oggetto render<ul>
+<li>key : chiave dell'oggetto render</li>
+</ul>
+</li>
+<li>_getRenderConfig : function(key) - ritorna la configurazione finale dell'oggetto render, eseguendo
+il merge tra la configuazione di default e quella passata alla view.</li>
+</ul>
+<h2 id="recordview">RecordView</h2>
+<p>La <code>RecordView</code> estende <code>View</code> è pensata per tutte le viste che gestiscono un solo record del modello 
+di dati.</p>
+<h3 id="proprieta_1">Proprietà</h3>
+<ul>
+<li>_pkName : 'id' - nome della chiave univoca del modello dati</li>
+<li>_pkValue : null - valore della chiave univoca del modello dati</li>
+<li>_actions : [] - vettore con tutte le azioni istanziati nella vista</li>
+<li>actions : [] - vettore nomi delle azioni da istanziare nella vista</li>
+<li>type : 'record' - tipo della vista in questo caso record</li>
+<li>defaultItemTemplate : 'left' - Oggetto template di default che conterrà gli oggetti Renders</li>
+<li>data : vettore associativo dei dati dalla forma</li>
+</ul>
+<pre><code class="javascript">data : {
+    value : {},     //vettore associativo key =&gt; value dei modello dati
+    metadata : {},  //vettore associativo key =&gt; {} metadati che descrivono key
+    validationRules : {}, // vettore associativo key =&gt; {} regole di validazione lato javascript da applicare alla key    
+}
+</code></pre>
+
+<h3 id="metodi_1">Metodi</h3>
+<ul>
+<li>getRenderValue : function(fieldName)</li>
+<li>getRender : function(fieldName)</li>
+<li>resetForm : function () - esegue il clear di tutti i render della view</li>
+<li>_callAction : function (actionData) - (privata)</li>
+<li>_setActions : function () - (privata) instanzia tutte le azioni definite per riga e globali partendo
+                                             * dalla configurazione iniziale definita nella config
+                                             * far partire l'ascolto per tutti gli eventi che riguardano le proprie
+                                             * azioni</li>
+<li>_createAction : function (key)</li>
+<li>_setKeys : function () - setta le keys attive per la view</li>
+<li>_renderHidden : function (key) - renderizza i render di tipo hidden perche' speciali</li>
+<li>_renderObjectElement : function (key) - renderizza l'oggetto render associato alla key che non sia hidden</li>
+<li>_getGroup: function (key) - ritorna il gruppo associato al campo nel caso di view con template strutturato a gruppi</li>
+<li>_renderElement : function (key) : chiama _renderHidden o _renderObjectElement in base al type</li>
+<li>_createRender : function (container,key) - crea l'oggetto render e gli associa il container dove
+verrà disegnato</li>
+<li>_renderActions : function() - renderizza le azioni istanziate nella view</li>
+<li>_getFieldName : function (key) - ritorna il fieldName costruito a partire dalla key a seconda del 
+tipo di view che stiamo realizzando. Ci permette di mettere dei prefissi o suffissi a tutte le key
+del modello dei dati dovuti ad esigenze dell'html tipo view annidate per creare delle form complese.</li>
+</ul>
+<h2 id="collectionview">CollectionView</h2>
+<p>La <code>CollectionView</code> estend la <code>View</code> è pensata per tutte le viste che gestiscono una lista record del modello 
+di dati.</p>
+<h3 id="proprieta_2">Proprietà</h3>
+<ul>
+<li>_recordActions : [] - vettore azioni della vista per ogni singolo record,</li>
+<li>_globalActions : [] - vettore azioni sull'intera vista</li>
+<li>_paginatorActions : [] - vettore azioni per la paginazione</li>
+<li>actionsLayout : 'left' - tipo di layout per le azioni sui record, left o right</li>
+<li>type : 'list' - tipo di view, in questo caso list</li>
+<li>defaultItemTemplate : 'no' - classe del template da istanziare per ogni render</li>
+<li>orderClass - le classi da aggiungere all'header del campo ordinato.</li>
+</ul>
+<pre><code class="javascript">orderClass : {
+  'asc': ['sorting_asc'],
+  'desc' : ['sorting_desc']
+}
+</code></pre>
+
+<ul>
+<li>data - dati del modello dati da visualizzare, vettore associativo della forma:</li>
+</ul>
+<pre><code class="javascript">data : {
+    value : [],
+    metadata : {},
+    pagination : {},
+    resultParams : {},
+    summary : {},
+    validationRules : {},
+    backParams : {},
+    has_errors : false,
+    list_header : ''
+}
+</code></pre>
+
+<h3 id="metodi_2">Metodi</h3>
+<ul>
+<li>setOrder(field) - permette di ordinare una view rispetto ad un campo</li>
+<li>_setKeys() - (privata) setta i render da renderizzare nella vista</li>
+<li>_renderHeaderValues(jQrow) - (privata) setta l'intestazione delle colonne della vista</li>
+<li>_renderHeaderActions(jQrow) - (privata) renderizza l'header della colonna action</li>
+<li>_renderHeader() - (privata) - renderizza l'header</li>
+<li>_renderFooter() - (privata) - renderizza il footer</li>
+<li>_attachEvents(index) - </li>
+<li>_attachDetailEvents() -</li>
+<li>getChecked() - ritorna il vettore di tutte le pk delle rows selezionate.</li>
+<li>_renderGlobalActions() - renderizzare le azioni globali alla vista</li>
+<li>_renderInfoHeader() - renderizza un eventuale header di info della lista. L'html viene preso da
+data.list_header</li>
+<li>render(callback) - renderizza la view</li>
+<li>_renderRow : function (index) - (privata) renderizza la singola riga</li>
+<li>finalize(callback) - finalizza la view e aggancia gli eventi</li>
+<li>_setActions() - (privata) instanzia tutte le azioni definite per riga e globali partendo
+dalla configurazione iniziale definita nella config. Far partire l'ascolto per tutti gli eventi 
+che riguardano le proprie azioni</li>
+<li>_setVisibleKeys : function ()</li>
+<li>_renderZeroResult : function () </li>
+<li>_renderPagination : function ()</li>
+<li>_createRender : function (r,key,container)</li>
+<li>_createGrid : function ()</li>
+<li>_createAction : function (row,key) - crea un azione se row e' null setta come modelData 
+dell'azione tutti i dati altrimenti il dati della row indicata.<ul>
+<li>@param row : row a cui si riferisce null in caso di azione globale</li>
+<li>@param key : nome dell'azione</li>
+<li>@returns {*} : ritorna l'azione creata</li>
+</ul>
+</li>
+<li>_renderSingleActions : function ()</li>
+<li>_hasNeedSelectionAction : function () - controlla che la lista abbia almeno un'azione che ha bisogno di selezionare elementi</li>
+<li>_hasRecordActions : function () - controlla se la view abbia almeno una azione che lavora sul singolo record della lista</li>
+</ul>
+<h1 id="views-implementate">Views Implementate</h1>
+<p>Nella libreria sono state implementate delle views di uso comune</p>
+<h2 id="-viewlist">- ViewList</h2>
+<p>E' una collection view che renderizza i risultati su un template tabellare,
+viene popolata attraverso la <em>RouteList</em> che prevede come parametro il modelName</p>
+<h2 id="-viewinsert">- ViewInsert</h2>
+<p>E' una view per la creazione di un nuovo record. Utilizza la route RouteInsert per il 
+caricamento dei dati e la RouteSave per il salvataggio</p>
+<h2 id="-viewedit">- ViewEdit</h2>
+<p>E' una view per la modifica di un record. Utilizza la route RouteEdit per il caricamento
+e la RouteUpdate per il salvataggio</p>
+<h4 id="template">template</h4>
+<pre><code class="html">&lt;div class=&quot;well&quot; data-edit-main&gt;
+    &lt;div data-alert class=&quot;alert alert-success hide&quot;&gt;&lt;/div&gt;
+    &lt;form name=&quot;data_form&quot; class=&quot;model-edit&quot;&gt;
+        &lt;div data-hidden_fields&gt;&lt;/div&gt;
+        &lt;div data-view_elements&gt;
+
+        &lt;/div&gt;
+        &lt;div data-view_action &gt;
+            &lt;div data-field=&quot;data&quot; data-self&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2 id="-viewsearch">- ViewSearch</h2>
+<p>E' una view per effettuare una ricerca.</p>
+<h2 id="-viewview">- ViewView</h2>
+<p>E' una view per visualizzare i risultati in modalità lettura.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../templates/" class="btn btn-neutral float-right" title="Templates">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dashboards/" class="btn btn-neutral" title="Dashboards"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../dashboards/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../templates/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

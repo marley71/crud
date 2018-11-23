@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Home - Cupparis4</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Cupparis4</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Home</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#cupparijs4-versione-alpha">Cupparijs4 (Versione Alpha)</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#componenti-base">Componenti base</a></li>
+        
+            <li><a class="toctree-l3" href="#-dashboards">- Dashboards</a></li>
+        
+            <li><a class="toctree-l3" href="#-views">- Views</a></li>
+        
+            <li><a class="toctree-l3" href="#-renders">- Renders</a></li>
+        
+            <li><a class="toctree-l3" href="#-templates">- Templates</a></li>
+        
+            <li><a class="toctree-l3" href="#-actions">- Actions</a></li>
+        
+            <li><a class="toctree-l3" href="#confs">Confs</a></li>
+        
+            <li><a class="toctree-l3" href="#routes">Routes</a></li>
+        
+            <li><a class="toctree-l3" href="#server">Server</a></li>
+        
+            <li><a class="toctree-l3" href="#app">App</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="component/">Component</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="dashboards/">Dashboards</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="views/">Views</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="templates/">Templates</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="actions/">Actions</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="confs/">Confs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="routes/">Routes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="server/">Server</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="app/">App</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="esempi_views/">Esempi Views</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Cupparis4</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cupparijs4-versione-alpha">Cupparijs4 (Versione Alpha)</h1>
+<p>Libreria CRUD per la realizzazione di interfacce professionali basate su chiamate rest con 
+metodi CREATE,READ,UPDATE,DELETE. Il protocollo utilizzato per la comunicazione è il json. 
+La libreria utilizza il concetto di componente. La pagina è formata da componenti ed esse
+sono gestite attraverso l'oggetto principale <code>App</code>. 
+Il concetto di base nella libreria è quello di creare una logica e una grafica delle componenti
+in modo che ci sia una versione base implementata dalla libreria, ma che sia customizzabile
+a piacere nella propria applicazione sia come layout grafico sia come logica.</p>
+<h2 id="componenti-base">Componenti base</h2>
+<p>L'oggetto astratto principale che tutte le componenti presenti nella libreria si chiama  <a href="components"><code>Component</code></a>.
+In una visione top-down elenchiamo le principali componenti presenti nella libreria:</p>
+<h2 id="-dashboards">- Dashboards</h2>
+<p>La componente dashboard è stata create per la la gestione di più viste che interagiscono o no tra di loro.
+In questo modo si possono creare dashboard specifiche per le nostre applicazioni.
+<a href="dashboards">Dettaglio Dashboards</a></p>
+<h2 id="-views">- Views</h2>
+<p>La componente <code>View</code> rappresenta una collezione di dati che possono essere passati manualmente o 
+attraverso un server, utilizzando le route che usano le convenzioni REST. A questi dati 
+vengono associati dei componenti di tipo <code>Render</code>. 
+<a href="views">Dettaglio Views</a></p>
+<h2 id="-renders">- Renders</h2>
+<p>Una componente <code>Render</code> si prende il compito di gestire le interazione utenti sul dato secondo controlli standard html o plugins 
+di varia complessità.</p>
+<p>La gestione del componente <code>Render</code> è stata differenziata dal modo in cui esso può essere gestito. 
+I modi con cui può essere gestito sono:</p>
+<ul>
+<li>VIEW : In questa modalità il componente render si preoccupa di visualizzare i dati, 
+non è prevista nessuna modifica.</li>
+<li>EDIT : In questa modalità il componente render oltre a visualizzare i dati, deve prevederne
+la modifica</li>
+<li>SEARCH: In questa modalità il componente deve gestire l'input dell'utente e l'operatore della search normalmente
+nascosto</li>
+</ul>
+<p>Queste modalità sono nate per favorire una migliore customizzazione dei componenti render
+in base al contesto in cui vengno utilizzati.</p>
+<p><a href="renders">Dettaglio Renders</a></p>
+<h2 id="-templates">- Templates</h2>
+<p>Il componente <code>Template</code> permette di costruire un template html di contorno per l'oggetto <code>Render</code>. 
+Viene utilizzato dalle views e permette di poter customizzare alcuni campi che vogliamo adornare con varie
+informazioni e che non è detto che valgano per tutti gli altri Render.
+<a href="templates">Dettaglio Templates</a></p>
+<h2 id="-actions">- Actions</h2>
+<p>Il componente <code>Action</code> è nato per la gestione delle azioni vogliamo realizzare su di una vista.
+<a href="actions">Dettaglio Actions</a></p>
+<h2 id="confs">Confs</h2>
+<p>Sono le classi di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
+configurazioni globali su alcuni campi delle nostre viste senza definirli ogni volta.</p>
+<h2 id="routes">Routes</h2>
+<p>La componente <code>Route</code> incapsula l'interazione con il server sia per il recupero sia per la spedizione 
+dei dati. In genere viene utilizzata da una view e dalle azioni.
+<a href="routes">Dettaglio Routes</a></p>
+<h2 id="server">Server</h2>
+<p>Classe che rappresenta un wrapper delle chiamate ajax di jquery, con alcune estensioni.
+<a href="server">Dettaglio Server</a></p>
+<h2 id="app">App</h2>
+<p>La componente <code>App</code> rappresenta l'oggetto per la gestione della pagina e delle sue varie componenti 
+javascript.
+<a href="app">Dettaglio App</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="component/" class="btn btn-neutral float-right" title="Component">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="component/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.17.5
+Build Date UTC : 2018-11-23 16:08:33
+-->
