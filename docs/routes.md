@@ -5,7 +5,7 @@ Class base per la gestione delle route verso il backend. Sono state definite
 alcune route delle principali di interazioni con il backend
  secondo le specifiche REST.
 
-###Proprietà
+### Proprietà
 
 - `className` default "Route" variabile di comodo per riconoscere in quale route ci troviamo
 - `method` default null rappresenta il metodo usato per la chiamata ajax, può essere get o post
@@ -23,7 +23,7 @@ al server.
 - `params` :{} vettore associativo dei parametri passati nella richiesta. Prima
 della richiesta vengono sommati agli extraParams
     
-###Metodi    
+### Metodi    
     
 - `__costruct(attrs)` costruttore. Accetta come parametro un vettore associativo che permette
 di sovrascrivere le proprietà dell'oggetto creato.

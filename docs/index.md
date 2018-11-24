@@ -24,7 +24,8 @@ In questo modo si possono creare dashboard specifiche per le nostre applicazioni
 La componente `View` rappresenta una collezione di dati che possono essere passati manualmente o 
 attraverso un server, utilizzando le route che usano le convenzioni REST. A questi dati 
 vengono associati dei componenti di tipo `Render`. 
-<a href="views">Dettaglio Views</a>
+[Dettaglio Views](views.md)
+
 
 
 ## - Renders
