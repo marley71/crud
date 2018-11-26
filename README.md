@@ -7,12 +7,21 @@ diversi e gestione delle route per scambio di dati con server con protocollo jso
 
 ## Dipendenze
 
+Per poter essere utilizzata la libreria ha bisogno delle seguenti risorse
+
+- bootstrap >= 3.3.7
+- jquery >= 2.2.4
+- font-awesome >= 4.7.0
+- underscore >= 1.8.3
+
+Per comodità ho inserito nel folder cupparijs/libs le versioni sopracitate.
+
 ## Installazione
-Nella cartella plugins ci sono i plugins javascript di base per l'ulitizzo di alcuni componenti renders come 
+
+Nella cartella plugins ci sono i javascript di base per l'ulitizzo di alcuni componenti renders come 
 texthtml e autocomplete. Questa cartella è il contenitore per i plugins che vogliamo utilizzare nella nostra
-applicazione e può essere estesa secondo le proprie esigenze. Sotto un esempio per l'installazione della
-libreria. 
-Copiare la cartella `cupparijs` nella root del vostra applicazione web.
+applicazione e può essere estesa secondo le proprie esigenze e i propri renders. Sotto un esempio per l'installazione della
+libreria. Copiare la cartella `cupparijs` nella root del vostra applicazione web.
 
 ```html
 <head>
@@ -34,7 +43,7 @@ Copiare la cartella `cupparijs` nella root del vostra applicazione web.
         app = new App();
         app.pluginsPath = '/cupparijs/plugins/';
         app.resources = [
-            "moment-with-locales.js",
+            "moment-with-locales.min.js",
         ]
         app.init({
             showLog : true
