@@ -1,6 +1,5 @@
 # Cupparijs4 (Versione Alpha)
 
-require "header.md"
 
 Libreria CRUD per la realizzazione di interfacce professionali basate su chiamate rest con 
 metodi CREATE,READ,UPDATE,DELETE. Il protocollo utilizzato per la comunicazione è il json. 
