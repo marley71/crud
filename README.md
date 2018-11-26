@@ -26,13 +26,13 @@ Copiare la cartella `cupparijs` nella root del vostra applicazione web.
     <script src="/cupparijs/libs/underscore-min.js"></script>
     <script src="/cupparijs/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     
-    <link href="/cupparijs/cupparijs4.css" rel="stylesheet">
+    <link href="/cupparijs/cupparijs4.1.css" rel="stylesheet">
     <script src="/cupparijs/cupparijs-4.1-min.js"></script>
 </head>
 <body>
     <script>
         app = new App();
-        app.pluginsPath = '/cupparijs/plugins';
+        app.pluginsPath = '/cupparijs/plugins/';
         app.resources = [
             "moment-with-locales.js",
         ]
