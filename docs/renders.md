@@ -72,19 +72,28 @@ A questi Renders definiti se ne possono aggiungere altri usando l'erediaretà. I
 oppure possono essere istanziati manualmente.
 
 Alcuni modi per alcuni render non hanno senso, in questo caso non definire la classe per quel modo, questo genererà un errore
-che farà capire dell'utilizzo sbagliato del componente Render.
+che farà capire dell'utilizzo sbagliato del componente Render. [todo: fare esempio]
 
-# RenderInput
+In tutti i render verranno mostrati:
+
+- il contenuto del metodo template per poter facilmente ridefinire a piacere il vostro template
+- i marcatori utilizzati per la gestione corretta del suo comportamento.
+
+---
+
+## RenderInput
 Componente per la gestione degli input standard html.
 
 ### RenderInputEdit
 
-- template
+#### template
 ```html
 <input data-render_control type="text" class="form-control" data-placeholder="">
 ```
 
 - marcatori
+    - `data-render_control`: necessario, indica il controllo che riceverà il dato
+    - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
 
 ### RenderInputView
@@ -105,11 +114,276 @@ template
 <input data-control_operator type="hidden" >
 ```
 
+---
 
-# RenderText
+## RenderText
 
-Render text è nato per rappresentare la visualizzazione di un testo
+Render text è nato per rappresentare la visualizzazione di un testo. La stessa classe è stata ridefinita
+per tutti i 3 modi.
 
+
+#### template
+
+```html
+<span data-render_control></span>
+```
+---
+
+## RenderTextarea
+
+
+### RenderTextareaEdit
+
+#### template
+
+```html
+<textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
+```
+
+### RenderTextareaSearch
+
+```html
+<textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
+            <input data-control_operator type="hidden" >
+```
+### RenderTextareaView
+
+```html
+<span data-render_control></span>
+```
+
+---
+
+## RenderSelect
+
+Oggetto per la selezione di un valore utilizzando le select
+
+### RenderSelectEdit
+
+#### template
+
+```html
+<select data-render_control class="form-control" ></select>
+```
+#### marcatori
+
+### RenderSelectSearch
+
+#### template
+
+```html
+<select data-render_control class="form-control" ></select>
+<input data-control_operator type="hidden" >
+```
+
+#### marcatori
+
+
+### RenderSelectView
+
+#### template
+
+```html
+<select data-render_control class="form-control" ></select>
+```
+
+#### marcatori
+
+
+
+---
+
+## RenderInputHelped
+
+Questo Render permette di aggiungere ad un input una serie di valori predefiniti che aiutano l'utilizzatore
+
+####Proprietà
+
+- customValue : true, indica se può essere inserito un valore fuori dal range dei valori predefiniti
+- metadata : sono i valori predefiniti vettore associativo valore : 'Testo da visualizzare'
+```javascript
+{
+    domainValues : {}
+}
+```
+
+//@TODO esempio
+    
+    
+### RenderInputHelpedEdit
+
+#### template
+```html
+<div data-render_element>
+    <input  data-render_control class="form-control" type="text" name="" value="">
+    <div data-option_values>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..." data-field="data" data-self>
+            <button type="button" class="btn btn-default" data-html="label" data-attrs="{'data-value':value}"></button>
+        </div>
+    </div>
+</div>
+```
+
+#### marcatori
+
+### RenderInputHelpedSearch
+
+#### template
+```html
+<div data-render_element>
+    <input  data-control_operator class="form-control" type="hidden" name="" value="">
+    <input  data-render_control class="form-control" type="text" name="" value="">
+    <div data-option_values>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..." data-field="data" data-self>
+            <button type="button" class="btn btn-default" data-html="label" data-attrs="{'data-value':value}"></button>
+        </div>
+    </div>
+</div>
+```
+
+#### marcatori
+
+
+
+---
+
+## RenderImage
+
+Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modalità view.
+
+### RenderImageView
+
+#### template
+```html
+<img data-render_control>
+```
+
+#### marcatori
+
+---
+
+## RenderRadio
+   
+   - caption_selector : '[data-render_caption]' - marcatore 
+
+### RenderRadioEdit
+
+#### template
+```html
+<label data-render_element class="radio-inline">
+  <input data-render_control  type="radio" value=""> <span data-render_caption></span>
+</label>
+<input data-render_exists type="hidden" >
+```
+
+#### marcatori
+
+### RenderRadioSearch
+
+#### template
+```html
+<label data-render_element class="radio-inline">
+  <input data-render_control  type="radio" value=""> <span data-render_caption></span>
+</label>
+<input data-control_operator type="hidden" >
+```
+
+#### marcatori
+
+
+### RenderRadioView
+
+#### template
+```html
+<div data-render_element class="checkbox-inline">
+    <i data-class="icon_class" ></i> <span data-field="text"> </span>
+</div>
+```
+
+#### marcatori
+
+
+---
+
+## RenderCheckbox
+   
+   - caption_selector : '[data-render_caption]' - marcatore 
+
+### RenderCheckboxEdit
+
+#### template
+```html
+<label data-render_element class="checkbox-inline">
+    <input data-render_control type="checkbox" value="">  <span data-render_caption> </span>
+</label>
+<input data-render_exists type="hidden" >
+```
+
+#### marcatori
+
+### RenderCheckboxSearch
+
+#### template
+```html
+<label data-render_element class="checkbox-inline">
+    <input data-render_control type="checkbox" value="">  <span data-render_caption> </span>
+</label>
+<input data-control_operator type="hidden" >
+```
+
+#### marcatori
+
+
+### RenderCheckboxView
+
+#### template
+```html
+<div data-render_element class="checkbox-inline">
+    <i data-class="icon_class" ></i> <span data-field="text"> </span>
+</div>
+```
+
+#### marcatori
+
+---
+
+## RenderSelect
+
+### RenderSelectEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderSelectSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderSelectView
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+
+
+---
+
+
+---
 
 
 
@@ -450,11 +724,7 @@ marcatori
     </div>
 </div>
 ```
-#RenderRadio
 
-- caption_selector : '[data-render_caption]' - marcatore 
-
-#RenderCheckbox
 
 #RenderCustom
 
@@ -465,7 +735,6 @@ tutto quello che si vuole utilizzando che chiamate render e finalize.
 
 Oggetto per la gestione dei decimali con parte intera e decimale gestiti separatamente.
 
-#RenderFaicon
 
 #RenderHasmany
 Oggetto per la gestione delle relazioni esterne. Permette l'inserimento e visualizzazione
@@ -480,29 +749,21 @@ Oggetto per la gestione degli hasmany trought...
 Oggetto per la gestione di hasmany che prevedo un upload di una immagini o allegati
 come pdf,csv,ecc.
 
-#RenderImage
-
-Oggetto per la renderizzazione di un'immagine proveniente da campo.
 
 
 
-#RenderInputHelped
-Oggetto che prevede un input e dei tasti per inserimenti generali, in genere usato
-per input che prendono un'insieme di valori predefinito.
 
 #RenderMap
 Oggetto per la visualizzazione e la selezione di coordinate gps basato su googlemaps
 
 #RenderMultiUpload
 
-#RenderSelect
-Oggetto per la selezione di un valore utilizzando le select
+
 
 #RenderSwap
 
 
 
-#RenderTextarea
 
 #RenderTexthtml
 

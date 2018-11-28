@@ -21,7 +21,7 @@ Nella configurazione vengono definiti:
 
 Rappresenta la classe Principale
 	
-###Proprietà
+### Proprietà
 	
 - `modelName` *default null* rappresenta il nome del modello dei dati gestito
 
@@ -60,7 +60,7 @@ il server attraverso la route
 
 * `actions` : [] - vettore nome azioni da istanziare nella view
 
-###Metodi
+### Metodi
 
 - `draw(callback)` metodo per la renderizzazione della view. callback e' la chiamata che
 viene effettuata alla fine se passata. La sequenza delle chiamate attraverso le callback:
