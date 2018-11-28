@@ -37,7 +37,7 @@ app.renderView(vkey);
 
 ```
 
-<a href="http://laravel51.dev.it/help/example?theme=cupparis4#views-view_list" target="_blank"> Vai </a>
+<a href="http://www.pierpaolociullo.it/example?f=view_list" target="_blank"> Vai </a>
 
 ## - Lista con dati json con intestazioni header custom
 

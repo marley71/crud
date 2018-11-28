@@ -1,84 +1,114 @@
 #Component
 
-La classe principale di tutte le componenti grafiche `Component`, definisce il comportamento
-generale che un componente deve avere nella visualizzazione di un html e dati associati
-più tutta la logica per la gestione del dato e delle interazioni utente.
+La classe principale di tutte le componenti grafiche è `Component`, definisce il comportamento
+generale che un componente deve avere nella visualizzazione di un html. Un componente, quando viene disegnato,
+chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi possiamo scrivere il nostro codice
+che caratterizzerà la componente.
 
-La classe ha un metodo `template` che ritorna html del componente. Il template viene marcato
-con dei marcatori (attributi di tag dal formato data-{marcatore}). Avere questi marcatori permette
-la possibilità di stravolgere completamente il template di base avendo solo l'obbligo di mantenere
-questi marcatori per la costruzione dell'html finale.
+La classe ha un metodo `template` che ritorna una stringa html del componente. Il concetto principale è quello di 
+inserire nel template del componente dei marcatori (attributi dal formato data-{marcatore}). Avere questi marcatori permette
+di avere la possibilità di stravolgere completamente il template di base senza modificare il comportamento del nostro 
+componente. L'unico obbligo è di mantenere questi marcatori per il corretto funzionamento del componente.
 
-Nell'oggetto componente è stato inserito anche la possibilità di avere dei traits che ne permette l'estensione
+Nell'oggetto componente è stata inserita la possibilità di avere dei `traits` che ne permette l'estensione
 con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
-I traits sono stati differenziati in traits che agiscono sui templates e traits generali per l'aggiunta di 
-funzionalità custom.
+Nell'oggetto componente è stata inserita la possibilità di avere dei `traitsTemplate` sono chiamati subito dopo che il template 
+è stato iniettato nel dom della pagina e possiamo considerarli come post elaborazioni da fare sul dom html. Vedremo più
+avanti il loro utilizzo.
+
+Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
+sostanzialmente il comportamento della classe a basso livello.
+
+
 
 ###Proprietà
-- `className` : 'Component'. Questa proprietà è stata introdotta a causa della possibilità di poter estendere 
-le classi con un trucchetto e che rende impossibile saper a runtime in quale classe ci si trovi.
+- `className` : 'Component'. Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
+ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzato un trucchetto e che rende impossibile 
+sapere, a runtime, in quale classe ci si trovi.
 - `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'], vettore di traits definiti di default
 in particolare :
-    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template
-    - `TraitTemplate`
-    - `TraitPlaceholder`
+    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template con le nostre 
+    definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.
+    - `TraitTemplate`: Ha il compito di poter spezzare un template complesso in sottotemplate magari interscambiabili.
+    utilizza i marcatori data-template che si trovano dentro la stringa template e ci inietta il risultato della
+    chiamata {valore}Template. Per esempio se dentro il marcatore data-template troviamo il valore *subItem* verrà chiamata
+    il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore data-template="subItem" 
+    - `TraitPlaceholder`: ha il compito di inserire il risultato della traduzione del valore del marcatore data-placeholder nell'attributo
+    placeholder che si trovano negli input.
 - `traitsTemplate` : [] vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere visualizzato il template
 - `traits` : [] traits per estendere funzionalità del component senza ridefinirne la classe.
-- `container` : null,
+- `container` : null rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
+disegnato il componente.
 
 ###Metodi
-- `init : function (attributes)`: costruttore, attributes rappresenta gli attributi
-che si vogliono sostituire, è possibile passare anche i metodi per ridefinire alcuni 
+- `init(attributes)`: costruttore, attributes rappresenta gli attributi
+che si vogliono sostituire, è possibile passare anche ridefinire i metodi per poter ridefinire alcuni 
 comportamenti.
 
-- `attrs` : function (attrs) : permettere di ridefinire proprietà o metodi dell'oggetto
+- `attrs(attrs)` : permettere di ridefinire proprietà o metodi dell'oggetto
 
-- `template` : function() : metodo che restituisce il template html del componente
+- `template()` :  metodo che restituisce il template html del componente
 
-- `getTemplate` : function () : metodo che un oggetto jquery('div') che wrappa il template
- del componente.
+- `getTemplate()` : metodo che un oggetto jquery('div') che wrappa il template del componente.
 
-- `html` :  function () ritorna l'html puntato dalla proprietà container del componente
-- `jQe : function (selector)` : ritorna l'oggetto jquery associato al container del componente
+- `html()` : ritorna l'html puntato dalla proprietà container del componente
+- `jQe(selector)` : ritorna l'oggetto jquery associato al container del componente, se viene
+passato il parametro *selector* allora si posiziona all'elemento puntato dal selector all'interno
+del container.
 
-- `beforeRender` : function (callback) : viene chiamata prima di eseguire il render, se si vogliono
- fare di check prima di iniettare l'html del richiamare la callback per il ritorno.
+- `beforeRender(callback)` : questo metodo viene chiamato prima di eseguire il render. Questo metodo rappresenta
+il primo punto in cui scrivere codice che si vuole eseguire prima di renderizzare il componente
 
-- `render` : function (callback): metodo dove viene iniettato nel container l'html del componente in 
+- `render(callback)` : metodo dove viene iniettato nel container l'html del componente in 
 base alle proprie politiche.
 
-- `afterRender` : function (callback) : metodo che viene chiamato dopo il metodo render.
+- `afterRender(callback)` : metodo che viene chiamato dopo il metodo render.
 
-- `beforeFinalize` : function (callback) : metodo per il proprio codice custom chiamato prima del finalize
-- `finalize` : function (callback) : metodo per aggiungere eventi o istanziare plugins 
-- `afterFinalize` : function (callback) : metodo custom per eventuali esigenze su oggetti modificati
-- `_prepareContainer` : function () : scrive l'html che viene restituita dal metodo template dentro il container.
-Se il componente ne ha uno altrimenti viene creato un oggetto jquery contentente l'html.
-- `_executeTraitsTemplate` : function () metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
+- `beforeFinalize(callback)` : metodo per il proprio codice custom chiamato prima del finalize
+- `finalize(callback)` : metodo per aggiungere eventi o istanziare plugins 
+- `afterFinalize(callback)` : metodo custom per eventuali esigenze su oggetti dopo che sono stati visualizzati agganciati
+eventi e istanziati plugins.
+
+- `_prepareContainer()`  : scrive l'html che viene restituito dal metodo *template* dentro il container.
+Se il container è null viene creato un oggetto jquery contentente l'html. Dopo viene chiamato *_executeTraitsTemplate*
+
+- `_executeTraitsTemplate()` : metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
 se si vogliono eseguire dei particolari filtri con il concetto di trait
 
-- `_loadExternalResources` : function (callback) 
-carica eventuali risorse esterne prima di far partire il render del component
+- `_loadExternalResources(callback)` : carica eventuali risorse esterne prima di far partire il render del component
 @param callback : funzione di ritorno 
     
-- `draw` : function (callback) : disegna l'html del componente e poi richiama la callback
+- `draw` : function (callback) : disegna l'html del componente e poi richiama la callback.
 Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
-callback. Questo modo di eseguire i metodi permette di fare anche delle chiamate
-asincrone e aspettare il termine delle chiamate prima di procedere. 
+callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato o di aggangiare
+eventi custom. Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
+è finito di operare dentro il metodo. Questo modo di eseguire i metodi permette di poter inserire anche delle funzioni
+asincrone aspettare il termine delle chiamate prima di procedere. Nello stesso tempo permette di bloccare il flusso
+semplicemente non richiamando la callback. Sotto viene rappresentato il flusso delle chiamate del metodo draw.
  
-    - _`prepareContainer` ;
-    - _`loadExternalResources` : function (callback);
-    - `beforeRender` : function (callback)
-    - `render` : function (callback)
-    - `afterRender` : function (callback)
-    - `beforeFinalize` : function (callback)
-    - `finalize` : function (callback)
-    - `afterFinalize` : function (callback)
+   
+    - `_loadExternalResources(callback)`;
+    - `beforeRender(callback)`
+    - `_prepareContainer()` 
+    - `render(callback)`
+    - `afterRender(callback)`
+    - `beforeFinalize(callback)`
+    - `finalize(callback)`
+    - `afterFinalize(callback)`
 
-`Component.parseHtml` = function (templateString) metodo statico che crea un oggetto jquery eseguendo
-il parse della stringa passata
+`Component.parseHtml(templateString,tplData)` : metodo statico che crea un oggetto jquery eseguendo
+il parse della stringa passata. In caso vengono passati dei con tplData tutti i tag che hanno il marcatore
+data-field="field" vengono iniettati i valori. Vedere la sezione ... per ulteriori dettagli.
 
-`Component.uid` = 0;
+`Component.uid` = 0; variabile statica per la generazione di id univoci.
 
-`Component.newID` = function () metodo statico che ritorna un id univoco fomato da 'c_'+ un intero 
-incrementale
+`Component.newID()` : metodo statico che ritorna un id univoco fomato da 'c_{int}'+ dove {int} è un intero incrementale
+
+
+##Traits che agiscono sui template
+
+coming soon.
+
+##Render dei template con dati dinamici
+
+coming soon

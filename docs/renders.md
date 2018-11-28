@@ -1,9 +1,9 @@
-#Render
+# Render
 
 La classe `Render` estende la classe `Component` e rappresenta la classe per la gestione di un 
 singolo dato. La classe render può essere utilizzata in maniera diretta, ma il loro utilizzo reale è 
 come componenti dei singoli dati di una view. Dentro la view un render può essere usato in 3 modi differenti, 
-in modalità edit, search, view. La visualizzazione dell'oggetto render avviene con il metodo draw().
+in modalità *edit, search, view*.
 
 La classe Render deve essere consideata come una specie di classe astratta edefinisce alcuni metodi di uso generale e 
 i metodi che i veri oggetti Render devono ridefinire per funzionare. Dobbiamo considerarla come la classe astratta che 
@@ -16,10 +16,9 @@ Render.EDIT = 'edit';
 Render.SEARCH = 'search';
 ```
 
-####Proprietà
+#### Proprietà
 
-- `key` : null - nome dell'oggetto render (il campo del db)
-- `type` : null - type dell'oggetto per gestire le Gerarchie di classi
+- `key` : null - key dell'oggetto render (il campo del db o del field che vogliamo gestire)
 - `className` : 'Render' - nome della Classe reale dell'oggetto
 
 - `element_selector` : '[data-render_element]' - marcatore html dell'elemento
@@ -29,21 +28,24 @@ search
 - `operator` : null - valore operatore
 
 - `value` : null - valore oggetto
-- `app` : null - identificatore dell'oggetto app della pagina
+- `app` : null - identificatore dell'oggetto app della pagina viene assegnato a runtime dal componente App.
 - `resources` : [] - vettore risorse da caricare prima di chiamare il finalize
 - `metadata` : {} - array associativo metadati che descrivono il dato
+- htmlAttributes : {},    // attributi html per l'oggetto speciale identificato dal marcatore data-render_control
 
-
-####Metodi
+#### Metodi
 
 - `init(key,attributes)` - ridefinizione del costruttore rispetto al Component. 
-- `_setHtmlAttributes`(el)
-- `change` : function ()
-- `clear` : function ()
-- `setMetadata` : function (metadata)
+    - key : nome del campo
+    - attributes: attributi/function dell'oggetto che vogliamo ridefinire
+- `_setHtmlAttributes(el)` - setta gli attributi presenti nella proprietò 
+- `change()` : metodo chiamato al momento del change del render. L'evento change qui è da intendere come il change
+del render e non del singolo controllo html. 
+- `clear()` : medoto da chiamare per il clear del componente render. 
+- `setMetadata(metadata)` : setta la proprietà metadata
 
 
-Render.factory = function (key,options) è un metodo statico che permette di creare un Render
+`Render.factory(key,options)` : metodo statico che permette di creare un Render
 - key è il nome del campo da creare
 - options vettore associativo delle opzioni del render. La factory prende
 options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono
@@ -56,16 +58,61 @@ var r = Render.factory('field', {
     type : 'input_helped',
     mode : 'edit'
 })
-// la factory cercherà la definizione della classe 'RenderInputHelpedEdit'
+// la factory cercherà la definizione della classe 'RenderInputHelpedEdit' che rappresenta
+// l'oggetto che gestirà il Render InputHelped in modalità edit.
 ```
     
-#Render Implementati
+# Render Implementati
 
-La libreria mette a disposizione dei renders di default per gli usi più comuni.
-Questi possono essere ridefiniti, in caso vogliamo cambiare, nella nostra applicazione,
-aspetto o funzionalità. A questi definiti se ne possono aggiungere altri usando
-l'erediaretà. I renders vengono istanziati in automatico dalle views, oppure possono
-essere istanziati manualmente.
+La libreria mette a disposizione dei renders di default per gli usi più comuni, in modo da avere già una base abbastanza
+completa per iniziare a creare le nostre applicazioni. Questi possono essere ridefiniti, in caso vogliamo cambiare, 
+nella nostra applicazione, aspetto o funzionalità. 
+
+A questi Renders definiti se ne possono aggiungere altri usando l'erediaretà. I renders vengono istanziati in automatico dalle views, 
+oppure possono essere istanziati manualmente.
+
+Alcuni modi per alcuni render non hanno senso, in questo caso non definire la classe per quel modo, questo genererà un errore
+che farà capire dell'utilizzo sbagliato del componente Render.
+
+# RenderInput
+Componente per la gestione degli input standard html.
+
+### RenderInputEdit
+
+- template
+```html
+<input data-render_control type="text" class="form-control" data-placeholder="">
+```
+
+- marcatori
+
+
+### RenderInputView
+In modalità view, può essere solo uno span. Potevo anche non definirlo, perche' non ha senso un Input in modalità view, 
+Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
+readonly. A voi la scelta.
+
+template
+```html
+<span data-render_control></span>
+```
+
+### RenderInputSearch
+
+template
+```html
+<input data-render_control type="text" class="form-control" placeholder="">
+<input data-control_operator type="hidden" >
+```
+
+
+# RenderText
+
+Render text è nato per rappresentare la visualizzazione di un testo
+
+
+
+
 
 #RenderAutocomplete
 
@@ -437,9 +484,7 @@ come pdf,csv,ecc.
 
 Oggetto per la renderizzazione di un'immagine proveniente da campo.
 
-#RenderInput
 
-oggetto per la gestione degli input standard.
 
 #RenderInputHelped
 Oggetto che prevede un input e dei tasti per inserimenti generali, in genere usato
@@ -455,7 +500,7 @@ Oggetto per la selezione di un valore utilizzando le select
 
 #RenderSwap
 
-#RenderText
+
 
 #RenderTextarea
 
