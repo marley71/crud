@@ -1,5 +1,9 @@
 #View che lavorano con liste di dati 
 
+Per avere un comporamento simil ad un linguaggio ad oggetti..
+Ogni volta che si ridefinisce un metodo della Component è
+possibile chiamare il metodo padre attaverso la convenzione this.super
+
 ## - Lista con dati json
 
 ```javascript

@@ -21,17 +21,17 @@ Render.SEARCH = 'search';
 - `key` : null - key dell'oggetto render (il campo del db o del field che vogliamo gestire)
 - `className` : 'Render' - nome della Classe reale dell'oggetto
 
-- `element_selector` : '[data-render_element]' - marcatore html dell'elemento
-- `control_selector` : '[data-render_control]' - marcatore html del controllo html (input, select, ecc)
+- `element_selector` : '[data-render_element]' - marcatore dell'elemento
+- `control_selector` : '[data-render_control]' - marcatore del controllo html (input, select, ecc)
 - `operator_selector` : '[data-control_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
 search
-- `operator` : null - valore operatore
+- `operator` : null - valore operatore in caso di modalità search
 
 - `value` : null - valore oggetto
-- `app` : null - identificatore dell'oggetto app della pagina viene assegnato a runtime dal componente App.
+- `app` : null - identificatore dell'oggetto app della pagina viene assegnato a runtime dall'oggetto `App`.
 - `resources` : [] - vettore risorse da caricare prima di chiamare il finalize
 - `metadata` : {} - array associativo metadati che descrivono il dato
-- htmlAttributes : {},    // attributi html per l'oggetto speciale identificato dal marcatore data-render_control
+- htmlAttributes : {}, attributi html per l'oggetto speciale identificato dal marcatore data-render_control
 
 #### Metodi
 
@@ -39,15 +39,13 @@ search
     - key : nome del campo
     - attributes: attributi/function dell'oggetto che vogliamo ridefinire
 - `_setHtmlAttributes(el)` - setta gli attributi presenti nella proprietò 
-- `change()` : metodo chiamato al momento del change del render. L'evento change qui è da intendere come il change
-del render e non del singolo controllo html. 
+- `change()` : metodo chiamato al momento del change del render.
 - `clear()` : medoto da chiamare per il clear del componente render. 
 - `setMetadata(metadata)` : setta la proprietà metadata
-
-
-`Render.factory(key,options)` : metodo statico che permette di creare un Render
-- key è il nome del campo da creare
-- options vettore associativo delle opzioni del render. La factory prende
+    - metadata : valore associativo che descrivono il dato
+- `Render.factory(key,options)` : metodo statico che permette di creare un Render
+    - key è il nome del campo da creare
+    - options vettore associativo delle opzioni del render. La factory prende
 options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono
  prende come default 'input' come type ed 'edit' come mode.
 Il nome da cercare deve rispettare questa convezione:
@@ -347,56 +345,124 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ---
 
-## RenderSelect
+## RenderCaptcha
 
-### RenderSelectEdit
+Questo render incapsula il captca con il suo relativo reload. Esiste solo in modalità edit
 
-#### template
-```html
 
-```
-
-#### marcatori
-
-### RenderSelectSearch
+### RenderCaptchaEdit
 
 #### template
 ```html
+<div class="row">
+    <div class="col-sm-4" data-captcha_img  >
 
+    </div>
+    <div class="col-sm-4">
+            <input data-render_control="" class="form-control" type="text" name="" value="">
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-sm btn-default" type="button" data-button_reload>Reload</button>
+    </div>
+</div>
 ```
 
 #### marcatori
-
-
-### RenderSelectView
-
-#### template
-```html
-
-```
-
-#### marcatori
-
-
+- captcha_img_selector : '[data-captcha_img]'
 
 
 ---
 
 
+## RenderCustom
+  
+Oggetto per chi vuole poter modificare l'html da renderizzare. Qui si può inserire 
+tutto quello che si vuole utilizzando che chiamate render e finalize. Le tre classi sono
+uguali.
+
+### RenderCustomEdit
+
+#### template
+```html
+<div data-render_element data-render_control></div>
+```
+
+#### marcatori
+
+- data-render_element
+- data-render_control
+
+
 ---
 
 
 
+## RenderDecimal
 
-#RenderAutocomplete
+Oggetto per la gestione dei decimali con parte intera e decimale gestiti separatamente.
+
+### RenderDecimalEdit
+
+#### template
+```html
+<div class="input-group" data-render_element>
+    <span class="input-group-addon hide symbol_left" data-render_symbol></span>
+    <input class="form-control text-right" type="text" data-render_control_int>
+    <span class="input-group-addon">,</span>
+    <input class="form-control text-right" type="text" data-render_control_dec>
+    <input type="hidden" data-render_control="">
+    <span class="input-group-addon hide symbol_right" data-render_symbol></span>
+</div>
+```
+
+#### marcatori
+
+### RenderDecimalSearch
+
+#### template
+```html
+<div class="input-group" data-render_element>
+    <span class="input-group-addon hide symbol_left" data-render_symbol></span>
+    <input class="form-control text-right" type="text" data-render_control_int>
+    <span class="input-group-addon">,</span>
+    <input class="form-control text-right" type="text" data-render_control_dec>
+    <input type="hidden" data-render_control="">
+    <span class="input-group-addon hide symbol_right" data-render_symbol></span>
+    <input data-control_operator type="hidden" >
+</div>
+```
+
+#### marcatori
+
+
+### RenderDecimalView
+
+#### template
+```html
+<div data-render_element class="text-right">
+    <span class="hide symbol_left" data-render_symbol></span>
+    <span class="text-right" data-render_control_int></span>
+    <span class="hide symbol_right text-left" data-render_symbol></span>
+</div>
+```
+
+#### marcatori
+
+
+---
+
+
+## RenderAutocomplete
 
 Questo render è stato pensato per il popolamento di una chiave con riferimento ad una tabella
 esterna permettendo la ricerca e inserendo la chiave_id  selezionata nel input nascosto.
 Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
 
 
-## - RenderAutocompleteEdit
-il suo template di default:
+### RenderAutocompleteEdit
+
+
+#### template
 ```html
 <div class="input-group">
     <span style="height:19px" class="input-group-addon" id="basic-addon1" data-render_autocomplete_view data-lang="autocomplete-nonselezionato"></span>
@@ -408,7 +474,7 @@ il suo template di default:
 ```
 
 
-####Proprietà
+#### Proprietà
 - `routeName` : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server
 - `autocomplete_view_selector` : '[data-render_autocomplete_view]' - marcatore dove verrà visualizzato
 le info della entry scelta
@@ -438,7 +504,7 @@ typeahead bootstrap.
 ```
 
 
-####Metodi
+#### Metodi
 
 - `_getLabelValue()` : 
      * ritorna il nome dell'inputview, tiene conto del fatto che si potrebbe trovare in un hasmany
@@ -461,19 +527,19 @@ typeahead bootstrap.
 
 
 
-#RenderBelongsto
+## RenderBelongsto
 
 Questo render è solo per la visualizzazione di dati più complessi che non sono formati da un solo
 valore, in genere viene utilizzato per la rappresentazione di campi di una tabella
 esterna rispetto a campo corrente, istanza
 
-## - RenderBelongstoView
+### RenderBelongstoView
 
-marcatori
+#### marcatori
 - data-render_element
 
 
-template generale
+#### template
 ```html
     <div data-render_element></div>
 ```
@@ -494,7 +560,7 @@ clienti con questi dati
 </div>
 ```
 
-####Proprietà
+#### Proprietà
 - separator : null,
 - fields: [],
 - nullLabel : '',
@@ -507,28 +573,17 @@ clienti con questi dati
 
 });
 
-##RenderBelongstoView
+---
 
-- template() : function () {
-        return `<div data-render_element></div>`
-    },
-
--itemTemplate : function () {
-        return false;
-    }
-
-
-
-#RenderDateSelect
+## RenderDateSelect
 
 
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza le selectbox html per l'inserimento di una data.
 E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 viste.
 
-## - DateSelectCommon
 
-####Proprietà
+#### Proprietà
 
 - year_selector    : '[data-render_year]',
 - month_selector    : '[data-render_month]',
@@ -547,7 +602,7 @@ E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 v
         endYear : (new Date().getFullYear()) +3,
     },
 
-####Metodi
+#### Metodi
 
 - _setDateControls : function () - 
 - _changeDate : function () - 
@@ -558,11 +613,11 @@ E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 v
 - getFormat : function () 
 
 
-## - RenderDateSelectEdit
+### RenderDateSelectEdit
 
 Estende DateSelectCommon e si preoccupa della gestione della data in modalità edit.
 
-####marcatori:
+#### marcatori:
 
 - `data-render_element` : container di tutto il render
 - `data-render_control` : input per la form che conterrà il valore da spedire
@@ -573,7 +628,7 @@ Estende DateSelectCommon e si preoccupa della gestione della data in modalità e
 - `data-render_year_container`
 - `data-render_year` : select associata all'anno
 
-####template
+#### template
 ```html
 <div data-render_element  class="input-group">
     <input data-render_control="" type="hidden" />
@@ -595,12 +650,12 @@ Estende DateSelectCommon e si preoccupa della gestione della data in modalità e
 </div>
 ```
 
-## - RenderDateSelectSearch
+### RenderDateSelectSearch
 
 Estende `RenderDateSelectEdit` ridefinendo al render dove aggiunge il controllo per l'operatore di ricerca
 e cambia i nomi per la convenzione con view search
 
-## - RenderDateSelectView
+### RenderDateSelectView
 
 Estende `DateSelectCommon`  
 
@@ -613,13 +668,13 @@ template
 <span data-render_element></span>
 ```
 
-####Metodi
+#### Metodi
 
 - getValue
 - setValue
 
 
-#RenderDatePicker
+## RenderDatePicker
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza il picker bootstrap per l'inserimento di una data.
 
@@ -639,9 +694,9 @@ resources : {
 }
 ```
 
-## - RenderDatePickerEdit
+### RenderDatePickerEdit
 
-####template
+#### template
 ```html
 <div data-render_element>
     <input data-render_control="" type="hidden" />
@@ -651,21 +706,21 @@ resources : {
     </div>
 </div>
 ```
-## - RenderDatePickerView
+### RenderDatePickerView
 
-####template
+#### template
 
 ```html
 <span data-render_element></span>
 ```
 
-#RenderDateFormatted
+## RenderDateFormatted
 Questo render è per l'inserimento o la visualizzazione di una data. Questo oggetto 
 utilizza il picker nativo del broswer associato al type=date, se supportato.
 
-## - RenderDateFormattedEdit
+### RenderDateFormattedEdit
 
-####template
+#### template
 ```html
 <div class="clearfix" data-render_element>
     <input data-render_control="" type="hidden" />
@@ -680,13 +735,13 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 
 
-#RenderBetweenDate
+## RenderBetweenDate
 
 Questo render serve per la gestione di un range di date.
 
-## -  RenderBetweenDateEdit
+### RenderBetweenDateEdit
 
-####template
+#### template
 
 ```html
 <div>
@@ -702,71 +757,922 @@ Questo render serve per la gestione di un range di date.
 ```
 
 
-#RenderCaptcha
+---
 
-Questo render incapsula il captca con il suo relativo reload
 
-marcatori
 
-- captcha_img_selector : '[data-captcha_img]'
 
-- template() 
+## RenderHasmany
+
+Oggetto per la gestione delle relazioni esterne. Permette l'inserimento e visualizzazione
+di relazioni esterne in un'unica form. Questo render definisce due template quello dell'hasmany
+che e' formato di tanti itemTemplate.
+
+
+### RenderHasmanyEdit
+
+
+#### template
 ```html
-<div class="row">
-    <div class="col-sm-4" data-captcha_img  >
-
-    </div>
-    <div class="col-sm-4">
-            <input data-render_control="" class="form-control" type="text" name="" value="">
-    </div>
-    <div class="col-sm-4">
-        <button class="btn btn-sm btn-default" type="button" data-button_reload>Reload</button>
+<div class="" data-render_element >
+    <div class="col col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading" data-hasmany_title></div>
+            <div class="panel-body">
+                <p data-hasmany_title_msg></p>
+                <ul class="list-unstyled sort_class hasmany-list" data-render_list >
+                    <!--  -- contenitore hasmany -- -->
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <div >
+                    <div data-render_limit class="hide">
+                        <!-- Limite massimo raggiunto -->
+                    </div>
+                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
+                        <span data-label="app.add"></span>&nbsp;
+                        <span data-label="modelMetadata.singular"></span>&nbsp;
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 ```
 
+#### itemTemplate
+```html
+<li class="col col-lg-6 col-md-6 col-sm-12 col-xs-12" data-hasmany_item_structure>
+    <div class="clearfix" >
+        <div class="clearfix" >
+            <span class="pull-left button-move">
+                <i class="fa fa-arrows"></i>        
+            </span>
+            <span class="pull-right btn btn-xs btn-danger" data-button_delete>
+                <i class="fa fa-close"></i>        
+            </span>
+        </div>
+        <div class="col col-sm-12" data-hasmany_item> 
+        </div>
 
-#RenderCustom
-
-Oggetto per chi vuole poter modificare l'html da renderizzare. Qui si può inserire
-tutto quello che si vuole utilizzando che chiamate render e finalize.
-
-#RenderDecimal
-
-Oggetto per la gestione dei decimali con parte intera e decimale gestiti separatamente.
+    </div>
+    <hr />
+</li>
+```
 
 
-#RenderHasmany
-Oggetto per la gestione delle relazioni esterne. Permette l'inserimento e visualizzazione
-di relazioni esterne in un'unica form.
+#### marcatori
 
-#RenderHasmanyThrough
+
+#### proprietà
+
+- resources : ['jquery-sortable.js']
+- _views : [],
+- jsonData : null,
+- limit : null,
+- limitMessage : null
+- separator : null,
+- fields : [],
+- metadata : 
+```javascript
+{
+    modelRelativeName : null,
+    relationName : null,
+}
+```
+
+    
+    
+#### metodi
+
+- renderNewItem(values),
+- deleteHasManyItem(viewIndex) 
+- getJsonData(callback) 
+- _bindDeleteEvents()
+- _checkLimit()
+       
+
+
+### RenderHasmanyView
+
+#### template
+```html
+<div data-render_element>
+    <div class="list-unstyled" data-render_list >
+        <ul class="list-unstyled" data-field="items" data-self>
+            <!--  -- contenitore lista hasmany -- -->
+        </ul>
+    </div>
+</div>
+```
+#### itemTemplate 
+```html
+<li>
+    <span data-field="label" ></span>
+</li>
+```
+
+#### marcatori
+
+
+
+---
+
+
+
+
+## RenderHasmanyThrough
 
 Oggetto per la gestione degli hasmany trought...
 
-#RenderHasmanyUpload
+#### proprietà
+- selected : [],
+- modelName : "none",
+- last_searched_result : null,  // json risultato dell'ultima ricerca
+- hasmany_container : '[data-hasmany_container]',
+- selected_container : '[data-selected_container]',
+- title_selector : '[data-render_title]',
+- removeActionOptions : null, // eventuali classi per il bottone
+- morph : null,
+- //label_field : null,
+- labelFields : ['label'],  // campi che verranno visualizzati per gli elementi presenti
+- hiddenFields : ['id','status'],
+- labelFieldsConfig : {}, // configurazioni speciali per i label fields default sono text
 
-Oggetto per la gestione di hasmany che prevedo un upload di una immagini o allegati
-come pdf,csv,ecc.
+- addNew : false,
+
+- searchField : null,
+- searchDescription : null,
+- searchMethod : null,
+
+- itemAddTemplate : null,
+- itemViewTemplate : null,
+- listItemsTemplate : null,
+
+- metadata : {
+    autocompleteModel : null,
+  },
+
+#### metodi
+- _populateItem : function(values,container) {
+- _populate : function (filter) {
+
+
+### RenderHasmanyThroughEdit
+
+#### proprietà
+- resources : [ 'jquery-sortable.js']
+- _views : [],
+
+#### metodi
+
+- itemExist : function (values) {
+- addItem : function (values) {
+- deleteItem : function (vkey) {
+
+#### template
+```html
+<div class="" data-render_element >
+    <div class="col col-sm-12" >
+        <div class="panel panel-info">
+           <div class="panel-heading" data-render_title>
+
+           </div>
+           <div class="panel-body padding-3">
+
+               <div class="col col-md-4 col-sm-12 padding-6 panel panel-default panel-body" >
+                   <h5>Elementi selezionati</h5>
+                   <ul class="list-unstyled sort_class " data-selected_container>
+                   </ul>
+
+               </div>
+                  <div class="col col-md-8 col-sm-12 padding-15" data-template="searched">
+
+                      
+
+                  </div>
+           </div>
+        </div>
+    </div>
+</div>
+```
+
+#### itemTemplate
+template utilizzato per la visualizzazione degli elementi ricercati
+```html
+<li data-item class="col col-md-6 col-sm-12 col-xs-12">
+   <div class="fullwidth">
+    <span style="pointer:hand" class="btn btn-xs btn-primary" data-add data-id data-label data-morph_type data-morph_id data-attrs="{'data-id':id,'data-label':label,'data-morph_type':morph_type,'data-morph_id':morph_id}">
+        <i class="fa fa-plus"></i>
+    </span>
+   <span data-field='label'></span>
+   </div>
+</li>
+```
+
+#### searchedTemplate
+template utilizzato per la sezione di ricerca del render
+```html
+<div class="input-group margin-bottom-10">
+    <span class="input-group-addon " style="cursor:pointer">
+        <i class="fa fa-search"></i>
+        <!--
+        <button class="btn btn-default btn-sm" type=button data-lang="general-search">Go</button>-->
+    </span>
+    <input class="form-control "  data-search type="text" value="" data-placeholder="Inserire parole da ricercare">
+    <span data-button_add class="input-group-addon ">
+        <i  class="fa fa-plus"></i>
+    </span>
+</div>
+
+<div class= style="position:relative; overflow:hidden;">
+    <ul class="list-unstyled list-hover list-inline" data-hasmany_container data-slimscroll-visible="false" style="overflow: auto; width: auto; min-height: 60px;">
+    
+    </ul>
+</div>
+```
+
+#### viewTemplate
+template utilizzato per visualizzare la view interna
+```html
+<div>
+    <div data-view_action></div>
+    <div data-hidden_fields></div>
+    <div class="clearfix" >
+        <div class="" data-view_elements></div>
+       
+    </div>
+</div>
+```
+
+#### addedItemTemplate
+template utilizzato per creare l'elemnto lista dove verrà visualizzata la view interna
+```html
+<li class="padding-bottom-6 border-bottom-1" data-hasmany_through_item>
+               
+</li>
+```
+
+#### marcatori
+
+- data-hasmany_through_item
+
+### RenderHasmanyThroughSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderHasmanyThroughView
+
+#### template
+```html
+<div data-render_element>
+    <ul class="list-unstyled" data-render_list data-field="items" data-self>
+        <!--  -- contenitore lista hasmany data dal template  default_hasmany_view_items_tpl-- -->
+    </ul>
+</div>
+```
+
+#### itemTemplate
+```html
+<li >
+    <span data-field="label"></span>
+</li>
+```
+
+#### marcatori
+
+
+
+---
 
 
 
 
+## RenderHasmanyUploadImage
 
-#RenderMap
+Oggetto per la gestione di hasmany che prevedono un upload di una o più immagini 
+
+####proprietà
+
+- uploadConfView : 'ConfEdit',            // configurazione di default della upload view
+- limit : null,
+- modelName : null,
+- uploadModelName : null,
+- routeName : 'uploadfile',
+- vkey : null,
+- labelField : 'filename',
+- uploadFields : ['ext','random','id','status','original_name','filename','mimetype','modelName','type'],
+- fields : ['nome','descrizione'],
+- fields_config : {
+- nome : { type : 'input'},
+- descrizione : {type : 'textarea'},
+- },
+- mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
+- icon_selector : "[data-icon_img]",
+
+
+#### metodi
+- _showItemUploadedPreview : function (container,values) {
+- _bindActions : function () {    aggancia gli eventi sui pulsanti degli upload
+-  _checkLimit : function () {/**
+       * controlla se e' stato raggiunto il limite degli upload inseribili. In quel caso
+       * nasconde il bottone aggiungi
+       */
+- renderNewItem : function (values) {
+- deleteItem : function (index) {
+-  /**
+       * azione ok della popup che richiede l'upload dell'oggetto
+       */
+      ok : function(dialog) {
+- /**
+       * azione cancel della popup
+       */
+      cancel : function () {
+- _setUploadFieldsType : function () {
+- _setFieldsType : function () {
+- /**
+       * metodo chiamato dopo che il file e' stato uploadato
+       * @param data: dati in json ritornati dal backend
+       */
+      afterUpload : function (data) {
+      },ù
+
+     
+
+### RenderHasmanyUploadImageEdit
+
+#### proprietà
+
+-  traits : ['TraitUpload'],
+- resources : ['jquery.form.js','jquery-sortable.js'],
+
+#### metodi
+
+- /**
+       * crea l'item html da aggiungere alla form principale della view
+       **/
+      _createItem : function (values,status) {
+- 
+
+
+#### dialogContentTemplate
+```html
+    <div id="loader_foto"></div>
+    <form enctype="multipart/form-data" method="POST"
+        action="" encoding="multipart/form-data"
+        name="formupload">
+        <div data-custom_html>
+
+        </div>
+        <table class="table">
+            <tr>
+                <td>
+                    <div >
+                        <span data-label="app.accepted-extensions"></span>:</div>
+                        <div data-label="app.extensions-foto"></div>
+                        <div >Max <span data-label="app.upload-max-filesize" ></span> 
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <input class="btn btn-default" type="file" name="file">
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <div data-preview data-field="data"></div>
+                    </div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+        <div data-view_container>
+    
+        </div>
+    </form>
+```
+
+#### template
+
+```html
+<div class="" data-render_element >
+   <div class="col col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading" data-upload_title data-label="modelMetadata.singular">
+                <br/>
+                <span><small data-foto-msg></small></span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group sort_class list-inline" data-render_list >
+                <!--  -- contenitore lista fotos -- -->
+                </ul>
+                <div>
+                    <div data-render_limit data-lang="general-max_limit_reached"></div>
+                    
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div>
+                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
+                        <span data-label="app.add"></span> <span data-label="model.foto"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+```
+
+
+#### itemTemplate
+
+```html
+<li class="list-unstyled" data-upload_item>
+    <div class="col col-sm-12 thumbnail">
+        <div data-model_fields></div>
+        <div class="clearfix">
+            <small class="pull-left" data-field="label" data-trim="12" data-attrs="{title:label}"></small>
+            <button class="btn-danger btn-xs pull-right" type="button" data-button_delete data-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
+
+        </div>
+        <div data-preview data-field="data"></div>
+    </div>
+</li>
+```
+
+#### previewItemTemplate
+
+```html
+<img data-icon class="button-move" src="" data-attrs="{src:(typeof urls !== 'undefined')?Server.getUrl(urls+'small'):Server.getUrl('/imagecache/small/'+filename)}">
+```
+
+
+
+#### marcatori
+
+
+
+### RenderHasmanyUploadImageView
+
+#### template
+```html
+<div data-render_element>
+    <ul class="list-unstyled" data-render_list >
+        <!--  -- contenitore lista fotos -- -->
+    </ul>
+</div>
+```
+
+#### itemTemplate
+```html
+<li>
+    <img class="img-circle img-list" src="" data-attrs="{src:Server.getUrl(urls+'icon')}" />
+</li>
+```
+
+
+#### marcatori
+
+
+---
+
+
+
+
+## RenderHasmanyUploadAttachment
+
+Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,csv,ecc.
+
+
+#### proprietà
+
+uploadConfView : 'ConfEdit',            // configurazione di default della upload view
+    //langs : ['it'],
+    limit : null,
+    modelName : null,
+    uploadModelName : null,
+    routeName : 'uploadfile',
+    iconSize : 'default',
+    icons : {
+        default : {
+            "default"   : 'fa fa-2x fa-file-o',
+            "xls"       : 'fa fa-2x fa-file-excel-o',
+            "zip"       : 'fa fa-2x fa-file-archive-o',
+            "mp3"       : 'fa fa-2x fa-audio-o',
+            "jpg"       : "fa fa-2x fa-image-o",
+            "pdf"       : "fa fa-2x fa-file-pdf-o",
+            "txt"       : "fa fa-2x fa-file-text-o",
+        },
+        big : {
+            "default"   : 'fa fa-3x fa-file-o',
+            "xls"       : 'fa fa-3x fa-file-excel-o',
+            "zip"       : 'fa fa-3x fa-file-archive-o',
+            "mp3"       : 'fa fa-3x fa-audio-o',
+            "jpg"       : "fa fa-3x fa-image-o",
+            "pdf"       : "fa fa-3x fa-file-pdf-o",
+            "txt"       : "fa fa-3x fa-file-text-o",
+        },
+        small : {
+            "default"   : 'fa fa-file-o',
+            "xls"       : 'fa fa-file-excel-o',
+            "zip"       : 'fa fa-file-archive-o',
+            "mp3"       : 'fa fa-audio-o',
+            "jpg"       : "fa fa-image-o",
+            "pdf"       : "fa fa-file-pdf-o",
+            "txt"       : "fa fa-file-text-o",
+        }
+    },
+    vkey : null,
+    labelField : 'filename',
+    uploadFields : ['ext','random','id','status','original_name','filename','mimetype','modelName','type'],
+    fields : ['nome','descrizione'],
+    fields_config : {
+        nome : { type : 'input'},
+        descrizione : {type : 'textarea'},
+    },
+    mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
+    icon_selector : "[data-icon]",
+
+#### metodi
+
+- _showItemUploadedPreview : function (container,values) {
+- _bindActions : function () {
+- _checkLimit : function () {
+- renderNewItem : function (values) {
+- deleteItem : function (index) {
+- ok : function(dialog) {
+- cancel : function () {
+- _setUploadFieldsType : function () {
+- _setFieldsType : function () {
+- afterUpload : function (data) {
+
+### RenderHasmanyUploadAttachmentEdit
+
+#### proprietà
+
+- traits : ['TraitUpload'],
+      resources : ['jquery.form.js','jquery-sortable.js'],
+      
+#### metodi
+
+- _createItem : function (values,status) {
+- 
+
+
+#### template
+```html
+<div class="" data-render_element >
+   <div class="col col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading" data-upload_title>
+                <br/>
+                <span><small data-foto-msg></small></span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group sort_class list-inline" data-render_list >
+                <!--  -- contenitore lista fotos -- -->
+                </ul>
+                <div>
+                    <div data-render_limit data-lang="general-max_limit_reached"></div>
+                    
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div>
+                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
+                        <span data-label="app.add"></span> <span data-label="model.attachment"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+```
+
+
+####  previewItemTemplate
+
+```html
+<span class="button-move">
+    <i data-icon></i>
+</span>
+```
+
+
+#### itemTemplate
+
+```html
+<li class="list-unstyled" data-upload_item>
+    <div class="col col-sm-12 thumbnail">
+        <div data-model_fields></div>
+        <div class="clearfix">
+            <small class="pull-left" data-field="label" data-trim="12" data-attrs="{title:label}"></small>
+            <button class="btn-danger btn-xs pull-right" type="button" data-button_delete data-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
+
+        </div>
+        <div data-preview data-field="data"></div>
+    </div>
+</li>
+```
+
+
+#### dialogContentTemplate
+
+```html
+    <div id="loader_foto"></div>
+    <form enctype="multipart/form-data" method="POST"
+        action="" encoding="multipart/form-data"
+        name="formupload">
+        <div data-custom_html>
+
+        </div>
+        <table class="table">
+            <tr>
+                <td>
+                    <div >
+                        <span data-label="app.accepted-extensions"></span>:</div>
+                        <div data-label="app.extensions-attachment"></div>
+                        <div >Max <span data-label="app.upload-max-filesize" ></span> 
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <input class="btn btn-default" type="file" name="file">
+                    </div>
+                </td>
+                <td>
+                    <div >
+                        <div data-preview data-field="data"></div>
+                    </div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+        <div data-view_container>
+    
+        </div>
+    </form>
+```
+
+#### marcatori
+
+
+### RenderHasmanyUploadAttachmentView
+
+#### template
+```html
+<div data-render_element>
+    <ul class="list-unstyled" data-render_list >
+        <!--  -- contenitore lista fotos -- -->
+    </ul>
+</div>
+```
+
+#### itemTemplate
+```html
+<li>
+    <a class="small" target="_blank" href="#"
+            data-href="'/downloadfile/'+id" data-totranslate="true" data-attrs="{'title':full_filename}" data-append="true">
+                <i data-class="icon" />
+    </a>
+</li>
+```
+
+
+#### marcatori
+
+
+
+---
+
+
+
+
+## RenderMap
+
 Oggetto per la visualizzazione e la selezione di coordinate gps basato su googlemaps
 
-#RenderMultiUpload
+
+### RenderMapEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderMapSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderMapView
+
+#### template
+```html
+
+```
+
+#### marcatori
 
 
 
-#RenderSwap
+
+---
 
 
 
 
-#RenderTexthtml
+## RenderSwap
 
-#RenderTime
+### RenderSwapEdit
 
-#RenderUpload
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderSwapSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderSwapView
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+---
+
+
+
+
+## RenderTexthtml
+
+### RenderTexthtmlEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderTexthtmlSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderTexthtmlView
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+
+---
+
+
+
+
+## RenderTime
+
+### RenderTimeEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderTimeSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderTimeView
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+
+---
+
+
+
+
+## RenderUploadImage
+
+### RenderUploadImageEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderUploadImageSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderUploadImageView
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+
+---
+
+
+
+
+## RenderUploadAttachment
+
+### RenderUploadAttachmentEdit
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+### RenderUploadAttachmentSearch
+
+#### template
+```html
+
+```
+
+#### marcatori
+
+
+### RenderUploadAttachmentView
+
+#### template
+```html
+
+```
+
+#### marcatori
+

@@ -42,8 +42,8 @@ disegnato il componente.
 
 ###Metodi
 - `init(attributes)`: costruttore, attributes rappresenta gli attributi
-che si vogliono sostituire, è possibile passare anche ridefinire i metodi per poter ridefinire alcuni 
-comportamenti.
+che si vogliono sostituire, è possibile passare anche delle function e ridefinire i metodi della classe
+per poter ridefinire alcuni comportamenti. 
 
 - `attrs(attrs)` : permettere di ridefinire proprietà o metodi dell'oggetto
 
