@@ -84,6 +84,8 @@ Componente per la gestione degli input standard html.
 
 ### RenderInputEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <input data-render_control type="text" class="form-control" data-placeholder="">
@@ -93,24 +95,29 @@ Componente per la gestione degli input standard html.
     - `data-render_control`: necessario, indica il controllo che riceverà il dato
     - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
-
-### RenderInputView
-In modalità view, può essere solo uno span. Potevo anche non definirlo, perche' non ha senso un Input in modalità view, 
-Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
-readonly. A voi la scelta.
-
-template
-```html
-<span data-render_control></span>
-```
-
 ### RenderInputSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
 
 template
 ```html
 <input data-render_control type="text" class="form-control" placeholder="">
 <input data-control_operator type="hidden" >
 ```
+
+### RenderInputView
+
+In modalità view, può essere solo uno span. Potevo anche non definirlo, perche' non ha senso un Input in modalità view, 
+Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
+readonly. A voi la scelta.
+<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
+
+template
+```html
+<span data-render_control></span>
+```
+
+
 
 ---
 
@@ -119,7 +126,7 @@ template
 Render text è nato per rappresentare la visualizzazione di un testo. La stessa classe è stata ridefinita
 per tutti i 3 modi.
 
-
+<a href="http://www.pierpaolociullo.it/example?f=render_text" target="_blank">Esempio</a>
 #### template
 
 ```html
@@ -132,6 +139,8 @@ per tutti i 3 modi.
 
 ### RenderTextareaEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_textarea_edit" target="_blank">Esempio</a>
+
 #### template
 
 ```html
@@ -139,12 +148,15 @@ per tutti i 3 modi.
 ```
 
 ### RenderTextareaSearch
+<a href="http://www.pierpaolociullo.it/example?f=render_textarea_search" target="_blank">Esempio</a>
 
 ```html
 <textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
             <input data-control_operator type="hidden" >
 ```
 ### RenderTextareaView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_textarea_view" target="_blank">Esempio</a>
 
 ```html
 <span data-render_control></span>
@@ -156,7 +168,10 @@ per tutti i 3 modi.
 
 Oggetto per la selezione di un valore utilizzando le select
 
+
 ### RenderSelectEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -166,6 +181,8 @@ Oggetto per la selezione di un valore utilizzando le select
 #### marcatori
 
 ### RenderSelectSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -178,6 +195,8 @@ Oggetto per la selezione di un valore utilizzando le select
 
 
 ### RenderSelectView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -210,6 +229,9 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
     
 ### RenderInputHelpedEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_input_helped_edit" target="_blank">Esempio</a>
+
+
 #### template
 ```html
 <div data-render_element>
@@ -225,6 +247,9 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
 #### marcatori
 
 ### RenderInputHelpedSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_input_helped_search" target="_blank">Esempio</a>
+
 
 #### template
 ```html
@@ -251,6 +276,9 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderImageView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_image_view" target="_blank">Esempio</a>
+
+
 #### template
 ```html
 <img data-render_control>
@@ -266,6 +294,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderRadioEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_radio_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <label data-render_element class="radio-inline">
@@ -277,6 +307,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 #### marcatori
 
 ### RenderRadioSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_radio_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -290,6 +322,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 
 ### RenderRadioView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_radio_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -309,6 +343,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderCheckboxEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <label data-render_element class="checkbox-inline">
@@ -320,6 +356,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 #### marcatori
 
 ### RenderCheckboxSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -333,6 +371,9 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 
 ### RenderCheckboxView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_view" target="_blank">Esempio</a>
+
 
 #### template
 ```html
@@ -351,6 +392,8 @@ Questo render incapsula il captca con il suo relativo reload. Esiste solo in mod
 
 
 ### RenderCaptchaEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_captcha_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -382,6 +425,8 @@ uguali.
 
 ### RenderCustomEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_custom_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <div data-render_element data-render_control></div>
@@ -403,6 +448,8 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 ### RenderDecimalEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_decimal_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <div class="input-group" data-render_element>
@@ -418,6 +465,8 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 #### marcatori
 
 ### RenderDecimalSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_decimal_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -436,6 +485,8 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 
 ### RenderDecimalView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_decimal_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -461,6 +512,7 @@ Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
 
 ### RenderAutocompleteEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_autocomplete_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -534,6 +586,8 @@ valore, in genere viene utilizzato per la rappresentazione di campi di una tabel
 esterna rispetto a campo corrente, istanza
 
 ### RenderBelongstoView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_belongsto_view" target="_blank">Esempio</a>
 
 #### marcatori
 - data-render_element
@@ -617,6 +671,9 @@ E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 v
 
 Estende DateSelectCommon e si preoccupa della gestione della data in modalità edit.
 
+<a href="http://www.pierpaolociullo.it/example?f=render_date_select_edit" target="_blank">Esempio</a>
+
+
 #### marcatori:
 
 - `data-render_element` : container di tutto il render
@@ -655,9 +712,13 @@ Estende DateSelectCommon e si preoccupa della gestione della data in modalità e
 Estende `RenderDateSelectEdit` ridefinendo al render dove aggiunge il controllo per l'operatore di ricerca
 e cambia i nomi per la convenzione con view search
 
+<a href="http://www.pierpaolociullo.it/example?f=render_date_select_search" target="_blank">Esempio</a>
+
 ### RenderDateSelectView
 
 Estende `DateSelectCommon`  
+
+<a href="http://www.pierpaolociullo.it/example?f=render_date_select_view" target="_blank">Esempio</a>
 
 marcatori
 
@@ -696,6 +757,8 @@ resources : {
 
 ### RenderDatePickerEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_edit" target="_blank">Esempio</a>
+
 #### template
 ```html
 <div data-render_element>
@@ -706,6 +769,25 @@ resources : {
     </div>
 </div>
 ```
+
+
+### RenderDatePickerSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_search" target="_blank">Esempio</a>
+
+#### template
+```html
+<div data-render_element>
+    <input data-render_control="" type="hidden" />
+    <input data-control_operator type="hidden" >
+    <div class="input-group">
+        <input data-render_picker class="form-control text-right" autocomplete="off" />
+        <a data-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
+    </div>
+</div>
+```
+
+
 ### RenderDatePickerView
 
 #### template
@@ -719,6 +801,8 @@ Questo render è per l'inserimento o la visualizzazione di una data. Questo ogge
 utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 ### RenderDateFormattedEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -740,6 +824,8 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -771,6 +857,7 @@ che e' formato di tanti itemTemplate.
 
 ### RenderHasmanyEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -855,6 +942,8 @@ che e' formato di tanti itemTemplate.
 
 ### RenderHasmanyView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_view" target="_blank">Esempio</a>
+
 #### template
 ```html
 <div data-render_element>
@@ -919,6 +1008,9 @@ Oggetto per la gestione degli hasmany trought...
 
 
 ### RenderHasmanyThroughEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_through_edit" target="_blank">Esempio</a>
+
 
 #### proprietà
 - resources : [ 'jquery-sortable.js']
@@ -1017,17 +1109,11 @@ template utilizzato per creare l'elemnto lista dove verrà visualizzata la view 
 
 - data-hasmany_through_item
 
-### RenderHasmanyThroughSearch
-
-#### template
-```html
-
-```
-
-#### marcatori
-
 
 ### RenderHasmanyThroughView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_through_view" target="_blank">Esempio</a>
+
 
 #### template
 ```html
@@ -1106,6 +1192,9 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
      
 
 ### RenderHasmanyUploadImageEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_image_edit" target="_blank">Esempio</a>
+
 
 #### proprietà
 
@@ -1222,6 +1311,9 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 
 ### RenderHasmanyUploadImageView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_image_view" target="_blank">Esempio</a>
+
+
 #### template
 ```html
 <div data-render_element>
@@ -1315,6 +1407,9 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
 - afterUpload : function (data) {
 
 ### RenderHasmanyUploadAttachmentEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attachment_edit" target="_blank">Esempio</a>
+
 
 #### proprietà
 
@@ -1429,6 +1524,9 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
 
 ### RenderHasmanyUploadAttachmentView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attahcment_view" target="_blank">Esempio</a>
+
+
 #### template
 ```html
 <div data-render_element>
@@ -1462,21 +1560,148 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
 
 Oggetto per la visualizzazione e la selezione di coordinate gps basato su googlemaps
 
+#### proprietà
+
+- _lat : 0,
+      _lng : 0,
+      _hasDbValues : false,
+      address : null,
+      lat_input_selector : '[data-lat_field]',
+      lng_input_selector : '[data-lng_field]',
+      lat_field_name : 'lat',
+      lng_field_name : 'lng',
+      //dialogId : '#map_dialog',
+  
+  
+      idViewMap : null,
+  
+      metadata : {
+          apiKey : null,
+          raggioArea : 5000,
+          showArea : false,
+      },
+
+#### metodi
+
+- getIndirizzo : function () {
+- _showDialog : function () {
+- activateMap : function(dialog,callback,options) {
+- 
+
+
 
 ### RenderMapEdit
 
+<a href="http://www.pierpaolociullo.it/example?f=render_map_edit" target="_blank">Esempio</a>
+
+
+#### metodi
+
+- ok : function() {
+- setValue : function(lat,lng)
+- 
+
+
+
 #### template
 ```html
+<div data-control_container>
+    <button class="btn btn-default" type="button" data-button_map data-label="app.modifymap"></button>
+    <div class="clearfix">
+       
+        <span class="pull-left" >
+            <span data-label="app.gpslat"></span>: <input  class="form-control" data-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="pull-left">
+            <span data-label="app.gpslng"></span>: <input class="form-control" class="badge" data-lng_field></input>
+        </span>
+    </div>
+   
+</div>
+```
 
+#### dialogContentTemplate 
+
+```html
+<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Seleziona coordinate</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Indirizzo:</span>
+                                <input type="text" class="form-control" name="indirizzo" aria-describedby="basic-addon1">
+                                <span class="input-group-addon" id="basic-addon2"><a data-lnk_address href="javascript:void(0)"  ><i class="fa fa-search"></i> Cerca indirizzo</a></span>
+        
+                            </div>
+                        </div>
+                        <div class="col col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Lat:</span>
+                                <input type="text" class="form-control" name="lat" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                        <div class="col col-xs-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Lng:</span>
+                                <input type="text" class="form-control" name="lng" aria-describedby="basic-addon1">
+        
+        
+                            </div>
+                        </div>
+        
+                        <!-- <span>Lat:</span> <input  type="text" name="lat"> , <span>Lng:</span> <input type="text" name="lng">  -->
+        
+        
+                    </div>
+                    <div data-area_container class="row hide">
+                        <div class="col col-xs-12" >
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Cerchio di raggio in metri?</span>
+                                <input class="form-control" data-input_raggio type="text" value="1000">
+                            </div>
+                        </div>
+        
+        
+                        <!-- <span>Lat:</span> <input  type="text" name="lat"> , <span>Lng:</span> <input type="text" name="lng">  -->
+                    </div>
+                    <div id="gmap" style="width:100%;height:400px"></div>
+                </div>
+                <div class="modal-footer">
+                    <button data-button="cancel" type="button" class="btn btn-primary"
+                            data-dismiss="modal">Annulla</button>
+                    <button data-button="ok" type="button" class="btn btn-primary"
+                            data-dismiss="modal">Ok</button>
+
+                </div>
+           </div>
 ```
 
 #### marcatori
 
 ### RenderMapSearch
 
+<a href="http://www.pierpaolociullo.it/example?f=render_map_search" target="_blank">Esempio</a>
+
 #### template
 ```html
-
+<div data-control_container>
+    <button class="btn btn-default" type="button" data-button_map data-label="app.modifymap"></button>
+    <div class="clearfix">
+        <input type="hidden" name="" data-control_operator>
+        <span class="pull-left" >
+            <span data-label="app.gpslat"></span>: <input  class="form-control" data-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span class="pull-left">
+            <span data-label="app.gpslng"></span>: <input class="form-control" class="badge" data-lng_field></input>
+        </span>
+    </div>
+   
+</div>
 ```
 
 #### marcatori
@@ -1484,9 +1709,11 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderMapView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_map_view" target="_blank">Esempio</a>
+
 #### template
 ```html
-
+<div data-map_container style="width:100%;height:400px"></div>
 ```
 
 #### marcatori
@@ -1501,16 +1728,27 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ## RenderSwap
 
+#### proprietà
+iconClass : {
+        0 : 'fa fa-circle text-danger',
+        1 : 'fa fa-circle text-success'
+    },
+    metadata : {
+        domainValues : {
+            0: 'disattivo',
+            1: 'attivo'
+        }
+    },
+
+#### metodi
+
+- _setHtmlData :function() {
+- _swap : function () {
+- _callback : function (json) {
+
 ### RenderSwapEdit
 
-#### template
-```html
-
-```
-
-#### marcatori
-
-### RenderSwapSearch
+<a href="http://www.pierpaolociullo.it/example?f=render_swap_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1522,9 +1760,11 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderSwapView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_swap_view" target="_blank">Esempio</a>
+
 #### template
 ```html
-
+<i data-icon data-render_control class=""></i>
 ```
 
 #### marcatori
@@ -1537,16 +1777,22 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ## RenderTexthtml
 
+rappresentazione ed editing di testo html
+
+
+
+
 ### RenderTexthtmlEdit
 
-#### template
-```html
+editor html summernote.
 
-```
+<a href="http://www.pierpaolociullo.it/example?f=render_texthtml_edit" target="_blank">Esempio</a>
 
-#### marcatori
+- height : 200,
+      pluginOptions : {},
+      _pluginObject : null,
 
-### RenderTexthtmlSearch
+
 
 #### template
 ```html
@@ -1558,42 +1804,7 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderTexthtmlView
 
-#### template
-```html
-
-```
-
-#### marcatori
-
-
-
----
-
-
-
-
-## RenderTime
-
-### RenderTimeEdit
-
-#### template
-```html
-
-```
-
-#### marcatori
-
-### RenderTimeSearch
-
-#### template
-```html
-
-```
-
-#### marcatori
-
-
-### RenderTimeView
+<a href="http://www.pierpaolociullo.it/example?f=render_texthtml_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1605,7 +1816,6 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 
 ---
-
 
 
 
@@ -1613,14 +1823,7 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderUploadImageEdit
 
-#### template
-```html
-
-```
-
-#### marcatori
-
-### RenderUploadImageSearch
+<a href="http://www.pierpaolociullo.it/example?f=render_upload_image_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1631,6 +1834,9 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 
 ### RenderUploadImageView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_upload_image_view" target="_blank">Esempio</a>
+
 
 #### template
 ```html
@@ -1650,14 +1856,8 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderUploadAttachmentEdit
 
-#### template
-```html
+<a href="http://www.pierpaolociullo.it/example?f=render_upload_attachment_edit" target="_blank">Esempio</a>
 
-```
-
-#### marcatori
-
-### RenderUploadAttachmentSearch
 
 #### template
 ```html
@@ -1668,6 +1868,9 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 
 ### RenderUploadAttachmentView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_upload_attachment_view" target="_blank">Esempio</a>
+
 
 #### template
 ```html

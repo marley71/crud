@@ -1,60 +1,59 @@
 # Confs
 
 Le Confs sono nate per creare configurazioni iniziali per le views di uso generale.
-Questo permette di avere, con pochissimo codice, la configurazione
-della view da utilizzare e modificare solo dove occorre. 
+Questo permette di avere, con pochissimo codice, la configurazione di default 
+della view e modificare solo le proprietà nella singola istanza e dove occorre. 
 
-##Conf
+## Conf
 
 La Classe Conf è la classe base che ereditano tutte le confs. Il costrutture 
 accetta un vettore associativo per la sostituizione di proprietà della configurazione che 
 andiamo ad instanziare. 
 
-###Proprietà
+### Proprietà
 - `routeName`: Indica la route da utilizzare per il caricamento dei dati della view. 
 Su routeName verrà utilizzata la convenzione del metodo statico 
-<a href="/routes#">Route.factory(routeName)</a>. 
+[Route.factory(routeName)](routes.md) 
 - `viewClass`: Indica la classe view da utilizzare. Esempio *ViewList*
 - `actions`: Vettore di azioni presenti nella view. La visualizzazione delle actions 
 sarà compito della view secondo le sue strategie di visualizzazione.
-- `extra_actions`: Vettore di azioni con la loro definizione nel caso in cui 
-nel vettore actions  siano indicate azioni custom o azioni che ridefiniscono quelle
-di default.
+- `custom_actions`: Vettore di azioni con la loro definizione nel caso in cui 
+nel vettore actions  siano indicate azioni custom o azioni che vogliamo ridefinire rispetto 
+a quelle di default.
 - `fields`: Il Vettore dei campi che deve essere gestito dalla views.
-- `detail_fields`: Il Vettore di campi che hanno anche un dettaglio. Sono campi particali
-come le aggregazioni, totale di una lista di records.
-- `pagination`: Valido solo per le liste, contiene le informazioni sulla paginazione
-dei risultati.
-- `fields_type` : Vettore della definizione del tipo di tutti i campi presenti in *fields* 
+- `pagination`: default true. Valido solo per le liste, indica se vogliamo o no il paginatore
+- `fields_confige` : Vettore della definizione del tipo di tutti i campi presenti in *fields* 
 con le loro eventuali estensioni.
-- `dependencies`: Vettore associativo di oggetti Dipendence per permettere l'interazione
-tra due campi diversi. 
-- `fields_structure` : Indica la classe struttura da utilizzare per renderizzare i
-campi. 
 
-###Metodi
 
-- `__costruct(attrs)`: attrs rappresenta il vettore associativo per la ridefinizione
+
+### Metodi
+
+- `init(attrs)`: attrs rappresenta il vettore associativo per la ridefinizione
 di alcune proprietà di confs.
+- attrs : function (attrs): metodo per settare delle proprietà, si aspetta un vettore associativo
 
-#Configurazioni implementate
+- Conf.factory(type,attrs): metodo statico per la creazione di una conf.
+    - type: tipo di configurazione da istanziare. Ulizzerà la convezione list => ConfList
+    - attrs: opzionale, attributi da ridefinire 
+
+
+## Configurazioni implementate
+
 Nella libreria ci sono già delle configurazioni di uso comune per ogni oggetto vista 
 implementato di default.
 
-##- ListConfs
+### ListConfs
 
-Rappresenta la configurazione base utilizzare nella creazione di una Views.
+Rappresenta la configurazione base utilizzare nella creazione di una view di lista di oggetti.
 
 ```javascript
 var ListConfs = Conf.extend({
-    routeName : 'list',
-    viewClass : 'ViewList',
+    routeName : 'list',         //route da utilizzare per il caricamento dei dati
+    viewClass : 'ViewList',     //Componente View da utilizzare per la visualizzazione
     actions : ['ActionDelete','ActionMultiDelete','ActionEdit','ActionView','ActionInsert'],
-    extra_actions : {},
-    fields : [],
-    detail_fields: {},
     pagination : true,
-    fields_config: {
+    fields_config: {       // alcuni campi che di default hanno questi tipi
         id :            {type:'hidden'},
         created_at:     {type:'hidden'},
         updated_at:     {type:'hidden'},
@@ -70,15 +69,16 @@ var ListConfs = Conf.extend({
     }
 });
 ```
-##- EditConfs
+
+### EditConfs
+
+Rappresenta la configurazione per l'editing di un record. 
 
 ```javascript
 var EditConfs = Conf.extend({
+    routeName : 'edit',
     viewClass : 'ViewEdit',
     actions : ['ActionSave','ActionBack'],
-    extra_actions : {},
-    labels: 'left',
-    fields: [],
     fields_config: {
         id: {type:'input'},
         created_at: {type:'hidden'},
@@ -98,42 +98,42 @@ var EditConfs = Conf.extend({
         token: {type:'hidden'},
         captcha: {type: 'captcha'},
     },
-    dependencies : {}
 });
 ```
 
 
-##- InsertConfs
+### InsertConfs
+
+Rappresenta la configurazione per una vista per inserire un record.
 
 ```javascript
 var InsertConfs = EditConfs.extend({
+    routeName : 'insert',
     viewClass : 'ViewInsert',
 });
 ```
 
-##- SearchConfs
+### SearchConfs
+
+Rappresenta la configurazione di una vista per la ricerca.
 
 ```javascript
 var SearchConfs = Conf.extend({
+    routeName : 'search',
     viewClass : 'ViewSearch',
     actions : ['ActionSearch','ActionReset'],
-    extra_actions : {},
-    fields:[],
-    fields_config : {},
 });
 ```
 
-##- ViewConfs
+### ViewConfs
+
+Configurazione per la vista in modalità view di un record
 
 ```javascript
 var ViewConfs = Conf.extend({
     viewClass : 'ViewView',
-    labels: 'left',
-    actions : [],
-    extra_actions : {},
-    fields : [],
     fields_config: {
-        attivo: {type: 'swap'},
+        attivo: {type: 'swap',mode : 'view'},
         fotos : {type: 'hasmany_upload_image'},
         attachments: {type: 'hasmany_upload_attachment'},
         id: {type:'hidden'},
@@ -142,6 +142,23 @@ var ViewConfs = Conf.extend({
         deleted_at: {type:'hidden'},
         created_by: {type:'hidden'},
         updated_by: {type:'hidden'}
+    }
+});
+```
+
+### CalendarConfs
+
+Configurazione per la vista a calendario di una lista di record.
+
+```javascript
+var ConfCalendar = CollectionConf.extend({
+    routeName : 'calendar',
+    viewClass : 'ViewCalendar',
+    data_inizio : 'data',       // nome campo da utlizzare per prendere la data dell'evento
+    data_fine : null,           // eventuale campo che segna la data di fine  dell'evento
+    title : null,               // nome campo da utilizzare per la visualizzazione dell'evento
+    calendar_options : {        // opzioni da passare al plugin fullCalendar
+
     }
 });
 ```

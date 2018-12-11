@@ -3,7 +3,7 @@
 Classe per le comunicazioni ajax con il backend e' un wrapper delle chiamate jQuery
 
 
-##Proprietà
+### Proprietà
 
 - `static subdomain` : null
 proprietà che permette di avere una base comune in tutti gli url codificati dentro
@@ -11,7 +11,7 @@ javascript. E' il prefisso.  Esempio se il nostro sito si trova sotto una sottod
 http://dominio.it/sottodominio  settiamo il subdomain=sottodominio
   
 
-##Metodi
+### Metodi
 
 - `static getUrl(url)`
 Ritorna l'url reale combinato con il subdomain.

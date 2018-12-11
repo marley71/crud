@@ -1,15 +1,19 @@
 # Routes
 
-##Route
-Class base per la gestione delle route verso il backend. Sono state definite
-alcune route delle principali di interazioni con il backend
- secondo le specifiche REST.
+Le routes rappresentano le classi per la gestione degli url per la comunicazione verso il server che
+fornirà i dati
+
+## Route
+
+Classe base per la gestione delle route verso il backend. Sono state definite
+alcune route per le principali interazioni con il backend secondo le specifiche REST.
+
 
 ### Proprietà
 
-- `className` default "Route" variabile di comodo per riconoscere in quale route ci troviamo
-- `method` default null rappresenta il metodo usato per la chiamata ajax, può essere get o post
-- `url` default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
+- `className`: default "Route" variabile di comodo per riconoscere in quale route ci troviamo
+- `method`: default null rappresenta il metodo usato per la chiamata ajax, può essere get o post
+- `url` : default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
     Le parti variabili devono essere racchiuse tra parentesi graffe. Per esempio : /action/{var1}/print è un
     url in cui {var1} verrà sostituita con il valore che l'oggetto Route ha in quel momento.
 - `resultType` default  null tipo di risultato, può essere record o list
@@ -25,9 +29,8 @@ della richiesta vengono sommati agli extraParams
     
 ### Metodi    
     
-- `__costruct(attrs)` costruttore. Accetta come parametro un vettore associativo che permette
+- `init(attrs)` costruttore. Accetta come parametro un vettore associativo che permette
 di sovrascrivere le proprietà dell'oggetto creato.
-
 
 - `getUrl(values)` ritorna url esatto valorizzando le variabili parametriche tra {} 
 presenti nella stringa url. Il parametro *values* è il vettore associativo dei valori
@@ -42,6 +45,7 @@ della route che devono essere valorizzati per ritornare l'url esatto. Peer esemp
 se url e' fatto come /pippo/{param1}/{param2} ritorna ['param1','param2']
                  
 #Route Implementate
+
 La libreria contiene già delle route per l'uso comune che vengono utilizzate dalle views
 e dalle actions. Per la creazione di una route è stato realizzato un pseduo metodo statico
 chiamato factory. Se vogliamo utilizzare il metodo factory dobbiamo rispettare la convenzione
@@ -67,7 +71,9 @@ var r = Route.factory('list',{
 Questo codice crea un'instanza della classe RouteList e il vettore associativo values
 prenderà come valori quelli passati.
 
-##- RouteList
+
+
+## RouteList
 la route è stata creata per recuperare una lista di record del modello specificato.
 Nel vettore *values* deve essere presente la chiave:
 
@@ -85,7 +91,7 @@ Nel vettore *values* deve essere presente la chiave:
 }
 ``` 
 
-##- RouteEdit
+## RouteEdit
 La route carica i dati di un record per la modifica.
 Nel vettore *values* devono essere presenti le chiavi:
 
@@ -105,7 +111,7 @@ Nel vettore *values* devono essere presenti le chiavi:
 }
 ``` 
 
-##- RouteSearch
+## RouteSearch
 La route che chiede i dati di un record per la ricerca.
 Nel vettore *values* deve essere presente la chiave:
 
@@ -125,7 +131,7 @@ Nel vettore *values* deve essere presente la chiave:
 ``` 
 
 
-##- RouteInsert
+## RouteInsert
 La route che chiede i dati di un record per l'inserimento.
 Nel vettore *values* deve essere presente la chiave:
 
@@ -145,7 +151,7 @@ Nel vettore *values* deve essere presente la chiave:
 ``` 
 
 
-##- RouteSave
+## RouteSave
 La route che invia i dati di un record per crearlo. I dati del modello verranno passati
 come params. In questa route viene aggiunto sempre un parametro chiamato _method='POST' che 
 serve a simulare il metodo save REST attraverso la chiamata http.
@@ -171,7 +177,7 @@ Nel vettore *values* deve essere presente la chiave:
 ``` 
 
 
-##- RouteUpdate
+## RouteUpdate
 La route che invia i dati di un record per la modifica. I dati del modello verranno passati
 come params. In questa route viene aggiunto sempre un parametro chiamato _method='PUT' che 
 serve a simulare il metodo put REST attraverso la chiamata http.
@@ -197,7 +203,7 @@ Nel vettore *values* devono essere presenti le chiavi:
 ``` 
 
 
-##- RouteView
+## RouteView
 La route che chiede i dati di un record in modalità lettura.
 Nel vettore *values* devono essere presenti le chiavi:
 
@@ -218,7 +224,7 @@ Nel vettore *values* devono essere presenti le chiavi:
 ``` 
 
 
-##- RouteDelete
+## RouteDelete
 La route che rimuove un record. In questa route viene aggiunto sempre un parametro chiamato 
 _method='DELETE' che serve a simulare il metodo delete REST attraverso la chiamata http.
 Nel vettore *values* devono essere presenti le chiavi:
@@ -243,7 +249,7 @@ Nel vettore *values* devono essere presenti le chiavi:
 ``` 
 
 
-##- RouteMultiDelete
+## RouteMultiDelete
 La route che rimuove una lista di record. La lista viene passata come vettore di id
 nei params.
 Nel vettore *values* deve essere presente la chiave:
@@ -261,6 +267,3 @@ Nel vettore *values* deve essere presente la chiave:
 	]
 }
 ``` 
-
-
-

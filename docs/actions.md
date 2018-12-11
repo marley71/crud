@@ -64,8 +64,11 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 
 ##CollectionAction
 
+Discriminano le azioni sulla vista globale, per esempio una view a lista ci sono le record actions che lavorano
+sul singolo record, mentre le collection action agisco sul modello. Oltre a questa differenza vengono 
+renderizzate anche in un posto diverso.
 
-###Proprietà
+### Proprietà
 
 - `className` : 'CollectionAction'
 - `type` : 'collection'
@@ -84,18 +87,23 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 </a>  
 ```
 
-#Action Implementate
+# Action Implementate
 
+La libreria, come per tutti gli altri componenti, mette a disposizione delle azioni già predefinite, 
+utilizzabili immediamente. Queste azioni rappresentano le azioni più comuni in una libreria crud. Ovviamente
+possono essere estese o definite delle nuove.
 
-## - ActionEdit:
-Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  l'edit di un record all'interno della lista. 
+## ActionEdit:
+Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list e rappresent l'edit di un record 
+all'interno della lista. 
 
 Proprietà
 
 - `className` : 'ActionEdit'
 - `title` : 'Modifica',
 - `icon` : 'fa fa-edit',
-- `multiText` : 'Modifica',
+- `multiText` : 'Modifica', // questo testo viene utilizzato quando l'azione si trova all'interno di un gruppo
+di azioni.
 - `routeName` : 'page_edit'
 
 Metodi 
@@ -103,7 +111,7 @@ Metodi
 - `execute` - utilizza la route per una pagina in edit per richiamare la pagina nuova
 
 
-## - ActionInsert
+## ActionInsert
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.
 
 Proprietà
@@ -120,7 +128,7 @@ Metodi
 
 - `execute` - utilizza al route per una pagina in insert per richiamare la pagina nuova
 
-## - ActionSave
+## ActionSave
 
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per salvare le modifiche
 
@@ -133,7 +141,7 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per s
 - `execute` - utilizza le route update o save a seconda se il modello dati è in modifica o insert
 
 
-## - ActionBack
+## ActionBack
 
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
 
@@ -144,10 +152,10 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritor
 - `execute` esegue sostanzialmente un history.back();
 
 
-## - ActionView
+## ActionView
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la visualizzazione di un record all'interno della lista.
 
-Proprietà
+### Proprietà
 
 - `className` : 'ActionView',
 - `title` :'Visualizza',
@@ -155,31 +163,31 @@ Proprietà
 - `multiText` : 'Visualizza',
 - `routeName` : 'page_view',
      
-Metodi
+### Metodi
 
 - `execute` - utilizza al route per una pagina in view per richiamare la pagina nuova
 
 
-## - ActionDelete
+## ActionDelete
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.
 
-Proprietà
+### Proprietà
 
 - `className` : 'ActionDelete',
 - `title` : 'Cancella',
 - `icon`:  'fa fa-remove text-danger',
 - `multiText` : 'Cancella',
      
-Metodi
+### Metodi
 
 - `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
 - `callback` - metodo richiamata alla fine della execute
 
 
-## - ActionMultiDelete
+## ActionMultiDelete
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.
 
-Proprietà
+### Proprietà
 
 - `className` : 'ActionMultiDelete',
 - `title` : 'Cancella selezionati',
@@ -189,16 +197,16 @@ Proprietà
 - `needSelection` : true,
 - `multiText` : 'Cancella Selezionati',
      
-Metodi
+### Metodi
 
 - `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
 - `callback` - metodo richiamata alla fine della execute
 
 
-## - ActionSearch
+## ActionSearch
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.
 
-Proprietà
+### Proprietà
 
 - `className` : 'ActionSearch',
 - `title` : 'Ricerca',
@@ -206,23 +214,23 @@ Proprietà
 - `cssClass` : 'btn btn-xs btn-default text-info',
 - `text` : 'Cerca',
      
-Metodi
+### Metodi
 
 - `execute` - richiama la pagina con i parametri in get presenti nella form della vista
 
 
-## - ActionReset
+## ActionReset
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search il reset dei parametri di 
 ricerca impostati
 
-Proprietà
+### Proprietà
 
 - `className` : 'ActionReset',
 - `title` : 'Annulla filtri ricerca',
 - `cssClass` : 'btn btn-xs btn-default',
 - `text` : 'Annulla filtri',
      
-Metodi
+### Metodi
 
 - `execute` - richiama il metodo clear su tutti i renders della view e richiama la callback
 - `callback` - metodo chiamato dopo il reset dei controlli
@@ -230,21 +238,21 @@ Metodi
 
 
 
-## - ActionNextPage
+## ActionNextPage
 nextpage del navigatore di una lista
 
 Proprietà    
 - `icon` : 'fa fa-angle-right',
 - `cssClass` : 'btn btn-default btn-xs',
 
-Metodi 
+### Metodi 
 
 - `execute` : incrementa di uno il parametro page della route associata alla lista
 
-## - ActionPrevPage
+## ActionPrevPage
 Pagina precendente di una view
 
-Proprietà
+### Proprietà
 
 - `icon` : 'fa fa-angle-left',
 - `cssClass` : 'btn btn-default btn-xs'
@@ -252,19 +260,19 @@ Proprietà
 - `execute` : Decrementa di uno il parametro page della route associata alla lista
 
 
-## - ActionFirstPage
+## ActionFirstPage
 
 - `icon` : 'fa fa fa-angle-double-left',
 - `cssClass` : 'btn btn-default btn-xs',
 - `execute` : Setta il parametro page a uno della route associata alla lista
 
-## - actionLastPage
+## ActionLastPage
 
 - `icon` : 'fa fa fa-angle-double-right',
 - `cssClass` : 'btn btn-default btn-xs',
 - `execute` : Setta il parametro page all'ultima pagina della route associata alla lista
 
-## - actionPerPage
+## ActionPerPage
 
 - `icon` : 'fa fa fa-angle-double-right',
 - `htmlEvent` : 'onchange',

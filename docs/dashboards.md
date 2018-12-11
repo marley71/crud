@@ -72,7 +72,7 @@ dash.draw();
 dalle routes delle due view per reperire i dati con cui popolare le viste.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 
-<a href="http://laravel51.dev.it/help/example#dashboards-dash_list" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=dash_list" target="_blank">Esempio</a>
 
 ##- DashboardEdit
 
@@ -120,7 +120,7 @@ dalla route della view per reperire i dati con cui popolare la vista.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 - `pk` : chiave del record da caricare
 
-<a href="http://laravel51.dev.it/help/example#dashboards-dash_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=dash_edit" target="_blank">Esempio</a>
 
 
 ##- DashboardInsert
@@ -163,7 +163,7 @@ dash.draw();
 dalla route della view per reperire i dati con cui popolare la vista.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 
-<a href="http://laravel51.dev.it/help/example#dashboards-dash_insert" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/help/example?f=dash_insert" target="_blank">Esempio</a>
 
 
 ##- DashboardTab
