@@ -97,7 +97,7 @@ Componente per la gestione degli input standard html.
 
 ### RenderInputSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_input_search" target="_blank">Esempio</a>
 
 template
 ```html
@@ -110,12 +110,49 @@ template
 In modalità view, può essere solo uno span. Potevo anche non definirlo, perche' non ha senso un Input in modalità view, 
 Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
 readonly. A voi la scelta.
-<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_input_view" target="_blank">Esempio</a>
 
 template
 ```html
 <span data-render_control></span>
 ```
+
+---
+
+## RenderHidden
+Componente per la gestione degli input nascosti. 
+
+### RenderHiddenEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_hidden_edit" target="_blank">Esempio</a>
+
+#### template
+```html
+<input data-render_control type="hidden">
+```
+
+- marcatori
+    - `data-render_control`: necessario, indica il controllo che riceverà il dato
+
+
+
+---
+
+## RenderPassword
+Componente per la gestione degli input password.
+
+### RenderPasswordEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_password_edit" target="_blank">Esempio</a>
+
+#### template
+```html
+<input data-render_control type="text" class="form-control" data-placeholder="">
+```
+
+- marcatori
+    - `data-render_control`: necessario, indica il controllo che riceverà il dato
+    - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
 
 
@@ -126,7 +163,7 @@ template
 Render text è nato per rappresentare la visualizzazione di un testo. La stessa classe è stata ridefinita
 per tutti i 3 modi.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_text" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_text_view" target="_blank">Esempio</a>
 #### template
 
 ```html
@@ -182,7 +219,7 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ### RenderSelectSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_select_search" target="_blank">Esempio</a>
 
 #### template
 
@@ -196,7 +233,7 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ### RenderSelectView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_select_view" target="_blank">Esempio</a>
 
 #### template
 
