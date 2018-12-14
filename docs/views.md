@@ -238,6 +238,8 @@ Nella libreria sono state implementate delle views di uso comune
 E' una collection view che renderizza i risultati su un template tabellare,
 viene popolata attraverso la *RouteList* che prevede come parametro il modelName
 
+<a href="http://www.pierpaolociullo.it/example?f=view_list" target="_blank">Esempio</a>
+
 
 ##- ViewInsert
 E' una view per la creazione di un nuovo record. Utilizza la route RouteInsert per il 

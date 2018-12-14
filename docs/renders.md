@@ -827,6 +827,10 @@ resources : {
 
 ### RenderDatePickerView
 
+<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_view" target="_blank">Esempio</a>
+
+
+
 #### template
 
 ```html
@@ -855,14 +859,89 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 ```
 
 
+### RenderDateFormattedSearch
 
-## RenderBetweenDate
+<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_search" target="_blank">Esempio</a>
+
+#### template
+```html
+<div class="clearfix" data-render_element>
+    <input data-render_control="" type="hidden" />
+    <div class="col col-xs-6">
+        <input data-date_formatted class="form-control" type="date" />
+    </div>
+    <div class="col col-xs-6">
+        <input data-time_formatted class="form-control hide" type="time"/>
+    </div>
+</div>
+```
+
+
+
+### RenderDateFormattedView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_view" target="_blank">Esempio</a>
+
+#### template
+```html
+<div class="clearfix" data-render_element>
+    <input data-render_control="" type="hidden" />
+    <div class="col col-xs-6">
+        <input data-date_formatted class="form-control" type="date" />
+    </div>
+    <div class="col col-xs-6">
+        <input data-time_formatted class="form-control hide" type="time"/>
+    </div>
+</div>
+```
+
+
+## RenderBetweenDateSelect
 
 Questo render serve per la gestione di un range di date.
 
-### RenderBetweenDateEdit
+### RenderBetweenDateSelectEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_edit" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_edit" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+
+### RenderBetweenDateSelectSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_search" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+### RenderBetweenDateSelectView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_view" target="_blank">Esempio</a>
 
 #### template
 
@@ -882,7 +961,141 @@ Questo render serve per la gestione di un range di date.
 
 ---
 
+## RenderBetweenDatePicker
 
+Questo render serve per la gestione di un range di date.
+
+### RenderBetweenDatePickerEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_edit" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+### RenderBetweenDatePickerSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_search" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+
+
+### RenderBetweenDatePickerView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_view" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+
+
+---
+
+
+
+## RenderBetweenDateFormatted
+
+Questo render serve per la gestione di un range di date.
+
+### RenderBetweenDateFormattedEdit
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_edit" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+
+
+### RenderBetweenDateFormattedSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_search" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+### RenderBetweenDateFormattedView
+
+<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_view" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div>
+    <div class="col col-xs-6">
+        <div data-label="app.dal"></div>
+        <div data-render_start></div>
+    </div>
+    <div class="col col-xs-6" >
+        <div data-label="app.al"></div>
+        <div data-render_end></div>
+    </div>
+</div>
+```
+
+
+
+---
 
 
 ## RenderHasmany
@@ -1149,6 +1362,10 @@ template utilizzato per creare l'elemnto lista dove verrà visualizzata la view 
 
 ### RenderHasmanyThroughView
 
+Questo è in modalità view con itemTemplate base, in caso di item piu' complessi ridefinire itemTemplate
+aggiungendo l'attributo data-field="nome_campo" nel item html che si voglia usare per visualizzarlo
+
+
 <a href="http://www.pierpaolociullo.it/example?f=render_hasmany_through_view" target="_blank">Esempio</a>
 
 
@@ -1164,7 +1381,7 @@ template utilizzato per creare l'elemnto lista dove verrà visualizzata la view 
 #### itemTemplate
 ```html
 <li >
-    <span data-field="label"></span>
+    <span data-field="__label__"></span>
 </li>
 ```
 
@@ -1181,7 +1398,8 @@ template utilizzato per creare l'elemnto lista dove verrà visualizzata la view 
 
 Oggetto per la gestione di hasmany che prevedono un upload di una o più immagini 
 
-####proprietà
+#### proprietà
+
 
 - uploadConfView : 'ConfEdit',            // configurazione di default della upload view
 - limit : null,
@@ -1383,14 +1601,17 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 #### proprietà
 
-uploadConfView : 'ConfEdit',            // configurazione di default della upload view
-    //langs : ['it'],
-    limit : null,
-    modelName : null,
-    uploadModelName : null,
-    routeName : 'uploadfile',
-    iconSize : 'default',
-    icons : {
+- uploadConfView : 'ConfEdit',            // configurazione di default della upload view
+- //langs : ['it'],
+- limit : null,
+- modelName : null,
+- uploadModelName : null,
+- routeName : 'uploadfile',
+- iconSize : 'default',
+- icons :
+
+```javascript 
+ {
         default : {
             "default"   : 'fa fa-2x fa-file-o',
             "xls"       : 'fa fa-2x fa-file-excel-o',
@@ -1418,17 +1639,22 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
             "pdf"       : "fa fa-file-pdf-o",
             "txt"       : "fa fa-file-text-o",
         }
-    },
-    vkey : null,
-    labelField : 'filename',
-    uploadFields : ['ext','random','id','status','original_name','filename','mimetype','modelName','type'],
-    fields : ['nome','descrizione'],
-    fields_config : {
-        nome : { type : 'input'},
-        descrizione : {type : 'textarea'},
-    },
-    mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
-    icon_selector : "[data-icon]",
+    }
+```
+
+- vkey : null,
+- labelField : 'filename',
+- uploadFields : ['ext','random','id','status','original_name','filename','mimetype','modelName','type'],
+- fields : ['nome','descrizione'],
+- fields_config :
+```javascript
+{
+    nome : { type : 'input'},
+    descrizione : {type : 'textarea'},
+}
+```
+- mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
+- icon_selector : "[data-icon]",
 
 #### metodi
 
@@ -1451,12 +1677,12 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
 #### proprietà
 
 - traits : ['TraitUpload'],
-      resources : ['jquery.form.js','jquery-sortable.js'],
+- resources : ['jquery.form.js','jquery-sortable.js'],
       
 #### metodi
 
-- _createItem : function (values,status) {
-- 
+- _createItem : function (values,status)
+
 
 
 #### template
@@ -1561,7 +1787,7 @@ uploadConfView : 'ConfEdit',            // configurazione di default della uploa
 
 ### RenderHasmanyUploadAttachmentView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attahcment_view" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attachment_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -1600,23 +1826,24 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 #### proprietà
 
 - _lat : 0,
-      _lng : 0,
-      _hasDbValues : false,
-      address : null,
-      lat_input_selector : '[data-lat_field]',
-      lng_input_selector : '[data-lng_field]',
-      lat_field_name : 'lat',
-      lng_field_name : 'lng',
-      //dialogId : '#map_dialog',
-  
-  
-      idViewMap : null,
-  
-      metadata : {
-          apiKey : null,
-          raggioArea : 5000,
-          showArea : false,
-      },
+- _lng : 0,
+- _hasDbValues : false,
+- address : null,
+- lat_input_selector : '[data-lat_field]',
+- lng_input_selector : '[data-lng_field]',
+- lat_field_name : 'lat',
+- lng_field_name : 'lng',
+- //dialogId : '#map_dialog',
+- idViewMap : null,
+- metadata : 
+```javascript
+{
+      apiKey : null,
+      raggioArea : 5000,
+      showArea : false,
+  }
+```
+
 
 #### metodi
 
@@ -1789,11 +2016,27 @@ iconClass : {
 
 #### template
 ```html
-
+<button type="button" class="btn btn-default btn-xs" data-render_element title="">
+    <i data-icon class=""></i>
+</button>
 ```
 
 #### marcatori
 
+### RenderSwapSearch
+
+<a href="http://www.pierpaolociullo.it/example?f=render_swap_search" target="_blank">Esempio</a>
+
+#### template
+```html
+    <input data-render_control type="hidden" class="form-control" name="" value="">
+    <input data-control_operator type="hidden" >
+    <button type="button" class="btn btn-default btn-xs" data-render_element title="">
+        <i data-icon class=""></i>
+    </button>
+```
+
+#### marcatori
 
 ### RenderSwapView
 
@@ -1801,7 +2044,7 @@ iconClass : {
 
 #### template
 ```html
-<i data-icon data-render_control class=""></i>
+<i data-icon data-render_element class=""></i>
 ```
 
 #### marcatori
@@ -1833,6 +2076,7 @@ editor html summernote.
 
 #### template
 ```html
+    <textarea data-render_element data-render_control class="summernote form-control" data-summernote-lang="it-IT"></textarea>
 
 ```
 
@@ -1845,7 +2089,7 @@ editor html summernote.
 
 #### template
 ```html
-
+<div data-render_element data-render_control ></div>
 ```
 
 #### marcatori
