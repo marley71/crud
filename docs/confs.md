@@ -43,7 +43,7 @@ di alcune proprietà di confs.
 Nella libreria ci sono già delle configurazioni di uso comune per ogni oggetto vista 
 implementato di default.
 
-### ListConfs
+## ListConfs 
 
 Rappresenta la configurazione base utilizzare nella creazione di una view di lista di oggetti.
 
@@ -70,7 +70,7 @@ var ListConfs = Conf.extend({
 });
 ```
 
-### EditConfs
+## EditConfs
 
 Rappresenta la configurazione per l'editing di un record. 
 
@@ -102,7 +102,7 @@ var EditConfs = Conf.extend({
 ```
 
 
-### InsertConfs
+## InsertConfs
 
 Rappresenta la configurazione per una vista per inserire un record.
 
@@ -113,7 +113,7 @@ var InsertConfs = EditConfs.extend({
 });
 ```
 
-### SearchConfs
+## SearchConfs
 
 Rappresenta la configurazione di una vista per la ricerca.
 
@@ -125,7 +125,7 @@ var SearchConfs = Conf.extend({
 });
 ```
 
-### ViewConfs
+## ViewConfs
 
 Configurazione per la vista in modalità view di un record
 
@@ -146,7 +146,7 @@ var ViewConfs = Conf.extend({
 });
 ```
 
-### CalendarConfs
+## CalendarConfs
 
 Configurazione per la vista a calendario di una lista di record.
 

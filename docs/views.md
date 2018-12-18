@@ -231,28 +231,139 @@ dell'azione tutti i dati altrimenti il dati della row indicata.
 
 
 
-#Views Implementate
+# Views Implementate
 Nella libreria sono state implementate delle views di uso comune
 
-##- ViewList
+## ViewList
 E' una collection view che renderizza i risultati su un template tabellare,
-viene popolata attraverso la *RouteList* che prevede come parametro il modelName
+viene popolata attraverso la *RouteList* che prevede come parametro il modelName, questa view è composta dal
+template principale piu' altri template delle varie sezioni di una lista. Questo permette di poter configurare
+le singole parti in modo più puntuale. 
+
 
 <a href="http://www.pierpaolociullo.it/example?f=view_list" target="_blank">Esempio</a>
 
+<a href="http://www.pierpaolociullo.it/example?f=view_list__custom_data" target="_blank">Esempio con dati custom</a>
 
-##- ViewInsert
+
+#### marcatori
+
+
+#### template
+
+```html
+    <div class="panel panel-default panel-body model-list">
+        <div data-list_header></div>
+        <div data-hidden_fields></div>
+        <div class="clearfix">
+            <div class="col col-md-5 col-xs-12 hidden-xs list-actions" data-view_collection_actions></div>
+            <div class="col col-md-7 col-xs-12 list-pagination" data-view_pagination></div>
+        </div>
+        <hr/>
+        <div class="table-responsive">
+            
+            <table class="table table-striped table-condensed table-hover table-bordered table-vertical-middle nomargin">
+                <thead>
+                    <tr data-view_row_headers>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-view_row_elements>
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr data-view_row_footer><td></td></tr>
+                </tfoot>
+            </table>
+        </div>
+        <hr/>
+        <div class="clearfix">
+            <div class="col col-md-5 col-xs-12 list-actions" data-view_collection_actions></div>
+            <div class="col col-md-7 col-xs-12 list-pagination" data-view_pagination></div>
+        </div>
+    </div>
+```
+
+#### recordActionTemplate
+```html
+    <div class="btn-group" role="group"></div>
+```
+
+#### headerTemplate
+```html
+    <th>
+        <span data-element></span>
+    </th>
+```
+
+#### orderTemplate
+```html
+<th class="sorting">
+    <a href="javascript:void(0)" data-action="actionOrder" data-pk="">
+        <span data-element></span>
+    </a>
+</th>
+```
+
+#### cellTemplate 
+```html
+    <td >
+                    
+    </td>
+```
+           
+#### checkAllTemplate
+```html
+    <input type="checkbox" data-button="checkAll" title="Seleziona tutti">
+```
+
+#### checkTemplate
+```html
+    <span class="pull-left" ><input data-pk="" type="checkbox" name="check_row">&nbsp;</span>
+```
+
+#### paginatorTemplate
+```html
+<ul class="list-inline hidden-md hidden-sm hidden-xs">
+    <li data-action_first_page><a data-first_page href="javascript:void(0)">&laquo;</a></li>
+    <li data-action_prev_page><a data-prev_page href="javascript:void(0)">&lt;</a></li>
+    <li>
+    <span style="padding:2px" >
+        <span data-keytranslate="general-pagination_total" >Tot</span>
+        <b><span data-field="total"></span></b>,
+    &nbsp;&nbsp;
+        <span data-action_per_page></span>
+        <!--<select data-action_per_page data-field="per_page" data-source="pagination_steps" self style="height:24px" class="pagination-input" data-action="actionPerPage">-->
+<!---->
+        <!--</select>-->
+        <span data-keytranslate="general-pagination_per_page" >Per pagina</span>
+    </span>
+    </li>
+    <li><a class="disabled" href="javascript:void(0)" data-page_info=""> <span data-field="current_page"></span> / <span data-field="last_page"></span> </a></li>
+    <li data-action_next_page ><a data-next_page href="javascript:void(0)">&gt;</a></li>
+    <li data-action_last_page><a data-last_page href="javascript:void(0)">&raquo;</a></li>
+
+</ul>
+<ul class="pagination pagination-sm hidden-lg hidden-xl">
+    <li data-action_first_page><a data-action="ActionFirstPage" href="javascript:void(0)">&laquo;</a></li>
+    <li data-action_prev_page><a data-action="ActionPrevPage" href="javascript:void(0)">&lt;</a></li>
+    <li><a class="disabled" href="javascript:void(0)" data-page_info="">  <span data-field="current_page"></span> / <span data-field="last_page"></span> (<span data-field="total"></span>)</a></li>
+    <li data-action_next_page><a data-action="ActionNextPage" href="javascript:void(0)">&gt;</a></li>
+    <li data-action_last_page><a data-action="ActionLastPage" href="javascript:void(0)">&raquo;</a></li>
+
+</ul>
+```
+
+
+## ViewInsert
 E' una view per la creazione di un nuovo record. Utilizza la route RouteInsert per il 
 caricamento dei dati e la RouteSave per il salvataggio
 
+<a href="http://www.pierpaolociullo.it/example?f=view_insert" target="_blank">Esempio</a>
 
-
-##- ViewEdit
-E' una view per la modifica di un record. Utilizza la route RouteEdit per il caricamento
-e la RouteUpdate per il salvataggio
-
-
-####template 
+#### template 
 
 ```html
 <div class="well" data-edit-main>
@@ -270,8 +381,73 @@ e la RouteUpdate per il salvataggio
     </form>
 </div>
 ```
-##- ViewSearch
+
+
+## ViewEdit
+E' una view per la modifica di un record. Utilizza la route RouteEdit per il caricamento
+e la RouteUpdate per il salvataggio
+
+<a href="http://www.pierpaolociullo.it/example?f=view_edit" target="_blank">Esempio</a>
+
+
+#### template 
+
+```html
+<div class="well" data-edit-main>
+    <div data-alert class="alert alert-success hide"></div>
+    <form name="data_form" class="model-edit">
+        <div data-hidden_fields></div>
+        <div data-view_elements>
+            
+        </div>
+        <div data-view_action >
+            <div data-field="data" data-self>
+
+            </div>
+        </div>
+    </form>
+</div>
+```
+## ViewSearch
 E' una view per effettuare una ricerca.
 
-##- ViewView
+<a href="http://www.pierpaolociullo.it/example?f=view_search" target="_blank">Esempio</a>
+
+#### template 
+
+```html
+<div class="well search-well">
+    <form name="data_form" class="model-search">
+        <div data-hidden_fields></div>
+        <div class="search-row" data-view_elements>
+        </div>
+
+        <div class="clearfix"></div>
+        <hr class=""/>
+
+        <div data-view_action>
+            <div data-field="data" data-self>
+            </div>
+        </div>
+    </form>
+</div>
+```
+## ViewView
 E' una view per visualizzare i risultati in modalità lettura.
+
+<a href="http://www.pierpaolociullo.it/example?f=view_view" target="_blank">Esempio</a>
+
+#### template
+
+```html
+<div class="well model-view">
+    <div data-hidden_fields></div>
+    <div data-view_elements>
+    </div>
+    <div data-view_action >
+        <div data-field="data" data-self>
+           
+        </div>
+    </div>
+</div>
+```

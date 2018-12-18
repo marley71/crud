@@ -25,18 +25,33 @@ cartella pluginsPath. quando lo script e' stato caricato chiama la callback
 - `loadResources(resources, callback)` : carica un vettore di risorse, al fine caricamento chiama la callback
     - @param resources : vettore risorse da caricare
     - @param callback : funzione da richiamare dopo il caricamento di tutte le risorse
-- `addView(options)` : function  
-- addDashboard = function(options)
-- `renderViews` = function () - renderizza tutte le view prensenti nella pagina
-- `renderView` = function (key, callback) 
-- `getView` = function (key) 
-- `getViews` = function ()
-- `getKeyFromId` = function (htmlId) 
-- `getViewById` = function(htmlId)
-- `removeViewById` = function (htmlId) 
-- `removeAllViews` = function () 
-- `removeView` = function(key) 
-- `renderViewById` = function (htmlId,callback) 
+- `addView(options)` : aggiunge una view, se in options la proprietà autorender=true la visualizza.
+    - @param options : configurazione della view, deve essere un'istanza Conf.  
+- `addDashboard(options)` : aggiunge una dashboard
+    - @param options : opzioni per l'aggiunta di una dashboard
+- `renderViews()` : renderizza tutte le view prensenti aggiunte precedentemente
+- `renderView(key, callback)` : renderizza la view con chiave key e chiama la callback se passata
+    - @param key : chiave della view da visualizzare
+    - @param callback : opzionale, se passata viene chiamata quando la view e' stata visualizzata
+- `getView(key)` : restituisce la view di chiave key, se esiste, altrimenti null.
+    - @param key : chiave view da prendere
+- `getViews()` : ritorna il vettore di tutte le views presenti in App.
+- `getKeyFromId(htmlId)` : se il container html della view ha un id allora possiamo recuperare la chiave
+della view tramite questo id.
+    - @param htmlId : id html del container che contiene la view. 
+    - @return : stringa che contiene la key della view
+- `getViewById(htmlId)` : sel il container html della view ha un id allora possiamo recuperare direttamente la
+view tramite questo id.
+    - @param htmlId : id html del container che contiene la view. 
+    - @return : oggetto view
+- `removeViewById(htmlId)` : rimuove la view associata al container con quell'id.
+    - @param htmlId : id html del container
+- `removeAllViews()` : rimuove tutte le view istanziate.
+- `removeView(key)` : rimuove la view associate alle key passata
+    - @param key : chiave view che vogliamo cancellare 
+- `renderViewById(htmlId,callback)` : renderizza una view che id html passato. Poi chiama la callback, se passata.
+    - @param htmlId : id html del container che contiene la view
+    - @param callback : opzionale, funziona da chiamare quando la view viene renderizzata
 - `getHtmlConf` = function (jQe) 
    
 - `parse` = function (container)  /**

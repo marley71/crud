@@ -15,28 +15,30 @@ a creare. Estende la class `Component`
 - `viewKeys`        : [] - array delle key associate ad ogni view
 - `labelContext`    : null - contesto nel reperimento delle traduzioni delle label
 
-#Dashboards implementate.
+# Dashboards implementate.
 
 La libreria mette a disposizione alcune dashboard di uso comune, possono essere 
 ridefinite per le proprie esigenze oppure se ne possono creare delle nuove.
 
-##- DashboardList
+## DashboardList
 
 La DashboardList è formata da una `ViewSearch` collegata ad una `ViewList` contornata
 da semplice html. In questo modo si è creata una dashboard che permette la lista
 e la ricerca degli elementi della lista e paginazione. 
 
-####Proprietà
+<a href="http://www.pierpaolociullo.it/example?f=dash_list" target="_blank">Esempio</a>
+
+#### Proprietà
 
 - `searchKey` : chiave che identifica la view che gestisce la search
 - `listKey` : chiave che identifica la view che gestisce la lista
 
-####marcatori
+#### marcatori
 
 - `data-view_search` : contentitore dove verrà disegnata la view associata alla search
 - `data-view_list `: contenitore dove verrà disegnata la view associata alla lista
 
-####template 
+#### template 
 
 ```html
 <div id="tabContent">
@@ -72,22 +74,24 @@ dash.draw();
 dalle routes delle due view per reperire i dati con cui popolare le viste.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 
-<a href="http://www.pierpaolociullo.it/example?f=dash_list" target="_blank">Esempio</a>
 
-##- DashboardEdit
+
+## DashboardEdit
 
 La DashboardEdit è formata da un solo componente, una ViewEdit all'interno contornata
 da semplice html. 
 
-- Proprietà
+<a href="http://www.pierpaolociullo.it/example?f=dash_edit" target="_blank">Esempio</a>
+
+#### Proprietà
     - editKey : chiave che identifica la view che gestisce l'edit
    
-marcatori
+#### marcatori
 
 - data-view_edit : contentitore dove verrà disegnata la view associata all'edit
 
 
-template
+#### template
 ```html
 <div>
     <div class="panel panel-default">
@@ -120,22 +124,25 @@ dalla route della view per reperire i dati con cui popolare la vista.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 - `pk` : chiave del record da caricare
 
-<a href="http://www.pierpaolociullo.it/example?f=dash_edit" target="_blank">Esempio</a>
 
 
-##- DashboardInsert
+
+## DashboardInsert
 
 La DashboardInsert è formata da un solo componente, una ViewInsert all'interno contornata
 da semplice html. 
 
+<a href="http://www.pierpaolociullo.it/example?f=dash_insert" target="_blank">Esempio</a>
+
 - Proprietà
     - insertKey : chiave che identifica la view che gestisce l'insert
    
-marcatori
+#### marcatori
 
 - data-view_insert : contentitore dove verrà disegnata la view associata all'insert
 
-template 
+#### template
+ 
 ```html
 <div>
     <div class="panel panel-default">
@@ -163,10 +170,10 @@ dash.draw();
 dalla route della view per reperire i dati con cui popolare la vista.
 - `container` rappresenta il selettore html dove renderizzare i dati.
 
-<a href="http://www.pierpaolociullo.it/help/example?f=dash_insert" target="_blank">Esempio</a>
 
 
-##- DashboardTab
+
+## DashboardTab
 
 La DashboardTab è formata da 5 viste che interagiscono tra di loro:
 
@@ -179,20 +186,21 @@ e permette la modifica del record
 creazione di un nuovo record
 - una `ViewView`:Viene mostrata in una modal quando viene cliccato l'azione vista.
 
+<a href="http://www.pierpaolociullo.it/example?f=dash_tab" target="_blank">Esempio</a>
 
-- Proprietà
+#### Proprietà
     - insertKey : chiave che identifica la view che gestisce l'insert
     - editKey : chiave che identifica la view che gestisce l'edit
     - searchKey : chiave che identifica la view che gestisce la search
     - listKey : chiave che identifica la view che gestisce la lista
 
-- Metodi 
+#### Metodi 
     - showEdit : metodo per la visualizzazione di edit
     - showInsert : 
     - showList
     - showDialog 
        
-###marcatori
+#### marcatori
 
 - `data-view_search` : contentitore dove verrà disegnata la view associata alla search
 - `data-view_list` : contentitore dove verrà disegnata la view associata alla lista
@@ -203,7 +211,7 @@ creazione di un nuovo record
 
 
 
-template
+#### template
 ```html
 <div class="tab-content"> 
     <header>
@@ -258,7 +266,7 @@ template
 </div>
 ```
 
-##- Dashboard2Col
+## Dashboard2Col
 
 La Dashboard2Col è come la DashboardTab ma organizzata su 2 colonne. La ViewView
 non viene mostrata in modal
@@ -273,19 +281,21 @@ e permette la modifica del record
 creazione di un nuovo record
 - una `ViewView`:Viene mostrata quando viene cliccato l'azione vista.
 
-- Proprietà
+<a href="http://www.pierpaolociullo.it/example?f=dash_2col" target="_blank">Esempio</a>
+
+#### Proprietà
     - insertKey : chiave che identifica la view che gestisce l'insert
     - editKey : chiave che identifica la view che gestisce l'edit
     - searchKey : chiave che identifica la view che gestisce la search
     - listKey : chiave che identifica la view che gestisce la lista
 
-- Metodi 
+#### Metodi 
     - showEdit : metodo per la visualizzazione di edit
     - showInsert : 
     - showList
     - showDialog 
        
-###marcatori
+#### marcatori
 
 - `data-view_search` : contentitore dove verrà disegnata la view associata alla search
 - `data-view_list` : contentitore dove verrà disegnata la view associata alla lista
@@ -294,7 +304,7 @@ creazione di un nuovo record
 - `data-view_view` : contentitore dove verrà disegnata la view associata alla vista
 
 
-template
+#### template
 
 ```html
 <div class="tab-content"> 

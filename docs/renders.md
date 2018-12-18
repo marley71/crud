@@ -570,7 +570,9 @@ le info della entry scelta
 - `autocomplete_input_selector` : '[data-render_autocomplete_input]' - marcatore dove verrà agganciato
 il plugins typehead di bootstrap.
 
-- `fields` : [],                // campi da visualizzare dopo la selezione
+- `fields` : [],                // campi su cui effettuare la ricerca, vengono messi come parametro field nella 
+richiesta al server
+- labelFields : [] , campi da utilizzare nella visualizzazione della selectbox e nel campo label dell'item scelto
 - `metadata` :
 ```javascript
 {
@@ -579,7 +581,6 @@ il plugins typehead di bootstrap.
     method : null,              // eventuale parametro da mandare in get nella chiamata rest
     separator : null,           // separatore da utillare nella visualizzazione dei campi in caso siano piu' di uno
     n_items : null,             // numero di items da richiedere
-    model_description : []
 }
 ```
 - `resources` : vettore delle risorse esterne che ha bisogno per funzionare. Questo render si appoggia a
