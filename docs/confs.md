@@ -2,58 +2,72 @@
 
 Le Confs sono nate per creare configurazioni iniziali per le views di uso generale.
 Questo permette di avere, con pochissimo codice, la configurazione di default 
-della view e modificare solo le proprietà nella singola istanza e dove occorre. 
+della view e modificare solo le proprietà nella singola istanza. 
 
 ## Conf
 
-La Classe Conf è la classe base che ereditano tutte le confs. Il costrutture 
-accetta un vettore associativo per la sostituizione di proprietà della configurazione che 
-andiamo ad instanziare. 
+La Classe Conf è stata realizzata per permettere le estensioni e il merge di configurazioni
+per ottenere la configurazione finale da passare alla view.
+E' stato implementato un metodo statico
 
-### Proprietà
-- `routeName`: Indica la route da utilizzare per il caricamento dei dati della view. 
-Su routeName verrà utilizzata la convenzione del metodo statico 
-[Route.factory(routeName)](routes.md) 
-- `viewClass`: Indica la classe view da utilizzare. Esempio *ViewList*
-- `actions`: Vettore di azioni presenti nella view. La visualizzazione delle actions 
-sarà compito della view secondo le sue strategie di visualizzazione.
-- `custom_actions`: Vettore di azioni con la loro definizione nel caso in cui 
-nel vettore actions  siano indicate azioni custom o azioni che vogliamo ridefinire rispetto 
-a quelle di default.
-- `fields`: Il Vettore dei campi che deve essere gestito dalla views.
-- `pagination`: default true. Valido solo per le liste, indica se vogliamo o no il paginatore
-- `fields_confige` : Vettore della definizione del tipo di tutti i campi presenti in *fields* 
-con le loro eventuali estensioni.
+Conf.extend(dest,source) : Prese due configurazioni source e dest, la source verrà mergiata con dest
+ sovrascrivendo le proprieta e restituita un unica conf.
+- param @source : configurazione sorgente
+- param @dest : configurazine destinazione che verranno copiate le proprietà di source
+- return object nuova configurazione
 
 
-
-### Metodi
-
-- `init(attrs)`: attrs rappresenta il vettore associativo per la ridefinizione
-di alcune proprietà di confs.
-- attrs : function (attrs): metodo per settare delle proprietà, si aspetta un vettore associativo
-
-- Conf.factory(type,attrs): metodo statico per la creazione di una conf.
-    - type: tipo di configurazione da istanziare. Ulizzerà la convezione list => ConfList
-    - attrs: opzionale, attributi da ridefinire 
-
-
-## Configurazioni implementate
+## Configurazioni definite di default
 
 Nella libreria ci sono già delle configurazioni di uso comune per ogni oggetto vista 
 implementato di default.
 
-## ListConfs 
+### CollectionConf 
+
+Configurazione base per le views di tipo collection
+
+```javascript
+var CollectionConf = {
+    routeName : null,
+    viewClass : null,
+    actions : [],
+    custom_actions : {},
+    fields : [],
+    fields_config: {},
+    pagination : true,
+    detail_fields: {},
+}
+```
+
+### RecordConf
+
+Configurazione base per le view di tipo record
+
+```javascript
+var RecordConf = {
+    routeName : null,
+    viewClass : null,
+    actions : [],
+    custom_actions : {},
+    fields : [],
+    fields_config: {},
+    dependencies : {},
+    fields_template: 'left',  // può essere stringa o array associativo {field : struttura} per definizioni di struttura per ogni campo
+}
+```
+
+
+### ConfList 
 
 Rappresenta la configurazione base utilizzare nella creazione di una view di lista di oggetti.
 
 ```javascript
-var ListConfs = Conf.extend({
-    routeName : 'list',         //route da utilizzare per il caricamento dei dati
-    viewClass : 'ViewList',     //Componente View da utilizzare per la visualizzazione
+var ConfList = Conf.extend(CollectionConf,{
+    routeName : 'list',
+    viewClass : 'ViewList',
     actions : ['ActionDelete','ActionMultiDelete','ActionEdit','ActionView','ActionInsert'],
-    pagination : true,
-    fields_config: {       // alcuni campi che di default hanno questi tipi
+    detail_fields : {},
+    fields_config: {
         id :            {type:'hidden'},
         created_at:     {type:'hidden'},
         updated_at:     {type:'hidden'},
@@ -70,17 +84,19 @@ var ListConfs = Conf.extend({
 });
 ```
 
-## EditConfs
+### ConfEdit
 
 Rappresenta la configurazione per l'editing di un record. 
 
 ```javascript
-var EditConfs = Conf.extend({
+var ConfEdit = Conf.extend(RecordConf, {
     routeName : 'edit',
     viewClass : 'ViewEdit',
     actions : ['ActionSave','ActionBack'],
+    custom_actions : {},
+    fields: [],
     fields_config: {
-        id: {type:'input'},
+        id: {type:'hidden'},
         created_at: {type:'hidden'},
         updated_at: {type:'hidden'},
         deleted_at: {type:'hidden'},
@@ -90,50 +106,51 @@ var EditConfs = Conf.extend({
         descrizione: {type: 'texthtml'},
         body: {type: 'texthtml'},
         note: {type: 'texthtml'},
-        fotos: {type: 'hasmany_upload_image', 'label': 'no'},
-        attachments: {type: 'hasmany_upload_attachment', 'label': 'no'},
+        fotos: {type: 'hasmany_upload_image',templateName:'no'},
+        attachments: {type: 'hasmany_upload_attachment',templateName:'no'},
         data: {type: 'date_picker'},
-        data_formatted: {type:'hidden'},
         status: {type:'hidden'},
         token: {type:'hidden'},
         captcha: {type: 'captcha'},
     },
+    dependencies : {}
 });
 ```
 
 
-## InsertConfs
+### ConfInsert
 
 Rappresenta la configurazione per una vista per inserire un record.
 
 ```javascript
-var InsertConfs = EditConfs.extend({
+var ConfInsert = Conf.extend(ConfEdit,{
     routeName : 'insert',
     viewClass : 'ViewInsert',
 });
 ```
 
-## SearchConfs
+## ConfSearch
 
 Rappresenta la configurazione di una vista per la ricerca.
 
 ```javascript
-var SearchConfs = Conf.extend({
+var ConfSearch = Conf.extend(RecordConf ,{
     routeName : 'search',
     viewClass : 'ViewSearch',
     actions : ['ActionSearch','ActionReset'],
 });
 ```
 
-## ViewConfs
+## ConfView
 
 Configurazione per la vista in modalità view di un record
 
 ```javascript
-var ViewConfs = Conf.extend({
+var ConfView = Conf.extend(RecordConf ,{
+    routeName : 'view',
     viewClass : 'ViewView',
     fields_config: {
-        attivo: {type: 'swap',mode : 'view'},
+        attivo: {type: 'swap'},
         fotos : {type: 'hasmany_upload_image'},
         attachments: {type: 'hasmany_upload_attachment'},
         id: {type:'hidden'},
@@ -146,22 +163,17 @@ var ViewConfs = Conf.extend({
 });
 ```
 
-## CalendarConfs
+## ConfCalendar
 
 Configurazione per la vista a calendario di una lista di record.
 
 ```javascript
-var ConfCalendar = CollectionConf.extend({
+var ConfCalendar =  Conf.extend(CollectionConf ,{
     routeName : 'calendar',
     viewClass : 'ViewCalendar',
-    data_inizio : 'data',       // nome campo da utlizzare per prendere la data dell'evento
-    data_fine : null,           // eventuale campo che segna la data di fine  dell'evento
-    title : null,               // nome campo da utilizzare per la visualizzazione dell'evento
-    calendar_options : {        // opzioni da passare al plugin fullCalendar
-
-    }
+    data_inizio : 'data',   // nome campo da utlizzare per prendere la data dell'evento
+    data_fine : null,       // eventuale campo che segna la data di fine  dell'evento
+    title : null,           // nome campo da utilizzare per la visualizzazione dell'evento
+    calendar_options : {}   // opzioni da passare al plugin fullCalendar
 });
 ```
-
-
-

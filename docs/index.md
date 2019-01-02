@@ -61,7 +61,7 @@ Il componente `Action` è nato per la gestione delle azioni vogliamo realizzare 
 [Actions](actions.md)
 
 ## Confs
-Sono le classi di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
+Sono oggetti di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
 configurazioni globali su alcuni campi delle nostre viste senza definirli ogni volta.
 [Confs](confs.md)
 

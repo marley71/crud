@@ -5,11 +5,13 @@ creare dashboards ecc.
 
 
 ### Proprietà
+
 - `resources` : [] - vettore di risorse iniziali della pagina da caricare 
 - `pluginsPath` : '/cupparis4/plugins/' - directory base dove cercare i plugins da caricare
 - `log` = null  : oggetto per il log dei messaggi, viene istanziato nel costruttore dell'app.
 - `show_log` : false - se visualizzare o no i messaggi in console del browser
-- `mobile` = false - se la libreria viene istanziata usu un mobile
+- `mobile` : false - se la libreria viene istanziata usu un mobile,
+- `locale` : 'it' - locale di default, viene utilizzato per la configurazione delle date
 
 
 
@@ -61,7 +63,11 @@ view tramite questo id.
                                     */
 
 
-- `viewModal` = function (title,ViewConf,callback) 
+- `viewModal(title,ViewConf,callback)`: visualizza una view in modal.
+    - @param title : 'Titolo della modale',
+    - @param ViewConf : configurazione della view,
+    - @param callback : callback che verrà richiamata quando la modale sarà chiusa
+    - @return la key id della view presente nella modale 
 - `dashboardModal` = function (title,dash,callback) 
 - `getConf` = function (model,action,role) 
 - `translate` = function (key,plural,params) 
