@@ -1,29 +1,35 @@
 # Template
 
 Classe che estende `Component` e incapsula il template per la visualizzazione di un render,
-all'interno di una vista.
+all'interno di una vista. Questo ci permette di avere strutture per ogni singolo render all'interno
+di una vista. In questo modo possiamo coprire tutte le esigenze di layout della nostra applicazione.
 
 
-Metodi
+#### Metodi
 
-- html() : ritorna l'html del template 
+- `html()` : ritorna l'html del template 
 
 
-Template.factory : metodo statico per creare un template a partire nome
+`Template.factory `: metodo statico per creare un template a partire nome
 e attrs secondo la convenzione sui nomi 
 
-Template.getRenderContainer : ritorna l'elemento dom destinato
+`Template.getRenderContainer` : ritorna l'elemento dom destinato
 a contenere il render
 
 
-##Template Implementati
+## Template Implementati
 
-##TemplateLeft
+La libreria mette a disposizione dei template standard usati dalle view di default. Questi possono 
+essere sovrascritti o inventati di nuovi
+
+
+## TemplateLeft
 Utilizzato soprattuto dalle views edit,insert,view
 
-Metodi 
+#### Metodi 
 
-- template() 
+- `template() `
+
 ```html
 <div class="view-field clearfix">
     <div class="col col-sm-12 view-msg" data-label="msg">
@@ -50,13 +56,13 @@ Metodi
 </div>
 ```
 
-##TemplateTop
+## TemplateTop
 Utilizzato soprattutto dalle views edit,insert,view per i controlli
 che hanno bisogno di spazio
 
-Metodi 
+#### Metodi 
 
-- template() 
+#### template
 ```html
 <div class="view-field clearfix">
     <div class="col col-sm-12">
@@ -76,7 +82,8 @@ Metodi
 </div>
 ```
 
-##TemplateNo 
+## TemplateNo 
+
 nessun template solo un div  utilizzato soprattutto dalla viewlist
 
 Metodi 
@@ -87,7 +94,7 @@ Metodi
 </div>
 ```
 
-##TemplateSimple
+## TemplateSimple
 nessun template solo un div utilizzato soprattutto dalla viewlist
 Metodi 
 

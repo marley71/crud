@@ -1,14 +1,14 @@
-#Actions
+# Actions
 
 
-##Action
-Classe principale delle azioni. Le azioni rappresentano l'aggancio per le interazioni con 
+## Action
+Classe principale delle azioni. Estende la classe principale `Component` Le azioni rappresentano l'aggancio per le interazioni con 
 l'utente sulle views, dashboard oppure semplici bottoni html. Da questa classe
-sono state definite altri due azioni generali la RecordAction e la CollectionAction che
+sono state definite altri due azioni generali la `RecordAction` e la `CollectionAction` che
 fondamentalmente dividono il comportamento in azioni che agiscono sul singolo record
 e azioni che agiscono su una collezione di record.
 
-###Proprietà
+#### Proprietà
 
 - `container` : default null
 - `htmlEvent` : default 'onclick'      evento html associato che fa scattare l'azione
@@ -26,7 +26,7 @@ e azioni che agiscono su una collezione di record.
 - `_htmlProperties` : ['text','icon','cssClass','target','href','params','title','enabled','visible','onclick','onchange'],
 
 
-###Metodi
+#### Metodi
 
 - `execute` : metodo chiamato quando l'azione viene cliccata
 - `template` : metodo che restituisce i template di tipo button o link 
@@ -36,11 +36,11 @@ e azioni che agiscono su una collezione di record.
 - `_getData` : ritorna i valori di instanza di tutti gli attributi html dell'azione
 
     
-##RecordAction
+## RecordAction
 
 Le recordAction sono quelle utilizzate nelle liste per ogni record
 
-###Proprietà
+#### Proprietà
 
 - `className` : 'RecordAction',
 - `type` : 'record',
@@ -62,13 +62,13 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 </a>   
 ```
 
-##CollectionAction
+## CollectionAction
 
 Discriminano le azioni sulla vista globale, per esempio una view a lista ci sono le record actions che lavorano
 sul singolo record, mentre le collection action agisco sul modello. Oltre a questa differenza vengono 
 renderizzate anche in un posto diverso.
 
-### Proprietà
+#### Proprietà
 
 - `className` : 'CollectionAction'
 - `type` : 'collection'
@@ -97,7 +97,7 @@ possono essere estese o definite delle nuove.
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list e rappresent l'edit di un record 
 all'interno della lista. 
 
-Proprietà
+#### Proprietà
 
 - `className` : 'ActionEdit'
 - `title` : 'Modifica',
@@ -106,7 +106,7 @@ Proprietà
 di azioni.
 - `routeName` : 'page_edit'
 
-Metodi 
+#### Metodi 
 
 - `execute` - utilizza la route per una pagina in edit per richiamare la pagina nuova
 
@@ -114,7 +114,7 @@ Metodi
 ## ActionInsert
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.
 
-Proprietà
+#### Proprietà
 
 - `className` : 'ActionInsert',
 - `title` : 'Inserisci',
@@ -124,7 +124,7 @@ Proprietà
 - `multiText` : 'Nuovo',
 - `routeName` : 'page_insert',
      
-Metodi
+#### Metodi
 
 - `execute` - utilizza al route per una pagina in insert per richiamare la pagina nuova
 

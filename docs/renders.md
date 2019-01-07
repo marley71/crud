@@ -6,8 +6,8 @@ come componenti dei singoli dati di una view. Dentro la view un render può esse
 in modalità *edit, search, view*.
 
 La classe Render deve essere consideata come una specie di classe astratta edefinisce alcuni metodi di uso generale e 
-i metodi che i veri oggetti Render devono ridefinire per funzionare. Dobbiamo considerarla come la classe astratta che 
-definisce l'interfaccia da definire nei vari oggetti Render concreti.
+i metodi che i veri oggetti Render devono ridefinire per funzionare. Quindi come la classe che 
+definisce l'interfaccia dei vari oggetti Render concreti.
 
 il modo è definito nelle costanti
 ```javascript
@@ -31,23 +31,28 @@ search
 - `app` : null - identificatore dell'oggetto app della pagina viene assegnato a runtime dall'oggetto `App`.
 - `resources` : [] - vettore risorse da caricare prima di chiamare il finalize
 - `metadata` : {} - array associativo metadati che descrivono il dato
-- htmlAttributes : {}, attributi html per l'oggetto speciale identificato dal marcatore data-render_control
+- `htmlAttributes` : {}, attributi html per l'oggetto speciale identificato dal marcatore *control_selector*
 
 #### Metodi
 
 - `init(key,attributes)` - ridefinizione del costruttore rispetto al Component. 
-    - key : nome del campo
-    - attributes: attributi/function dell'oggetto che vogliamo ridefinire
-- `_setHtmlAttributes(el)` - setta gli attributi presenti nella proprietò 
+    - @param key : nome del campo
+    - @param attributes: attributi/function dell'oggetto che vogliamo ridefinire
+- `_setHtmlAttributes(el)` - setta gli attributi presenti nella proprietà `htmlAttributes` all'elemento el
+    - @param el : elemento jQuery a cui settare gli attributi
 - `change()` : metodo chiamato al momento del change del render.
 - `clear()` : medoto da chiamare per il clear del componente render. 
 - `setMetadata(metadata)` : setta la proprietà metadata
-    - metadata : valore associativo che descrivono il dato
+    - @param metadata : valore associativo che descrivono il dato
 - `Render.factory(key,options)` : metodo statico che permette di creare un Render
-    - key è il nome del campo da creare
-    - options vettore associativo delle opzioni del render. La factory prende
-options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono
- prende come default 'input' come type ed 'edit' come mode.
+    - @param key è il nome del campo da creare
+    - @param options vettore associativo delle opzioni del render. La factory prende
+options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono,
+ prende come type 'input' e come mode 'edit'.
+    - @return object ritorna il render creato.
+ 
+##### esempio
+
 Il nome da cercare deve rispettare questa convezione:
 "Render"+pascalCase(options.type)+pascalCase(options.mode) esempio
 
@@ -59,17 +64,16 @@ var r = Render.factory('field', {
 // la factory cercherà la definizione della classe 'RenderInputHelpedEdit' che rappresenta
 // l'oggetto che gestirà il Render InputHelped in modalità edit.
 ```
-    
+
 # Render Implementati
 
 La libreria mette a disposizione dei renders di default per gli usi più comuni, in modo da avere già una base abbastanza
-completa per iniziare a creare le nostre applicazioni. Questi possono essere ridefiniti, in caso vogliamo cambiare, 
-nella nostra applicazione, aspetto o funzionalità. 
+completa per iniziare a creare le nostre applicazioni. Questi renders possono essere ridefiniti e creati di nuovi.
+Questo ci permette di cambiare, nella nostra applicazione, aspetto e/o funzionalità. 
 
-A questi Renders definiti se ne possono aggiungere altri usando l'erediaretà. I renders vengono istanziati in automatico dalle views, 
-oppure possono essere istanziati manualmente.
+I Renders che aggiungeremo saranno fatti l'erediaretà. 
 
-Alcuni modi per alcuni render non hanno senso, in questo caso non definire la classe per quel modo, questo genererà un errore
+Alcuni `mode` per alcuni render non hanno senso, in questo caso non definire la classe per quel `mode`, questo genererà un errore
 che farà capire dell'utilizzo sbagliato del componente Render. [todo: fare esempio]
 
 In tutti i render verranno mostrati:
@@ -99,7 +103,7 @@ Componente per la gestione degli input standard html.
 
 <a href="http://www.pierpaolociullo.it/example?f=render_input_search" target="_blank">Esempio</a>
 
-template
+#### template
 ```html
 <input data-render_control type="text" class="form-control" placeholder="">
 <input data-control_operator type="hidden" >
@@ -110,9 +114,10 @@ template
 In modalità view, può essere solo uno span. Potevo anche non definirlo, perche' non ha senso un Input in modalità view, 
 Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
 readonly. A voi la scelta.
+
 <a href="http://www.pierpaolociullo.it/example?f=render_input_view" target="_blank">Esempio</a>
 
-template
+#### template
 ```html
 <span data-render_control></span>
 ```

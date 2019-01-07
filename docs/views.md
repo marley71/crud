@@ -4,12 +4,14 @@ La `View` estende la classe `Component` rappesenta il contenitore di dati html a
 modello di dati.
 Questo modello viene utilizzato per discriminare la route per il recupero dei dati.
 Da essa sono derivate le classi:
-    - `RecordView` per la gestione di dati provenienti da record di un modello
-    - `CollectionView` per la gestione di una collezione di record di un modello
+
+- `RecordView` per la gestione di dati provenienti da record di un modello
+- `CollectionView` per la gestione di una collezione di record di un modello
     
 La view accetta come parametro una configurazione. 
 
 Nella configurazione vengono definiti:
+
 - i campi da visualizzare, quali Render utilizzare per ogni dato
 - le azioni disponibili che si possono effettuare. In caso di view che gestisce una 
   collezione di records esistono due tipi di azioni
@@ -98,14 +100,16 @@ cancellare eventuali oggetti creati
 - `getFormData(data)` - ritorna i dati di una form html in un vettore associativo se esiste
 - `getItemTemplate(key)` - Istanzia e ritorna il template associato all'oggetto Render associato alla
 key
-    - key : nome del campo di cui si vuole il template
-- _getRenderMode(key) - (privata) restituisce la modalita' in cui verra' disegnato l'oggetto render 
+    - @param key : nome del campo di cui si vuole il template
+- `_getRenderMode(key)` - (privata) restituisce la modalita' in cui verra' disegnato l'oggetto render 
 in base alla configurazione dell'oggetto nell fields_config della view
-- _getRenderType(key) - (privata) ritorna il type del render in base al type definito nella fields_config della view
+    - key : nome del campo
+- `_getRenderType(key)` - (privata) ritorna il type del render in base al type definito nella fields_config della view
 o alla configurazione di default
-- _getDefaultRenderConfig(key) - ritorna la configurazione di default dell'oggetto render
+    - key : nome del campo
+- `_getDefaultRenderConfig(key)` - ritorna la configurazione di default dell'oggetto render
     - key : chiave dell'oggetto render
-- _getRenderConfig : function(key) - ritorna la configurazione finale dell'oggetto render, eseguendo
+- `_getRenderConfig(key)` - ritorna la configurazione finale dell'oggetto render, eseguendo
 il merge tra la configuazione di default e quella passata alla view.
 
                                        
@@ -116,7 +120,7 @@ il merge tra la configuazione di default e quella passata alla view.
 La `RecordView` estende `View` è pensata per tutte le viste che gestiscono un solo record del modello 
 di dati.
 
-###Proprietà
+### Proprietà
 - _pkName : 'id' - nome della chiave univoca del modello dati
 - _pkValue : null - valore della chiave univoca del modello dati
 - _actions : [] - vettore con tutte le azioni istanziati nella vista
@@ -132,26 +136,26 @@ data : {
 }
 ```
 
-###Metodi
+### Metodi
 
-- getRenderValue : function(fieldName)
-- getRender : function(fieldName)
-- resetForm : function () - esegue il clear di tutti i render della view
-- _callAction : function (actionData) - (privata)
-- _setActions : function () - (privata) instanzia tutte le azioni definite per riga e globali partendo
+- `getRenderValue(fieldName)` : 
+- `getRender : function(fieldName)`
+- `resetForm()` : function () - esegue il clear di tutti i render della view
+- `_callAction` : function (actionData) - (privata)
+- `_setActions` : function () - (privata) instanzia tutte le azioni definite per riga e globali partendo
                                              * dalla configurazione iniziale definita nella config
                                              * far partire l'ascolto per tutti gli eventi che riguardano le proprie
                                              * azioni
-- _createAction : function (key)
-- _setKeys : function () - setta le keys attive per la view
-- _renderHidden : function (key) - renderizza i render di tipo hidden perche' speciali
-- _renderObjectElement : function (key) - renderizza l'oggetto render associato alla key che non sia hidden
-- _getGroup: function (key) - ritorna il gruppo associato al campo nel caso di view con template strutturato a gruppi
-- _renderElement : function (key) : chiama _renderHidden o _renderObjectElement in base al type
-- _createRender : function (container,key) - crea l'oggetto render e gli associa il container dove
+- `_createAction(key)`  
+- `_setKeys`: setta le keys attive per la view
+- `_renderHidden(key)` : renderizza i render di tipo hidden perche' sono speciali
+- `_renderObjectElement(key)` : renderizza l'oggetto render associato alla key che non sia hidden
+- `_getGroup(key)`: ritorna il gruppo associato al campo nel caso di view con template strutturato a gruppi
+- `_renderElement(key)` : chiama _renderHidden o _renderObjectElement in base al type
+- `_createRender(container,key)` : crea l'oggetto render e gli associa il container dove
 verrà disegnato
-- _renderActions : function() - renderizza le azioni istanziate nella view
-- _getFieldName : function (key) - ritorna il fieldName costruito a partire dalla key a seconda del 
+- `_renderActions()` : renderizza le azioni istanziate nella view
+- `_getFieldName(key)` : ritorna il fieldName costruito a partire dalla key a seconda del 
 tipo di view che stiamo realizzando. Ci permette di mettere dei prefissi o suffissi a tutte le key
 del modello dei dati dovuti ad esigenze dell'html tipo view annidate per creare delle form complese.
 
@@ -161,15 +165,15 @@ del modello dei dati dovuti ad esigenze dell'html tipo view annidate per creare 
 La `CollectionView` estend la `View` è pensata per tutte le viste che gestiscono una lista record del modello 
 di dati.
 
-###Proprietà
+### Proprietà
 
-- _recordActions : [] - vettore azioni della vista per ogni singolo record,
-- _globalActions : [] - vettore azioni sull'intera vista
-- _paginatorActions : [] - vettore azioni per la paginazione
-- actionsLayout : 'left' - tipo di layout per le azioni sui record, left o right
-- type : 'list' - tipo di view, in questo caso list
-- defaultItemTemplate : 'no' - classe del template da istanziare per ogni render
-- orderClass - le classi da aggiungere all'header del campo ordinato.
+- `_recordActions` : [] - vettore azioni della vista per ogni singolo record,
+- `_globalActions` : [] - vettore azioni sull'intera vista
+- `_paginatorActions` : [] - vettore azioni per la paginazione
+- `actionsLayout` : 'left' - tipo di layout per le azioni sui record, left o right
+- `type` : 'list' - tipo di view, in questo caso list
+- `defaultItemTemplate` : 'no' - classe del template da istanziare per ogni render
+- `orderClass` - le classi da aggiungere all'header del campo ordinato.
 ```javascript
 orderClass : {
   'asc': ['sorting_asc'],
@@ -190,39 +194,39 @@ data : {
     list_header : ''
 }
 ```
-###Metodi
+### Metodi
 
-- setOrder(field) - permette di ordinare una view rispetto ad un campo
-- _setKeys() - (privata) setta i render da renderizzare nella vista
-- _renderHeaderValues(jQrow) - (privata) setta l'intestazione delle colonne della vista
-- _renderHeaderActions(jQrow) - (privata) renderizza l'header della colonna action
-- _renderHeader() - (privata) - renderizza l'header
-- _renderFooter() - (privata) - renderizza il footer
-- _attachEvents(index) - 
-- _attachDetailEvents() -
-- getChecked() - ritorna il vettore di tutte le pk delle rows selezionate.
-- _renderGlobalActions() - renderizzare le azioni globali alla vista
-- _renderInfoHeader() - renderizza un eventuale header di info della lista. L'html viene preso da
+- `setOrder(field)` - permette di ordinare una view rispetto ad un campo
+- `_setKeys()` - (privata) setta i render da renderizzare nella vista
+- `_renderHeaderValues(jQrow)` - (privata) setta l'intestazione delle colonne della vista
+- `_renderHeaderActions(jQrow)` - (privata) renderizza l'header della colonna action
+- `_renderHeader()` - (privata) - renderizza l'header
+- `_renderFooter()` - (privata) - renderizza il footer
+- `_attachEvents(index)` - 
+- `_attachDetailEvents()` -
+- `getChecked()` - ritorna il vettore di tutte le pk delle rows selezionate.
+- `_renderGlobalActions()` - renderizzare le azioni globali alla vista
+- `_renderInfoHeader()` - renderizza un eventuale header di info della lista. L'html viene preso da
 data.list_header
-- render(callback) - renderizza la view
-- _renderRow : function (index) - (privata) renderizza la singola riga
-- finalize(callback) - finalizza la view e aggancia gli eventi
-- _setActions() - (privata) instanzia tutte le azioni definite per riga e globali partendo
+- `render(callback)` - renderizza la view
+- `_renderRow(index)` - (privata) renderizza la singola riga
+- `finalize(callback)` - finalizza la view e aggancia gli eventi
+- `_setActions()` - (privata) instanzia tutte le azioni definite per riga e globali partendo
 dalla configurazione iniziale definita nella config. Far partire l'ascolto per tutti gli eventi 
 che riguardano le proprie azioni
-- _setVisibleKeys : function ()
-- _renderZeroResult : function () 
-- _renderPagination : function ()
-- _createRender : function (r,key,container)
-- _createGrid : function ()
-- _createAction : function (row,key) - crea un azione se row e' null setta come modelData 
+- `_setVisibleKeys()` 
+- `_renderZeroResult()`  
+- `_renderPagination()` 
+- `_createRender(r,key,container)` 
+- `_createGrid()` 
+- `_createAction(row,key)` - crea un azione se row e' null setta come modelData 
 dell'azione tutti i dati altrimenti il dati della row indicata.
     * @param row : row a cui si riferisce null in caso di azione globale
     * @param key : nome dell'azione
     * @returns {*} : ritorna l'azione creata
-- _renderSingleActions : function ()
-- _hasNeedSelectionAction : function () - controlla che la lista abbia almeno un'azione che ha bisogno di selezionare elementi
-- _hasRecordActions : function () - controlla se la view abbia almeno una azione che lavora sul singolo record della lista
+- `_renderSingleActions()`  
+- `_hasNeedSelectionAction()` - controlla che la lista abbia almeno un'azione che ha bisogno di selezionare elementi
+- `_hasRecordActions()`  - controlla se la view abbia almeno una azione che lavora sul singolo record della lista
 
 
 
