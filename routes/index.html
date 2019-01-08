@@ -59,7 +59,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -69,12 +69,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -105,23 +105,23 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#-routelist">- RouteList</a></li>
+            <li><a class="toctree-l3" href="#routelist">RouteList</a></li>
         
-            <li><a class="toctree-l3" href="#-routeedit">- RouteEdit</a></li>
+            <li><a class="toctree-l3" href="#routeedit">RouteEdit</a></li>
         
-            <li><a class="toctree-l3" href="#-routesearch">- RouteSearch</a></li>
+            <li><a class="toctree-l3" href="#routesearch">RouteSearch</a></li>
         
-            <li><a class="toctree-l3" href="#-routeinsert">- RouteInsert</a></li>
+            <li><a class="toctree-l3" href="#routeinsert">RouteInsert</a></li>
         
-            <li><a class="toctree-l3" href="#-routesave">- RouteSave</a></li>
+            <li><a class="toctree-l3" href="#routesave">RouteSave</a></li>
         
-            <li><a class="toctree-l3" href="#-routeupdate">- RouteUpdate</a></li>
+            <li><a class="toctree-l3" href="#routeupdate">RouteUpdate</a></li>
         
-            <li><a class="toctree-l3" href="#-routeview">- RouteView</a></li>
+            <li><a class="toctree-l3" href="#routeview">RouteView</a></li>
         
-            <li><a class="toctree-l3" href="#-routedelete">- RouteDelete</a></li>
+            <li><a class="toctree-l3" href="#routedelete">RouteDelete</a></li>
         
-            <li><a class="toctree-l3" href="#-routemultidelete">- RouteMultiDelete</a></li>
+            <li><a class="toctree-l3" href="#routemultidelete">RouteMultiDelete</a></li>
         
         </ul>
     
@@ -180,15 +180,16 @@
             <div class="section">
               
                 <h1 id="routes">Routes</h1>
+<p>Le routes rappresentano le classi per la gestione degli url per la comunicazione verso il server che
+fornirà i dati</p>
 <h2 id="route">Route</h2>
-<p>Class base per la gestione delle route verso il backend. Sono state definite
-alcune route delle principali di interazioni con il backend
- secondo le specifiche REST.</p>
+<p>Classe base per la gestione delle route verso il backend. Sono state definite
+alcune route per le principali interazioni con il backend secondo le specifiche REST.</p>
 <h3 id="proprieta">Proprietà</h3>
 <ul>
-<li><code>className</code> default "Route" variabile di comodo per riconoscere in quale route ci troviamo</li>
-<li><code>method</code> default null rappresenta il metodo usato per la chiamata ajax, può essere get o post</li>
-<li><code>url</code> default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
+<li><code>className</code>: default "Route" variabile di comodo per riconoscere in quale route ci troviamo</li>
+<li><code>method</code>: default null rappresenta il metodo usato per la chiamata ajax, può essere get o post</li>
+<li><code>url</code> : default null rappresenta l'url che deve essere composto per eseguire la chiamataa 
     Le parti variabili devono essere racchiuse tra parentesi graffe. Per esempio : /action/{var1}/print è un
     url in cui {var1} verrà sostituita con il valore che l'oggetto Route ha in quel momento.</li>
 <li><code>resultType</code> default  null tipo di risultato, può essere record o list</li>
@@ -207,7 +208,7 @@ della richiesta vengono sommati agli extraParams</li>
 <h3 id="metodi">Metodi</h3>
 <ul>
 <li>
-<p><code>__costruct(attrs)</code> costruttore. Accetta come parametro un vettore associativo che permette
+<p><code>init(attrs)</code> costruttore. Accetta come parametro un vettore associativo che permette
 di sovrascrivere le proprietà dell'oggetto creato.</p>
 </li>
 <li>
@@ -249,7 +250,7 @@ statico :</li>
 
 <p>Questo codice crea un'instanza della classe RouteList e il vettore associativo values
 prenderà come valori quelli passati.</p>
-<h2 id="-routelist">- RouteList</h2>
+<h2 id="routelist">RouteList</h2>
 <p>la route è stata creata per recuperare una lista di record del modello specificato.
 Nel vettore <em>values</em> deve essere presente la chiave:</p>
 <ul>
@@ -266,7 +267,7 @@ Nel vettore <em>values</em> deve essere presente la chiave:</p>
 }
 </code></pre>
 
-<h2 id="-routeedit">- RouteEdit</h2>
+<h2 id="routeedit">RouteEdit</h2>
 <p>La route carica i dati di un record per la modifica.
 Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 <ul>
@@ -285,7 +286,7 @@ Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 }
 </code></pre>
 
-<h2 id="-routesearch">- RouteSearch</h2>
+<h2 id="routesearch">RouteSearch</h2>
 <p>La route che chiede i dati di un record per la ricerca.
 Nel vettore <em>values</em> deve essere presente la chiave:</p>
 <ul>
@@ -302,7 +303,7 @@ Nel vettore <em>values</em> deve essere presente la chiave:</p>
 }
 </code></pre>
 
-<h2 id="-routeinsert">- RouteInsert</h2>
+<h2 id="routeinsert">RouteInsert</h2>
 <p>La route che chiede i dati di un record per l'inserimento.
 Nel vettore <em>values</em> deve essere presente la chiave:</p>
 <ul>
@@ -319,7 +320,7 @@ Nel vettore <em>values</em> deve essere presente la chiave:</p>
 }
 </code></pre>
 
-<h2 id="-routesave">- RouteSave</h2>
+<h2 id="routesave">RouteSave</h2>
 <p>La route che invia i dati di un record per crearlo. I dati del modello verranno passati
 come params. In questa route viene aggiunto sempre un parametro chiamato _method='POST' che 
 serve a simulare il metodo save REST attraverso la chiamata http.</p>
@@ -341,7 +342,7 @@ serve a simulare il metodo save REST attraverso la chiamata http.</p>
 }
 </code></pre>
 
-<h2 id="-routeupdate">- RouteUpdate</h2>
+<h2 id="routeupdate">RouteUpdate</h2>
 <p>La route che invia i dati di un record per la modifica. I dati del modello verranno passati
 come params. In questa route viene aggiunto sempre un parametro chiamato _method='PUT' che 
 serve a simulare il metodo put REST attraverso la chiamata http.
@@ -365,7 +366,7 @@ Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 }
 </code></pre>
 
-<h2 id="-routeview">- RouteView</h2>
+<h2 id="routeview">RouteView</h2>
 <p>La route che chiede i dati di un record in modalità lettura.
 Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 <ul>
@@ -384,7 +385,7 @@ Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 }
 </code></pre>
 
-<h2 id="-routedelete">- RouteDelete</h2>
+<h2 id="routedelete">RouteDelete</h2>
 <p>La route che rimuove un record. In questa route viene aggiunto sempre un parametro chiamato 
 _method='DELETE' che serve a simulare il metodo delete REST attraverso la chiamata http.
 Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
@@ -407,7 +408,7 @@ Nel vettore <em>values</em> devono essere presenti le chiavi:</p>
 }
 </code></pre>
 
-<h2 id="-routemultidelete">- RouteMultiDelete</h2>
+<h2 id="routemultidelete">RouteMultiDelete</h2>
 <p>La route che rimuove una lista di record. La lista viene passata come vettore di id
 nei params.
 Nel vettore <em>values</em> deve essere presente la chiave:</p>

@@ -59,7 +59,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -69,12 +69,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -159,46 +159,76 @@
                 <h1 id="app">App</h1>
 <p>App è la classe per la gestione della pagina. Permette di aggiungere e cancellare view, 
 creare dashboards ecc.</p>
-<h2 id="proprieta">Proprietà</h2>
+<h3 id="proprieta">Proprietà</h3>
 <ul>
-<li><code>resources</code> = [];     // vettore di risorse iniziali da caricare</li>
-<li><code>pluginsPath</code> = '/cupparis4/plugins/';</li>
-<li><code>log</code> = null;</li>
-<li><code>show_log</code> = false;</li>
-<li><code>mobile</code> = false;</li>
+<li><code>resources</code> : [] - vettore di risorse iniziali della pagina da caricare </li>
+<li><code>pluginsPath</code> : '/cupparis4/plugins/' - directory base dove cercare i plugins da caricare</li>
+<li><code>log</code> = null  : oggetto per il log dei messaggi, viene istanziato nel costruttore dell'app.</li>
+<li><code>show_log</code> : false - se visualizzare o no i messaggi in console del browser</li>
+<li><code>mobile</code> : false - se la libreria viene istanziata usu un mobile,</li>
+<li><code>locale</code> : 'it' - locale di default, viene utilizzato per la configurazione delle date</li>
 </ul>
-<h2 id="metodi">Metodi</h2>
+<h3 id="metodi">Metodi</h3>
 <ul>
-<li><code>getResources</code> = function () - vettore di tutte le risorse caricate dalla pagina</li>
-<li><code>init</code> = function(options,callback) metodo iniziale da chiamare subito dopo la new per inizializzare
+<li><code>getResources()</code> : vettore di tutte le risorse caricate dalla pagina</li>
+<li><code>init(options,callback)</code> : metodo iniziale da chiamare subito dopo la new per inizializzare
 l'applicazione</li>
-<li>
-<p><code>loadResource</code> = function (fileName, callback) - carica una risorsa script o css dinamicamente partendo dalla cartella
-                                                      * pluginsPath quando lo script e' stato caricato chiama la callback
-                                                      * @param fileName
-                                                      * @param callback</p>
+<li><code>loadResource(fileName, callback)</code> : carica una risorsa script o css dinamicamente partendo dalla 
+cartella pluginsPath. quando lo script e' stato caricato chiama la callback<ul>
+<li>@param fileName : path compreso dal filename della risorsa da caricare</li>
+<li>@param callback : funzione da richiamare al fine del caricamento</li>
+</ul>
 </li>
-<li>
-<p><code>loadResources</code> = function(resources, callback) /*<em>
-                                                     * carica un vettore di risorse, al fine caricamento chiama la callback
-                                                     * @param resources
-                                                     * @param callback
-                                                     </em>/</p>
+<li><code>loadResources(resources, callback)</code> : carica un vettore di risorse, al fine caricamento chiama la callback<ul>
+<li>@param resources : vettore risorse da caricare</li>
+<li>@param callback : funzione da richiamare dopo il caricamento di tutte le risorse</li>
+</ul>
 </li>
-<li>
-<p><code>addView</code> = function (options) </p>
+<li><code>addView(options)</code> : aggiunge una view, se in options la proprietà autorender=true la visualizza.<ul>
+<li>@param options : configurazione della view, deve essere un'istanza Conf.  </li>
+</ul>
 </li>
-<li>addDashboard = function(options)</li>
-<li><code>renderViews</code> = function () - renderizza tutte le view prensenti nella pagina</li>
-<li><code>renderView</code> = function (key, callback) </li>
-<li><code>getView</code> = function (key) </li>
-<li><code>getViews</code> = function ()</li>
-<li><code>getKeyFromId</code> = function (htmlId) </li>
-<li><code>getViewById</code> = function(htmlId)</li>
-<li><code>removeViewById</code> = function (htmlId) </li>
-<li><code>removeAllViews</code> = function () </li>
-<li><code>removeView</code> = function(key) </li>
-<li><code>renderViewById</code> = function (htmlId,callback) </li>
+<li><code>addDashboard(options)</code> : aggiunge una dashboard<ul>
+<li>@param options : opzioni per l'aggiunta di una dashboard</li>
+</ul>
+</li>
+<li><code>renderViews()</code> : renderizza tutte le view prensenti aggiunte precedentemente</li>
+<li><code>renderView(key, callback)</code> : renderizza la view con chiave key e chiama la callback se passata<ul>
+<li>@param key : chiave della view da visualizzare</li>
+<li>@param callback : opzionale, se passata viene chiamata quando la view e' stata visualizzata</li>
+</ul>
+</li>
+<li><code>getView(key)</code> : restituisce la view di chiave key, se esiste, altrimenti null.<ul>
+<li>@param key : chiave view da prendere</li>
+</ul>
+</li>
+<li><code>getViews()</code> : ritorna il vettore di tutte le views presenti in App.</li>
+<li><code>getKeyFromId(htmlId)</code> : se il container html della view ha un id allora possiamo recuperare la chiave
+della view tramite questo id.<ul>
+<li>@param htmlId : id html del container che contiene la view. </li>
+<li>@return : stringa che contiene la key della view</li>
+</ul>
+</li>
+<li><code>getViewById(htmlId)</code> : sel il container html della view ha un id allora possiamo recuperare direttamente la
+view tramite questo id.<ul>
+<li>@param htmlId : id html del container che contiene la view. </li>
+<li>@return : oggetto view</li>
+</ul>
+</li>
+<li><code>removeViewById(htmlId)</code> : rimuove la view associata al container con quell'id.<ul>
+<li>@param htmlId : id html del container</li>
+</ul>
+</li>
+<li><code>removeAllViews()</code> : rimuove tutte le view istanziate.</li>
+<li><code>removeView(key)</code> : rimuove la view associate alle key passata<ul>
+<li>@param key : chiave view che vogliamo cancellare </li>
+</ul>
+</li>
+<li><code>renderViewById(htmlId,callback)</code> : renderizza una view che id html passato. Poi chiama la callback, se passata.<ul>
+<li>@param htmlId : id html del container che contiene la view</li>
+<li>@param callback : opzionale, funziona da chiamare quando la view viene renderizzata</li>
+</ul>
+</li>
 <li>
 <p><code>getHtmlConf</code> = function (jQe) </p>
 </li>
@@ -210,7 +240,13 @@ l'applicazione</li>
                                     </em>/</p>
 </li>
 <li>
-<p><code>viewModal</code> = function (title,ViewConf,callback) </p>
+<p><code>viewModal(title,ViewConf,callback)</code>: visualizza una view in modal.</p>
+<ul>
+<li>@param title : 'Titolo della modale',</li>
+<li>@param ViewConf : configurazione della view,</li>
+<li>@param callback : callback che verrà richiamata quando la modale sarà chiusa</li>
+<li>@return la key id della view presente nella modale </li>
+</ul>
 </li>
 <li><code>dashboardModal</code> = function (title,dash,callback) </li>
 <li><code>getConf</code> = function (model,action,role) </li>

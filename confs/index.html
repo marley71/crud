@@ -59,7 +59,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -69,12 +69,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -93,22 +93,13 @@
         
             <li><a class="toctree-l3" href="#conf">Conf</a></li>
         
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#configurazioni-implementate">Configurazioni implementate</a></li>
-    
-        <ul>
+            <li><a class="toctree-l3" href="#configurazioni-definite-di-default">Configurazioni definite di default</a></li>
         
-            <li><a class="toctree-l3" href="#-listconfs">- ListConfs</a></li>
+            <li><a class="toctree-l3" href="#confsearch">ConfSearch</a></li>
         
-            <li><a class="toctree-l3" href="#-editconfs">- EditConfs</a></li>
+            <li><a class="toctree-l3" href="#confview">ConfView</a></li>
         
-            <li><a class="toctree-l3" href="#-insertconfs">- InsertConfs</a></li>
-        
-            <li><a class="toctree-l3" href="#-searchconfs">- SearchConfs</a></li>
-        
-            <li><a class="toctree-l3" href="#-viewconfs">- ViewConfs</a></li>
+            <li><a class="toctree-l3" href="#confcalendar">ConfCalendar</a></li>
         
         </ul>
     
@@ -173,53 +164,55 @@
               
                 <h1 id="confs">Confs</h1>
 <p>Le Confs sono nate per creare configurazioni iniziali per le views di uso generale.
-Questo permette di avere, con pochissimo codice, la configurazione
-della view da utilizzare e modificare solo dove occorre. </p>
+Questo permette di avere, con pochissimo codice, la configurazione di default 
+della view e modificare solo le proprietà nella singola istanza. </p>
 <h2 id="conf">Conf</h2>
-<p>La Classe Conf è la classe base che ereditano tutte le confs. Il costrutture 
-accetta un vettore associativo per la sostituizione di proprietà della configurazione che 
-andiamo ad instanziare. </p>
-<h3 id="proprieta">Proprietà</h3>
-<ul>
-<li><code>routeName</code>: Indica la route da utilizzare per il caricamento dei dati della view. 
-Su routeName verrà utilizzata la convenzione del metodo statico 
-<a href="/routes#">Route.factory(routeName)</a>. </li>
-<li><code>viewClass</code>: Indica la classe view da utilizzare. Esempio <em>ViewList</em></li>
-<li><code>actions</code>: Vettore di azioni presenti nella view. La visualizzazione delle actions 
-sarà compito della view secondo le sue strategie di visualizzazione.</li>
-<li><code>extra_actions</code>: Vettore di azioni con la loro definizione nel caso in cui 
-nel vettore actions  siano indicate azioni custom o azioni che ridefiniscono quelle
-di default.</li>
-<li><code>fields</code>: Il Vettore dei campi che deve essere gestito dalla views.</li>
-<li><code>detail_fields</code>: Il Vettore di campi che hanno anche un dettaglio. Sono campi particali
-come le aggregazioni, totale di una lista di records.</li>
-<li><code>pagination</code>: Valido solo per le liste, contiene le informazioni sulla paginazione
-dei risultati.</li>
-<li><code>fields_type</code> : Vettore della definizione del tipo di tutti i campi presenti in <em>fields</em> 
-con le loro eventuali estensioni.</li>
-<li><code>dependencies</code>: Vettore associativo di oggetti Dipendence per permettere l'interazione
-tra due campi diversi. </li>
-<li><code>fields_structure</code> : Indica la classe struttura da utilizzare per renderizzare i
-campi. </li>
-</ul>
-<h3 id="metodi">Metodi</h3>
-<ul>
-<li><code>__costruct(attrs)</code>: attrs rappresenta il vettore associativo per la ridefinizione
-di alcune proprietà di confs.</li>
-</ul>
-<h1 id="configurazioni-implementate">Configurazioni implementate</h1>
+<p>La Classe Conf è stata realizzata per permettere le estensioni e il merge di configurazioni
+per ottenere la configurazione finale da passare alla view.
+E' stato implementato un metodo statico</p>
+<p>Conf.extend(dest,source) : Prese due configurazioni source e dest, la source verrà mergiata con dest
+ sovrascrivendo le proprieta e restituita un unica conf.
+- param @source : configurazione sorgente
+- param @dest : configurazine destinazione che verranno copiate le proprietà di source
+- return object nuova configurazione</p>
+<h2 id="configurazioni-definite-di-default">Configurazioni definite di default</h2>
 <p>Nella libreria ci sono già delle configurazioni di uso comune per ogni oggetto vista 
 implementato di default.</p>
-<h2 id="-listconfs">- ListConfs</h2>
-<p>Rappresenta la configurazione base utilizzare nella creazione di una Views.</p>
-<pre><code class="javascript">var ListConfs = Conf.extend({
+<h3 id="collectionconf">CollectionConf</h3>
+<p>Configurazione base per le views di tipo collection</p>
+<pre><code class="javascript">var CollectionConf = {
+    routeName : null,
+    viewClass : null,
+    actions : [],
+    custom_actions : {},
+    fields : [],
+    fields_config: {},
+    pagination : true,
+    detail_fields: {},
+}
+</code></pre>
+
+<h3 id="recordconf">RecordConf</h3>
+<p>Configurazione base per le view di tipo record</p>
+<pre><code class="javascript">var RecordConf = {
+    routeName : null,
+    viewClass : null,
+    actions : [],
+    custom_actions : {},
+    fields : [],
+    fields_config: {},
+    dependencies : {},
+    fields_template: 'left',  // può essere stringa o array associativo {field : struttura} per definizioni di struttura per ogni campo
+}
+</code></pre>
+
+<h3 id="conflist">ConfList</h3>
+<p>Rappresenta la configurazione base utilizzare nella creazione di una view di lista di oggetti.</p>
+<pre><code class="javascript">var ConfList = Conf.extend(CollectionConf,{
     routeName : 'list',
     viewClass : 'ViewList',
     actions : ['ActionDelete','ActionMultiDelete','ActionEdit','ActionView','ActionInsert'],
-    extra_actions : {},
-    fields : [],
-    detail_fields: {},
-    pagination : true,
+    detail_fields : {},
     fields_config: {
         id :            {type:'hidden'},
         created_at:     {type:'hidden'},
@@ -237,15 +230,16 @@ implementato di default.</p>
 });
 </code></pre>
 
-<h2 id="-editconfs">- EditConfs</h2>
-<pre><code class="javascript">var EditConfs = Conf.extend({
+<h3 id="confedit">ConfEdit</h3>
+<p>Rappresenta la configurazione per l'editing di un record. </p>
+<pre><code class="javascript">var ConfEdit = Conf.extend(RecordConf, {
+    routeName : 'edit',
     viewClass : 'ViewEdit',
     actions : ['ActionSave','ActionBack'],
-    extra_actions : {},
-    labels: 'left',
+    custom_actions : {},
     fields: [],
     fields_config: {
-        id: {type:'input'},
+        id: {type:'hidden'},
         created_at: {type:'hidden'},
         updated_at: {type:'hidden'},
         deleted_at: {type:'hidden'},
@@ -255,10 +249,9 @@ implementato di default.</p>
         descrizione: {type: 'texthtml'},
         body: {type: 'texthtml'},
         note: {type: 'texthtml'},
-        fotos: {type: 'hasmany_upload_image', 'label': 'no'},
-        attachments: {type: 'hasmany_upload_attachment', 'label': 'no'},
+        fotos: {type: 'hasmany_upload_image',templateName:'no'},
+        attachments: {type: 'hasmany_upload_attachment',templateName:'no'},
         data: {type: 'date_picker'},
-        data_formatted: {type:'hidden'},
         status: {type:'hidden'},
         token: {type:'hidden'},
         captcha: {type: 'captcha'},
@@ -267,29 +260,28 @@ implementato di default.</p>
 });
 </code></pre>
 
-<h2 id="-insertconfs">- InsertConfs</h2>
-<pre><code class="javascript">var InsertConfs = EditConfs.extend({
+<h3 id="confinsert">ConfInsert</h3>
+<p>Rappresenta la configurazione per una vista per inserire un record.</p>
+<pre><code class="javascript">var ConfInsert = Conf.extend(ConfEdit,{
+    routeName : 'insert',
     viewClass : 'ViewInsert',
 });
 </code></pre>
 
-<h2 id="-searchconfs">- SearchConfs</h2>
-<pre><code class="javascript">var SearchConfs = Conf.extend({
+<h2 id="confsearch">ConfSearch</h2>
+<p>Rappresenta la configurazione di una vista per la ricerca.</p>
+<pre><code class="javascript">var ConfSearch = Conf.extend(RecordConf ,{
+    routeName : 'search',
     viewClass : 'ViewSearch',
     actions : ['ActionSearch','ActionReset'],
-    extra_actions : {},
-    fields:[],
-    fields_config : {},
 });
 </code></pre>
 
-<h2 id="-viewconfs">- ViewConfs</h2>
-<pre><code class="javascript">var ViewConfs = Conf.extend({
+<h2 id="confview">ConfView</h2>
+<p>Configurazione per la vista in modalità view di un record</p>
+<pre><code class="javascript">var ConfView = Conf.extend(RecordConf ,{
+    routeName : 'view',
     viewClass : 'ViewView',
-    labels: 'left',
-    actions : [],
-    extra_actions : {},
-    fields : [],
     fields_config: {
         attivo: {type: 'swap'},
         fotos : {type: 'hasmany_upload_image'},
@@ -301,6 +293,18 @@ implementato di default.</p>
         created_by: {type:'hidden'},
         updated_by: {type:'hidden'}
     }
+});
+</code></pre>
+
+<h2 id="confcalendar">ConfCalendar</h2>
+<p>Configurazione per la vista a calendario di una lista di record.</p>
+<pre><code class="javascript">var ConfCalendar =  Conf.extend(CollectionConf ,{
+    routeName : 'calendar',
+    viewClass : 'ViewCalendar',
+    data_inizio : 'data',   // nome campo da utlizzare per prendere la data dell'evento
+    data_fine : null,       // eventuale campo che segna la data di fine  dell'evento
+    title : null,           // nome campo da utilizzare per la visualizzazione dell'evento
+    calendar_options : {}   // opzioni da passare al plugin fullCalendar
 });
 </code></pre>
               

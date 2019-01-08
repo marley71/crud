@@ -59,7 +59,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -69,12 +69,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1 current">
@@ -99,33 +99,33 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#-actionedit">- ActionEdit:</a></li>
+            <li><a class="toctree-l3" href="#actionedit">ActionEdit:</a></li>
         
-            <li><a class="toctree-l3" href="#-actioninsert">- ActionInsert</a></li>
+            <li><a class="toctree-l3" href="#actioninsert">ActionInsert</a></li>
         
-            <li><a class="toctree-l3" href="#-actionsave">- ActionSave</a></li>
+            <li><a class="toctree-l3" href="#actionsave">ActionSave</a></li>
         
-            <li><a class="toctree-l3" href="#-actionback">- ActionBack</a></li>
+            <li><a class="toctree-l3" href="#actionback">ActionBack</a></li>
         
-            <li><a class="toctree-l3" href="#-actionview">- ActionView</a></li>
+            <li><a class="toctree-l3" href="#actionview">ActionView</a></li>
         
-            <li><a class="toctree-l3" href="#-actiondelete">- ActionDelete</a></li>
+            <li><a class="toctree-l3" href="#actiondelete">ActionDelete</a></li>
         
-            <li><a class="toctree-l3" href="#-actionmultidelete">- ActionMultiDelete</a></li>
+            <li><a class="toctree-l3" href="#actionmultidelete">ActionMultiDelete</a></li>
         
-            <li><a class="toctree-l3" href="#-actionsearch">- ActionSearch</a></li>
+            <li><a class="toctree-l3" href="#actionsearch">ActionSearch</a></li>
         
-            <li><a class="toctree-l3" href="#-actionreset">- ActionReset</a></li>
+            <li><a class="toctree-l3" href="#actionreset">ActionReset</a></li>
         
-            <li><a class="toctree-l3" href="#-actionnextpage">- ActionNextPage</a></li>
+            <li><a class="toctree-l3" href="#actionnextpage">ActionNextPage</a></li>
         
-            <li><a class="toctree-l3" href="#-actionprevpage">- ActionPrevPage</a></li>
+            <li><a class="toctree-l3" href="#actionprevpage">ActionPrevPage</a></li>
         
-            <li><a class="toctree-l3" href="#-actionfirstpage">- ActionFirstPage</a></li>
+            <li><a class="toctree-l3" href="#actionfirstpage">ActionFirstPage</a></li>
         
-            <li><a class="toctree-l3" href="#-actionlastpage">- actionLastPage</a></li>
+            <li><a class="toctree-l3" href="#actionlastpage">ActionLastPage</a></li>
         
-            <li><a class="toctree-l3" href="#-actionperpage">- actionPerPage</a></li>
+            <li><a class="toctree-l3" href="#actionperpage">ActionPerPage</a></li>
         
         </ul>
     
@@ -195,12 +195,12 @@
               
                 <h1 id="actions">Actions</h1>
 <h2 id="action">Action</h2>
-<p>Classe principale delle azioni. Le azioni rappresentano l'aggancio per le interazioni con 
+<p>Classe principale delle azioni. Estende la classe principale <code>Component</code> Le azioni rappresentano l'aggancio per le interazioni con 
 l'utente sulle views, dashboard oppure semplici bottoni html. Da questa classe
-sono state definite altri due azioni generali la RecordAction e la CollectionAction che
+sono state definite altri due azioni generali la <code>RecordAction</code> e la <code>CollectionAction</code> che
 fondamentalmente dividono il comportamento in azioni che agiscono sul singolo record
 e azioni che agiscono su una collezione di record.</p>
-<h3 id="proprieta">Proprietà</h3>
+<h4 id="proprieta">Proprietà</h4>
 <ul>
 <li><code>container</code> : default null</li>
 <li><code>htmlEvent</code> : default 'onclick'      evento html associato che fa scattare l'azione</li>
@@ -217,7 +217,7 @@ e azioni che agiscono su una collezione di record.</p>
 <li><code>title</code> : '',</li>
 <li><code>_htmlProperties</code> : ['text','icon','cssClass','target','href','params','title','enabled','visible','onclick','onchange'],</li>
 </ul>
-<h3 id="metodi">Metodi</h3>
+<h4 id="metodi">Metodi</h4>
 <ul>
 <li><code>execute</code> : metodo chiamato quando l'azione viene cliccata</li>
 <li><code>template</code> : metodo che restituisce i template di tipo button o link </li>
@@ -228,7 +228,7 @@ e azioni che agiscono su una collezione di record.</p>
 </ul>
 <h2 id="recordaction">RecordAction</h2>
 <p>Le recordAction sono quelle utilizzate nelle liste per ogni record</p>
-<h3 id="proprieta_1">Proprietà</h3>
+<h4 id="proprieta_1">Proprietà</h4>
 <ul>
 <li><code>className</code> : 'RecordAction',</li>
 <li><code>type</code> : 'record',</li>
@@ -255,7 +255,10 @@ e azioni che agiscono su una collezione di record.</p>
 </code></pre>
 
 <h2 id="collectionaction">CollectionAction</h2>
-<h3 id="proprieta_2">Proprietà</h3>
+<p>Discriminano le azioni sulla vista globale, per esempio una view a lista ci sono le record actions che lavorano
+sul singolo record, mentre le collection action agisco sul modello. Oltre a questa differenza vengono 
+renderizzate anche in un posto diverso.</p>
+<h4 id="proprieta_2">Proprietà</h4>
 <ul>
 <li><code>className</code> : 'CollectionAction'</li>
 <li><code>type</code> : 'collection'</li>
@@ -277,23 +280,28 @@ e azioni che agiscono su una collezione di record.</p>
 </code></pre>
 
 <h1 id="action-implementate">Action Implementate</h1>
-<h2 id="-actionedit">- ActionEdit:</h2>
-<p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view list  l'edit di un record all'interno della lista. </p>
-<p>Proprietà</p>
+<p>La libreria, come per tutti gli altri componenti, mette a disposizione delle azioni già predefinite, 
+utilizzabili immediamente. Queste azioni rappresentano le azioni più comuni in una libreria crud. Ovviamente
+possono essere estese o definite delle nuove.</p>
+<h2 id="actionedit">ActionEdit:</h2>
+<p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view list e rappresent l'edit di un record 
+all'interno della lista. </p>
+<h4 id="proprieta_3">Proprietà</h4>
 <ul>
 <li><code>className</code> : 'ActionEdit'</li>
 <li><code>title</code> : 'Modifica',</li>
 <li><code>icon</code> : 'fa fa-edit',</li>
-<li><code>multiText</code> : 'Modifica',</li>
+<li><code>multiText</code> : 'Modifica', // questo testo viene utilizzato quando l'azione si trova all'interno di un gruppo
+di azioni.</li>
 <li><code>routeName</code> : 'page_edit'</li>
 </ul>
-<p>Metodi </p>
+<h4 id="metodi_1">Metodi</h4>
 <ul>
 <li><code>execute</code> - utilizza la route per una pagina in edit per richiamare la pagina nuova</li>
 </ul>
-<h2 id="-actioninsert">- ActionInsert</h2>
+<h2 id="actioninsert">ActionInsert</h2>
 <p>Estende <code>CollectionAction</code>. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.</p>
-<p>Proprietà</p>
+<h4 id="proprieta_4">Proprietà</h4>
 <ul>
 <li><code>className</code> : 'ActionInsert',</li>
 <li><code>title</code> : 'Inserisci',</li>
@@ -303,11 +311,11 @@ e azioni che agiscono su una collezione di record.</p>
 <li><code>multiText</code> : 'Nuovo',</li>
 <li><code>routeName</code> : 'page_insert',</li>
 </ul>
-<p>Metodi</p>
+<h4 id="metodi_2">Metodi</h4>
 <ul>
 <li><code>execute</code> - utilizza al route per una pagina in insert per richiamare la pagina nuova</li>
 </ul>
-<h2 id="-actionsave">- ActionSave</h2>
+<h2 id="actionsave">ActionSave</h2>
 <p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view edit per salvare le modifiche</p>
 <ul>
 <li><code>className</code> : 'ActionSave',</li>
@@ -320,7 +328,7 @@ e azioni che agiscono su una collezione di record.</p>
 <p><code>execute</code> - utilizza le route update o save a seconda se il modello dati è in modifica o insert</p>
 </li>
 </ul>
-<h2 id="-actionback">- ActionBack</h2>
+<h2 id="actionback">ActionBack</h2>
 <p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza</p>
 <ul>
 <li><code>className</code> : 'ActionBack',</li>
@@ -332,9 +340,9 @@ e azioni che agiscono su una collezione di record.</p>
 <p><code>execute</code> esegue sostanzialmente un history.back();</p>
 </li>
 </ul>
-<h2 id="-actionview">- ActionView</h2>
+<h2 id="actionview">ActionView</h2>
 <p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view list  per la visualizzazione di un record all'interno della lista.</p>
-<p>Proprietà</p>
+<h3 id="proprieta_5">Proprietà</h3>
 <ul>
 <li><code>className</code> : 'ActionView',</li>
 <li><code>title</code> :'Visualizza',</li>
@@ -342,27 +350,27 @@ e azioni che agiscono su una collezione di record.</p>
 <li><code>multiText</code> : 'Visualizza',</li>
 <li><code>routeName</code> : 'page_view',</li>
 </ul>
-<p>Metodi</p>
+<h3 id="metodi_3">Metodi</h3>
 <ul>
 <li><code>execute</code> - utilizza al route per una pagina in view per richiamare la pagina nuova</li>
 </ul>
-<h2 id="-actiondelete">- ActionDelete</h2>
+<h2 id="actiondelete">ActionDelete</h2>
 <p>Estende <code>RecordAction</code>. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.</p>
-<p>Proprietà</p>
+<h3 id="proprieta_6">Proprietà</h3>
 <ul>
 <li><code>className</code> : 'ActionDelete',</li>
 <li><code>title</code> : 'Cancella',</li>
 <li><code>icon</code>:  'fa fa-remove text-danger',</li>
 <li><code>multiText</code> : 'Cancella',</li>
 </ul>
-<p>Metodi</p>
+<h3 id="metodi_4">Metodi</h3>
 <ul>
 <li><code>execute</code> - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma</li>
 <li><code>callback</code> - metodo richiamata alla fine della execute</li>
 </ul>
-<h2 id="-actionmultidelete">- ActionMultiDelete</h2>
+<h2 id="actionmultidelete">ActionMultiDelete</h2>
 <p>Estende <code>CollectionAction</code>. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.</p>
-<p>Proprietà</p>
+<h3 id="proprieta_7">Proprietà</h3>
 <ul>
 <li><code>className</code> : 'ActionMultiDelete',</li>
 <li><code>title</code> : 'Cancella selezionati',</li>
@@ -372,14 +380,14 @@ e azioni che agiscono su una collezione di record.</p>
 <li><code>needSelection</code> : true,</li>
 <li><code>multiText</code> : 'Cancella Selezionati',</li>
 </ul>
-<p>Metodi</p>
+<h3 id="metodi_5">Metodi</h3>
 <ul>
 <li><code>execute</code> - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma</li>
 <li><code>callback</code> - metodo richiamata alla fine della execute</li>
 </ul>
-<h2 id="-actionsearch">- ActionSearch</h2>
+<h2 id="actionsearch">ActionSearch</h2>
 <p>Estende <code>CollectionAction</code>. Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.</p>
-<p>Proprietà</p>
+<h3 id="proprieta_8">Proprietà</h3>
 <ul>
 <li><code>className</code> : 'ActionSearch',</li>
 <li><code>title</code> : 'Ricerca',</li>
@@ -387,37 +395,37 @@ e azioni che agiscono su una collezione di record.</p>
 <li><code>cssClass</code> : 'btn btn-xs btn-default text-info',</li>
 <li><code>text</code> : 'Cerca',</li>
 </ul>
-<p>Metodi</p>
+<h3 id="metodi_6">Metodi</h3>
 <ul>
 <li><code>execute</code> - richiama la pagina con i parametri in get presenti nella form della vista</li>
 </ul>
-<h2 id="-actionreset">- ActionReset</h2>
+<h2 id="actionreset">ActionReset</h2>
 <p>Estende <code>CollectionAction</code>. Azione pensata per l'utilizzo dentro una view search il reset dei parametri di 
 ricerca impostati</p>
-<p>Proprietà</p>
+<h3 id="proprieta_9">Proprietà</h3>
 <ul>
 <li><code>className</code> : 'ActionReset',</li>
 <li><code>title</code> : 'Annulla filtri ricerca',</li>
 <li><code>cssClass</code> : 'btn btn-xs btn-default',</li>
 <li><code>text</code> : 'Annulla filtri',</li>
 </ul>
-<p>Metodi</p>
+<h3 id="metodi_7">Metodi</h3>
 <ul>
 <li><code>execute</code> - richiama il metodo clear su tutti i renders della view e richiama la callback</li>
 <li><code>callback</code> - metodo chiamato dopo il reset dei controlli</li>
 </ul>
-<h2 id="-actionnextpage">- ActionNextPage</h2>
+<h2 id="actionnextpage">ActionNextPage</h2>
 <p>nextpage del navigatore di una lista</p>
 <p>Proprietà  <br />
 - <code>icon</code> : 'fa fa-angle-right',
 - <code>cssClass</code> : 'btn btn-default btn-xs',</p>
-<p>Metodi </p>
+<h3 id="metodi_8">Metodi</h3>
 <ul>
 <li><code>execute</code> : incrementa di uno il parametro page della route associata alla lista</li>
 </ul>
-<h2 id="-actionprevpage">- ActionPrevPage</h2>
+<h2 id="actionprevpage">ActionPrevPage</h2>
 <p>Pagina precendente di una view</p>
-<p>Proprietà</p>
+<h3 id="proprieta_10">Proprietà</h3>
 <ul>
 <li><code>icon</code> : 'fa fa-angle-left',</li>
 <li>
@@ -427,19 +435,19 @@ ricerca impostati</p>
 <p><code>execute</code> : Decrementa di uno il parametro page della route associata alla lista</p>
 </li>
 </ul>
-<h2 id="-actionfirstpage">- ActionFirstPage</h2>
+<h2 id="actionfirstpage">ActionFirstPage</h2>
 <ul>
 <li><code>icon</code> : 'fa fa fa-angle-double-left',</li>
 <li><code>cssClass</code> : 'btn btn-default btn-xs',</li>
 <li><code>execute</code> : Setta il parametro page a uno della route associata alla lista</li>
 </ul>
-<h2 id="-actionlastpage">- actionLastPage</h2>
+<h2 id="actionlastpage">ActionLastPage</h2>
 <ul>
 <li><code>icon</code> : 'fa fa fa-angle-double-right',</li>
 <li><code>cssClass</code> : 'btn btn-default btn-xs',</li>
 <li><code>execute</code> : Setta il parametro page all'ultima pagina della route associata alla lista</li>
 </ul>
-<h2 id="-actionperpage">- actionPerPage</h2>
+<h2 id="actionperpage">ActionPerPage</h2>
 <ul>
 <li><code>icon</code> : 'fa fa fa-angle-double-right',</li>
 <li><code>htmlEvent</code> : 'onchange',</li>
@@ -470,7 +478,7 @@ ricerca impostati</p>
         <a href="../confs/" class="btn btn-neutral float-right" title="Confs">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../renders/" class="btn btn-neutral" title="Renders"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../templates/" class="btn btn-neutral" title="Templates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -498,7 +506,7 @@ ricerca impostati</p>
           <a href="https://github.com/marley71/cupparijs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../renders/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../templates/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../confs/" style="color: #fcfcfc">Next &raquo;</a></span>

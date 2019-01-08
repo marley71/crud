@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/component/</loc>
-     <lastmod>2018-11-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/dashboards/</loc>
-     <lastmod>2018-11-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/views/</loc>
-     <lastmod>2018-11-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/templates/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/renders/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/views/</loc>
+     <lastmod>2019-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/dashboards/</loc>
+     <lastmod>2019-01-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/templates/</loc>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/actions/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/confs/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/routes/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/server/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/app/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/esempi_views/</loc>
-     <lastmod>2018-11-23</lastmod>
+     <lastmod>2019-01-08</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

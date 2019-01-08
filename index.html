@@ -58,15 +58,15 @@
         
             <li><a class="toctree-l3" href="#componenti-base">Componenti base</a></li>
         
-            <li><a class="toctree-l3" href="#-dashboards">- Dashboards</a></li>
+            <li><a class="toctree-l3" href="#dashboards">Dashboards</a></li>
         
-            <li><a class="toctree-l3" href="#-views">- Views</a></li>
+            <li><a class="toctree-l3" href="#views">Views</a></li>
         
-            <li><a class="toctree-l3" href="#-renders">- Renders</a></li>
+            <li><a class="toctree-l3" href="#renders">Renders</a></li>
         
-            <li><a class="toctree-l3" href="#-templates">- Templates</a></li>
+            <li><a class="toctree-l3" href="#templates">Templates</a></li>
         
-            <li><a class="toctree-l3" href="#-actions">- Actions</a></li>
+            <li><a class="toctree-l3" href="#actions">Actions</a></li>
         
             <li><a class="toctree-l3" href="#confs">Confs</a></li>
         
@@ -89,7 +89,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="dashboards/">Dashboards</a>
+    <a class="" href="renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -99,12 +99,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="templates/">Templates</a>
+    <a class="" href="dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="renders/">Renders</a>
+    <a class="" href="templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -181,18 +181,18 @@ Il concetto di base nella libreria è quello di creare una logica e una grafica 
 in modo che ci sia una versione base implementata dalla libreria, ma che sia customizzabile
 a piacere nella propria applicazione sia come layout grafico sia come logica.</p>
 <h2 id="componenti-base">Componenti base</h2>
-<p>L'oggetto astratto principale che tutte le componenti presenti nella libreria si chiama  <a href="components"><code>Component</code></a>.
+<p>L'oggetto astratto principale che tutte le componenti presenti nella libreria si chiama  <a href="component"><code>Component</code></a>.
 In una visione top-down elenchiamo le principali componenti presenti nella libreria:</p>
-<h2 id="-dashboards">- Dashboards</h2>
+<h2 id="dashboards">Dashboards</h2>
 <p>La componente dashboard è stata create per la la gestione di più viste che interagiscono o no tra di loro.
 In questo modo si possono creare dashboard specifiche per le nostre applicazioni.
-<a href="dashboards">Dettaglio Dashboards</a></p>
-<h2 id="-views">- Views</h2>
+<a href="dashboards/">Dashboards</a></p>
+<h2 id="views">Views</h2>
 <p>La componente <code>View</code> rappresenta una collezione di dati che possono essere passati manualmente o 
 attraverso un server, utilizzando le route che usano le convenzioni REST. A questi dati 
 vengono associati dei componenti di tipo <code>Render</code>. 
-<a href="views">Dettaglio Views</a></p>
-<h2 id="-renders">- Renders</h2>
+<a href="views/">Views</a></p>
+<h2 id="renders">Renders</h2>
 <p>Una componente <code>Render</code> si prende il compito di gestire le interazione utenti sul dato secondo controlli standard html o plugins 
 di varia complessità.</p>
 <p>La gestione del componente <code>Render</code> è stata differenziata dal modo in cui esso può essere gestito. 
@@ -206,30 +206,31 @@ la modifica</li>
 nascosto</li>
 </ul>
 <p>Queste modalità sono nate per favorire una migliore customizzazione dei componenti render
-in base al contesto in cui vengno utilizzati.</p>
-<p><a href="renders">Dettaglio Renders</a></p>
-<h2 id="-templates">- Templates</h2>
+in base al contesto in cui vengno utilizzati.
+<a href="renders/">Renders</a></p>
+<h2 id="templates">Templates</h2>
 <p>Il componente <code>Template</code> permette di costruire un template html di contorno per l'oggetto <code>Render</code>. 
 Viene utilizzato dalle views e permette di poter customizzare alcuni campi che vogliamo adornare con varie
 informazioni e che non è detto che valgano per tutti gli altri Render.
-<a href="templates">Dettaglio Templates</a></p>
-<h2 id="-actions">- Actions</h2>
+<a href="templates/">Templates</a></p>
+<h2 id="actions">Actions</h2>
 <p>Il componente <code>Action</code> è nato per la gestione delle azioni vogliamo realizzare su di una vista.
-<a href="actions">Dettaglio Actions</a></p>
+<a href="actions/">Actions</a></p>
 <h2 id="confs">Confs</h2>
-<p>Sono le classi di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
-configurazioni globali su alcuni campi delle nostre viste senza definirli ogni volta.</p>
+<p>Sono oggetti di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
+configurazioni globali su alcuni campi delle nostre viste senza definirli ogni volta.
+<a href="confs/">Confs</a></p>
 <h2 id="routes">Routes</h2>
 <p>La componente <code>Route</code> incapsula l'interazione con il server sia per il recupero sia per la spedizione 
 dei dati. In genere viene utilizzata da una view e dalle azioni.
-<a href="routes">Dettaglio Routes</a></p>
+<a href="routes/">Routes</a></p>
 <h2 id="server">Server</h2>
 <p>Classe che rappresenta un wrapper delle chiamate ajax di jquery, con alcune estensioni.
-<a href="server">Dettaglio Server</a></p>
+<a href="server/">Server</a></p>
 <h2 id="app">App</h2>
 <p>La componente <code>App</code> rappresenta l'oggetto per la gestione della pagina e delle sue varie componenti 
 javascript.
-<a href="app">Dettaglio App</a></p>
+<a href="app/">App</a></p>
               
             </div>
           </div>
@@ -281,5 +282,5 @@ javascript.
 
 <!--
 MkDocs version : 0.17.5
-Build Date UTC : 2018-11-23 16:23:43
+Build Date UTC : 2019-01-08 09:49:17
 -->

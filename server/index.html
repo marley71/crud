@@ -59,7 +59,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -69,12 +69,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -157,15 +157,16 @@
             <div class="section">
               
                 <h1 id="server">Server</h1>
-<p>Classe per le comunicazioni ajax con il backend e' un wrapper delle chiamate jQuery</p>
-<h2 id="proprieta">Proprietà</h2>
+<p>Classe per le comunicazioni ajax con il backend. E' un wrapper delle chiamate jQuery</p>
+<h3 id="proprieta">Proprietà</h3>
 <ul>
 <li><code>static subdomain</code> : null
 proprietà che permette di avere una base comune in tutti gli url codificati dentro
-javascript. E' il prefisso.  Esempio se il nostro sito si trova sotto una sottodominio
-http://dominio.it/sottodominio  settiamo il subdomain=sottodominio</li>
+javascript. Esempio se il nostro sito si trova sotto una sottodominio o cartella
+http://dominio.it/sottodominio  settiamo il subdomain=sottodominio. Da questo momento in poi
+tutte le chiamate avranno url che inizierà con <em>sottodominio</em></li>
 </ul>
-<h2 id="metodi">Metodi</h2>
+<h3 id="metodi">Metodi</h3>
 <ul>
 <li>
 <p><code>static getUrl(url)</code>
@@ -173,18 +174,32 @@ Ritorna l'url reale combinato con il subdomain.</p>
 </li>
 <li>
 <p><code>static get(url, params, callback)</code>
-Esegue una chiamata ajax al server in GET con i parametri <em>params</em> e ritorna il
-risultato json chiamando la <em>callback</em></p>
+Esegue una chiamata ajax al server in GET.</p>
+<ul>
+<li>@param url : url da richiamare</li>
+<li>@param params : parametri che vengono passati in get.</li>
+<li>@param callback : funzione che verrà richiamata passando come parametro il risultato ricevuto dal
+server</li>
+</ul>
 </li>
 <li>
 <p><code>static post(url, params, callback)</code>
-Esegue una chiamata ajax al server in POST con i parametri <em>params</em> e ritorna il
-risultato json chiamando la <em>callback</em></p>
+Esegue una chiamata ajax al server in POST.</p>
+<ul>
+<li>@param url : url da richiamare</li>
+<li>@param params : parametri che vengono passati in pos.</li>
+<li>@param callback : funzione che verrà richiamata passando come parametro il risultato ricevuto dal
+server</li>
+</ul>
 </li>
 <li>
 <p><code>static route(route,callback)</code>
-Esegue una chiamata ajax al server utilizzando l'oggetto <em>route</em> passato e ritorna
-il risultato chiamando la <em>callback</em></p>
+Esegue una chiamata ajax al server utilizzando l'oggetto route.</p>
+<ul>
+<li>@param route : Oggetto route che incapsula la chiamata</li>
+<li>@param callback : funzione che verrà richiamata passando come parametro il risultato ricevuto dal
+server</li>
+</ul>
 </li>
 </ul>
               

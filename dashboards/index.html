@@ -57,6 +57,16 @@
     <a class="" href="../component/">Component</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../renders/">Renders</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../views/">Views</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">Dashboards</a>
@@ -75,15 +85,15 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#-dashboardlist">- DashboardList</a></li>
+            <li><a class="toctree-l3" href="#dashboardlist">DashboardList</a></li>
         
-            <li><a class="toctree-l3" href="#-dashboardedit">- DashboardEdit</a></li>
+            <li><a class="toctree-l3" href="#dashboardedit">DashboardEdit</a></li>
         
-            <li><a class="toctree-l3" href="#-dashboardinsert">- DashboardInsert</a></li>
+            <li><a class="toctree-l3" href="#dashboardinsert">DashboardInsert</a></li>
         
-            <li><a class="toctree-l3" href="#-dashboardtab">- DashboardTab</a></li>
+            <li><a class="toctree-l3" href="#dashboardtab">DashboardTab</a></li>
         
-            <li><a class="toctree-l3" href="#-dashboard2col">- Dashboard2Col</a></li>
+            <li><a class="toctree-l3" href="#dashboard2col">Dashboard2Col</a></li>
         
         </ul>
     
@@ -93,17 +103,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../views/">Views</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../templates/">Templates</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -187,10 +187,11 @@ a creare. Estende la class <code>Component</code></p>
 <h1 id="dashboards-implementate">Dashboards implementate.</h1>
 <p>La libreria mette a disposizione alcune dashboard di uso comune, possono essere 
 ridefinite per le proprie esigenze oppure se ne possono creare delle nuove.</p>
-<h2 id="-dashboardlist">- DashboardList</h2>
+<h2 id="dashboardlist">DashboardList</h2>
 <p>La DashboardList è formata da una <code>ViewSearch</code> collegata ad una <code>ViewList</code> contornata
 da semplice html. In questo modo si è creata una dashboard che permette la lista
 e la ricerca degli elementi della lista e paginazione. </p>
+<p><a href="http://www.pierpaolociullo.it/example?f=dash_list" target="_blank">Esempio</a></p>
 <h4 id="proprieta_1">Proprietà</h4>
 <ul>
 <li><code>searchKey</code> : chiave che identifica la view che gestisce la search</li>
@@ -235,21 +236,18 @@ dash.draw();
 dalle routes delle due view per reperire i dati con cui popolare le viste.</li>
 <li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
 </ul>
-<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_list" target="_blank">Esempio</a></p>
-<h2 id="-dashboardedit">- DashboardEdit</h2>
+<h2 id="dashboardedit">DashboardEdit</h2>
 <p>La DashboardEdit è formata da un solo componente, una ViewEdit all'interno contornata
 da semplice html. </p>
-<ul>
-<li>Proprietà<ul>
-<li>editKey : chiave che identifica la view che gestisce l'edit</li>
-</ul>
-</li>
-</ul>
-<p>marcatori</p>
+<p><a href="http://www.pierpaolociullo.it/example?f=dash_edit" target="_blank">Esempio</a></p>
+<h4 id="proprieta_2">Proprietà</h4>
+<pre><code>- editKey : chiave che identifica la view che gestisce l'edit
+</code></pre>
+<h4 id="marcatori_1">marcatori</h4>
 <ul>
 <li>data-view_edit : contentitore dove verrà disegnata la view associata all'edit</li>
 </ul>
-<p>template</p>
+<h4 id="template_1">template</h4>
 <pre><code class="html">&lt;div&gt;
     &lt;div class=&quot;panel panel-default&quot;&gt;
         &lt;div class=&quot;panel-heading&quot;&gt;
@@ -279,21 +277,21 @@ dalla route della view per reperire i dati con cui popolare la vista.</li>
 <li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
 <li><code>pk</code> : chiave del record da caricare</li>
 </ul>
-<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_edit" target="_blank">Esempio</a></p>
-<h2 id="-dashboardinsert">- DashboardInsert</h2>
+<h2 id="dashboardinsert">DashboardInsert</h2>
 <p>La DashboardInsert è formata da un solo componente, una ViewInsert all'interno contornata
 da semplice html. </p>
+<p><a href="http://www.pierpaolociullo.it/example?f=dash_insert" target="_blank">Esempio</a></p>
 <ul>
 <li>Proprietà<ul>
 <li>insertKey : chiave che identifica la view che gestisce l'insert</li>
 </ul>
 </li>
 </ul>
-<p>marcatori</p>
+<h4 id="marcatori_2">marcatori</h4>
 <ul>
 <li>data-view_insert : contentitore dove verrà disegnata la view associata all'insert</li>
 </ul>
-<p>template </p>
+<h4 id="template_2">template</h4>
 <pre><code class="html">&lt;div&gt;
     &lt;div class=&quot;panel panel-default&quot;&gt;
         &lt;div class=&quot;panel-heading&quot;&gt;
@@ -321,8 +319,7 @@ dash.draw();
 dalla route della view per reperire i dati con cui popolare la vista.</li>
 <li><code>container</code> rappresenta il selettore html dove renderizzare i dati.</li>
 </ul>
-<p><a href="http://laravel51.dev.it/help/example#dashboards-dash_insert" target="_blank">Esempio</a></p>
-<h2 id="-dashboardtab">- DashboardTab</h2>
+<h2 id="dashboardtab">DashboardTab</h2>
 <p>La DashboardTab è formata da 5 viste che interagiscono tra di loro:</p>
 <ul>
 <li>una <code>ViewSearch</code> che permette di ricercare gli elementi della <code>ViewList</code>. </li>
@@ -332,29 +329,22 @@ record. Le azioni sono delete,edit,view,create.</li>
 e permette la modifica del record</li>
 <li>una <code>ViewInsert</code>: Viene mostrata quando viene premuto il tasto nuovo e permette la
 creazione di un nuovo record</li>
-<li>
-<p>una <code>ViewView</code>:Viene mostrata in una modal quando viene cliccato l'azione vista.</p>
-</li>
-<li>
-<p>Proprietà</p>
-<ul>
-<li>insertKey : chiave che identifica la view che gestisce l'insert</li>
-<li>editKey : chiave che identifica la view che gestisce l'edit</li>
-<li>searchKey : chiave che identifica la view che gestisce la search</li>
-<li>listKey : chiave che identifica la view che gestisce la lista</li>
+<li>una <code>ViewView</code>:Viene mostrata in una modal quando viene cliccato l'azione vista.</li>
 </ul>
-</li>
-<li>
-<p>Metodi </p>
-<ul>
-<li>showEdit : metodo per la visualizzazione di edit</li>
-<li>showInsert : </li>
-<li>showList</li>
-<li>showDialog </li>
-</ul>
-</li>
-</ul>
-<h3 id="marcatori_1">marcatori</h3>
+<p><a href="http://www.pierpaolociullo.it/example?f=dash_tab" target="_blank">Esempio</a></p>
+<h4 id="proprieta_3">Proprietà</h4>
+<pre><code>- insertKey : chiave che identifica la view che gestisce l'insert
+- editKey : chiave che identifica la view che gestisce l'edit
+- searchKey : chiave che identifica la view che gestisce la search
+- listKey : chiave che identifica la view che gestisce la lista
+</code></pre>
+<h4 id="metodi">Metodi</h4>
+<pre><code>- showEdit : metodo per la visualizzazione di edit
+- showInsert : 
+- showList
+- showDialog
+</code></pre>
+<h4 id="marcatori_3">marcatori</h4>
 <ul>
 <li><code>data-view_search</code> : contentitore dove verrà disegnata la view associata alla search</li>
 <li><code>data-view_list</code> : contentitore dove verrà disegnata la view associata alla lista</li>
@@ -362,7 +352,7 @@ creazione di un nuovo record</li>
 <li><code>data-view_edit</code> : contentitore dove verrà disegnata la view associata all'edit</li>
 <li><code>data-view_view</code> : contentitore dove verrà disegnata la view associata alla vista</li>
 </ul>
-<p>template</p>
+<h4 id="template_3">template</h4>
 <pre><code class="html">&lt;div class=&quot;tab-content&quot;&gt; 
     &lt;header&gt;
         &lt;div class=&quot;panel panel-default&quot;&gt;
@@ -416,7 +406,7 @@ creazione di un nuovo record</li>
 &lt;/div&gt;
 </code></pre>
 
-<h2 id="-dashboard2col">- Dashboard2Col</h2>
+<h2 id="dashboard2col">Dashboard2Col</h2>
 <p>La Dashboard2Col è come la DashboardTab ma organizzata su 2 colonne. La ViewView
 non viene mostrata in modal
 Anche questa dashboar contiene 5 viste :</p>
@@ -428,29 +418,22 @@ record. Le azioni sono delete,edit,view,create.</li>
 e permette la modifica del record</li>
 <li>una <code>ViewInsert</code>: Viene mostrata quando viene premuto il tasto nuovo e permette la
 creazione di un nuovo record</li>
-<li>
-<p>una <code>ViewView</code>:Viene mostrata quando viene cliccato l'azione vista.</p>
-</li>
-<li>
-<p>Proprietà</p>
-<ul>
-<li>insertKey : chiave che identifica la view che gestisce l'insert</li>
-<li>editKey : chiave che identifica la view che gestisce l'edit</li>
-<li>searchKey : chiave che identifica la view che gestisce la search</li>
-<li>listKey : chiave che identifica la view che gestisce la lista</li>
+<li>una <code>ViewView</code>:Viene mostrata quando viene cliccato l'azione vista.</li>
 </ul>
-</li>
-<li>
-<p>Metodi </p>
-<ul>
-<li>showEdit : metodo per la visualizzazione di edit</li>
-<li>showInsert : </li>
-<li>showList</li>
-<li>showDialog </li>
-</ul>
-</li>
-</ul>
-<h3 id="marcatori_2">marcatori</h3>
+<p><a href="http://www.pierpaolociullo.it/example?f=dash_2col" target="_blank">Esempio</a></p>
+<h4 id="proprieta_4">Proprietà</h4>
+<pre><code>- insertKey : chiave che identifica la view che gestisce l'insert
+- editKey : chiave che identifica la view che gestisce l'edit
+- searchKey : chiave che identifica la view che gestisce la search
+- listKey : chiave che identifica la view che gestisce la lista
+</code></pre>
+<h4 id="metodi_1">Metodi</h4>
+<pre><code>- showEdit : metodo per la visualizzazione di edit
+- showInsert : 
+- showList
+- showDialog
+</code></pre>
+<h4 id="marcatori_4">marcatori</h4>
 <ul>
 <li><code>data-view_search</code> : contentitore dove verrà disegnata la view associata alla search</li>
 <li><code>data-view_list</code> : contentitore dove verrà disegnata la view associata alla lista</li>
@@ -458,7 +441,7 @@ creazione di un nuovo record</li>
 <li><code>data-view_edit</code> : contentitore dove verrà disegnata la view associata all'edit</li>
 <li><code>data-view_view</code> : contentitore dove verrà disegnata la view associata alla vista</li>
 </ul>
-<p>template</p>
+<h4 id="template_4">template</h4>
 <pre><code class="html">&lt;div class=&quot;tab-content&quot;&gt; 
     &lt;header &gt;
         &lt;div class=&quot;panel panel-default&quot;&gt;
@@ -500,10 +483,10 @@ creazione di un nuovo record</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../views/" class="btn btn-neutral float-right" title="Views">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../templates/" class="btn btn-neutral float-right" title="Templates">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../component/" class="btn btn-neutral" title="Component"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../views/" class="btn btn-neutral" title="Views"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -531,10 +514,10 @@ creazione di un nuovo record</li>
           <a href="https://github.com/marley71/cupparijs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../component/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../views/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../views/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../templates/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

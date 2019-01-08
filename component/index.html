@@ -65,6 +65,10 @@
         
             <li><a class="toctree-l3" href="#metodi">Metodi</a></li>
         
+            <li><a class="toctree-l3" href="#traits-che-agiscono-sui-template">Traits che agiscono sui template</a></li>
+        
+            <li><a class="toctree-l3" href="#render-dei-template-con-dati-dinamici">Render dei template con dati dinamici</a></li>
+        
         </ul>
     
 
@@ -73,7 +77,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../dashboards/">Dashboards</a>
+    <a class="" href="../renders/">Renders</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -83,12 +87,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../templates/">Templates</a>
+    <a class="" href="../dashboards/">Dashboards</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../renders/">Renders</a>
+    <a class="" href="../templates/">Templates</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -157,104 +161,127 @@
             <div class="section">
               
                 <h1 id="component">Component</h1>
-<p>La classe principale di tutte le componenti grafiche <code>Component</code>, definisce il comportamento
-generale che un componente deve avere nella visualizzazione di un html e dati associati
-più tutta la logica per la gestione del dato e delle interazioni utente.</p>
-<p>La classe ha un metodo <code>template</code> che ritorna html del componente. Il template viene marcato
-con dei marcatori (attributi di tag dal formato data-{marcatore}). Avere questi marcatori permette
-la possibilità di stravolgere completamente il template di base avendo solo l'obbligo di mantenere
-questi marcatori per la costruzione dell'html finale.</p>
-<p>Nell'oggetto componente è stato inserito anche la possibilità di avere dei traits che ne permette l'estensione
+<p>La classe principale di tutte le componenti grafiche è <code>Component</code>, definisce il comportamento
+generale che un componente deve avere nella visualizzazione di un html. Un componente, quando viene disegnato,
+chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi possiamo scrivere il nostro codice
+che caratterizzerà la componente.</p>
+<p>La classe ha un metodo <code>template</code> che ritorna una stringa html del componente. Il concetto principale è quello di 
+inserire nel template del componente dei marcatori (attributi dal formato data-{marcatore}). Avere questi marcatori permette
+di avere la possibilità di stravolgere completamente il template di base senza modificare il comportamento del nostro 
+componente. L'unico obbligo è di mantenere questi marcatori per il corretto funzionamento del componente.</p>
+<p>Nell'oggetto componente è stata inserita la possibilità di avere dei <code>traits</code> che ne permette l'estensione
 con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
-I traits sono stati differenziati in traits che agiscono sui templates e traits generali per l'aggiunta di 
-funzionalità custom.</p>
+Nell'oggetto componente è stata inserita la possibilità di avere dei <code>traitsTemplate</code> sono chiamati subito dopo che il template 
+è stato iniettato nel dom della pagina e possiamo considerarli come post elaborazioni da fare sul dom html. Vedremo più
+avanti il loro utilizzo.</p>
+<p>Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
+sostanzialmente il comportamento della classe a basso livello.</p>
 <h3 id="proprieta">Proprietà</h3>
 <ul>
-<li><code>className</code> : 'Component'. Questa proprietà è stata introdotta a causa della possibilità di poter estendere 
-le classi con un trucchetto e che rende impossibile saper a runtime in quale classe ci si trovi.</li>
+<li><code>className</code> : 'Component'. Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
+ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzato un trucchetto e che rende impossibile 
+sapere, a runtime, in quale classe ci si trovi.</li>
 <li><code>defaultTraitsTemplate</code> : ['TraitTranslate','TraitTemplate','TraitPlaceholder'], vettore di traits definiti di default
 in particolare :<ul>
-<li><code>TraitTranslate</code> ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template</li>
-<li><code>TraitTemplate</code></li>
-<li><code>TraitPlaceholder</code></li>
+<li><code>TraitTranslate</code> ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template con le nostre 
+definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.</li>
+<li><code>TraitTemplate</code>: Ha il compito di poter spezzare un template complesso in sottotemplate magari interscambiabili.
+utilizza i marcatori data-template che si trovano dentro la stringa template e ci inietta il risultato della
+chiamata {valore}Template. Per esempio se dentro il marcatore data-template troviamo il valore <em>subItem</em> verrà chiamata
+il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore data-template="subItem" </li>
+<li><code>TraitPlaceholder</code>: ha il compito di inserire il risultato della traduzione del valore del marcatore data-placeholder nell'attributo
+placeholder che si trovano negli input.</li>
 </ul>
 </li>
 <li><code>traitsTemplate</code> : [] vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere visualizzato il template</li>
 <li><code>traits</code> : [] traits per estendere funzionalità del component senza ridefinirne la classe.</li>
-<li><code>container</code> : null,</li>
+<li><code>container</code> : null rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
+disegnato il componente.</li>
 </ul>
 <h3 id="metodi">Metodi</h3>
 <ul>
 <li>
-<p><code>init : function (attributes)</code>: costruttore, attributes rappresenta gli attributi
-che si vogliono sostituire, è possibile passare anche i metodi per ridefinire alcuni 
-comportamenti.</p>
+<p><code>init(attributes)</code>: costruttore, attributes rappresenta gli attributi
+che si vogliono sostituire, è possibile passare anche delle function e ridefinire i metodi della classe
+per poter ridefinire alcuni comportamenti. </p>
 </li>
 <li>
-<p><code>attrs</code> : function (attrs) : permettere di ridefinire proprietà o metodi dell'oggetto</p>
+<p><code>attrs(attrs)</code> : permettere di ridefinire proprietà o metodi dell'oggetto</p>
 </li>
 <li>
-<p><code>template</code> : function() : metodo che restituisce il template html del componente</p>
+<p><code>template()</code> :  metodo che restituisce il template html del componente</p>
 </li>
 <li>
-<p><code>getTemplate</code> : function () : metodo che un oggetto jquery('div') che wrappa il template
- del componente.</p>
+<p><code>getTemplate()</code> : metodo che un oggetto jquery('div') che wrappa il template del componente.</p>
 </li>
 <li>
-<p><code>html</code> :  function () ritorna l'html puntato dalla proprietà container del componente</p>
+<p><code>html()</code> : ritorna l'html puntato dalla proprietà container del componente</p>
 </li>
 <li>
-<p><code>jQe : function (selector)</code> : ritorna l'oggetto jquery associato al container del componente</p>
+<p><code>jQe(selector)</code> : ritorna l'oggetto jquery associato al container del componente, se viene
+passato il parametro <em>selector</em> allora si posiziona all'elemento puntato dal selector all'interno
+del container.</p>
 </li>
 <li>
-<p><code>beforeRender</code> : function (callback) : viene chiamata prima di eseguire il render, se si vogliono
- fare di check prima di iniettare l'html del richiamare la callback per il ritorno.</p>
+<p><code>beforeRender(callback)</code> : questo metodo viene chiamato prima di eseguire il render. Questo metodo rappresenta
+il primo punto in cui scrivere codice che si vuole eseguire prima di renderizzare il componente</p>
 </li>
 <li>
-<p><code>render</code> : function (callback): metodo dove viene iniettato nel container l'html del componente in 
+<p><code>render(callback)</code> : metodo dove viene iniettato nel container l'html del componente in 
 base alle proprie politiche.</p>
 </li>
 <li>
-<p><code>afterRender</code> : function (callback) : metodo che viene chiamato dopo il metodo render.</p>
+<p><code>afterRender(callback)</code> : metodo che viene chiamato dopo il metodo render.</p>
 </li>
 <li>
-<p><code>beforeFinalize</code> : function (callback) : metodo per il proprio codice custom chiamato prima del finalize</p>
+<p><code>beforeFinalize(callback)</code> : metodo per il proprio codice custom chiamato prima del finalize</p>
 </li>
-<li><code>finalize</code> : function (callback) : metodo per aggiungere eventi o istanziare plugins </li>
-<li><code>afterFinalize</code> : function (callback) : metodo custom per eventuali esigenze su oggetti modificati</li>
-<li><code>_prepareContainer</code> : function () : scrive l'html che viene restituita dal metodo template dentro il container.
-Se il componente ne ha uno altrimenti viene creato un oggetto jquery contentente l'html.</li>
+<li><code>finalize(callback)</code> : metodo per aggiungere eventi o istanziare plugins </li>
 <li>
-<p><code>_executeTraitsTemplate</code> : function () metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
+<p><code>afterFinalize(callback)</code> : metodo custom per eventuali esigenze su oggetti dopo che sono stati visualizzati agganciati
+eventi e istanziati plugins.</p>
+</li>
+<li>
+<p><code>_prepareContainer()</code>  : scrive l'html che viene restituito dal metodo <em>template</em> dentro il container.
+Se il container è null viene creato un oggetto jquery contentente l'html. Dopo viene chiamato <em>_executeTraitsTemplate</em></p>
+</li>
+<li>
+<p><code>_executeTraitsTemplate()</code> : metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
 se si vogliono eseguire dei particolari filtri con il concetto di trait</p>
 </li>
 <li>
-<p><code>_loadExternalResources</code> : function (callback) 
-carica eventuali risorse esterne prima di far partire il render del component
+<p><code>_loadExternalResources(callback)</code> : carica eventuali risorse esterne prima di far partire il render del component
 @param callback : funzione di ritorno </p>
 </li>
 <li>
-<p><code>draw</code> : function (callback) : disegna l'html del componente e poi richiama la callback
+<p><code>draw</code> : function (callback) : disegna l'html del componente e poi richiama la callback.
 Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
-callback. Questo modo di eseguire i metodi permette di fare anche delle chiamate
-asincrone e aspettare il termine delle chiamate prima di procedere. </p>
+callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato o di aggangiare
+eventi custom. Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
+è finito di operare dentro il metodo. Questo modo di eseguire i metodi permette di poter inserire anche delle funzioni
+asincrone aspettare il termine delle chiamate prima di procedere. Nello stesso tempo permette di bloccare il flusso
+semplicemente non richiamando la callback. Sotto viene rappresentato il flusso delle chiamate del metodo draw.</p>
 <ul>
-<li>_<code>prepareContainer</code> ;</li>
-<li>_<code>loadExternalResources</code> : function (callback);</li>
-<li><code>beforeRender</code> : function (callback)</li>
-<li><code>render</code> : function (callback)</li>
-<li><code>afterRender</code> : function (callback)</li>
-<li><code>beforeFinalize</code> : function (callback)</li>
-<li><code>finalize</code> : function (callback)</li>
-<li><code>afterFinalize</code> : function (callback)</li>
+<li><code>_loadExternalResources(callback)</code>;</li>
+<li><code>beforeRender(callback)</code></li>
+<li><code>_prepareContainer()</code> </li>
+<li><code>render(callback)</code></li>
+<li><code>afterRender(callback)</code></li>
+<li><code>beforeFinalize(callback)</code></li>
+<li><code>finalize(callback)</code></li>
+<li><code>afterFinalize(callback)</code></li>
 </ul>
 </li>
 </ul>
-<p><code>Component.parseHtml</code> = function (templateString) metodo statico che crea un oggetto jquery eseguendo
-il parse della stringa passata</p>
-<p><code>Component.uid</code> = 0;</p>
-<p><code>Component.newID</code> = function () metodo statico che ritorna un id univoco fomato da 'c_'+ un intero 
-incrementale</p>
+<p><code>Component.parseHtml(templateString,tplData)</code> : metodo statico che crea un oggetto jquery eseguendo
+il parse della stringa passata. In caso vengono passati dei con tplData tutti i tag che hanno il marcatore
+data-field="field" vengono iniettati i valori. Vedere la sezione ... per ulteriori dettagli.</p>
+<p><code>Component.uid</code> = 0; variabile statica per la generazione di id univoci.</p>
+<p><code>Component.newID()</code> : metodo statico che ritorna un id univoco fomato da 'c_{int}'+ dove {int} è un intero incrementale</p>
+<h2 id="traits-che-agiscono-sui-template">Traits che agiscono sui template</h2>
+<p>coming soon.</p>
+<h2 id="render-dei-template-con-dati-dinamici">Render dei template con dati dinamici</h2>
+<p>coming soon</p>
               
             </div>
           </div>
@@ -262,7 +289,7 @@ incrementale</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../dashboards/" class="btn btn-neutral float-right" title="Dashboards">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../renders/" class="btn btn-neutral float-right" title="Renders">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -296,7 +323,7 @@ incrementale</p>
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../dashboards/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../renders/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
