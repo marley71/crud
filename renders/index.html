@@ -230,7 +230,7 @@ come componenti dei singoli dati di una view. Dentro la view un render può esse
 in modalità <em>edit, search, view</em>.</p>
 <p>La classe Render deve essere consideata come una specie di classe astratta edefinisce alcuni metodi di uso generale e 
 i metodi che i veri oggetti Render devono ridefinire per funzionare. Quindi come la classe che 
-definisce l'interfaccia dei vari oggetti Render concreti.</p>
+definisce l'interfaccia dei vari oggetti Render concreti. Non dovrebbe mai essere istanziata.</p>
 <p>il modo è definito nelle costanti</p>
 <pre><code class="javascript">Render.VIEW = 'view';
 Render.EDIT = 'edit';
@@ -287,26 +287,37 @@ options.type e options.mode per cercare il nome della classe da istanziare. Se n
 </li>
 </ul>
 <h5 id="esempio">esempio</h5>
-<p>Il nome da cercare deve rispettare questa convezione:
-"Render"+pascalCase(options.type)+pascalCase(options.mode) esempio</p>
-<pre><code class="javascript">var r = Render.factory('field', {
-    type : 'input_helped',
+<p>Facciamo una piccola premessa. Per evitare di dover scrivere tutto il nome della classe Render è stata adottata la 
+sequente politica:</p>
+<ul>
+<li>Tutti gli oggetti Render devono avere il nome che inizia per <em>Render</em></li>
+<li>ogni Render può avere 3 classi, una per la gestione dell'oggetto render in modalità view una per la gestione in 
+modalità search e una in modalità edit. Supponiamo di aver pensato il nostro render e di chiamarlo <em>input</em>. allora dovremmo
+creare 3 classi: <ul>
+<li>RenderInputView : oggetto che gestirà la visualizzazione di input in modalità view.</li>
+<li>RenderInputEdit : oggetto che gestirà la visualizzazione di input in modalità edit.</li>
+<li>RenderInputSearch : oggetto che gestirà la visualizzazione di input in modalità search</li>
+</ul>
+</li>
+</ul>
+<p>Ecco il codice da scrivere</p>
+<pre><code class="javascript">var r = Render.factory('fieldName', {
+    type : 'input',
     mode : 'edit'
 })
-// la factory cercherà la definizione della classe 'RenderInputHelpedEdit' che rappresenta
-// l'oggetto che gestirà il Render InputHelped in modalità edit.
+// la factory cercherà la definizione della classe 'RenderInputEdit' che rappresenta
+// l'oggetto che gestirà il Render Input in modalità edit.
 </code></pre>
 
 <h1 id="render-implementati">Render Implementati</h1>
 <p>La libreria mette a disposizione dei renders di default per gli usi più comuni, in modo da avere già una base abbastanza
 completa per iniziare a creare le nostre applicazioni. Questi renders possono essere ridefiniti e creati di nuovi.
 Questo ci permette di cambiare, nella nostra applicazione, aspetto e/o funzionalità. </p>
-<p>I Renders che aggiungeremo saranno fatti l'erediaretà. </p>
 <p>Alcuni <code>mode</code> per alcuni render non hanno senso, in questo caso non definire la classe per quel <code>mode</code>, questo genererà un errore
 che farà capire dell'utilizzo sbagliato del componente Render. [todo: fare esempio]</p>
-<p>In tutti i render verranno mostrati:</p>
+<p>In tutti i render che verranno mostrati sotto mostreremo:</p>
 <ul>
-<li>il contenuto del metodo template per poter facilmente ridefinire a piacere il vostro template</li>
+<li>il contenuto del metodo template.</li>
 <li>i marcatori utilizzati per la gestione corretta del suo comportamento.</li>
 </ul>
 <hr />
@@ -314,6 +325,7 @@ che farà capire dell'utilizzo sbagliato del componente Render. [todo: fare esem
 <p>Componente per la gestione degli input standard html.</p>
 <h3 id="renderinputedit">RenderInputEdit</h3>
 <p><a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a></p>
+<p>{{{render_input_edit}}}</p>
 <h4 id="template">template</h4>
 <pre><code class="html">&lt;input data-render_control type=&quot;text&quot; class=&quot;form-control&quot; data-placeholder=&quot;&quot;&gt;
 </code></pre>

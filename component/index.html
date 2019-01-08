@@ -166,23 +166,28 @@ generale che un componente deve avere nella visualizzazione di un html. Un compo
 chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi possiamo scrivere il nostro codice
 che caratterizzerà la componente.</p>
 <p>La classe ha un metodo <code>template</code> che ritorna una stringa html del componente. Il concetto principale è quello di 
-inserire nel template del componente dei marcatori (attributi dal formato data-{marcatore}). Avere questi marcatori permette
-di avere la possibilità di stravolgere completamente il template di base senza modificare il comportamento del nostro 
-componente. L'unico obbligo è di mantenere questi marcatori per il corretto funzionamento del componente.</p>
-<p>Nell'oggetto componente è stata inserita la possibilità di avere dei <code>traits</code> che ne permette l'estensione
+inserire nel template del componente dei marcatori (attributi dal formato <strong>data-{marcatore}</strong>). 
+Questi marcatori permettono di avere la possibilità di stravolgere completamente il template di base senza modificare 
+il comportamento del nostro componente. L'unico obbligo è di mantenere questi marcatori per il suo corretto funzionamento.</p>
+<p>E' stata inserita la possibilità di avere dei <code>traits</code> che ne permetteno l'estensione
 con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
-Nell'oggetto componente è stata inserita la possibilità di avere dei <code>traitsTemplate</code> sono chiamati subito dopo che il template 
-è stato iniettato nel dom della pagina e possiamo considerarli come post elaborazioni da fare sul dom html. Vedremo più
+Oltre ai traits è stata inserita la possibilità di avere dei <code>traitsTemplate</code> sono dei traits particolari e il loro 
+metodo viene chiamato subito dopo che il template è stato iniettato nel dom della pagina.
+Possiamo considerarli come post elaborazioni da fare sul dom html non previste dalla libreria. Vedremo più
 avanti il loro utilizzo.</p>
 <p>Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
 sostanzialmente il comportamento della classe a basso livello.</p>
-<h3 id="proprieta">Proprietà</h3>
+<h4 id="proprieta">Proprietà</h4>
 <ul>
-<li><code>className</code> : 'Component'. Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
-ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzato un trucchetto e che rende impossibile 
-sapere, a runtime, in quale classe ci si trovi.</li>
-<li><code>defaultTraitsTemplate</code> : ['TraitTranslate','TraitTemplate','TraitPlaceholder'], vettore di traits definiti di default
-in particolare :<ul>
+<li>
+<p><code>className</code> : 'Component' - Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
+ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzata un trucchetto. Questo trucchetto 
+rende impossibile sapere, a runtime, in quale classe ci si trovi.</p>
+</li>
+<li>
+<p><code>defaultTraitsTemplate</code> : ['TraitTranslate','TraitTemplate','TraitPlaceholder'] - vettore di traits definiti di default
+in particolare :</p>
+<ul>
 <li><code>TraitTranslate</code> ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template con le nostre 
 definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.</li>
 <li><code>TraitTemplate</code>: Ha il compito di poter spezzare un template complesso in sottotemplate magari interscambiabili.
@@ -193,17 +198,17 @@ il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il 
 placeholder che si trovano negli input.</li>
 </ul>
 </li>
-<li><code>traitsTemplate</code> : [] vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere visualizzato il template</li>
-<li><code>traits</code> : [] traits per estendere funzionalità del component senza ridefinirne la classe.</li>
-<li><code>container</code> : null rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
+<li><code>traitsTemplate</code> : [] - vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere iniettato il template</li>
+<li><code>traits</code> : [] - traits per estendere funzionalità del component senza ridefinirne la classe.</li>
+<li><code>container</code> : null - rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
 disegnato il componente.</li>
 </ul>
-<h3 id="metodi">Metodi</h3>
+<h4 id="metodi">Metodi</h4>
 <ul>
 <li>
-<p><code>init(attributes)</code>: costruttore, attributes rappresenta gli attributi
+<p><code>init(attributes)</code>: costruttore, attributes rappresentano gli attributi
 che si vogliono sostituire, è possibile passare anche delle function e ridefinire i metodi della classe
-per poter ridefinire alcuni comportamenti. </p>
+o aggiungerne dei nuovi. </p>
 </li>
 <li>
 <p><code>attrs(attrs)</code> : permettere di ridefinire proprietà o metodi dell'oggetto</p>
@@ -254,7 +259,7 @@ se si vogliono eseguire dei particolari filtri con il concetto di trait</p>
 @param callback : funzione di ritorno </p>
 </li>
 <li>
-<p><code>draw</code> : function (callback) : disegna l'html del componente e poi richiama la callback.
+<p><code>draw(callback)</code> : disegna l'html del componente e poi richiama la callback.
 Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
 callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato o di aggangiare
 eventi custom. Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
