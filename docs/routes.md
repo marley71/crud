@@ -9,7 +9,7 @@ Classe base per la gestione delle route verso il backend. Sono state definite
 alcune route per le principali interazioni con il backend secondo le specifiche REST.
 
 
-### Proprietà
+#### Proprietà
 
 - `className`: default "Route" variabile di comodo per riconoscere in quale route ci troviamo
 - `method`: default null rappresenta il metodo usato per la chiamata ajax, può essere get o post
@@ -27,7 +27,7 @@ al server.
 - `params` :{} vettore associativo dei parametri passati nella richiesta. Prima
 della richiesta vengono sommati agli extraParams
     
-### Metodi    
+#### Metodi    
     
 - `init(attrs)` costruttore. Accetta come parametro un vettore associativo che permette
 di sovrascrivere le proprietà dell'oggetto creato.
@@ -44,7 +44,7 @@ tra params ed extra_params dell'oggetto
 della route che devono essere valorizzati per ritornare l'url esatto. Peer esempio 
 se url e' fatto come /pippo/{param1}/{param2} ritorna ['param1','param2']
                  
-#Route Implementate
+# Route Implementate
 
 La libreria contiene già delle route per l'uso comune che vengono utilizzate dalle views
 e dalle actions. Per la creazione di una route è stato realizzato un pseduo metodo statico

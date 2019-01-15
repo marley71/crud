@@ -1,7 +1,8 @@
 ## View
 
 La `View` estende la classe `Component` rappesenta il contenitore di dati html associate ad un 
-modello di dati.
+modello di dati. Questi dati possono essere passati manualmente o 
+attraverso un server, utilizzando le route che usano le convenzioni REST.
 Questo modello viene utilizzato per discriminare la route per il recupero dei dati.
 Da essa sono derivate le classi:
 

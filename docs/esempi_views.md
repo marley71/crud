@@ -1,4 +1,4 @@
-#View che lavorano con liste di dati 
+# View che lavorano con liste di dati 
 
 Per avere un comporamento simil ad un linguaggio ad oggetti..
 Ogni volta che si ridefinisce un metodo della Component è
@@ -82,7 +82,7 @@ var vkey = app.addView(myList);
 app.renderView(vkey);
 ```
 
-##Views che lavorano con singolo record
+## Views che lavorano con singolo record
 
 ## - Vista in modalità edit con azione ActionSave ridefinita
 

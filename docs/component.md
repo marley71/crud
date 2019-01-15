@@ -1,4 +1,4 @@
-#Component
+# Component
 
 La classe principale di tutte le componenti grafiche è `Component`, definisce il comportamento
 generale che un componente deve avere nella visualizzazione di un html. Un componente, quando viene disegnato,
@@ -6,26 +6,28 @@ chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi po
 che caratterizzerà la componente.
 
 La classe ha un metodo `template` che ritorna una stringa html del componente. Il concetto principale è quello di 
-inserire nel template del componente dei marcatori (attributi dal formato data-{marcatore}). Avere questi marcatori permette
-di avere la possibilità di stravolgere completamente il template di base senza modificare il comportamento del nostro 
-componente. L'unico obbligo è di mantenere questi marcatori per il corretto funzionamento del componente.
+inserire nel template del componente dei marcatori (attributi dal formato **data-{marcatore}**). 
+Questi marcatori permettono di avere la possibilità di stravolgere completamente il template di base senza modificare 
+il comportamento del nostro componente. L'unico obbligo è di mantenere questi marcatori per il suo corretto funzionamento.
 
-Nell'oggetto componente è stata inserita la possibilità di avere dei `traits` che ne permette l'estensione
+E' stata inserita la possibilità di avere dei `traits` che ne permetteno l'estensione
 con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
-Nell'oggetto componente è stata inserita la possibilità di avere dei `traitsTemplate` sono chiamati subito dopo che il template 
-è stato iniettato nel dom della pagina e possiamo considerarli come post elaborazioni da fare sul dom html. Vedremo più
+Oltre ai traits è stata inserita la possibilità di avere dei `traitsTemplate` sono dei traits particolari e il loro 
+metodo viene chiamato subito dopo che il template è stato iniettato nel dom della pagina.
+Possiamo considerarli come post elaborazioni da fare sul dom html non previste dalla libreria. Vedremo più
 avanti il loro utilizzo.
 
 Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
 sostanzialmente il comportamento della classe a basso livello.
 
 
+#### Proprietà
 
-###Proprietà
-- `className` : 'Component'. Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
-ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzato un trucchetto e che rende impossibile 
-sapere, a runtime, in quale classe ci si trovi.
-- `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'], vettore di traits definiti di default
+- `className` : 'Component' - Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
+ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzata un trucchetto. Questo trucchetto 
+rende impossibile sapere, a runtime, in quale classe ci si trovi.
+
+- `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'] - vettore di traits definiti di default
 in particolare :
     - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template con le nostre 
     definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.
@@ -35,15 +37,16 @@ in particolare :
     il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore data-template="subItem" 
     - `TraitPlaceholder`: ha il compito di inserire il risultato della traduzione del valore del marcatore data-placeholder nell'attributo
     placeholder che si trovano negli input.
-- `traitsTemplate` : [] vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere visualizzato il template
-- `traits` : [] traits per estendere funzionalità del component senza ridefinirne la classe.
-- `container` : null rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
+- `traitsTemplate` : [] - vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere iniettato il template
+- `traits` : [] - traits per estendere funzionalità del component senza ridefinirne la classe.
+- `container` : null - rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
 disegnato il componente.
 
-###Metodi
-- `init(attributes)`: costruttore, attributes rappresenta gli attributi
+#### Metodi
+
+- `init(attributes)`: costruttore, attributes rappresentano gli attributi
 che si vogliono sostituire, è possibile passare anche delle function e ridefinire i metodi della classe
-per poter ridefinire alcuni comportamenti. 
+o aggiungerne dei nuovi. 
 
 - `attrs(attrs)` : permettere di ridefinire proprietà o metodi dell'oggetto
 
@@ -78,7 +81,7 @@ se si vogliono eseguire dei particolari filtri con il concetto di trait
 - `_loadExternalResources(callback)` : carica eventuali risorse esterne prima di far partire il render del component
 @param callback : funzione di ritorno 
     
-- `draw` : function (callback) : disegna l'html del componente e poi richiama la callback.
+- `draw(callback)` : disegna l'html del componente e poi richiama la callback.
 Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
 callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato o di aggangiare
 eventi custom. Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
@@ -105,10 +108,10 @@ data-field="field" vengono iniettati i valori. Vedere la sezione ... per ulterio
 `Component.newID()` : metodo statico che ritorna un id univoco fomato da 'c_{int}'+ dove {int} è un intero incrementale
 
 
-##Traits che agiscono sui template
+## Traits che agiscono sui template
 
 coming soon.
 
-##Render dei template con dati dinamici
+## Render dei template con dati dinamici
 
 coming soon

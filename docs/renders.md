@@ -7,7 +7,7 @@ in modalità *edit, search, view*.
 
 La classe Render deve essere consideata come una specie di classe astratta edefinisce alcuni metodi di uso generale e 
 i metodi che i veri oggetti Render devono ridefinire per funzionare. Quindi come la classe che 
-definisce l'interfaccia dei vari oggetti Render concreti.
+definisce l'interfaccia dei vari oggetti Render concreti. Non dovrebbe mai essere istanziata.
 
 il modo è definito nelle costanti
 ```javascript
@@ -23,7 +23,7 @@ Render.SEARCH = 'search';
 
 - `element_selector` : '[data-render_element]' - marcatore dell'elemento
 - `control_selector` : '[data-render_control]' - marcatore del controllo html (input, select, ecc)
-- `operator_selector` : '[data-control_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
+- `operator_selector` : '[data-render_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
 search
 - `operator` : null - valore operatore in caso di modalità search
 
@@ -53,16 +53,26 @@ options.type e options.mode per cercare il nome della classe da istanziare. Se n
  
 ##### esempio
 
-Il nome da cercare deve rispettare questa convezione:
-"Render"+pascalCase(options.type)+pascalCase(options.mode) esempio
+Facciamo una piccola premessa. Per evitare di dover scrivere tutto il nome della classe Render è stata adottata la 
+sequente politica:
+
+- Tutti gli oggetti Render devono avere il nome che inizia per _Render_
+- ogni Render può avere 3 classi, una per la gestione dell'oggetto render in modalità view una per la gestione in 
+modalità search e una in modalità edit. Supponiamo di aver pensato il nostro render e di chiamarlo _input_. allora dovremmo
+creare 3 classi: 
+    - RenderInputView : oggetto che gestirà la visualizzazione di input in modalità view.
+    - RenderInputEdit : oggetto che gestirà la visualizzazione di input in modalità edit.
+    - RenderInputSearch : oggetto che gestirà la visualizzazione di input in modalità search
+
+Ecco il codice da scrivere
 
 ```javascript
-var r = Render.factory('field', {
-    type : 'input_helped',
+var r = Render.factory('fieldName', {
+    type : 'input',
     mode : 'edit'
 })
-// la factory cercherà la definizione della classe 'RenderInputHelpedEdit' che rappresenta
-// l'oggetto che gestirà il Render InputHelped in modalità edit.
+// la factory cercherà la definizione della classe 'RenderInputEdit' che rappresenta
+// l'oggetto che gestirà il Render Input in modalità edit.
 ```
 
 # Render Implementati
@@ -71,14 +81,13 @@ La libreria mette a disposizione dei renders di default per gli usi più comuni,
 completa per iniziare a creare le nostre applicazioni. Questi renders possono essere ridefiniti e creati di nuovi.
 Questo ci permette di cambiare, nella nostra applicazione, aspetto e/o funzionalità. 
 
-I Renders che aggiungeremo saranno fatti l'erediaretà. 
-
 Alcuni `mode` per alcuni render non hanno senso, in questo caso non definire la classe per quel `mode`, questo genererà un errore
-che farà capire dell'utilizzo sbagliato del componente Render. [todo: fare esempio]
+che farà capire dell'utilizzo sbagliato del componente Render.
+Nei vari renders implementati alcuni saranno solo in edit.
 
-In tutti i render verranno mostrati:
+Per ogni Render implementato mostreremo la classe per ogni mode e per ogni mode:
 
-- il contenuto del metodo template per poter facilmente ridefinire a piacere il vostro template
+- il contenuto del metodo template.
 - i marcatori utilizzati per la gestione corretta del suo comportamento.
 
 ---
@@ -88,25 +97,36 @@ Componente per la gestione degli input standard html.
 
 ### RenderInputEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Esempio</a>
+Rappresenta la versione di RenderInput in modalità edit.
+
+```javascript
+{{{example_render_input_edit}}}
+```
+<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Provalo online</a>
+
+
 
 #### template
 ```html
 <input data-render_control type="text" class="form-control" data-placeholder="">
 ```
 
-- marcatori
+#### marcatori
     - `data-render_control`: necessario, indica il controllo che riceverà il dato
     - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
 ### RenderInputSearch
+Rappresenta la versione di RenderInput in modalità search.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_search" target="_blank">Esempio</a>
+```javascript
+{{{example_render_input_search}}}
+```
+<a href="http://www.pierpaolociullo.it/example?f=render_input_search" target="_blank">Provalo online</a>
 
 #### template
 ```html
 <input data-render_control type="text" class="form-control" placeholder="">
-<input data-control_operator type="hidden" >
+<input data-render_operator type="hidden" >
 ```
 
 ### RenderInputView
@@ -136,7 +156,7 @@ Componente per la gestione degli input nascosti.
 <input data-render_control type="hidden">
 ```
 
-- marcatori
+#### marcatori
     - `data-render_control`: necessario, indica il controllo che riceverà il dato
 
 
@@ -155,7 +175,7 @@ Componente per la gestione degli input password.
 <input data-render_control type="text" class="form-control" data-placeholder="">
 ```
 
-- marcatori
+#### marcatori
     - `data-render_control`: necessario, indica il controllo che riceverà il dato
     - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
@@ -194,7 +214,7 @@ per tutti i 3 modi.
 
 ```html
 <textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
-            <input data-control_operator type="hidden" >
+            <input data-render_operator type="hidden" >
 ```
 ### RenderTextareaView
 
@@ -230,7 +250,7 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ```html
 <select data-render_control class="form-control" ></select>
-<input data-control_operator type="hidden" >
+<input data-render_operator type="hidden" >
 ```
 
 #### marcatori
@@ -296,7 +316,7 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
 #### template
 ```html
 <div data-render_element>
-    <input  data-control_operator class="form-control" type="hidden" name="" value="">
+    <input  data-render_operator class="form-control" type="hidden" name="" value="">
     <input  data-render_control class="form-control" type="text" name="" value="">
     <div data-option_values>
         <div class="btn-group btn-group-xs" role="group" aria-label="..." data-field="data" data-self>
@@ -357,7 +377,7 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 <label data-render_element class="radio-inline">
   <input data-render_control  type="radio" value=""> <span data-render_caption></span>
 </label>
-<input data-control_operator type="hidden" >
+<input data-render_operator type="hidden" >
 ```
 
 #### marcatori
@@ -406,7 +426,7 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 <label data-render_element class="checkbox-inline">
     <input data-render_control type="checkbox" value="">  <span data-render_caption> </span>
 </label>
-<input data-control_operator type="hidden" >
+<input data-render_operator type="hidden" >
 ```
 
 #### marcatori
@@ -519,7 +539,7 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
     <input class="form-control text-right" type="text" data-render_control_dec>
     <input type="hidden" data-render_control="">
     <span class="input-group-addon hide symbol_right" data-render_symbol></span>
-    <input data-control_operator type="hidden" >
+    <input data-render_operator type="hidden" >
 </div>
 ```
 
@@ -822,7 +842,7 @@ resources : {
 ```html
 <div data-render_element>
     <input data-render_control="" type="hidden" />
-    <input data-control_operator type="hidden" >
+    <input data-render_operator type="hidden" >
     <div class="input-group">
         <input data-render_picker class="form-control text-right" autocomplete="off" />
         <a data-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
@@ -1962,7 +1982,7 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 <div data-control_container>
     <button class="btn btn-default" type="button" data-button_map data-label="app.modifymap"></button>
     <div class="clearfix">
-        <input type="hidden" name="" data-control_operator>
+        <input type="hidden" name="" data-render_operator>
         <span class="pull-left" >
             <span data-label="app.gpslat"></span>: <input  class="form-control" data-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </span>
@@ -2036,7 +2056,7 @@ iconClass : {
 #### template
 ```html
     <input data-render_control type="hidden" class="form-control" name="" value="">
-    <input data-control_operator type="hidden" >
+    <input data-render_operator type="hidden" >
     <button type="button" class="btn btn-default btn-xs" data-render_element title="">
         <i data-icon class=""></i>
     </button>

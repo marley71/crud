@@ -2,12 +2,12 @@
 Le dashboards sono composizioni di views. In questo componente si inserisce tutta la logica 
 di interazioni tra le views che contiene e le loro dipendendenze.
 
-#Dashboard
+# Dashboard
 
 `Dashboard` è la classe principale da cui ereditano tutte le dashboard che andremo
 a creare. Estende la class `Component`
 
-###Proprietà
+### Proprietà
 
 - `container`       : null - rappresenta il container di destinazione dove disegnare le views
 - `className`       : 'Dashboard' - serve per poter definire a runtime la classe in cui ci si trova

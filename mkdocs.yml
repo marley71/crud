@@ -15,9 +15,13 @@ pages:
     - Routes: routes.md
     - Server : server.md
     - App : app.md
+    - Protocols : protocollo_dati.md
     - Esempi Views : esempi_views.md
 
 theme: readthedocs
+
+markdown_extensions:
+  - smarty
 
 extra:
   name : "ciao"
