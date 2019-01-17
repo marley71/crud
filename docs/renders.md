@@ -99,10 +99,11 @@ Componente per la gestione degli input standard html.
 
 Rappresenta la versione di RenderInput in modalità edit.
 
+#### esempio
 ```javascript
 {{{example_render_input_edit}}}
 ```
-<a href="http://www.pierpaolociullo.it/example?f=render_input_edit" target="_blank">Provalo online</a>
+<a href="http://www.pierpaolociullo.it/example?f=example_render_input_edit" target="_blank">Provalo online</a>
 
 
 
@@ -121,7 +122,7 @@ Rappresenta la versione di RenderInput in modalità search.
 ```javascript
 {{{example_render_input_search}}}
 ```
-<a href="http://www.pierpaolociullo.it/example?f=render_input_search" target="_blank">Provalo online</a>
+<a href="http://www.pierpaolociullo.it/example?f=example_render_input_search" target="_blank">Provalo online</a>
 
 #### template
 ```html
@@ -135,7 +136,12 @@ In modalità view, può essere solo uno span. Potevo anche non definirlo, perche
 Io ho scelto di visualizzarlo in uno span, qualcuno potrebbe decidere di farlo visualizzare come un input in modalità
 readonly. A voi la scelta.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_input_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_input_view" target="_blank">Provalo online</a>
 
 #### template
 ```html
@@ -149,7 +155,12 @@ Componente per la gestione degli input nascosti.
 
 ### RenderHiddenEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hidden_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hidden_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hidden_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -168,7 +179,12 @@ Componente per la gestione degli input password.
 
 ### RenderPasswordEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_password_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_password_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_password_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -188,7 +204,12 @@ Componente per la gestione degli input password.
 Render text è nato per rappresentare la visualizzazione di un testo. La stessa classe è stata ridefinita
 per tutti i 3 modi.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_text_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_text_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_text_view" target="_blank">Esempio</a>
 #### template
 
 ```html
@@ -201,7 +222,12 @@ per tutti i 3 modi.
 
 ### RenderTextareaEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_textarea_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_textarea_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_textarea_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -210,7 +236,13 @@ per tutti i 3 modi.
 ```
 
 ### RenderTextareaSearch
-<a href="http://www.pierpaolociullo.it/example?f=render_textarea_search" target="_blank">Esempio</a>
+
+#### esempio
+```javascript
+{{{example_render_textarea_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_textarea_search" target="_blank">Esempio</a>
 
 ```html
 <textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
@@ -218,7 +250,12 @@ per tutti i 3 modi.
 ```
 ### RenderTextareaView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_textarea_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_textarea_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_textarea_view" target="_blank">Esempio</a>
 
 ```html
 <span data-render_control></span>
@@ -233,7 +270,12 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ### RenderSelectEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_select_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_select_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_select_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -244,7 +286,12 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ### RenderSelectSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_select_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_select_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_select_search" target="_blank">Esempio</a>
 
 #### template
 
@@ -258,7 +305,12 @@ Oggetto per la selezione di un valore utilizzando le select
 
 ### RenderSelectView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_select_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_select_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_select_view" target="_blank">Esempio</a>
 
 #### template
 
@@ -291,7 +343,13 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
     
 ### RenderInputHelpedEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_helped_edit" target="_blank">Esempio</a>
+
+#### esempio
+```javascript
+{{{example_render_input_helped_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_input_helped_edit" target="_blank">Esempio</a>
 
 
 #### template
@@ -310,7 +368,12 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
 
 ### RenderInputHelpedSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_input_helped_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_input_helped_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_input_helped_search" target="_blank">Esempio</a>
 
 
 #### template
@@ -338,7 +401,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderImageView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_image_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_image_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_image_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -356,7 +424,13 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderRadioEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_radio_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_radio_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_radio_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -370,7 +444,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderRadioSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_radio_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_radio_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_radio_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -385,7 +464,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderRadioView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_radio_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_radio_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_radio_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -405,7 +489,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderCheckboxEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_checkbox_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_checkbox_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -419,7 +508,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderCheckboxSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_checkbox_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_checkbox_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -434,7 +528,12 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ### RenderCheckboxView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_checkbox_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_checkbox_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_checkbox_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -455,7 +554,12 @@ Questo render incapsula il captca con il suo relativo reload. Esiste solo in mod
 
 ### RenderCaptchaEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_captcha_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_captcha_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_captcha_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -487,7 +591,12 @@ uguali.
 
 ### RenderCustomEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_custom_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_custom_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_custom_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -510,7 +619,12 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 ### RenderDecimalEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_decimal_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_decimal_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_decimal_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -528,7 +642,12 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 ### RenderDecimalSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_decimal_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_decimal_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_decimal_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -548,7 +667,12 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 ### RenderDecimalView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_decimal_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_decimal_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_decimal_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -574,7 +698,13 @@ Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
 
 ### RenderAutocompleteEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_autocomplete_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_autocomplete_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_autocomplete_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -650,7 +780,13 @@ esterna rispetto a campo corrente, istanza
 
 ### RenderBelongstoView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_belongsto_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_belongsto_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_belongsto_view" target="_blank">Esempio</a>
 
 #### marcatori
 - data-render_element
@@ -734,7 +870,13 @@ E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 v
 
 Estende DateSelectCommon e si preoccupa della gestione della data in modalità edit.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_select_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_select_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_select_edit" target="_blank">Esempio</a>
 
 
 #### marcatori:
@@ -775,13 +917,23 @@ Estende DateSelectCommon e si preoccupa della gestione della data in modalità e
 Estende `RenderDateSelectEdit` ridefinendo al render dove aggiunge il controllo per l'operatore di ricerca
 e cambia i nomi per la convenzione con view search
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_select_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_select_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_select_search" target="_blank">Esempio</a>
 
 ### RenderDateSelectView
 
 Estende `DateSelectCommon`  
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_select_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_select_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_select_view" target="_blank">Esempio</a>
 
 marcatori
 
@@ -820,7 +972,12 @@ resources : {
 
 ### RenderDatePickerEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_picker_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_picker_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -836,7 +993,12 @@ resources : {
 
 ### RenderDatePickerSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_picker_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_picker_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -853,7 +1015,12 @@ resources : {
 
 ### RenderDatePickerView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_picker_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_picker_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_picker_view" target="_blank">Esempio</a>
 
 
 
@@ -869,7 +1036,12 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 ### RenderDateFormattedEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_formatted_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_formatted_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -887,7 +1059,12 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 ### RenderDateFormattedSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_formatted_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_formatted_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -906,7 +1083,12 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 ### RenderDateFormattedView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_date_formatted_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_date_formatted_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_date_formatted_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -928,7 +1110,12 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateSelectEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_select_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_select_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -948,7 +1135,12 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateSelectSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_select_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_select_search" target="_blank">Esempio</a>
 
 #### template
 
@@ -967,7 +1159,12 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateSelectView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_select_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_select_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_select_view" target="_blank">Esempio</a>
 
 #### template
 
@@ -993,7 +1190,12 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDatePickerEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_picker_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_picker_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -1012,7 +1214,13 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDatePickerSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_picker_search}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_picker_search" target="_blank">Esempio</a>
 
 #### template
 
@@ -1033,7 +1241,13 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDatePickerView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_picker_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_picker_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_picker_view" target="_blank">Esempio</a>
 
 #### template
 
@@ -1062,7 +1276,13 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateFormattedEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_formatted_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_formatted_edit" target="_blank">Esempio</a>
 
 #### template
 
@@ -1083,7 +1303,13 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateFormattedSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_formatted_search}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_formatted_search" target="_blank">Esempio</a>
 
 #### template
 
@@ -1102,7 +1328,13 @@ Questo render serve per la gestione di un range di date.
 
 ### RenderBetweenDateFormattedView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_between_date_formatted_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_between_date_formatted_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_between_date_formatted_view" target="_blank">Esempio</a>
 
 #### template
 
@@ -1133,7 +1365,12 @@ che e' formato di tanti itemTemplate.
 
 ### RenderHasmanyEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1218,7 +1455,12 @@ che e' formato di tanti itemTemplate.
 
 ### RenderHasmanyView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1285,7 +1527,12 @@ Oggetto per la gestione degli hasmany trought...
 
 ### RenderHasmanyThroughEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_through_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_through_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_through_edit" target="_blank">Esempio</a>
 
 
 #### proprietà
@@ -1391,8 +1638,12 @@ template utilizzato per creare l'elemnto lista dove verrà visualizzata la view 
 Questo è in modalità view con itemTemplate base, in caso di item piu' complessi ridefinire itemTemplate
 aggiungendo l'attributo data-field="nome_campo" nel item html che si voglia usare per visualizzarlo
 
+#### esempio
+```javascript
+{{{example_render_hasmany_through_view}}}
+```
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_through_view" target="_blank">Esempio</a>
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_through_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -1474,7 +1725,12 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 
 ### RenderHasmanyUploadImageEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_image_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_upload_image_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_upload_image_edit" target="_blank">Esempio</a>
 
 
 #### proprietà
@@ -1592,7 +1848,13 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 
 ### RenderHasmanyUploadImageView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_image_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_upload_image_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_upload_image_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -1697,7 +1959,13 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 ### RenderHasmanyUploadAttachmentEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attachment_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_upload_attachment_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_upload_attachment_edit" target="_blank">Esempio</a>
 
 
 #### proprietà
@@ -1813,7 +2081,13 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 ### RenderHasmanyUploadAttachmentView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_hasmany_upload_attachment_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_hasmany_upload_attachment_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_upload_attachment_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -1882,7 +2156,13 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderMapEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_map_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_map_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_map_edit" target="_blank">Esempio</a>
 
 
 #### metodi
@@ -1975,7 +2255,13 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderMapSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_map_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_map_search}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_map_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -1999,7 +2285,11 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 ### RenderMapView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_map_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_map_view}}}
+```
+<a href="http://www.pierpaolociullo.it/example?f=example_render_map_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2038,7 +2328,12 @@ iconClass : {
 
 ### RenderSwapEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_swap_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_swap_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_swap_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2051,7 +2346,12 @@ iconClass : {
 
 ### RenderSwapSearch
 
-<a href="http://www.pierpaolociullo.it/example?f=render_swap_search" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_swap_search}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_swap_search" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2066,7 +2366,12 @@ iconClass : {
 
 ### RenderSwapView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_swap_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_swap_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_swap_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2092,7 +2397,12 @@ rappresentazione ed editing di testo html
 
 editor html summernote.
 
-<a href="http://www.pierpaolociullo.it/example?f=render_texthtml_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_texthtml_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_texthtml_edit" target="_blank">Esempio</a>
 
 - height : 200,
       pluginOptions : {},
@@ -2111,7 +2421,12 @@ editor html summernote.
 
 ### RenderTexthtmlView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_texthtml_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_texthtml_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_texthtml_view" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2130,7 +2445,12 @@ editor html summernote.
 
 ### RenderUploadImageEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_upload_image_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_upload_image_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_upload_image_edit" target="_blank">Esempio</a>
 
 #### template
 ```html
@@ -2142,7 +2462,13 @@ editor html summernote.
 
 ### RenderUploadImageView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_upload_image_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_upload_image_view}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_upload_image_view" target="_blank">Esempio</a>
 
 
 #### template
@@ -2163,7 +2489,13 @@ editor html summernote.
 
 ### RenderUploadAttachmentEdit
 
-<a href="http://www.pierpaolociullo.it/example?f=render_upload_attachment_edit" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_upload_attachment_edit}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_upload_attachment_edit" target="_blank">Esempio</a>
 
 
 #### template
@@ -2176,7 +2508,12 @@ editor html summernote.
 
 ### RenderUploadAttachmentView
 
-<a href="http://www.pierpaolociullo.it/example?f=render_upload_attachment_view" target="_blank">Esempio</a>
+#### esempio
+```javascript
+{{{example_render_upload_attachment_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_render_upload_attachment_view" target="_blank">Esempio</a>
 
 
 #### template
