@@ -6,9 +6,6 @@ extra:
 
 # Cupparijs4 (Versione Alpha)
 
-{$some_url} 
-
-
 Libreria CRUD per la realizzazione di interfacce professionali basate su chiamate REST con 
 metodi CREATE,READ,UPDATE,DELETE. Il protocollo utilizzato per la comunicazione è il json. 
 La libreria utilizza il concetto di componente. La pagina è formata da componenti ed esse

@@ -10,7 +10,7 @@ creare dashboards ecc.
 - `pluginsPath` : '/cupparis4/plugins/' - directory base dove cercare i plugins da caricare
 - `log` = null  : oggetto per il log dei messaggi, viene istanziato nel costruttore dell'app.
 - `show_log` : false - se visualizzare o no i messaggi in console del browser
-- `mobile` : false - se la libreria viene istanziata usu un mobile,
+- `mobile` : false - se la libreria viene istanziata su un dispositivo mobile,
 - `locale` : 'it' - locale di default, viene utilizzato per la configurazione delle date
 
 
@@ -20,6 +20,8 @@ creare dashboards ecc.
 - `getResources()` : vettore di tutte le risorse caricate dalla pagina
 - `init(options,callback)` : metodo iniziale da chiamare subito dopo la new per inizializzare
 l'applicazione
+    - @param options : options dell'app
+    - @param callback : funzione da richiamare al fine del caricamento
 - `loadResource(fileName, callback)` : carica una risorsa script o css dinamicamente partendo dalla 
 cartella pluginsPath. quando lo script e' stato caricato chiama la callback
     - @param fileName : path compreso dal filename della risorsa da caricare
@@ -56,13 +58,10 @@ view tramite questo id.
     - @param callback : opzionale, funziona da chiamare quando la view viene renderizzata
 - `getHtmlConf` = function (jQe) 
    
-- `parse` = function (container)  /**
-                                    * esegue il parse di un container html e istanzia tutte le views trovate
-                                    * @param container
-                                    * @returns {Array} di views
-                                    */
-
-
+- `parse(container)`: esegue il parse di un container html e istanzia tutte le views trovate
+secondo la sintassi definita prima.
+    - @param container
+    - @returns {Array} di views
 - `viewModal(title,ViewConf,callback)`: visualizza una view in modal.
     - @param title : 'Titolo della modale',
     - @param ViewConf : configurazione della view,
@@ -73,10 +72,23 @@ view tramite questo id.
 - `translate` = function (key,plural,params) 
 - `translateIfExist` = function (key,plural,params) 
 - `getLocale` = function () 
-- `waitStart` = function (msg,container) 
-- `waitEnd` = function (container) 
-- `messageDialog` = function (body,callbacks) - crea una message dialog e ne ritorna l'oggetto
-- `errorDialog` = function (body,callbacks) - crea una message dialog e ne ritorna l'oggetto
-- `confirmDialog` = function (body,callbacks)
-- `customDialog` = function (content,callbacks) 
+- `waitStart(msg,container)` : esegue l'animazione di wait 
+    - @param : msg - messaggio da visualizzare nell'attesa
+    - @param : container - opzionale, se settato, fa partire l'animazione wait sul container 
+    altrimenti a tutta pagina. 
+- `waitEnd(container)` : termina la wait 
+    - @param : container : opzionale se settato toglie l'animazione wait dal container altrimenti a tutta 
+    pagina. 
+- `messageDialog(message,callbacks)` : crea una message dialog e ne ritorna l'oggetto
+    - @param : message - messaggio d'errore da visualizzare
+    - @param : callbacks :
+- `errorDialog(message,callbacks)` : crea una error dialog  e ne ritorna l'oggetto
+    - @param : message - messaggio d'errore da visualizzare
+    - @param : callbacks : 
+- `confirmDialog(message,callbacks)` : crea una dialog di conferma
+    - @param : message - domanda da visualizzare
+    - @param : callbacks :
+- `customDialog(content,callbacks)` : Visualizzazione di una modale con il conten custom
+    - @param : content : 
+    - @param : callbacks :    
 - `progressDialog` = function (content,callbacks)
