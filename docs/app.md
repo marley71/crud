@@ -61,7 +61,7 @@ view tramite questo id.
 - `parse(container)`: esegue il parse di un container html e istanzia tutte le views trovate
 secondo la sintassi definita prima.
     - @param container
-    - @returns {Array} di views
+    - @return {Array} di views
 - `viewModal(title,ViewConf,callback)`: visualizza una view in modal.
     - @param title : 'Titolo della modale',
     - @param ViewConf : configurazione della view,

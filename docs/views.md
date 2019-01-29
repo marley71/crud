@@ -246,9 +246,18 @@ template principale piu' altri template delle varie sezioni di una lista. Questo
 le singole parti in modo più puntuale. 
 
 
-<a href="http://www.pierpaolociullo.it/example?f=view_list" target="_blank">Esempio</a>
+```javascript
+{{{example_view_list}}}
+```
 
-<a href="http://www.pierpaolociullo.it/example?f=view_list__custom_data" target="_blank">Esempio con dati custom</a>
+<a href="http://www.pierpaolociullo.it/example?f=example_view_list" target="_blank">Esempio</a>
+
+
+```javascript
+{{{example_view_list_custom_data}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_view_list__custom_data" target="_blank">Esempio con dati custom</a>
 
 
 #### marcatori
@@ -366,7 +375,12 @@ le singole parti in modo più puntuale.
 E' una view per la creazione di un nuovo record. Utilizza la route RouteInsert per il 
 caricamento dei dati e la RouteSave per il salvataggio
 
-<a href="http://www.pierpaolociullo.it/example?f=view_insert" target="_blank">Esempio</a>
+
+```javascript
+{{{example_view_insert}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_view_insert" target="_blank">Esempio</a>
 
 #### template 
 
@@ -392,7 +406,11 @@ caricamento dei dati e la RouteSave per il salvataggio
 E' una view per la modifica di un record. Utilizza la route RouteEdit per il caricamento
 e la RouteUpdate per il salvataggio
 
-<a href="http://www.pierpaolociullo.it/example?f=view_edit" target="_blank">Esempio</a>
+```javascript
+{{{example_view_edit}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_view_edit" target="_blank">Esempio</a>
 
 
 #### template 
@@ -416,7 +434,12 @@ e la RouteUpdate per il salvataggio
 ## ViewSearch
 E' una view per effettuare una ricerca.
 
-<a href="http://www.pierpaolociullo.it/example?f=view_search" target="_blank">Esempio</a>
+```javascript
+{{{example_view_search}}}
+```
+
+
+<a href="http://www.pierpaolociullo.it/example?f=example_view_search" target="_blank">Esempio</a>
 
 #### template 
 
@@ -440,7 +463,11 @@ E' una view per effettuare una ricerca.
 ## ViewView
 E' una view per visualizzare i risultati in modalità lettura.
 
-<a href="http://www.pierpaolociullo.it/example?f=view_view" target="_blank">Esempio</a>
+```javascript
+{{{example_view_view}}}
+```
+
+<a href="http://www.pierpaolociullo.it/example?f=example_view_view" target="_blank">Esempio</a>
 
 #### template
 

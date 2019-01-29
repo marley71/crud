@@ -1,9 +1,11 @@
 # Protocollo dati
 
-In questa pagina spiego cosa si aspettano le view come dati da un eventuale server backend. Questi esempi 
-sono a titolo di esempio in quanto se noi abbiamo dei server che rispondono con un json strutturalmente diverso
-possiamo creare una classe javascript che estenderà la classe principale Protocol dove potete definire il match
-tra quello che arriva dal server e quello che si aspetta la libreria.
+In questa pagina mostro cosa si aspettano le view come dati da un eventuale server backend. Questi esempi 
+sono a titolo di esempio.
+La libreria accetta dati json strutturalmente diversi che andiamo ad adattare creando  una classe javascript che 
+estenderà la classe principale Protocol dove potete definire il match
+tra quello che arriva dal server e quello che si aspettano i componenti della libreria.
+
 Le view lavorano con questo protocollo
 
 ## GET di un record
@@ -11,13 +13,13 @@ Le view lavorano con questo protocollo
 ```javascript
 {
     result : {
-        field1 : value // valore campo 
+        field1 : value // nome campo : valore campo 
         // ... ecc
     },
     metadata : {
         field1 : {} // array associativo degli eventuali metadati 
     },
-    validationRules : { //array assocativo di eventuali regole di validazione javascript
+    validationRules : { //array assocativo di eventuali regole di validazione javascript da applicare al campo
         
     },
     translations : {} // eventuali traduzioni private di labels presenti nella view
@@ -25,13 +27,13 @@ Le view lavorano con questo protocollo
 ```
 
 
-## GET di una lista
+## GET di una lista di record
 
 ```javascript
 {
     result : {
         current_page : 1,   // pagina corrente
-        from : 1,           // numero partenza del primo elemnto
+        from : 1,           // numero partenza del primo elemento
         last_page : 10,     // ultima pagina
         pagination_steps : { // configurazione nel numero di elementi per pagina
             5 : 5,
@@ -101,7 +103,7 @@ fotos-filename[]: temp_fotos_154719847888307.jpg
 fotos-mimetype[]: image/jpeg  
 fotos-nome[]:   
 fotos-descrizione[]: 
-fotos_exists: 1  
+fotos_exists: 1 
 --- fotos_exists e' un campo di controllo per dire che la relazione veniva gestita nella form della view. 
 --- serve perche' in caso di eliminazione di tutti gli elementi posso non riuscire a distinguere tra una
 --- view che non gestisce la relazione e una view che la gestisce ma l'utente ha cancellato tutti gli elementi
@@ -126,3 +128,6 @@ relazione3_exists: 1
 
 _method: POST  
 ```
+
+## DELETE di un record
+
