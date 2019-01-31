@@ -1,9 +1,10 @@
 ## View
 
-La `View` estende la classe `Component` rappesenta il contenitore di dati html associate ad un 
+La `View` estende la classe `Component` rappesenta il contenitore di dati associate ad un 
 modello di dati. Questi dati possono essere passati manualmente o 
 attraverso un server, utilizzando le route che usano le convenzioni REST.
-Questo modello viene utilizzato per discriminare la route per il recupero dei dati.
+Il modello viene utilizzato per discriminare la route per il recupero dei dati. In caso non 
+serva si puo' usare un modello dati fake chiamato 'dummy'.
 Da essa sono derivate le classi:
 
 - `RecordView` per la gestione di dati provenienti da record di un modello
@@ -24,7 +25,7 @@ Nella configurazione vengono definiti:
 
 Rappresenta la classe Principale
 	
-### Proprietà
+#### Proprietà
 	
 - `modelName` *default null* rappresenta il nome del modello dei dati gestito
 
@@ -45,14 +46,15 @@ il server attraverso la route
 - `keyId`               : null,     // identificativo univoco della view creata e assegnata dall'oggetto App   
 - `app`                : null,      // oggetto app proprietario della view
 - `viewTypeToRenderType` :          // mapping delle viste con i tipi default dei render
+
 ```javascript
 {
-    'list'      : BaseElement.VIEW,
-    'edit'      : BaseElement.EDIT,
-    'search'    : BaseElement.SEARCH,
-    'view'      : BaseElement.VIEW,
-    'calendar'  : BaseElement.VIEW,
-    'csv'       : BaseElement.EDIT
+    'list'      : Render.VIEW,
+    'edit'      : Render.EDIT,
+    'search'    : Render.SEARCH,
+    'view'      : Render.VIEW,
+    'calendar'  : Render.VIEW,
+    'csv'       : Render.EDIT
 }
 ```
 - `resources` : [] - vettore delle risorse esterne da caricare prima di visualizzare la view
@@ -63,7 +65,7 @@ il server attraverso la route
 
 * `actions` : [] - vettore nome azioni da istanziare nella view
 
-### Metodi
+#### Metodi
 
 - `draw(callback)` metodo per la renderizzazione della view. callback e' la chiamata che
 viene effettuata alla fine se passata. La sequenza delle chiamate attraverso le callback:
@@ -121,14 +123,14 @@ il merge tra la configuazione di default e quella passata alla view.
 La `RecordView` estende `View` è pensata per tutte le viste che gestiscono un solo record del modello 
 di dati.
 
-### Proprietà
-- _pkName : 'id' - nome della chiave univoca del modello dati
-- _pkValue : null - valore della chiave univoca del modello dati
-- _actions : [] - vettore con tutte le azioni istanziati nella vista
-- actions : [] - vettore nomi delle azioni da istanziare nella vista
-- type : 'record' - tipo della vista in questo caso record
-- defaultItemTemplate : 'left' - Oggetto template di default che conterrà gli oggetti Renders
-- data : vettore associativo dei dati dalla forma
+#### Proprietà
+- `_pkName` : 'id' - nome della chiave univoca del modello dati
+- `_pkValue` : null - valore della chiave univoca del modello dati
+- `_actions` : [] - vettore con tutte le azioni istanziati nella vista
+- `actions` : [] - vettore nomi delle azioni da istanziare nella vista
+- `type` : 'record' - tipo della vista in questo caso record
+- `defaultItemTemplate` : 'left' - Oggetto template di default che conterrà gli oggetti Renders
+- `data` : vettore associativo dei dati dalla forma
 ```javascript
 data : {
     value : {},     //vettore associativo key => value dei modello dati
@@ -137,7 +139,7 @@ data : {
 }
 ```
 
-### Metodi
+#### Metodi
 
 - `getRenderValue(fieldName)` : 
 - `getRender : function(fieldName)`
@@ -166,7 +168,7 @@ del modello dei dati dovuti ad esigenze dell'html tipo view annidate per creare 
 La `CollectionView` estend la `View` è pensata per tutte le viste che gestiscono una lista record del modello 
 di dati.
 
-### Proprietà
+#### Proprietà
 
 - `_recordActions` : [] - vettore azioni della vista per ogni singolo record,
 - `_globalActions` : [] - vettore azioni sull'intera vista
@@ -195,7 +197,7 @@ data : {
     list_header : ''
 }
 ```
-### Metodi
+#### Metodi
 
 - `setOrder(field)` - permette di ordinare una view rispetto ad un campo
 - `_setKeys()` - (privata) setta i render da renderizzare nella vista
@@ -257,7 +259,7 @@ le singole parti in modo più puntuale.
 {{{example_view_list_custom_data}}}
 ```
 
-<a href="http://www.pierpaolociullo.it/example?f=example_view_list__custom_data" target="_blank">Esempio con dati custom</a>
+<a href="http://www.pierpaolociullo.it/example?f=example_view_list_custom_data" target="_blank">Esempio con dati custom</a>
 
 
 #### marcatori
