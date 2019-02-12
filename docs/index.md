@@ -4,7 +4,7 @@ extra:
     version: 1.0
 ---
 
-# Cupparijs4 (Versione Alpha)
+# CRUD 4.1 (Versione Alpha)
 
 Libreria CRUD per la realizzazione di interfacce professionali basate su chiamate REST con 
 metodi CREATE,READ,UPDATE,DELETE. Il protocollo utilizzato per la comunicazione è il json. 
