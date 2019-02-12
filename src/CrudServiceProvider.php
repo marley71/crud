@@ -1,4 +1,4 @@
-<?php namespace Marley71\JsonRest;
+<?php namespace Marley71\Crud;
 
 use App;
 use Gecche\Multidomain\Foundation\Console\RemoveDomainCommand;
@@ -45,14 +45,18 @@ class CrudServiceProvider extends ServiceProvider {
 
 
     public function boot() {
-        //$this->loadRoutesFrom(__DIR__.'/api.php');
         $this->publishes([
-            __DIR__.'./config.php' => config_path('json_rest.php'),
-        ]);
-        Route::prefix(config('json_rest.prefix'))
-            ->middleware(config('json_rest.middleware'))
-            //->namespace('Marley71\\JsonRest\\Http\\Controllers')
-            ->group(__DIR__.'/api.php');
+            __DIR__ . '/../crud' => public_path('crud'),
+        ], 'public');
+
+        //$this->loadRoutesFrom(__DIR__.'/api.php');
+//        $this->publishes([
+//            __DIR__.'./config.php' => config_path('json_rest.php'),
+//        ]);
+//        Route::prefix(config('json_rest.prefix'))
+//            ->middleware(config('json_rest.middleware'))
+//            //->namespace('Marley71\\JsonRest\\Http\\Controllers')
+//            ->group(__DIR__.'/api.php');
 
 //        $this->publishes([
 //            __DIR__.'/../../config/domain.php' => config_path('domain.php'),
