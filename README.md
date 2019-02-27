@@ -18,10 +18,16 @@ Per comodità ho inserito nel folder crud/libs le versioni sopracitate.
 
 ## Installazione
 
+
 Nella cartella plugins ci sono i javascript di base per l'ulitizzo di alcuni componenti renders come 
 texthtml e autocomplete. Questa cartella è il contenitore per i plugins che vogliamo utilizzare nella nostra
 applicazione e può essere estesa secondo le proprie esigenze e i propri renders. Sotto un esempio per l'installazione della
-libreria. Copiare la cartella `crud` nella root del vostra applicazione web.
+libreria. 
+
+### Manualmente
+
+Copiare la cartella `crud` nella root del vostra applicazione web e inserire nella pagina l'head e lo script come
+si vede nell'esempio. 
 
 ```html
 <head>
@@ -51,3 +57,22 @@ libreria. Copiare la cartella `crud` nella root del vostra applicazione web.
     </script>
 </body>
 ```
+
+### Composer per laravel
+
+Eseguire nel progetto laravel
+```sybase
+composer require "marley71/crud"
+```
+
+
+Oppure aggiungere la riga al composer.json del progetto
+```javascript
+"require": {
+    "marley71/crud" : "v4.1.x-dev"
+}
+```
+
+
+
+

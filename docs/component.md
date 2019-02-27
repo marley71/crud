@@ -41,6 +41,9 @@ in particolare :
 - `traits` : [] - traits per estendere funzionalità del component senza ridefinirne la classe.
 - `container` : null - rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
 disegnato il componente.
+- templateFile : il template può essere caricato da un file esterno. Valorizzare questa proprietà. Il formato
+accetta "nomefile.html#id", in caso sia passato un id la libreria carica il file e cerca un nodo con id={id}, altrimenti
+assegna al template tutto l'html caricato dal file.
 
 #### Metodi
 
@@ -57,7 +60,7 @@ o aggiungerne dei nuovi.
 - `html()` : ritorna l'html puntato dalla proprietà container del componente
 - `jQe(selector)` : ritorna l'oggetto jquery associato al container del componente, se viene
 passato il parametro *selector* allora si posiziona all'elemento puntato dal selector all'interno
-del container.
+del container, compreso il container stesso.
 
 - `beforeRender(callback)` : questo metodo viene chiamato prima di eseguire il render. Questo metodo rappresenta
 il primo punto in cui scrivere codice che si vuole eseguire prima di renderizzare il componente
@@ -72,7 +75,7 @@ base alle proprie politiche.
 - `afterFinalize(callback)` : metodo custom per eventuali esigenze su oggetti dopo che sono stati visualizzati agganciati
 eventi e istanziati plugins.
 
-- `_prepareContainer()`  : scrive l'html che viene restituito dal metodo *template* dentro il container.
+- `_prepareContainer(callback)`  : scrive l'html che viene restituito dal metodo *template* dentro il container.
 Se il container è null viene creato un oggetto jquery contentente l'html. Dopo viene chiamato *_executeTraitsTemplate*
 
 - `_executeTraitsTemplate()` : metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
@@ -92,7 +95,7 @@ semplicemente non richiamando la callback. Sotto viene rappresentato il flusso d
    
     - `_loadExternalResources(callback)`;
     - `beforeRender(callback)`
-    - `_prepareContainer()` 
+    - `_prepareContainer(callback)` 
     - `render(callback)`
     - `afterRender(callback)`
     - `beforeFinalize(callback)`

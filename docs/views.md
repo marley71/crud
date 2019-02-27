@@ -74,7 +74,7 @@ Utilizzare questa tecnica per interrompere la visualizzazione o il comportamento
     - beforeLoadData(callback)
     - loadData(callback)
     - afterLoadData(callback)
-    - _prepareContainer()
+    - _prepareContainer(callback)
     - beforeRender(callback)
     - render(callback)
     - afterRender(callback)
@@ -86,7 +86,7 @@ Utilizzare questa tecnica per interrompere la visualizzazione o il comportamento
 - `beforeLoadData(callback)` - metodo viene chiamato prima che la view carichi i dati
 - `loadData(callback)` - metodo chiamato per il caricamento dei dati attraverso la route
 - `afterLoadData(callback)` - metodo chiamato dopo che i dati sono stati caricati
-- `_prepareContainer()` - metodo dove viene iniettato l'html presente nel template
+- `_prepareContainer(callback)` - metodo dove viene iniettato l'html presente nel template
 - `beforeRender(callback)` - metodo chiamato prima di chiamare utilizzabile per eventuali manipolazioni
 - `render(callback)` - questo metodo è utilizzato per disegnare la struttura html
 - `afterRender(callback)` - chiamato dopo il render
@@ -284,7 +284,7 @@ le singole parti in modo più puntuale.
                         
                     </tr>
                 </thead>
-                <tbody>
+                <tbody data-view_elements>
                     <tr data-view_row_elements>
                         
                     </tr>
@@ -389,7 +389,7 @@ caricamento dei dati e la RouteSave per il salvataggio
 ```html
 <div class="well" data-edit-main>
     <div data-alert class="alert alert-success hide"></div>
-    <form name="data_form" class="model-edit">
+    <form data-form class="model-edit">
         <div data-hidden_fields></div>
         <div data-view_elements>
             
@@ -420,7 +420,7 @@ e la RouteUpdate per il salvataggio
 ```html
 <div class="well" data-edit-main>
     <div data-alert class="alert alert-success hide"></div>
-    <form name="data_form" class="model-edit">
+    <form data-form class="model-edit">
         <div data-hidden_fields></div>
         <div data-view_elements>
             
@@ -447,7 +447,7 @@ E' una view per effettuare una ricerca.
 
 ```html
 <div class="well search-well">
-    <form name="data_form" class="model-search">
+    <form data-form class="model-search">
         <div data-hidden_fields></div>
         <div class="search-row" data-view_elements>
         </div>
