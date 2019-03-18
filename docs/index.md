@@ -17,7 +17,8 @@ a piacere nella propria applicazione sia come layout grafico sia come logica.
 
 ## Componenti base
 
-Nella libreria è stata definita una classe main che permette di simulare l'erediareità degli oggetti.
+Nella libreria è stata definita una classe principale che tutte le classi estendono che permette di 
+simulare l'erediareità degli oggetti.
 Questa classe si chiama `Class`. Elenchiamo le principali componenti presenti nella libreria:
 
 ## Component

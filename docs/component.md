@@ -86,21 +86,48 @@ se si vogliono eseguire dei particolari filtri con il concetto di trait
     
 - `draw(callback)` : disegna l'html del componente e poi richiama la callback.
 Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
-callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato o di aggangiare
-eventi custom. Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
-è finito di operare dentro il metodo. Questo modo di eseguire i metodi permette di poter inserire anche delle funzioni
-asincrone aspettare il termine delle chiamate prima di procedere. Nello stesso tempo permette di bloccare il flusso
-semplicemente non richiamando la callback. Sotto viene rappresentato il flusso delle chiamate del metodo draw.
- 
-   
-    - `_loadExternalResources(callback)`;
-    - `beforeRender(callback)`
-    - `_prepareContainer(callback)` 
-    - `render(callback)`
-    - `afterRender(callback)`
-    - `beforeFinalize(callback)`
-    - `finalize(callback)`
-    - `afterFinalize(callback)`
+callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato.
+Permette di aggangiare eventi custom. 
+Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
+è finito di operare dentro il metodo. Questo permette di poter inserire anche delle funzioni
+asincrone aspettare il termine delle chiamate prima di procedere. Se si vuole bloccare il flusso
+basta semplicemente non richiamare la callback. 
+Sotto viene rappresentato il flusso delle chiamate del metodo draw.
+
+```javascript
+// carico le risorse esterne
+this._loadExternalResources(function () {
+    // prima di renderizzare il contenuto
+    this.beforeRender(function () {
+        // preparo il container
+        this._prepareContainer(function () {
+            // applico i traits sull'html appena generato
+            this._executeTraitsTemplate();
+            // renderizzo gli oggetti presenti nel componente
+            this.render(function () {
+                // eseguo il metodo per aggiungere eventuali pezzi html custom
+                this.afterRender( function () {
+                    // prima di attivare eventi 
+                    this.beforeFinalize(function () {
+                        // chiamo il metodo dove vengono attivati gli eventi
+                        this.finalize(function () {
+                            // eventuali alti eventi custom
+                            this.afterFinalize(function () {
+                                // richiamo la callback del metodo draw
+                                return callback();
+                            });
+                        });
+                    });
+                });
+            });
+        });
+
+    });
+})
+``` 
+
+
+
 
 `Component.parseHtml(templateString,tplData)` : metodo statico che crea un oggetto jquery eseguendo
 il parse della stringa passata. In caso vengono passati dei con tplData tutti i tag che hanno il marcatore
