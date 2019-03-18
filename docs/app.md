@@ -12,7 +12,9 @@ creare dashboards ecc.
 - `show_log` : false - se visualizzare o no i messaggi in console del browser
 - `mobile` : false - se la libreria viene istanziata su un dispositivo mobile,
 - `locale` : 'it' - locale di default, viene utilizzato per la configurazione delle date
-
+- `autoparse` : false - se attivato, l'app controlla che quando viene inserito un tag html
+                che possieda l'attributo 'data-view' o 'data-dashboard' attiva in automatico 
+                la creazione della vista o dashboard definita nell'attributo.
 
 
 ### Metodi
@@ -56,10 +58,9 @@ view tramite questo id.
 - `renderViewById(htmlId,callback)` : renderizza una view che id html passato. Poi chiama la callback, se passata.
     - @param htmlId : id html del container che contiene la view
     - @param callback : opzionale, funziona da chiamare quando la view viene renderizzata
-- `getHtmlConf` = function (jQe) 
+- `getHtmlConf(jQe)`: prende gli attributi dell'elemento jQuery *jQe* e crea la configurazione adatta
    
-- `parse(container)`: esegue il parse di un container html e istanzia tutte le views trovate
-secondo la sintassi definita prima.
+- `parse(container)`: esegue il parse di un container html e istanzia tutte le views o dashboards trovate.
     - @param container
     - @return {Array} di views
 - `viewModal(title,ViewConf,callback)`: visualizza una view in modal.

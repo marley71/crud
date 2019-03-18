@@ -41,7 +41,7 @@ app.renderView(vkey);
 
 ```
 
-<a href="http://www.pierpaolociullo.it/example?f=view_list" target="_blank"> Vai </a>
+<a href="http://www.pierpaolociullo.it/example?f=example_view_list" target="_blank"> esempio online </a>
 
 ## - Lista con dati json con intestazioni header custom
 
@@ -81,6 +81,10 @@ var vkey = app.addView(myList);
 // la renderizzo 
 app.renderView(vkey);
 ```
+<a href="http://www.pierpaolociullo.it/example?f=example_view_list_custom" target="_blank"> esempio online </a>
+
+
+
 
 ## Views che lavorano con singolo record
 

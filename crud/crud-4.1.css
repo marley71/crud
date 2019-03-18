@@ -140,6 +140,16 @@ i {
     z-index:10000;
 }
 
+.in-overlay {
+    background-color: rgba(1, 1, 1, 0.3);
+    bottom: 0;
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index:10000;
+}
+
 .th-list-action {
   min-width:200px;
 }
