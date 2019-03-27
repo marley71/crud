@@ -17,6 +17,8 @@ pages:
     - App : app.md
     - Protocols : protocollo_dati.md
     - Esempi Views : esempi_views.md
+    - Utilizzo html : html.md
+    - Trucchi/Convenzioni : tricks.md
 
 theme: readthedocs
 
