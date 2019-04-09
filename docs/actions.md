@@ -48,17 +48,17 @@ Le recordAction sono quelle utilizzate nelle liste per ogni record
 
 - `buttonTemplate` : function ()
 ```html
-<button data-action type="button" data-visible=visible data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" data-addclass="enabled?'':'disabled'">
-    <i data-remove="!icon" data-class="icon"></i>
-    <span data-field="text"></span>
+<button crud-action type="button" crud-visible=visible crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" crud-addclass="enabled?'':'disabled'">
+    <i crud-remove="!icon" crud-class="icon"></i>
+    <span crud-field="text"></span>
 </button> 
 ```
 
 - `linkTemplate` : function () 
 ```html
-<a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
-    <i data-remove="!icon" data-class="icon"></i>
-    <span data-field="text"></span>
+<a crud-href="href" crud-visible="visible" crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" target="_blank" crud-addclass="enabled?'':'disabled'">
+    <i crud-remove="!icon" crud-class="icon"></i>
+    <span crud-field="text"></span>
 </a>   
 ```
 
@@ -74,16 +74,16 @@ renderizzate anche in un posto diverso.
 - `type` : 'collection'
 - `buttonTemplate` : 
 ```html
-<button data-action type="button" data-visible=visible data-attrs="{'title':title,'data-params':params,'target':target}" data-class="cssClass" data-addclass="enabled?'':'disabled'">
-    <i data-remove="!icon" data-class="icon"></i>
-    <span data-field="text"></span>
+<button crud-action type="button" crud-visible=visible crud-attrs="{'title':title,'crud-params':params,'target':target}" crud-class="cssClass" crud-addclass="enabled?'':'disabled'">
+    <i crud-remove="!icon" crud-class="icon"></i>
+    <span crud-field="text"></span>
 </button> 
 ```
 - `linkTemplate` : 
 ```html
-<a data-href="href" data-visible="visible" data-class="cssClass"  data-attrs="{'title':title,'data-params':params,'target':target}" target="_blank" data-addclass="enabled?'':'disabled'">
-    <i data-remove="!icon" data-class="icon"></i>
-    <span data-field="text"></span>
+<a crud-href="href" crud-visible="visible" crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" target="_blank" crud-addclass="enabled?'':'disabled'">
+    <i crud-remove="!icon" crud-class="icon"></i>
+    <span crud-field="text"></span>
 </a>  
 ```
 
@@ -283,9 +283,9 @@ Pagina precendente di una view
 
 - `buttonTemplate` : 
 ```html
-<select data-field="pagination.per_page" data-source="pagination.pagination_steps" 
-        data-sourceorder="pagination.pagination_order"
-        data-attrs=`+ special_attrs + `  class="pagination-input">
+<select crud-field="pagination.per_page" crud-source="pagination.pagination_steps" 
+        crud-sourceorder="pagination.pagination_order"
+        crud-attrs=`+ special_attrs + `  class="pagination-input">
 
 </select>  
 ```

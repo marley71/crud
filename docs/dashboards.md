@@ -35,27 +35,27 @@ e la ricerca degli elementi della lista e paginazione.
 
 #### marcatori
 
-- `data-view_search` : contentitore dove verrà disegnata la view associata alla search
-- `data-view_list `: contenitore dove verrà disegnata la view associata alla lista
+- `crud-view_search` : contentitore dove verrà disegnata la view associata alla search
+- `crud-view_list `: contenitore dove verrà disegnata la view associata alla lista
 
 #### template 
 
 ```html
 <div id="tabContent">
-    <div class="collapse in" data-collapse_list>
+    <div class="collapse in" crud-collapse_list>
         <header id="page-header">
             <div class="panel panel-default">
                 <div class="panel-heading">
                       <span class="title elipsis"> 
-                        <strong data-label="modelMetadata.singular"></strong>
+                        <strong crud-label="modelMetadata.singular"></strong>
                       </span>
                 </div>
             </div>
         </header>
 
         <div class="padding-15">
-            <div data-view_search></div>
-            <div data-view_list></div>
+            <div crud-view_search></div>
+            <div crud-view_list></div>
         </div>
     </div>
 </div>
@@ -88,7 +88,7 @@ da semplice html.
    
 #### marcatori
 
-- data-view_edit : contentitore dove verrà disegnata la view associata all'edit
+- crud-view_edit : contentitore dove verrà disegnata la view associata all'edit
 
 
 #### template
@@ -97,11 +97,11 @@ da semplice html.
     <div class="panel panel-default">
         <div class="panel-heading">
               <span class="title elipsis"> 
-                <strong data-label="modelMetadata.singular"></strong>
+                <strong crud-label="modelMetadata.singular"></strong>
               </span>
         </div>
     </div>
-    <div data-view_edit >
+    <div crud-view_edit >
                 
     </div>
 </div>
@@ -139,7 +139,7 @@ da semplice html.
    
 #### marcatori
 
-- data-view_insert : contentitore dove verrà disegnata la view associata all'insert
+- crud-view_insert : contentitore dove verrà disegnata la view associata all'insert
 
 #### template
  
@@ -148,11 +148,11 @@ da semplice html.
     <div class="panel panel-default">
         <div class="panel-heading">
               <span class="title elipsis"> 
-                <strong data-label="modelMetadata.singular"></strong>
+                <strong crud-label="modelMetadata.singular"></strong>
               </span>
         </div>
     </div>           
-    <div data-view_insert>
+    <div crud-view_insert>
                 
     </div>
 </div>
@@ -202,11 +202,11 @@ creazione di un nuovo record
        
 #### marcatori
 
-- `data-view_search` : contentitore dove verrà disegnata la view associata alla search
-- `data-view_list` : contentitore dove verrà disegnata la view associata alla lista
-- `data-view_insert` : contentitore dove verrà disegnata la view associata all'insert
-- `data-view_edit` : contentitore dove verrà disegnata la view associata all'edit
-- `data-view_view` : contentitore dove verrà disegnata la view associata alla vista
+- `crud-view_search` : contentitore dove verrà disegnata la view associata alla search
+- `crud-view_list` : contentitore dove verrà disegnata la view associata alla lista
+- `crud-view_insert` : contentitore dove verrà disegnata la view associata all'insert
+- `crud-view_edit` : contentitore dove verrà disegnata la view associata all'edit
+- `crud-view_view` : contentitore dove verrà disegnata la view associata alla vista
 
 
 
@@ -218,44 +218,44 @@ creazione di un nuovo record
         <div class="panel panel-default">
             <div class="panel-heading">
                   <span class="title elipsis">
-                        <strong data-label="modelMetadata.singular"></strong>
+                        <strong crud-label="modelMetadata.singular"></strong>
                   </span>
             </div>
         </div>
     </header>
-    <div class="collapse in" data-collapse_list>
+    <div class="collapse in" crud-collapse_list>
         <div class="padding-15">
-            <div data-view_search>
+            <div crud-view_search>
             </div>
-            <div data-view_list>
+            <div crud-view_list>
             </div>
         </div>
     </div>
 
-    <div class="collapse" data-collapse_edit>
+    <div class="collapse" crud-collapse_edit>
         <div class="padding-15">
-            <div data-view_edit></div>
-            <div data-view_insert></div>
+            <div crud-view_edit></div>
+            <div crud-view_insert></div>
         </div>
     </div>
 
-    <div data-view_dialog class="modal fade">
+    <div crud-view_dialog class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
+                    <button type="button" class="close" crud-dismiss="modal"
                             aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" data-label="modelMetadata.singular" ></h4>
+                    <h4 class="modal-title" crud-label="modelMetadata.singular" ></h4>
                 </div> 
                 <div class="modal-body">
-                    <div data-view_view></div>
+                    <div crud-view_view></div>
                 </div>
                 <div class="modal-footer">
-                    <button data-button="cancel" type="button" class="btn btn-primary "
-                          data-dismiss="modal">Annulla
+                    <button crud-button="cancel" type="button" class="btn btn-primary "
+                          crud-dismiss="modal">Annulla
                     </button>
-                    <button data-button="ok" type="button" class="btn btn-primary"
-                            data-dismiss="modal">Ok
+                    <button crud-button="ok" type="button" class="btn btn-primary"
+                            crud-dismiss="modal">Ok
                     </button>
                 </div>
             </div>
@@ -297,11 +297,11 @@ creazione di un nuovo record
        
 #### marcatori
 
-- `data-view_search` : contentitore dove verrà disegnata la view associata alla search
-- `data-view_list` : contentitore dove verrà disegnata la view associata alla lista
-- `data-view_insert` : contentitore dove verrà disegnata la view associata all'insert
-- `data-view_edit` : contentitore dove verrà disegnata la view associata all'edit
-- `data-view_view` : contentitore dove verrà disegnata la view associata alla vista
+- `crud-view_search` : contentitore dove verrà disegnata la view associata alla search
+- `crud-view_list` : contentitore dove verrà disegnata la view associata alla lista
+- `crud-view_insert` : contentitore dove verrà disegnata la view associata all'insert
+- `crud-view_edit` : contentitore dove verrà disegnata la view associata all'edit
+- `crud-view_view` : contentitore dove verrà disegnata la view associata alla vista
 
 
 #### template
@@ -312,30 +312,30 @@ creazione di un nuovo record
         <div class="panel panel-default">
             <div class="panel-heading">
                   <span class="title elipsis">
-                        <strong data-label="modelMetada.singular"></strong>
+                        <strong crud-label="modelMetada.singular"></strong>
                   </span>
             </div>
         </div>
     </header>
     <div>
         <div class="col col-xs-6">
-            <div data-view_search ></div>
-            <div data-view_list></div>
+            <div crud-view_search ></div>
+            <div crud-view_list></div>
         </div>
         <div class="col col-xs-6">
-            <div data-view_container="edit">
-                <h4 data-edit_title></h4>
-                <div data-view_edit>
+            <div crud-view_container="edit">
+                <h4 crud-edit_title></h4>
+                <div crud-view_edit>
                            
                 </div>
             </div>
-            <div data-view_container="insert">
-                <h4 data-insert_title></h4>
-                <div data-view_insert ></div>
+            <div crud-view_container="insert">
+                <h4 crud-insert_title></h4>
+                <div crud-view_insert ></div>
             </div>
-            <div data-view_container="view">
-                <h4 data-view_title></h4>
-                <div data-view_view></div>
+            <div crud-view_container="view">
+                <h4 crud-view_title></h4>
+                <div crud-view_view></div>
             </div>
         </div>
     </div>

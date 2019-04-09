@@ -32,25 +32,25 @@ Utilizzato soprattuto dalle views edit,insert,view
 
 ```html
 <div class="view-field clearfix">
-    <div class="col col-sm-12 view-msg" data-label="msg">
+    <div class="col col-sm-12 view-msg" crud-label="msg">
             
     </div>
     <div class="col col-sm-4">
         <div class="col col-sm-10">
 
-            <label data-html_label data-label="label"></label>
+            <label crud-html_label crud-label="label"></label>
         
         </div>
     </div>
     
  
-    <div class="col col-sm-8" data-render>
+    <div class="col col-sm-8" crud-render>
             
     </div>
     <div class="col col-sm-12">
-        <small data-label="addedLabel" class="view-addedLabel"></small>
+        <small crud-label="addedLabel" class="view-addedLabel"></small>
     </div>
-    <div class="col col-sm-12 view-field-error text-danger" data-label="error">
+    <div class="col col-sm-12 view-field-error text-danger" crud-label="error">
             
     </div>
 </div>
@@ -66,17 +66,17 @@ che hanno bisogno di spazio
 ```html
 <div class="view-field clearfix">
     <div class="col col-sm-12">
-        <label data-label="label">
+        <label crud-label="label">
 
         </label>
     </div>
-    <div class="col col-sm-12 view-msg" data-label="msg">
+    <div class="col col-sm-12 view-msg" crud-label="msg">
 
     </div>
-    <div class="col col-sm-12" data-render>
+    <div class="col col-sm-12" crud-render>
 
     </div>
-    <div class="col col-sm-12 view-field-error" data-label="error">
+    <div class="col col-sm-12 view-field-error" crud-label="error">
 
     </div>
 </div>
@@ -90,7 +90,7 @@ Metodi
 
 - template() 
 ```html
-<div class="col col-xs-12" data-render>
+<div class="col col-xs-12" crud-render>
 </div>
 ```
 
@@ -100,6 +100,6 @@ Metodi
 
 - template() 
 ```html
-<div data-render>
+<div crud-render>
 </div>
 ```

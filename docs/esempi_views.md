@@ -187,17 +187,17 @@ var myList = new ConfInsert({
     },
     template : function () {
         return `
-        <div class="well" data-edit-main>
-            <div data-alert class="alert alert-success hide"></div>
-            <div data-label="app.mialabel"></div>
+        <div class="well" crud-edit-main>
+            <div crud-alert class="alert alert-success hide"></div>
+            <div crud-label="app.mialabel"></div>
             <form name="data_form" class="model-edit">
-                <div data-hidden_fields>
+                <div crud-hidden_fields>
                     <!-- qui dentro verrano disegnati i renders speciali hidden -->
                 </div>
-                <div data-view_elements>
+                <div crud-view_elements>
                     <!-- qui dentro verrano disegnati i renders -->
                 </div>
-                <div data-view_action >
+                <div crud-view_action >
                     <!-- qui dentro verrano disegnate le azioni definite -->
                 </div>
             </form>

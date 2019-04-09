@@ -21,9 +21,9 @@ Render.SEARCH = 'search';
 - `key` : null - key dell'oggetto render (il campo del db o del field che vogliamo gestire)
 - `className` : 'Render' - nome della Classe reale dell'oggetto
 
-- `element_selector` : '[data-render_element]' - marcatore dell'elemento
-- `control_selector` : '[data-render_control]' - marcatore del controllo html (input, select, ecc)
-- `operator_selector` : '[data-render_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
+- `element_selector` : '[crud-render_element]' - marcatore dell'elemento
+- `control_selector` : '[crud-render_control]' - marcatore del controllo html (input, select, ecc)
+- `operator_selector` : '[crud-render_operator]' - marcatore dell'input hidden dove è memorizzato l'operatore in caso di modalità 
 search
 - `operator` : null - valore operatore in caso di modalità search
 
@@ -116,12 +116,12 @@ Rappresenta la versione di RenderInput in modalità edit.
 
 - template
 ```html
-<input data-render_control type="text" class="form-control" data-placeholder="">
+<input crud-render_control type="text" class="form-control" crud-placeholder="">
 ```
 
 - marcatori
-    - `data-render_control`: necessario, indica il controllo che riceverà il dato
-    - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
+    - `crud-render_control`: necessario, indica il controllo che riceverà il dato
+    - `crud-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
 ### RenderInputSearch
 Rappresenta la versione di RenderInput in modalità search. Notate che il template non e' solo dell'input per il dato
@@ -136,8 +136,8 @@ campo in input sarà s_{nome_field}_operator. Questa convenzione si può ridefin
 
 - template
 ```html
-<input data-render_control type="text" class="form-control" placeholder="">
-<input data-render_operator type="hidden" >
+<input crud-render_control type="text" class="form-control" placeholder="">
+<input crud-render_operator type="hidden" >
 ```
 
 ### RenderInputView
@@ -156,7 +156,7 @@ readonly. A voi la scelta.
 
 - template
 ```html
-<span data-render_control></span>
+<span crud-render_control></span>
 ```
 
 ---
@@ -176,11 +176,11 @@ Componente per la gestione degli input nascosti.
 
 - template
 ```html
-<input data-render_control type="hidden">
+<input crud-render_control type="hidden">
 ```
 
 - marcatori
-    - `data-render_control`: necessario, indica il controllo che riceverà il dato
+    - `crud-render_control`: necessario, indica il controllo che riceverà il dato
 
 
 
@@ -201,12 +201,12 @@ Componente per la gestione degli input password.
 
 - template
 ```html
-<input data-render_control type="text" class="form-control" data-placeholder="">
+<input crud-render_control type="text" class="form-control" crud-placeholder="">
 ```
 
 - marcatori
-    - `data-render_control`: necessario, indica il controllo che riceverà il dato
-    - `data-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
+    - `crud-render_control`: necessario, indica il controllo che riceverà il dato
+    - `crud-placeholder` : opzionale, eventuale placeholder da utilizzare, verrà fatta la translate sul valore
 
 
 
@@ -227,7 +227,7 @@ per tutti i 3 modi.
 - template
 
 ```html
-<span data-render_control></span>
+<span crud-render_control></span>
 ```
 ---
 
@@ -247,7 +247,7 @@ per tutti i 3 modi.
 - template
 
 ```html
-<textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
+<textarea crud-render_element crud-render_control class="form-control" name="" value=""></textarea>
 ```
 
 ### RenderTextareaSearch
@@ -261,8 +261,8 @@ per tutti i 3 modi.
 <a href="http://www.pierpaolociullo.it/example?f=example_render_textarea_search" target="_blank">provalo online</a>
 
 ```html
-<textarea data-render_element data-render_control class="form-control" name="" value=""></textarea>
-            <input data-render_operator type="hidden" >
+<textarea crud-render_element crud-render_control class="form-control" name="" value=""></textarea>
+            <input crud-render_operator type="hidden" >
 ```
 ### RenderTextareaView
 
@@ -275,7 +275,7 @@ per tutti i 3 modi.
 <a href="http://www.pierpaolociullo.it/example?f=example_render_textarea_view" target="_blank">provalo online</a>
 
 ```html
-<span data-render_control></span>
+<span crud-render_control></span>
 ```
 
 ---
@@ -298,7 +298,7 @@ Oggetto per la selezione di un valore utilizzando le select
 - template
 
 ```html
-<select data-render_control class="form-control" ></select>
+<select crud-render_control class="form-control" ></select>
 ```
 - marcatori
 
@@ -315,8 +315,8 @@ Oggetto per la selezione di un valore utilizzando le select
 - template
 
 ```html
-<select data-render_control class="form-control" ></select>
-<input data-render_operator type="hidden" >
+<select crud-render_control class="form-control" ></select>
+<input crud-render_operator type="hidden" >
 ```
 
 - marcatori
@@ -335,7 +335,7 @@ Oggetto per la selezione di un valore utilizzando le select
 - template
 
 ```html
-<select data-render_control class="form-control" ></select>
+<select crud-render_control class="form-control" ></select>
 ```
 
 - marcatori
@@ -372,11 +372,11 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
 
 - template
 ```html
-<div data-render_element>
-    <input  data-render_control class="form-control" type="text" name="" value="">
-    <div data-option_values>
-        <div class="btn-group btn-group-xs" role="group" aria-label="..." data-field="data" data-self>
-            <button type="button" class="btn btn-default" data-html="label" data-attrs="{'data-value':value}"></button>
+<div crud-render_element>
+    <input  crud-render_control class="form-control" type="text" name="" value="">
+    <div crud-option_values>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..." crud-field="data" crud-self>
+            <button type="button" class="btn btn-default" crud-html="label" crud-attrs="{'crud-value':value}"></button>
         </div>
     </div>
 </div>
@@ -397,12 +397,12 @@ Questo Render permette di aggiungere ad un input una serie di valori predefiniti
 
 - template
 ```html
-<div data-render_element>
-    <input  data-render_operator class="form-control" type="hidden" name="" value="">
-    <input  data-render_control class="form-control" type="text" name="" value="">
-    <div data-option_values>
-        <div class="btn-group btn-group-xs" role="group" aria-label="..." data-field="data" data-self>
-            <button type="button" class="btn btn-default" data-html="label" data-attrs="{'data-value':value}"></button>
+<div crud-render_element>
+    <input  crud-render_operator class="form-control" type="hidden" name="" value="">
+    <input  crud-render_control class="form-control" type="text" name="" value="">
+    <div crud-option_values>
+        <div class="btn-group btn-group-xs" role="group" aria-label="..." crud-field="data" crud-self>
+            <button type="button" class="btn btn-default" crud-html="label" crud-attrs="{'crud-value':value}"></button>
         </div>
     </div>
 </div>
@@ -431,7 +431,7 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<img data-render_control>
+<img crud-render_control>
 ```
 
 - marcatori
@@ -440,7 +440,7 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ## RenderRadio
    
-   - caption_selector : '[data-render_caption]' - marcatore 
+   - caption_selector : '[crud-render_caption]' - marcatore 
 
 ### RenderRadioEdit
 
@@ -455,10 +455,10 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<label data-render_element class="radio-inline">
-  <input data-render_control  type="radio" value=""> <span data-render_caption></span>
+<label crud-render_element class="radio-inline">
+  <input crud-render_control  type="radio" value=""> <span crud-render_caption></span>
 </label>
-<input data-render_exists type="hidden" >
+<input crud-render_exists type="hidden" >
 ```
 
 - marcatori
@@ -475,10 +475,10 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<label data-render_element class="radio-inline">
-  <input data-render_control  type="radio" value=""> <span data-render_caption></span>
+<label crud-render_element class="radio-inline">
+  <input crud-render_control  type="radio" value=""> <span crud-render_caption></span>
 </label>
-<input data-render_operator type="hidden" >
+<input crud-render_operator type="hidden" >
 ```
 
 - marcatori
@@ -496,8 +496,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<div data-render_element class="checkbox-inline">
-    <i data-class="icon_class" ></i> <span data-field="text"> </span>
+<div crud-render_element class="checkbox-inline">
+    <i crud-class="icon_class" ></i> <span crud-field="text"> </span>
 </div>
 ```
 
@@ -508,7 +508,7 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 ## RenderCheckbox
    
-   - caption_selector : '[data-render_caption]' - marcatore 
+   - caption_selector : '[crud-render_caption]' - marcatore 
 
 ### RenderCheckboxEdit
 
@@ -522,10 +522,10 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<label data-render_element class="checkbox-inline">
-    <input data-render_control type="checkbox" value="">  <span data-render_caption> </span>
+<label crud-render_element class="checkbox-inline">
+    <input crud-render_control type="checkbox" value="">  <span crud-render_caption> </span>
 </label>
-<input data-render_exists type="hidden" >
+<input crud-render_exists type="hidden" >
 ```
 
 - marcatori
@@ -542,10 +542,10 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<label data-render_element class="checkbox-inline">
-    <input data-render_control type="checkbox" value="">  <span data-render_caption> </span>
+<label crud-render_element class="checkbox-inline">
+    <input crud-render_control type="checkbox" value="">  <span crud-render_caption> </span>
 </label>
-<input data-render_operator type="hidden" >
+<input crud-render_operator type="hidden" >
 ```
 
 - marcatori
@@ -564,8 +564,8 @@ Oggetto per la renderizzazione di un'immagine proveniente. Esiste solo in modali
 
 - template
 ```html
-<div data-render_element class="checkbox-inline">
-    <i data-class="icon_class" ></i> <span data-field="text"> </span>
+<div crud-render_element class="checkbox-inline">
+    <i crud-class="icon_class" ></i> <span crud-field="text"> </span>
 </div>
 ```
 
@@ -591,20 +591,20 @@ Questo render incapsula il captca con il suo relativo reload. Esiste solo in mod
 - template
 ```html
 <div class="row">
-    <div class="col-sm-4" data-captcha_img  >
+    <div class="col-sm-4" crud-captcha_img  >
 
     </div>
     <div class="col-sm-4">
-            <input data-render_control="" class="form-control" type="text" name="" value="">
+            <input crud-render_control="" class="form-control" type="text" name="" value="">
     </div>
     <div class="col-sm-4">
-        <button class="btn btn-sm btn-default" type="button" data-button_reload>Reload</button>
+        <button class="btn btn-sm btn-default" type="button" crud-button_reload>Reload</button>
     </div>
 </div>
 ```
 
 - marcatori
-- captcha_img_selector : '[data-captcha_img]'
+- captcha_img_selector : '[crud-captcha_img]'
 
 
 ---
@@ -628,13 +628,13 @@ uguali.
 
 - template
 ```html
-<div data-render_element data-render_control></div>
+<div crud-render_element crud-render_control></div>
 ```
 
 - marcatori
 
-- data-render_element
-- data-render_control
+- crud-render_element
+- crud-render_control
 
 
 ---
@@ -657,13 +657,13 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 - template
 ```html
-<div class="input-group" data-render_element>
-    <span class="input-group-addon hide symbol_left" data-render_symbol></span>
-    <input class="form-control text-right" type="text" data-render_control_int>
+<div class="input-group" crud-render_element>
+    <span class="input-group-addon hide symbol_left" crud-render_symbol></span>
+    <input class="form-control text-right" type="text" crud-render_control_int>
     <span class="input-group-addon">,</span>
-    <input class="form-control text-right" type="text" data-render_control_dec>
-    <input type="hidden" data-render_control="">
-    <span class="input-group-addon hide symbol_right" data-render_symbol></span>
+    <input class="form-control text-right" type="text" crud-render_control_dec>
+    <input type="hidden" crud-render_control="">
+    <span class="input-group-addon hide symbol_right" crud-render_symbol></span>
 </div>
 ```
 
@@ -681,14 +681,14 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 - template
 ```html
-<div class="input-group" data-render_element>
-    <span class="input-group-addon hide symbol_left" data-render_symbol></span>
-    <input class="form-control text-right" type="text" data-render_control_int>
+<div class="input-group" crud-render_element>
+    <span class="input-group-addon hide symbol_left" crud-render_symbol></span>
+    <input class="form-control text-right" type="text" crud-render_control_int>
     <span class="input-group-addon">,</span>
-    <input class="form-control text-right" type="text" data-render_control_dec>
-    <input type="hidden" data-render_control="">
-    <span class="input-group-addon hide symbol_right" data-render_symbol></span>
-    <input data-render_operator type="hidden" >
+    <input class="form-control text-right" type="text" crud-render_control_dec>
+    <input type="hidden" crud-render_control="">
+    <span class="input-group-addon hide symbol_right" crud-render_symbol></span>
+    <input crud-render_operator type="hidden" >
 </div>
 ```
 
@@ -707,10 +707,10 @@ Oggetto per la gestione dei decimali con parte intera e decimale gestiti separat
 
 - template
 ```html
-<div data-render_element class="text-right">
-    <span class="hide symbol_left" data-render_symbol></span>
-    <span class="text-right" data-render_control_int></span>
-    <span class="hide symbol_right text-left" data-render_symbol></span>
+<div crud-render_element class="text-right">
+    <span class="hide symbol_left" crud-render_symbol></span>
+    <span class="text-right" crud-render_control_int></span>
+    <span class="hide symbol_right text-left" crud-render_symbol></span>
 </div>
 ```
 
@@ -741,10 +741,10 @@ Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
 - template
 ```html
 <div class="input-group">
-    <span style="height:19px" class="input-group-addon" id="basic-addon1" data-render_autocomplete_view data-lang="autocomplete-nonselezionato"></span>
-    <input data-render_control type="hidden" name="" value="">
-    <div data-render_element class="autosuggest" data-minLength="1" data-queryURL="">
-        <input data-render_autocomplete_input type="text" name="src" placeholder="" class="form-control typeahead" />
+    <span style="height:19px" class="input-group-addon" id="basic-addon1" crud-render_autocomplete_view crud-lang="autocomplete-nonselezionato"></span>
+    <input crud-render_control type="hidden" name="" value="">
+    <div crud-render_element class="autosuggest" crud-minLength="1" crud-queryURL="">
+        <input crud-render_autocomplete_input type="text" name="src" placeholder="" class="form-control typeahead" />
     </div>
 </div>
 ```
@@ -752,9 +752,9 @@ Esiste solo in modalità edit che si chiama `RenderAutocompleteEdit`
 
 #### Proprietà
 - `routeName` : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server
-- `autocomplete_view_selector` : '[data-render_autocomplete_view]' - marcatore dove verrà visualizzato
+- `autocomplete_view_selector` : '[crud-render_autocomplete_view]' - marcatore dove verrà visualizzato
 le info della entry scelta
-- `autocomplete_input_selector` : '[data-render_autocomplete_input]' - marcatore dove verrà agganciato
+- `autocomplete_input_selector` : '[crud-render_autocomplete_input]' - marcatore dove verrà agganciato
 il plugins typehead di bootstrap.
 
 - `fields` : [],                // campi su cui effettuare la ricerca, vengono messi come parametro field nella 
@@ -822,12 +822,12 @@ esterna rispetto a campo corrente, istanza
 <a href="http://www.pierpaolociullo.it/example?f=example_render_belongsto_view" target="_blank">provalo online</a>
 
 - marcatori
-- data-render_element
+- crud-render_element
 
 
 - template
 ```html
-    <div data-render_element></div>
+    <div crud-render_element></div>
 ```
 
 itemTemplate : vuoto. Da definire solo se si vuole avere una visualizzazinoe particolare
@@ -842,7 +842,7 @@ clienti con questi dati
 
 ```html
 <div>
-    <span data-field="cognome"></span> altro campo <span data-field="nome"></span>
+    <span crud-field="cognome"></span> altro campo <span crud-field="nome"></span>
 </div>
 ```
 
@@ -871,10 +871,10 @@ E' fromato da una classe base `DateSelectCommon` che ha i metodi comuni alle 3 v
 
 #### Proprietà
 
-- year_selector    : '[data-render_year]',
-- month_selector    : '[data-render_month]',
-- day_selector    : '[data-render_day]',
-- picker_selector : '[data-render_picker]',
+- year_selector    : '[crud-render_year]',
+- month_selector    : '[crud-render_month]',
+- day_selector    : '[crud-render_day]',
+- picker_selector : '[crud-render_picker]',
 - h24 : true,
 - time : false,
 - dateFormat : 'YYYY-MM-DD',
@@ -915,31 +915,31 @@ Estende DateSelectCommon e si preoccupa della gestione della data in modalità e
 
 - marcatori:
 
-- `data-render_element` : container di tutto il render
-- `data-render_control` : input per la form che conterrà il valore da spedire
-- `data-render_day_container`
-- `data-render_day` : select associata al giorno
-- `data-render_month_container`
-- `data-render_month` : select associata al mese
-- `data-render_year_container`
-- `data-render_year` : select associata all'anno
+- `crud-render_element` : container di tutto il render
+- `crud-render_control` : input per la form che conterrà il valore da spedire
+- `crud-render_day_container`
+- `crud-render_day` : select associata al giorno
+- `crud-render_month_container`
+- `crud-render_month` : select associata al mese
+- `crud-render_year_container`
+- `crud-render_year` : select associata all'anno
 
 - template
 ```html
-<div data-render_element  class="input-group">
-    <input data-render_control="" type="hidden" />
-    <div class="input-group-btn" data-render_day_container>
-        <select class="form-control" data-render_day>
+<div crud-render_element  class="input-group">
+    <input crud-render_control="" type="hidden" />
+    <div class="input-group-btn" crud-render_day_container>
+        <select class="form-control" crud-render_day>
         
         </select>
     </div>
-    <div class="input-group-btn" data-render_month_container>
-        <select class="form-control" data-render_month>
+    <div class="input-group-btn" crud-render_month_container>
+        <select class="form-control" crud-render_month>
         
         </select>
     </div>
-    <div class="input-group-btn" data-render_year_container>
-        <select class="form-control" data-render_year>
+    <div class="input-group-btn" crud-render_year_container>
+        <select class="form-control" crud-render_year>
         
         </select>
     </div>
@@ -973,11 +973,11 @@ Estende `DateSelectCommon`
 
 marcatori
 
-- data-render_element: container dove verrà visualizzata la data
+- crud-render_element: container dove verrà visualizzata la data
 
 template 
 ```html
-<span data-render_element></span>
+<span crud-render_element></span>
 ```
 
 #### Metodi
@@ -1018,11 +1018,11 @@ resources : {
 
 - template
 ```html
-<div data-render_element>
-    <input data-render_control="" type="hidden" />
+<div crud-render_element>
+    <input crud-render_control="" type="hidden" />
     <div class="input-group">
-        <input data-render_picker class="form-control text-right" autocomplete="off" />
-        <a data-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
+        <input crud-render_picker class="form-control text-right" autocomplete="off" />
+        <a crud-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
     </div>
 </div>
 ```
@@ -1040,12 +1040,12 @@ resources : {
 
 - template
 ```html
-<div data-render_element>
-    <input data-render_control="" type="hidden" />
-    <input data-render_operator type="hidden" >
+<div crud-render_element>
+    <input crud-render_control="" type="hidden" />
+    <input crud-render_operator type="hidden" >
     <div class="input-group">
-        <input data-render_picker class="form-control text-right" autocomplete="off" />
-        <a data-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
+        <input crud-render_picker class="form-control text-right" autocomplete="off" />
+        <a crud-clear class="input-group-addon" href="javascript:void(0)"><span ><i class="fa fa-times"></i></span></a>
     </div>
 </div>
 ```
@@ -1066,7 +1066,7 @@ resources : {
 - template
 
 ```html
-<span data-render_element></span>
+<span crud-render_element></span>
 ```
 
 ## RenderDateFormatted
@@ -1085,13 +1085,13 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 - template
 ```html
-<div class="clearfix" data-render_element>
-    <input data-render_control="" type="hidden" />
+<div class="clearfix" crud-render_element>
+    <input crud-render_control="" type="hidden" />
     <div class="col col-xs-6">
-        <input data-date_formatted class="form-control" type="date" />
+        <input crud-date_formatted class="form-control" type="date" />
     </div>
     <div class="col col-xs-6">
-        <input data-time_formatted class="form-control hide" type="time"/>
+        <input crud-time_formatted class="form-control hide" type="time"/>
     </div>
 </div>
 ```
@@ -1109,13 +1109,13 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 - template
 ```html
-<div class="clearfix" data-render_element>
-    <input data-render_control="" type="hidden" />
+<div class="clearfix" crud-render_element>
+    <input crud-render_control="" type="hidden" />
     <div class="col col-xs-6">
-        <input data-date_formatted class="form-control" type="date" />
+        <input crud-date_formatted class="form-control" type="date" />
     </div>
     <div class="col col-xs-6">
-        <input data-time_formatted class="form-control hide" type="time"/>
+        <input crud-time_formatted class="form-control hide" type="time"/>
     </div>
 </div>
 ```
@@ -1134,13 +1134,13 @@ utilizza il picker nativo del broswer associato al type=date, se supportato.
 
 - template
 ```html
-<div class="clearfix" data-render_element>
-    <input data-render_control="" type="hidden" />
+<div class="clearfix" crud-render_element>
+    <input crud-render_control="" type="hidden" />
     <div class="col col-xs-6">
-        <input data-date_formatted class="form-control" type="date" />
+        <input crud-date_formatted class="form-control" type="date" />
     </div>
     <div class="col col-xs-6">
-        <input data-time_formatted class="form-control hide" type="time"/>
+        <input crud-time_formatted class="form-control hide" type="time"/>
     </div>
 </div>
 ```
@@ -1165,12 +1165,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1191,12 +1191,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1216,12 +1216,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1248,12 +1248,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1274,12 +1274,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1302,12 +1302,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1338,12 +1338,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1366,12 +1366,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1392,12 +1392,12 @@ Questo render serve per la gestione di un range di date.
 ```html
 <div>
     <div class="col col-xs-6">
-        <div data-label="app.dal"></div>
-        <div data-render_start></div>
+        <div crud-label="app.dal"></div>
+        <div crud-render_start></div>
     </div>
     <div class="col col-xs-6" >
-        <div data-label="app.al"></div>
-        <div data-render_end></div>
+        <div crud-label="app.al"></div>
+        <div crud-render_end></div>
     </div>
 </div>
 ```
@@ -1426,24 +1426,24 @@ che e' formato di tanti itemTemplate.
 
 - template
 ```html
-<div class="" data-render_element >
+<div class="" crud-render_element >
     <div class="col col-sm-12">
         <div class="panel panel-warning">
-            <div class="panel-heading" data-hasmany_title></div>
+            <div class="panel-heading" crud-hasmany_title></div>
             <div class="panel-body">
-                <p data-hasmany_title_msg></p>
-                <ul class="list-unstyled sort_class hasmany-list" data-render_list >
+                <p crud-hasmany_title_msg></p>
+                <ul class="list-unstyled sort_class hasmany-list" crud-render_list >
                     <!--  -- contenitore hasmany -- -->
                 </ul>
             </div>
             <div class="panel-footer">
                 <div >
-                    <div data-render_limit class="hide">
+                    <div crud-render_limit class="hide">
                         <!-- Limite massimo raggiunto -->
                     </div>
-                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
-                        <span data-label="app.add"></span>&nbsp;
-                        <span data-label="modelMetadata.singular"></span>&nbsp;
+                    <button crud-button_add crud-pk="" type="button" class="btn btn-primary">
+                        <span crud-label="app.add"></span>&nbsp;
+                        <span crud-label="modelMetadata.singular"></span>&nbsp;
                     </button>
                 </div>
             </div>
@@ -1454,17 +1454,17 @@ che e' formato di tanti itemTemplate.
 
 #### itemTemplate
 ```html
-<li class="col col-lg-6 col-md-6 col-sm-12 col-xs-12" data-hasmany_item_structure>
+<li class="col col-lg-6 col-md-6 col-sm-12 col-xs-12" crud-hasmany_item_structure>
     <div class="clearfix" >
         <div class="clearfix" >
             <span class="pull-left button-move">
                 <i class="fa fa-arrows"></i>        
             </span>
-            <span class="pull-right btn btn-xs btn-danger" data-button_delete>
+            <span class="pull-right btn btn-xs btn-danger" crud-button_delete>
                 <i class="fa fa-close"></i>        
             </span>
         </div>
-        <div class="col col-sm-12" data-hasmany_item> 
+        <div class="col col-sm-12" crud-hasmany_item> 
         </div>
 
     </div>
@@ -1517,9 +1517,9 @@ che e' formato di tanti itemTemplate.
 
 - template
 ```html
-<div data-render_element>
-    <div class="list-unstyled" data-render_list >
-        <ul class="list-unstyled" data-field="items" data-self>
+<div crud-render_element>
+    <div class="list-unstyled" crud-render_list >
+        <ul class="list-unstyled" crud-field="items" crud-self>
             <!--  -- contenitore lista hasmany -- -->
         </ul>
     </div>
@@ -1528,7 +1528,7 @@ che e' formato di tanti itemTemplate.
 #### itemTemplate 
 ```html
 <li>
-    <span data-field="label" ></span>
+    <span crud-field="label" ></span>
 </li>
 ```
 
@@ -1549,9 +1549,9 @@ Oggetto per la gestione degli hasmany trought...
 - selected : [],
 - modelName : "none",
 - last_searched_result : null,  // json risultato dell'ultima ricerca
-- hasmany_container : '[data-hasmany_container]',
-- selected_container : '[data-selected_container]',
-- title_selector : '[data-render_title]',
+- hasmany_container : '[crud-hasmany_container]',
+- selected_container : '[crud-selected_container]',
+- title_selector : '[crud-render_title]',
 - removeActionOptions : null, // eventuali classi per il bottone
 - morph : null,
 - //label_field : null,
@@ -1601,21 +1601,21 @@ Oggetto per la gestione degli hasmany trought...
 
 - template
 ```html
-<div class="" data-render_element >
+<div class="" crud-render_element >
     <div class="col col-sm-12" >
         <div class="panel panel-info">
-           <div class="panel-heading" data-render_title>
+           <div class="panel-heading" crud-render_title>
 
            </div>
            <div class="panel-body padding-3">
 
                <div class="col col-md-4 col-sm-12 padding-6 panel panel-default panel-body" >
                    <h5>Elementi selezionati</h5>
-                   <ul class="list-unstyled sort_class " data-selected_container>
+                   <ul class="list-unstyled sort_class " crud-selected_container>
                    </ul>
 
                </div>
-                  <div class="col col-md-8 col-sm-12 padding-15" data-template="searched">
+                  <div class="col col-md-8 col-sm-12 padding-15" crud-template="searched">
 
                       
 
@@ -1629,12 +1629,12 @@ Oggetto per la gestione degli hasmany trought...
 #### itemTemplate
 template utilizzato per la visualizzazione degli elementi ricercati
 ```html
-<li data-item class="col col-md-6 col-sm-12 col-xs-12">
+<li crud-item class="col col-md-6 col-sm-12 col-xs-12">
    <div class="fullwidth">
-    <span style="pointer:hand" class="btn btn-xs btn-primary" data-add data-id data-label data-morph_type data-morph_id data-attrs="{'data-id':id,'data-label':label,'data-morph_type':morph_type,'data-morph_id':morph_id}">
+    <span style="pointer:hand" class="btn btn-xs btn-primary" crud-add crud-id crud-label crud-morph_type crud-morph_id crud-attrs="{'crud-id':id,'crud-label':label,'crud-morph_type':morph_type,'crud-morph_id':morph_id}">
         <i class="fa fa-plus"></i>
     </span>
-   <span data-field='label'></span>
+   <span crud-field='label'></span>
    </div>
 </li>
 ```
@@ -1646,16 +1646,16 @@ template utilizzato per la sezione di ricerca del render
     <span class="input-group-addon " style="cursor:pointer">
         <i class="fa fa-search"></i>
         <!--
-        <button class="btn btn-default btn-sm" type=button data-lang="general-search">Go</button>-->
+        <button class="btn btn-default btn-sm" type=button crud-lang="general-search">Go</button>-->
     </span>
-    <input class="form-control "  data-search type="text" value="" data-placeholder="Inserire parole da ricercare">
-    <span data-button_add class="input-group-addon ">
+    <input class="form-control "  crud-search type="text" value="" crud-placeholder="Inserire parole da ricercare">
+    <span crud-button_add class="input-group-addon ">
         <i  class="fa fa-plus"></i>
     </span>
 </div>
 
 <div class= style="position:relative; overflow:hidden;">
-    <ul class="list-unstyled list-hover list-inline" data-hasmany_container data-slimscroll-visible="false" style="overflow: auto; width: auto; min-height: 60px;">
+    <ul class="list-unstyled list-hover list-inline" crud-hasmany_container crud-slimscroll-visible="false" style="overflow: auto; width: auto; min-height: 60px;">
     
     </ul>
 </div>
@@ -1665,10 +1665,10 @@ template utilizzato per la sezione di ricerca del render
 template utilizzato per visualizzare la view interna
 ```html
 <div>
-    <div data-view_action></div>
-    <div data-hidden_fields></div>
+    <div crud-view_action></div>
+    <div crud-hidden_fields></div>
     <div class="clearfix" >
-        <div class="" data-view_elements></div>
+        <div class="" crud-view_elements></div>
        
     </div>
 </div>
@@ -1677,20 +1677,20 @@ template utilizzato per visualizzare la view interna
 #### addedItemTemplate
 template utilizzato per creare l'elemnto lista dove verrà visualizzata la view interna
 ```html
-<li class="padding-bottom-6 border-bottom-1" data-hasmany_through_item>
+<li class="padding-bottom-6 border-bottom-1" crud-hasmany_through_item>
                
 </li>
 ```
 
 - marcatori
 
-- data-hasmany_through_item
+- crud-hasmany_through_item
 
 
 ### RenderHasmanyThroughView
 
 Questo è in modalità view con itemTemplate base, in caso di item piu' complessi ridefinire itemTemplate
-aggiungendo l'attributo data-field="nome_campo" nel item html che si voglia usare per visualizzarlo
+aggiungendo l'attributo crud-field="nome_campo" nel item html che si voglia usare per visualizzarlo
 
 - esempio
 
@@ -1703,8 +1703,8 @@ aggiungendo l'attributo data-field="nome_campo" nel item html che si voglia usar
 
 - template
 ```html
-<div data-render_element>
-    <ul class="list-unstyled" data-render_list data-field="items" data-self>
+<div crud-render_element>
+    <ul class="list-unstyled" crud-render_list crud-field="items" crud-self>
         <!--  -- contenitore lista hasmany data dal template  default_hasmany_view_items_tpl-- -->
     </ul>
 </div>
@@ -1713,7 +1713,7 @@ aggiungendo l'attributo data-field="nome_campo" nel item html che si voglia usar
 #### itemTemplate
 ```html
 <li >
-    <span data-field="__label__"></span>
+    <span crud-field="__label__"></span>
 </li>
 ```
 
@@ -1747,7 +1747,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 - descrizione : {type : 'textarea'},
 - },
 - mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
-- icon_selector : "[data-icon_img]",
+- icon_selector : "[crud-icon_img]",
 
 
 #### metodi
@@ -1809,16 +1809,16 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
     <form enctype="multipart/form-data" method="POST"
         action="" encoding="multipart/form-data"
         name="formupload">
-        <div data-custom_html>
+        <div crud-custom_html>
 
         </div>
         <table class="table">
             <tr>
                 <td>
                     <div >
-                        <span data-label="app.accepted-extensions"></span>:</div>
-                        <div data-label="app.extensions-foto"></div>
-                        <div >Max <span data-label="app.upload-max-filesize" ></span> 
+                        <span crud-label="app.accepted-extensions"></span>:</div>
+                        <div crud-label="app.extensions-foto"></div>
+                        <div >Max <span crud-label="app.upload-max-filesize" ></span> 
                     </div>
                 </td>
                 <td>
@@ -1828,7 +1828,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
                 </td>
                 <td>
                     <div >
-                        <div data-preview data-field="data"></div>
+                        <div crud-preview crud-field="data"></div>
                     </div>
                 </td>
                 <td>
@@ -1836,7 +1836,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
                 </td>
             </tr>
         </table>
-        <div data-view_container>
+        <div crud-view_container>
     
         </div>
     </form>
@@ -1845,26 +1845,26 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 - template
 
 ```html
-<div class="" data-render_element >
+<div class="" crud-render_element >
    <div class="col col-sm-12">
         <div class="panel panel-info">
-            <div class="panel-heading" data-upload_title data-label="modelMetadata.singular">
+            <div class="panel-heading" crud-upload_title crud-label="modelMetadata.singular">
                 <br/>
-                <span><small data-foto-msg></small></span>
+                <span><small crud-foto-msg></small></span>
             </div>
             <div class="panel-body">
-                <ul class="list-group sort_class list-inline" data-render_list >
+                <ul class="list-group sort_class list-inline" crud-render_list >
                 <!--  -- contenitore lista fotos -- -->
                 </ul>
                 <div>
-                    <div data-render_limit data-lang="general-max_limit_reached"></div>
+                    <div crud-render_limit crud-lang="general-max_limit_reached"></div>
                     
                 </div>
             </div>
             <div class="panel-footer">
                 <div>
-                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
-                        <span data-label="app.add"></span> <span data-label="model.foto"></span>
+                    <button crud-button_add crud-pk="" type="button" class="btn btn-primary">
+                        <span crud-label="app.add"></span> <span crud-label="model.foto"></span>
                     </button>
                 </div>
             </div>
@@ -1877,15 +1877,15 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 #### itemTemplate
 
 ```html
-<li class="list-unstyled" data-upload_item>
+<li class="list-unstyled" crud-upload_item>
     <div class="col col-sm-12 thumbnail">
-        <div data-model_fields></div>
+        <div crud-model_fields></div>
         <div class="clearfix">
-            <small class="pull-left" data-field="label" data-trim="12" data-attrs="{title:label}"></small>
-            <button class="btn-danger btn-xs pull-right" type="button" data-button_delete data-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
+            <small class="pull-left" crud-field="label" crud-trim="12" crud-attrs="{title:label}"></small>
+            <button class="btn-danger btn-xs pull-right" type="button" crud-button_delete crud-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
 
         </div>
-        <div data-preview data-field="data"></div>
+        <div crud-preview crud-field="data"></div>
     </div>
 </li>
 ```
@@ -1893,7 +1893,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 #### previewItemTemplate
 
 ```html
-<img data-icon class="button-move" src="" data-attrs="{src:(typeof urls !== 'undefined')?Server.getUrl(urls+'small'):Server.getUrl('/imagecache/small/'+filename)}">
+<img crud-icon class="button-move" src="" crud-attrs="{src:(typeof urls !== 'undefined')?Server.getUrl(urls+'small'):Server.getUrl('/imagecache/small/'+filename)}">
 ```
 
 
@@ -1916,8 +1916,8 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 
 - template
 ```html
-<div data-render_element>
-    <ul class="list-unstyled" data-render_list >
+<div crud-render_element>
+    <ul class="list-unstyled" crud-render_list >
         <!--  -- contenitore lista fotos -- -->
     </ul>
 </div>
@@ -1926,7 +1926,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di una o più immagin
 #### itemTemplate
 ```html
 <li>
-    <img class="img-circle img-list" src="" data-attrs="{src:Server.getUrl(urls+'icon')}" />
+    <img class="img-circle img-list" src="" crud-attrs="{src:Server.getUrl(urls+'icon')}" />
 </li>
 ```
 
@@ -1999,7 +1999,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 }
 ```
 - mainformFields : ['nome','descrizione','original_name','filename','ext','random','id','status','mimetype'],
-- icon_selector : "[data-icon]",
+- icon_selector : "[crud-icon]",
 
 #### metodi
 
@@ -2039,26 +2039,26 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 - template
 ```html
-<div class="" data-render_element >
+<div class="" crud-render_element >
    <div class="col col-sm-12">
         <div class="panel panel-info">
-            <div class="panel-heading" data-upload_title>
+            <div class="panel-heading" crud-upload_title>
                 <br/>
-                <span><small data-foto-msg></small></span>
+                <span><small crud-foto-msg></small></span>
             </div>
             <div class="panel-body">
-                <ul class="list-group sort_class list-inline" data-render_list >
+                <ul class="list-group sort_class list-inline" crud-render_list >
                 <!--  -- contenitore lista fotos -- -->
                 </ul>
                 <div>
-                    <div data-render_limit data-lang="general-max_limit_reached"></div>
+                    <div crud-render_limit crud-lang="general-max_limit_reached"></div>
                     
                 </div>
             </div>
             <div class="panel-footer">
                 <div>
-                    <button data-button_add data-pk="" type="button" class="btn btn-primary">
-                        <span data-label="app.add"></span> <span data-label="model.attachment"></span>
+                    <button crud-button_add crud-pk="" type="button" class="btn btn-primary">
+                        <span crud-label="app.add"></span> <span crud-label="model.attachment"></span>
                     </button>
                 </div>
             </div>
@@ -2072,7 +2072,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 ```html
 <span class="button-move">
-    <i data-icon></i>
+    <i crud-icon></i>
 </span>
 ```
 
@@ -2080,15 +2080,15 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 #### itemTemplate
 
 ```html
-<li class="list-unstyled" data-upload_item>
+<li class="list-unstyled" crud-upload_item>
     <div class="col col-sm-12 thumbnail">
-        <div data-model_fields></div>
+        <div crud-model_fields></div>
         <div class="clearfix">
-            <small class="pull-left" data-field="label" data-trim="12" data-attrs="{title:label}"></small>
-            <button class="btn-danger btn-xs pull-right" type="button" data-button_delete data-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
+            <small class="pull-left" crud-field="label" crud-trim="12" crud-attrs="{title:label}"></small>
+            <button class="btn-danger btn-xs pull-right" type="button" crud-button_delete crud-pk="" title="Cancella Foto"><i class="fa fa-times-circle"></i></button>
 
         </div>
-        <div data-preview data-field="data"></div>
+        <div crud-preview crud-field="data"></div>
     </div>
 </li>
 ```
@@ -2101,16 +2101,16 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
     <form enctype="multipart/form-data" method="POST"
         action="" encoding="multipart/form-data"
         name="formupload">
-        <div data-custom_html>
+        <div crud-custom_html>
 
         </div>
         <table class="table">
             <tr>
                 <td>
                     <div >
-                        <span data-label="app.accepted-extensions"></span>:</div>
-                        <div data-label="app.extensions-attachment"></div>
-                        <div >Max <span data-label="app.upload-max-filesize" ></span> 
+                        <span crud-label="app.accepted-extensions"></span>:</div>
+                        <div crud-label="app.extensions-attachment"></div>
+                        <div >Max <span crud-label="app.upload-max-filesize" ></span> 
                     </div>
                 </td>
                 <td>
@@ -2120,7 +2120,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
                 </td>
                 <td>
                     <div >
-                        <div data-preview data-field="data"></div>
+                        <div crud-preview crud-field="data"></div>
                     </div>
                 </td>
                 <td>
@@ -2128,7 +2128,7 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
                 </td>
             </tr>
         </table>
-        <div data-view_container>
+        <div crud-view_container>
     
         </div>
     </form>
@@ -2151,8 +2151,8 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 
 - template
 ```html
-<div data-render_element>
-    <ul class="list-unstyled" data-render_list >
+<div crud-render_element>
+    <ul class="list-unstyled" crud-render_list >
         <!--  -- contenitore lista fotos -- -->
     </ul>
 </div>
@@ -2162,8 +2162,8 @@ Oggetto per la gestione di hasmany che prevedono un upload di allegati come pdf,
 ```html
 <li>
     <a class="small" target="_blank" href="#"
-            data-href="'/downloadfile/'+id" data-totranslate="true" data-attrs="{'title':full_filename}" data-append="true">
-                <i data-class="icon" />
+            crud-href="'/downloadfile/'+id" crud-totranslate="true" crud-attrs="{'title':full_filename}" crud-append="true">
+                <i crud-class="icon" />
     </a>
 </li>
 ```
@@ -2188,8 +2188,8 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 - _lng : 0,
 - _hasDbValues : false,
 - address : null,
-- lat_input_selector : '[data-lat_field]',
-- lng_input_selector : '[data-lng_field]',
+- lat_input_selector : '[crud-lat_field]',
+- lng_input_selector : '[crud-lng_field]',
 - lat_field_name : 'lat',
 - lng_field_name : 'lng',
 - //dialogId : '#map_dialog',
@@ -2235,15 +2235,15 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 - template
 ```html
-<div data-control_container>
-    <button class="btn btn-default" type="button" data-button_map data-label="app.modifymap"></button>
+<div crud-control_container>
+    <button class="btn btn-default" type="button" crud-button_map crud-label="app.modifymap"></button>
     <div class="clearfix">
        
         <span class="pull-left" >
-            <span data-label="app.gpslat"></span>: <input  class="form-control" data-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span crud-label="app.gpslat"></span>: <input  class="form-control" crud-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </span>
         <span class="pull-left">
-            <span data-label="app.gpslng"></span>: <input class="form-control" class="badge" data-lng_field></input>
+            <span crud-label="app.gpslng"></span>: <input class="form-control" class="badge" crud-lng_field></input>
         </span>
     </div>
    
@@ -2265,7 +2265,7 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Indirizzo:</span>
                                 <input type="text" class="form-control" name="indirizzo" aria-describedby="basic-addon1">
-                                <span class="input-group-addon" id="basic-addon2"><a data-lnk_address href="javascript:void(0)"  ><i class="fa fa-search"></i> Cerca indirizzo</a></span>
+                                <span class="input-group-addon" id="basic-addon2"><a crud-lnk_address href="javascript:void(0)"  ><i class="fa fa-search"></i> Cerca indirizzo</a></span>
         
                             </div>
                         </div>
@@ -2288,11 +2288,11 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
         
         
                     </div>
-                    <div data-area_container class="row hide">
+                    <div crud-area_container class="row hide">
                         <div class="col col-xs-12" >
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">Cerchio di raggio in metri?</span>
-                                <input class="form-control" data-input_raggio type="text" value="1000">
+                                <input class="form-control" crud-input_raggio type="text" value="1000">
                             </div>
                         </div>
         
@@ -2302,9 +2302,9 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
                     <div id="gmap" style="width:100%;height:400px"></div>
                 </div>
                 <div class="modal-footer">
-                    <button data-button="cancel" type="button" class="btn btn-primary"
+                    <button crud-button="cancel" type="button" class="btn btn-primary"
                             data-dismiss="modal">Annulla</button>
-                    <button data-button="ok" type="button" class="btn btn-primary"
+                    <button crud-button="ok" type="button" class="btn btn-primary"
                             data-dismiss="modal">Ok</button>
 
                 </div>
@@ -2326,15 +2326,15 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 - template
 ```html
-<div data-control_container>
-    <button class="btn btn-default" type="button" data-button_map data-label="app.modifymap"></button>
+<div crud-control_container>
+    <button class="btn btn-default" type="button" crud-button_map crud-label="app.modifymap"></button>
     <div class="clearfix">
-        <input type="hidden" name="" data-render_operator>
+        <input type="hidden" name="" crud-render_operator>
         <span class="pull-left" >
-            <span data-label="app.gpslat"></span>: <input  class="form-control" data-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span crud-label="app.gpslat"></span>: <input  class="form-control" crud-lat_field></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </span>
         <span class="pull-left">
-            <span data-label="app.gpslng"></span>: <input class="form-control" class="badge" data-lng_field></input>
+            <span crud-label="app.gpslng"></span>: <input class="form-control" class="badge" crud-lng_field></input>
         </span>
     </div>
    
@@ -2355,7 +2355,7 @@ Oggetto per la visualizzazione e la selezione di coordinate gps basato su google
 
 - template
 ```html
-<div data-map_container style="width:100%;height:400px"></div>
+<div crud-map_container style="width:100%;height:400px"></div>
 ```
 
 - marcatori
@@ -2400,8 +2400,8 @@ iconClass : {
 
 - template
 ```html
-<button type="button" class="btn btn-default btn-xs" data-render_element title="">
-    <i data-icon class=""></i>
+<button type="button" class="btn btn-default btn-xs" crud-render_element title="">
+    <i crud-icon class=""></i>
 </button>
 ```
 
@@ -2419,10 +2419,10 @@ iconClass : {
 
 - template
 ```html
-    <input data-render_control type="hidden" class="form-control" name="" value="">
-    <input data-render_operator type="hidden" >
-    <button type="button" class="btn btn-default btn-xs" data-render_element title="">
-        <i data-icon class=""></i>
+    <input crud-render_control type="hidden" class="form-control" name="" value="">
+    <input crud-render_operator type="hidden" >
+    <button type="button" class="btn btn-default btn-xs" crud-render_element title="">
+        <i crud-icon class=""></i>
     </button>
 ```
 
@@ -2440,7 +2440,7 @@ iconClass : {
 
 - template
 ```html
-<i data-icon data-render_element class=""></i>
+<i crud-icon crud-render_element class=""></i>
 ```
 
 - marcatori
@@ -2478,7 +2478,7 @@ editor html summernote.
 
 - template
 ```html
-    <textarea data-render_element data-render_control class="summernote form-control" data-summernote-lang="it-IT"></textarea>
+    <textarea crud-render_element crud-render_control class="summernote form-control" crud-summernote-lang="it-IT"></textarea>
 
 ```
 
@@ -2497,7 +2497,7 @@ editor html summernote.
 
 - template
 ```html
-<div data-render_element data-render_control ></div>
+<div crud-render_element crud-render_control ></div>
 ```
 
 - marcatori

@@ -13,7 +13,7 @@ creare dashboards ecc.
 - `mobile` : false - se la libreria viene istanziata su un dispositivo mobile,
 - `locale` : 'it' - locale di default, viene utilizzato per la configurazione delle date
 - `autoparse` : false - se attivato, l'app controlla che quando viene inserito un tag html
-                che possieda l'attributo 'data-view' o 'data-dashboard' attiva in automatico 
+                che possieda l'attributo 'crud-view' o 'crud-dashboard' attiva in automatico 
                 la creazione della vista o dashboard definita nell'attributo.
 
 

@@ -15,7 +15,7 @@ Creiamo la nostra app con questa configurazione.
 ```
 
 Da questo momento, la libreria ogni volta che aggiungiamo un html alla pagina controlla
-che non ci siamo un attributo data-parse. Se lo trova esegue il parse del contenuto
+che non ci siamo un attributo crud-parse. Se lo trova esegue il parse del contenuto
 e istanzia tutte le componenti riconosciute.
 
 

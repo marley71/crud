@@ -6,7 +6,7 @@ chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi po
 che caratterizzerà la componente.
 
 La classe ha un metodo `template` che ritorna una stringa html del componente. Il concetto principale è quello di 
-inserire nel template del componente dei marcatori (attributi dal formato **data-{marcatore}**). 
+inserire nel template del componente dei marcatori (attributi dal formato **crud-{marcatore}**). 
 Questi marcatori permettono di avere la possibilità di stravolgere completamente il template di base senza modificare 
 il comportamento del nostro componente. L'unico obbligo è di mantenere questi marcatori per il suo corretto funzionamento.
 
@@ -29,13 +29,13 @@ rende impossibile sapere, a runtime, in quale classe ci si trovi.
 
 - `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'] - vettore di traits definiti di default
 in particolare :
-    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori data-label presenti nel template con le nostre 
+    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori crud-label presenti nel template con le nostre 
     definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.
     - `TraitTemplate`: Ha il compito di poter spezzare un template complesso in sottotemplate magari interscambiabili.
-    utilizza i marcatori data-template che si trovano dentro la stringa template e ci inietta il risultato della
-    chiamata {valore}Template. Per esempio se dentro il marcatore data-template troviamo il valore *subItem* verrà chiamata
-    il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore data-template="subItem" 
-    - `TraitPlaceholder`: ha il compito di inserire il risultato della traduzione del valore del marcatore data-placeholder nell'attributo
+    utilizza i marcatori crud-template che si trovano dentro la stringa template e ci inietta il risultato della
+    chiamata {valore}Template. Per esempio se dentro il marcatore crud-template troviamo il valore *subItem* verrà chiamata
+    il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore crud-template="subItem" 
+    - `TraitPlaceholder`: ha il compito di inserire il risultato della traduzione del valore del marcatore crud-placeholder nell'attributo
     placeholder che si trovano negli input.
 - `traitsTemplate` : [] - vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere iniettato il template
 - `traits` : [] - traits per estendere funzionalità del component senza ridefinirne la classe.
@@ -131,7 +131,7 @@ this._loadExternalResources(function () {
 
 `Component.parseHtml(templateString,tplData)` : metodo statico che crea un oggetto jquery eseguendo
 il parse della stringa passata. In caso vengono passati dei con tplData tutti i tag che hanno il marcatore
-data-field="field" vengono iniettati i valori. Vedere la sezione ... per ulteriori dettagli.
+crud-field="field" vengono iniettati i valori. Vedere la sezione ... per ulteriori dettagli.
 
 `Component.uid` = 0; variabile statica per la generazione di id univoci.
 

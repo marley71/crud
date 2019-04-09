@@ -269,35 +269,35 @@ le singole parti in modo più puntuale.
 
 ```html
     <div class="panel panel-default panel-body model-list">
-        <div data-list_header></div>
-        <div data-hidden_fields></div>
+        <div crud-list_header></div>
+        <div crud-hidden_fields></div>
         <div class="clearfix">
-            <div class="col col-md-5 col-xs-12 hidden-xs list-actions" data-view_collection_actions></div>
-            <div class="col col-md-7 col-xs-12 list-pagination" data-view_pagination></div>
+            <div class="col col-md-5 col-xs-12 hidden-xs list-actions" crud-view_collection_actions></div>
+            <div class="col col-md-7 col-xs-12 list-pagination" crud-view_pagination></div>
         </div>
         <hr/>
         <div class="table-responsive">
             
             <table class="table table-striped table-condensed table-hover table-bordered table-vertical-middle nomargin">
                 <thead>
-                    <tr data-view_row_headers>
+                    <tr crud-view_row_headers>
                         
                     </tr>
                 </thead>
-                <tbody data-view_elements>
-                    <tr data-view_row_elements>
+                <tbody crud-view_elements>
+                    <tr crud-view_row_elements>
                         
                     </tr>
                 </tbody>
                 <tfoot>
-                    <tr data-view_row_footer><td></td></tr>
+                    <tr crud-view_row_footer><td></td></tr>
                 </tfoot>
             </table>
         </div>
         <hr/>
         <div class="clearfix">
-            <div class="col col-md-5 col-xs-12 list-actions" data-view_collection_actions></div>
-            <div class="col col-md-7 col-xs-12 list-pagination" data-view_pagination></div>
+            <div class="col col-md-5 col-xs-12 list-actions" crud-view_collection_actions></div>
+            <div class="col col-md-7 col-xs-12 list-pagination" crud-view_pagination></div>
         </div>
     </div>
 ```
@@ -310,15 +310,15 @@ le singole parti in modo più puntuale.
 #### headerTemplate
 ```html
     <th>
-        <span data-element></span>
+        <span crud-element></span>
     </th>
 ```
 
 #### orderTemplate
 ```html
 <th class="sorting">
-    <a href="javascript:void(0)" data-action="actionOrder" data-pk="">
-        <span data-element></span>
+    <a href="javascript:void(0)" crud-action="actionOrder" crud-pk="">
+        <span crud-element></span>
     </a>
 </th>
 ```
@@ -332,42 +332,42 @@ le singole parti in modo più puntuale.
            
 #### checkAllTemplate
 ```html
-    <input type="checkbox" data-button="checkAll" title="Seleziona tutti">
+    <input type="checkbox" crud-button="checkAll" title="Seleziona tutti">
 ```
 
 #### checkTemplate
 ```html
-    <span class="pull-left" ><input data-pk="" type="checkbox" name="check_row">&nbsp;</span>
+    <span class="pull-left" ><input crud-pk="" type="checkbox" name="check_row">&nbsp;</span>
 ```
 
 #### paginatorTemplate
 ```html
 <ul class="list-inline hidden-md hidden-sm hidden-xs">
-    <li data-action_first_page><a data-first_page href="javascript:void(0)">&laquo;</a></li>
-    <li data-action_prev_page><a data-prev_page href="javascript:void(0)">&lt;</a></li>
+    <li crud-action_first_page><a crud-first_page href="javascript:void(0)">&laquo;</a></li>
+    <li crud-action_prev_page><a crud-prev_page href="javascript:void(0)">&lt;</a></li>
     <li>
     <span style="padding:2px" >
-        <span data-keytranslate="general-pagination_total" >Tot</span>
-        <b><span data-field="total"></span></b>,
+        <span crud-keytranslate="general-pagination_total" >Tot</span>
+        <b><span crud-field="total"></span></b>,
     &nbsp;&nbsp;
-        <span data-action_per_page></span>
-        <!--<select data-action_per_page data-field="per_page" data-source="pagination_steps" self style="height:24px" class="pagination-input" data-action="actionPerPage">-->
+        <span crud-action_per_page></span>
+        <!--<select crud-action_per_page crud-field="per_page" crud-source="pagination_steps" self style="height:24px" class="pagination-input" crud-action="actionPerPage">-->
 <!---->
         <!--</select>-->
-        <span data-keytranslate="general-pagination_per_page" >Per pagina</span>
+        <span crud-keytranslate="general-pagination_per_page" >Per pagina</span>
     </span>
     </li>
-    <li><a class="disabled" href="javascript:void(0)" data-page_info=""> <span data-field="current_page"></span> / <span data-field="last_page"></span> </a></li>
-    <li data-action_next_page ><a data-next_page href="javascript:void(0)">&gt;</a></li>
-    <li data-action_last_page><a data-last_page href="javascript:void(0)">&raquo;</a></li>
+    <li><a class="disabled" href="javascript:void(0)" crud-page_info=""> <span crud-field="current_page"></span> / <span crud-field="last_page"></span> </a></li>
+    <li crud-action_next_page ><a crud-next_page href="javascript:void(0)">&gt;</a></li>
+    <li crud-action_last_page><a crud-last_page href="javascript:void(0)">&raquo;</a></li>
 
 </ul>
 <ul class="pagination pagination-sm hidden-lg hidden-xl">
-    <li data-action_first_page><a data-action="ActionFirstPage" href="javascript:void(0)">&laquo;</a></li>
-    <li data-action_prev_page><a data-action="ActionPrevPage" href="javascript:void(0)">&lt;</a></li>
-    <li><a class="disabled" href="javascript:void(0)" data-page_info="">  <span data-field="current_page"></span> / <span data-field="last_page"></span> (<span data-field="total"></span>)</a></li>
-    <li data-action_next_page><a data-action="ActionNextPage" href="javascript:void(0)">&gt;</a></li>
-    <li data-action_last_page><a data-action="ActionLastPage" href="javascript:void(0)">&raquo;</a></li>
+    <li crud-action_first_page><a crud-action="ActionFirstPage" href="javascript:void(0)">&laquo;</a></li>
+    <li crud-action_prev_page><a crud-action="ActionPrevPage" href="javascript:void(0)">&lt;</a></li>
+    <li><a class="disabled" href="javascript:void(0)" crud-page_info="">  <span crud-field="current_page"></span> / <span crud-field="last_page"></span> (<span crud-field="total"></span>)</a></li>
+    <li crud-action_next_page><a crud-action="ActionNextPage" href="javascript:void(0)">&gt;</a></li>
+    <li crud-action_last_page><a crud-action="ActionLastPage" href="javascript:void(0)">&raquo;</a></li>
 
 </ul>
 ```
@@ -387,15 +387,15 @@ caricamento dei dati e la RouteSave per il salvataggio
 #### template 
 
 ```html
-<div class="well" data-edit-main>
-    <div data-alert class="alert alert-success hide"></div>
-    <form data-form class="model-edit">
-        <div data-hidden_fields></div>
-        <div data-view_elements>
+<div class="well" crud-edit-main>
+    <div crud-alert class="alert alert-success hide"></div>
+    <form crud-form class="model-edit">
+        <div crud-hidden_fields></div>
+        <div crud-view_elements>
             
         </div>
-        <div data-view_action >
-            <div data-field="data" data-self>
+        <div crud-view_action >
+            <div crud-field="data" crud-self>
 
             </div>
         </div>
@@ -418,15 +418,15 @@ e la RouteUpdate per il salvataggio
 #### template 
 
 ```html
-<div class="well" data-edit-main>
-    <div data-alert class="alert alert-success hide"></div>
-    <form data-form class="model-edit">
-        <div data-hidden_fields></div>
-        <div data-view_elements>
+<div class="well" crud-edit-main>
+    <div crud-alert class="alert alert-success hide"></div>
+    <form crud-form class="model-edit">
+        <div crud-hidden_fields></div>
+        <div crud-view_elements>
             
         </div>
-        <div data-view_action >
-            <div data-field="data" data-self>
+        <div crud-view_action >
+            <div crud-field="data" crud-self>
 
             </div>
         </div>
@@ -447,16 +447,16 @@ E' una view per effettuare una ricerca.
 
 ```html
 <div class="well search-well">
-    <form data-form class="model-search">
-        <div data-hidden_fields></div>
-        <div class="search-row" data-view_elements>
+    <form crud-form class="model-search">
+        <div crud-hidden_fields></div>
+        <div class="search-row" crud-view_elements>
         </div>
 
         <div class="clearfix"></div>
         <hr class=""/>
 
-        <div data-view_action>
-            <div data-field="data" data-self>
+        <div crud-view_action>
+            <div crud-field="data" crud-self>
             </div>
         </div>
     </form>
@@ -475,11 +475,11 @@ E' una view per visualizzare i risultati in modalità lettura.
 
 ```html
 <div class="well model-view">
-    <div data-hidden_fields></div>
-    <div data-view_elements>
+    <div crud-hidden_fields></div>
+    <div crud-view_elements>
     </div>
-    <div data-view_action >
-        <div data-field="data" data-self>
+    <div crud-view_action >
+        <div crud-field="data" crud-self>
            
         </div>
     </div>
