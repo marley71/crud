@@ -25,28 +25,13 @@ dell'ereditarietà di un normale linguaggio ad oggetti. Non andrebbe mai istanzi
 ## Widget
 Una componente `Widget` si prende il compito di gestire il singolo dato secondo controlli standard html o plugins 
 di varia complessità.
-
-La gestione del componente `Render` è stata differenziata dal modo in cui esso può essere gestito. 
-I modi con cui può essere gestito sono:
-
-- VIEW : In questa modalità il componente render si preoccupa di visualizzare i dati, 
-non è prevista nessuna modifica.
-- EDIT : In questa modalità il componente render oltre a visualizzare i dati, deve prevederne
-la modifica
-- SEARCH: In questa modalità il componente deve gestire l'input dell'utente e l'operatore della search che normalmente
-è nascosto
-
-Queste modalità sono nate per favorire una migliore customizzazione dei componenti render
-in base al contesto in cui vengno utilizzati.
-[Renders](renders.md)
+[Widgets](widgets.md)
 
 
 ## View
 La componente `View` rappresenta una collezione di dati. A questi dati 
-vengono associati dei componenti di tipo `Render`. 
+vengono associati dei componenti di tipo `Widget`. 
 [Views](views.md)
-
-
 
 ## Dashboard
 La componente dashboard è stata create per la la gestione di più viste che interagiscono o no tra di loro.
