@@ -6,7 +6,7 @@ edit_uri: '#root/docs/'
 pages:
     - Home: index.md
     - Component : component.md
-    - Renders: renders.md
+    - Widgets: widgets.md
     - Views: views.md
     - Dashboards: dashboards.md
     - Templates: templates.md
