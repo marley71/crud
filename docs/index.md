@@ -1,36 +1,29 @@
 ---
-some_url: https://example.com
+some_url: https://github.com/marley71/crud-vue
 extra:
     version: 1.0
 ---
 
-# CRUD 4.1 (Versione Alpha)
+# CRUD-Vue v1.0 
 
 Libreria CRUD per la realizzazione di interfacce professionali basate su chiamate REST con 
 metodi CREATE,READ,UPDATE,DELETE. Il protocollo utilizzato per la comunicazione è il json. 
 La libreria utilizza il concetto di componente. La pagina è formata da componenti ed esse
-sono gestite attraverso l'oggetto principale `App`. 
+sono gestite attraverso l'oggetto principale `CrudApp`. 
 Il concetto di base è quello di creare una logica e una grafica delle componenti
 in modo che ci sia una versione base implementata dalla libreria, ma che sia customizzabile
 a piacere nella propria applicazione sia come layout grafico sia come logica.
 
-
-## Componenti base
-
-Nella libreria è stata definita una classe principale che tutte le classi estendono che permette di 
-simulare l'erediareità degli oggetti.
-Questa classe si chiama `Class`. Elenchiamo le principali componenti presenti nella libreria:
-
 ## Component
 
-Abbiamo creato un oggetto principale per tutte le componenti presenti nella libreria si chiama  
-<a href="component">`Component`</a>. Va considerato come una classe astratta. L'oggetto Component
-estende un oggetto javascript chiamato Class che è stato definito per permettere una facile simulazione
+Abbiamo creato un componente principale vue per tutte le componenti presenti nella libreria, si chiama  
+<a href="c-component">`c-component`</a>. Va considerato come una classe astratta. L'oggetto c-component
+crea un componente vue che è stato definito per permettere una facile simulazione
 dell'ereditarietà di un normale linguaggio ad oggetti. Non andrebbe mai istanziato
 
 
-## Render
-Una componente `Render` si prende il compito di gestire il singolo dato secondo controlli standard html o plugins 
+## Widget
+Una componente `Widget` si prende il compito di gestire il singolo dato secondo controlli standard html o plugins 
 di varia complessità.
 
 La gestione del componente `Render` è stata differenziata dal modo in cui esso può essere gestito. 
