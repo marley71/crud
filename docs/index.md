@@ -24,36 +24,33 @@ dell'ereditarietà di un normale linguaggio ad oggetti. Non andrebbe mai istanzi
 
 ## Widget
 Una componente `Widget` si prende il compito di gestire il singolo dato secondo controlli standard html o plugins 
-di varia complessità.
+di varia complessità. Alcuni widget di utilità generale sono stati realizzati nella libreria, ma si possono creare
+widgets secondo le nostre esigenze o estendendo quelli presenti o crearne di nuovi.
 [Widgets](widgets.md)
 
 
 ## View
 La componente `View` rappresenta una collezione di dati. A questi dati 
-vengono associati dei componenti di tipo `Widget`. 
+vengono associati dei componenti di tipo `Widget`. Sono state create delle view di utilizzo standard, ma anche qui
+se ne possono creare di nuove per venire incontro alle nostre esigenze.
 [Views](views.md)
-
-## Dashboard
-La componente dashboard è stata create per la la gestione di più viste che interagiscono o no tra di loro.
-In questo modo si possono creare dashboard specifiche per le nostre applicazioni.
-[Dashboards](dashboards.md)
-
 
 ## Template
 
-Il componente `Template` permette di costruire un template html di contorno per l'oggetto `Render`. 
-Viene utilizzato dalle views e permette di poter customizzare i templates per alcuni renders presenti nella
- view.
+Il componente `Template` permette di costruire un template html di contorno per l'oggetto `Widget`. 
+Viene utilizzato dalle views e permette di poter customizzare i templates per alcuni widget presenti nella view.
+Questo permette per esempio di enfatizzare alcuni campi la dove serve e di non creare viste sempre monotone e dare
+un minimo di variabilità nella visualizzazione.
 [Templates](templates.md)
 
 
 ## Action
-Il componente `Action` è nato per la gestione delle azioni vogliamo realizzare su di una vista.
+Il componente `action` è nato per la gestione delle azioni vogliamo realizzare su di una vista.
 [Actions](actions.md)
 
 ## Conf
-Sono oggetti di configurazioni iniziali per le istanze delle varie views. Questo permette di avere delle 
-configurazioni globali su alcuni campi delle nostre viste senza definirli ogni volta.
+Sono configurazioni iniziali per le istanze delle varie views o wigets. Questo permette di poter variare il comportamento
+di un componente e specializzarlo dove serve in modo da potersi discostare dal comportamento di default.
 [Confs](confs.md)
 
 ## Route
@@ -70,4 +67,10 @@ Classe che rappresenta un wrapper delle chiamate ajax di jquery, con alcune este
 La componente `App` rappresenta l'oggetto per la gestione della pagina e delle sue varie componenti 
 javascript.
 [App](app.md)
+
+
+## Dashboard
+Le dashboards sono modi di utilizzare combinando più views che interagiscono tra loro. Una fondamentale creata
+già nella libreria e che serve come esempio è la `c-manage`.
+[Dashboards](dashboards.md)
 

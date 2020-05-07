@@ -1,21 +1,9 @@
 # Component
 
-La classe principale di tutte le componenti grafiche è `Component`, definisce il comportamento
-generale che un componente deve avere nella visualizzazione di un html. Un componente, quando viene disegnato,
-chiama in sequenza una serie di metodi che rappresentano gli agganci dove noi possiamo scrivere il nostro codice
-che caratterizzerà la componente.
-
-La classe ha un metodo `template` che ritorna una stringa html del componente. Il concetto principale è quello di 
-inserire nel template del componente dei marcatori (attributi dal formato **crud-{marcatore}**). 
-Questi marcatori permettono di avere la possibilità di stravolgere completamente il template di base senza modificare 
-il comportamento del nostro componente. L'unico obbligo è di mantenere questi marcatori per il suo corretto funzionamento.
-
-E' stata inserita la possibilità di avere dei `traits` che ne permetteno l'estensione
-con funzionalità proprie della nostra applicazione senza dover per forza ridefinire la classe componente. 
-Oltre ai traits è stata inserita la possibilità di avere dei `traitsTemplate` sono dei traits particolari e il loro 
-metodo viene chiamato subito dopo che il template è stato iniettato nel dom della pagina.
-Possiamo considerarli come post elaborazioni da fare sul dom html non previste dalla libreria. Vedremo più
-avanti il loro utilizzo.
+La classe principale di tutte le componenti grafiche è `c-component`, definisce il comportamento
+generale che un componente deve avere nella visualizzazione di un html e della gestione dei dati. Definisce
+la proprietà cConf per la configurazione del componente, la carica ed estende l'oggetto con tutte le proprietà
+trovate in cConf. Definisce il metodo _getRoute, che carica l'eventuale route dei dati del componente.
 
 Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
 sostanzialmente il comportamento della classe a basso livello.

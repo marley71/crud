@@ -1,25 +1,19 @@
-# Render
+# Widget
 
-La classe `Render` estende la classe `Component` e rappresenta la classe per la gestione di un 
+La classe `Widget` estende la classe `Component` e rappresenta la classe per la gestione di un 
 singolo dato. La classe render può essere utilizzata in maniera diretta, ma il loro utilizzo reale è 
 come componenti dei singoli dati di una view. Dentro la view un render può essere usato in 3 modi differenti, 
 in modalità *edit, search, view*.
 
-La classe Render deve essere consideata come una specie di classe astratta e definisce alcuni metodi di uso generale e 
-i metodi che i veri oggetti Render devono ridefinire per funzionare. Quindi come la classe che 
-definisce l'interfaccia dei vari oggetti Render concreti. Non dovrebbe mai essere istanziata.
+La classe Widget deve essere consideata come una specie di classe astratta e definisce alcuni metodi di uso generale e 
+i metodi che i veri oggetti Widget devono ridefinire per funzionare. Quindi come la classe che 
+definisce l'interfaccia dei vari oggetti Widget concreti. Non dovrebbe mai essere istanziata.
 
-il modo è definito nelle costanti
-```javascript
-Render.VIEW = 'view';
-Render.EDIT = 'edit';
-Render.SEARCH = 'search';
-```
 
 #### Proprietà
 
 - `key` : null - key dell'oggetto render (il campo del db o del field che vogliamo gestire)
-- `className` : 'Render' - nome della Classe reale dell'oggetto
+- `className` : 'Widget' - nome della Classe reale dell'oggetto
 
 - `element_selector` : '[crud-render_element]' - marcatore dell'elemento
 - `control_selector` : '[crud-render_control]' - marcatore del controllo html (input, select, ecc)
@@ -44,7 +38,7 @@ search
 - `clear()` : medoto da chiamare per il clear del componente render. 
 - `setMetadata(metadata)` : setta la proprietà metadata
     - @param metadata : valore associativo che descrivono il dato
-- `Render.factory(key,options)` : metodo statico che permette di creare un Render
+- `Widget.factory(key,options)` : metodo statico che permette di creare un Widget
     - @param key: è il nome del campo da creare
     - @param options: vettore associativo delle opzioni del render. La factory prende
 options.type e options.mode per cercare il nome della classe da istanziare. Se non esistono,
@@ -55,30 +49,30 @@ options.type e options.mode per cercare il nome della classe da istanziare. Se n
 - esempio
 
 
-Facciamo una piccola premessa. Per evitare di dover scrivere tutto il nome della classe Render è stata adottata la 
+Facciamo una piccola premessa. Per evitare di dover scrivere tutto il nome della classe Widget è stata adottata la 
 sequente convenzione:
 
-- Tutti gli oggetti Render devono avere il nome che inizia per _Render_
-- ogni Render può avere 3 classi. Una per ogni modalità. view una per la gestione in 
+- Tutti gli oggetti Widget devono avere il nome che inizia per _Widget_
+- ogni Widget può avere 3 classi. Una per ogni modalità. view una per la gestione in 
 modalità search e una in modalità edit. Supponiamo di aver pensato il nostro render e di chiamarlo _input_. allora dovremmo
 creare una o tutte e tre le classi: 
-    - `RenderInputView` : oggetto che gestirà la visualizzazione di input in modalità view.
-    - `RenderInputEdit` : oggetto che gestirà la visualizzazione di input in modalità edit.
-    - `RenderInputSearch` : oggetto che gestirà la visualizzazione di input in modalità search
+    - `WidgetInputView` : oggetto che gestirà la visualizzazione di input in modalità view.
+    - `WidgetInputEdit` : oggetto che gestirà la visualizzazione di input in modalità edit.
+    - `WidgetInputSearch` : oggetto che gestirà la visualizzazione di input in modalità search
 
 Ecco il codice da scrivere
 
 ```javascript
-var r = Render.factory('fieldName', {
+var r = Widget.factory('fieldName', {
     type : 'input',
     mode : 'edit'
 })
-// la factory cercherà la definizione della classe 'RenderInputEdit' che rappresenta
-// l'oggetto che gestirà il Render Input in modalità edit.
+// la factory cercherà la definizione della classe 'WidgetInputEdit' che rappresenta
+// l'oggetto che gestirà il Widget Input in modalità edit.
 // nei nomi si puo' utilizzare _, la factory applichera' il camelCase
 // per esempio
 
-var r = Render.factory('fieldName', {
+var r = Widget.factory('fieldName', {
     type : 'input_colorato',
     mode : 'edit'
 })
