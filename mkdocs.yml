@@ -1,4 +1,4 @@
-site_name: CRUD
+site_name: CRUD-VUE
 repo_url : https://github.com/marley71/crud
 repo_name : GitHub
 edit_uri: '#root/docs/'
@@ -8,7 +8,6 @@ pages:
     - Component : component.md
     - Widgets: widgets.md
     - Views: views.md
-    - Dashboards: dashboards.md
     - Templates: templates.md
     - Actions : actions.md
     - Confs: confs.md
@@ -17,8 +16,6 @@ pages:
     - App : app.md
     - Protocols : protocollo_dati.md
     - Esempi Views : esempi_views.md
-    - Utilizzo html : html.md
-    - Trucchi/Convenzioni : tricks.md
 
 theme: readthedocs
 

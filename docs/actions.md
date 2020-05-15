@@ -1,139 +1,84 @@
 # Actions
 
+Le actions sono dei componenti che agiscono su delle view. Attraverso le azioni possiamo agire sulle view. Esempi
+standard di azioni sono la save, insert, stampa, ecc.
 
-## Action
-Classe principale delle azioni. Estende la classe principale `Component` Le azioni rappresentano l'aggancio per le interazioni con 
+##action-base
+Classe principale delle azioni. Estende la classe principale `c-component` Le azioni rappresentano l'aggancio per le interazioni con 
 l'utente sulle views, dashboard oppure semplici bottoni html. Da questa classe
 sono state definite altri due azioni generali la `RecordAction` e la `CollectionAction` che
 fondamentalmente dividono il comportamento in azioni che agiscono sul singolo record
 e azioni che agiscono su una collezione di record.
 
-#### Proprietà
+####data
 
-- `container` : default null
-- `htmlEvent` : default 'onclick'      evento html associato che fa scattare l'azione
-- `type` : default null può essere record o collection
+- `type` : default collection può essere `record` o `collection`
 - `controlType` : default 'button',
 - `text` : '',
 - `icon` : '',
-- `cssClass` : '',
+- `css` : 'btn btn-outline-secondary',
 - `target` : '',
 - `href` : '',
-- `params` : [],
 - `enabled` : true,
 - `visible` : true,
 - `title` : '',
-- `_htmlProperties` : ['text','icon','cssClass','target','href','params','title','enabled','visible','onclick','onchange'],
+- `view` : default this.$parent
 
 
-#### Metodi
+####Metodi
 
-- `execute` : metodo chiamato quando l'azione viene cliccata
-- `template` : metodo che restituisce i template di tipo button o link 
-- `buttonTemplate` : template con type button
-- `linkTemplate` : template con type link
-- `callback` : se definita viene chiamata al termi dell'execute
-- `_getData` : ritorna i valori di instanza di tutti gli attributi html dell'azione
+- `_beforeExecute(callback)` : metodo chiamato quando l'azione viene cliccata, prima di essere eseguita
+- `_execute` : esecuzione dell'azione 
+- `_afterExecute` : metodo chiamato dopo che l'azione è stata eseguita.
+- `setEnabled(enable)` : abilita o disablita l'azione
+- `setVisible(visible)` : se definita viene chiamata al termi dell'execute
 
     
-## RecordAction
 
-Le recordAction sono quelle utilizzate nelle liste per ogni record
-
-#### Proprietà
-
-- `className` : 'RecordAction',
-- `type` : 'record',
-- `cssClass` : 'btn btn-default btn-xs btn-group',
-
-- `buttonTemplate` : function ()
-```html
-<button crud-action type="button" crud-visible=visible crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" crud-addclass="enabled?'':'disabled'">
-    <i crud-remove="!icon" crud-class="icon"></i>
-    <span crud-field="text"></span>
-</button> 
-```
-
-- `linkTemplate` : function () 
-```html
-<a crud-href="href" crud-visible="visible" crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" target="_blank" crud-addclass="enabled?'':'disabled'">
-    <i crud-remove="!icon" crud-class="icon"></i>
-    <span crud-field="text"></span>
-</a>   
-```
-
-## CollectionAction
-
-Discriminano le azioni sulla vista globale, per esempio una view a lista ci sono le record actions che lavorano
-sul singolo record, mentre le collection action agisco sul modello. Oltre a questa differenza vengono 
-renderizzate anche in un posto diverso.
-
-#### Proprietà
-
-- `className` : 'CollectionAction'
-- `type` : 'collection'
-- `buttonTemplate` : 
-```html
-<button crud-action type="button" crud-visible=visible crud-attrs="{'title':title,'crud-params':params,'target':target}" crud-class="cssClass" crud-addclass="enabled?'':'disabled'">
-    <i crud-remove="!icon" crud-class="icon"></i>
-    <span crud-field="text"></span>
-</button> 
-```
-- `linkTemplate` : 
-```html
-<a crud-href="href" crud-visible="visible" crud-class="cssClass"  crud-attrs="{'title':title,'crud-params':params,'target':target}" target="_blank" crud-addclass="enabled?'':'disabled'">
-    <i crud-remove="!icon" crud-class="icon"></i>
-    <span crud-field="text"></span>
-</a>  
-```
-
-# Action Implementate
+# Actions Implementate
 
 La libreria, come per tutti gli altri componenti, mette a disposizione delle azioni già predefinite, 
 utilizzabili immediamente. Queste azioni rappresentano le azioni più comuni in una libreria crud. Ovviamente
-possono essere estese o definite delle nuove.
+possono essere estese o definite delle nuove. Le configurazioni di tale azioni le potete trovare sotto
+crud.recordActions e crud.collectionActions. Potete ridefinire qui le varie opzioni grafiche o del metodo
+execute.
 
-## ActionEdit:
-Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list e rappresent l'edit di un record 
+##action-edit
+Azione di tipo record pensata per l'utilizzo dentro una view list e rappresenta l'edit di un record 
 all'interno della lista. 
 
-#### Proprietà
+####data
 
-- `className` : 'ActionEdit'
-- `title` : 'Modifica',
+- `type` : 'record'
+- `title` : 'app.modifica',
 - `icon` : 'fa fa-edit',
-- `multiText` : 'Modifica', // questo testo viene utilizzato quando l'azione si trova all'interno di un gruppo
-di azioni.
-- `routeName` : 'page_edit'
+- `css` : 'btn btn-outline-secondary btn-sm'
+- `modelName` : nome modello dati della view,
+- `modelData` : l'intera record del modello dati
 
-#### Metodi 
+####Metodi 
 
-- `execute` - utilizza la route per una pagina in edit per richiamare la pagina nuova
+- `execute` - carica una pagina con url "/edit/" + this.modelName + "/" + this.modelData[this.view.primaryKey];
 
 
-## ActionInsert
-Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.
+##action-insert
+Azione di tipo  `collection`. Azione pensata per l'utilizzo dentro una view list  per l'inserimento di un record all'interno della lista.
 
-#### Proprietà
+####data
 
-- `className` : 'ActionInsert',
 - `title` : 'Inserisci',
 - `icon` : 'fa fa-plus text-success',
-- `cssClass` : 'btn btn-default btn-xs text-success',
+- `css` : 'btn btn-default btn-xs text-success',
 - `text` : 'Nuovo',
-- `multiText` : 'Nuovo',
-- `routeName` : 'page_insert',
      
-#### Metodi
+####metodi
 
 - `execute` - utilizza al route per una pagina in insert per richiamare la pagina nuova
 
-## ActionSave
+##action-save
 
-Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per salvare le modifiche
+Azione di tipo record pensata per l'utilizzo dentro una view edit per salvare le modifiche
 
-
-- `className` : 'ActionSave',
 - `title` : 'Salva',
 - `text` : 'Salva',
 - `multiText` : 'Salva',
@@ -141,23 +86,21 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit per s
 - `execute` - utilizza le route update o save a seconda se il modello dati è in modifica o insert
 
 
-## ActionBack
+##action-back
 
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
 
-- `className` : 'ActionBack',
 - `title` : 'Indietro',
 - `text` : 'Torna indietro',
 
 - `execute` esegue sostanzialmente un history.back();
 
 
-## ActionView
+##action-view
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la visualizzazione di un record all'interno della lista.
 
-### Proprietà
+### data
 
-- `className` : 'ActionView',
 - `title` :'Visualizza',
 - `icon`:  'fa fa-list-alt',
 - `multiText` : 'Visualizza',
@@ -168,12 +111,11 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 - `execute` - utilizza al route per una pagina in view per richiamare la pagina nuova
 
 
-## ActionDelete
+##action-delete
 Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.
 
-### Proprietà
+### data
 
-- `className` : 'ActionDelete',
 - `title` : 'Cancella',
 - `icon`:  'fa fa-remove text-danger',
 - `multiText` : 'Cancella',
@@ -181,32 +123,26 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 ### Metodi
 
 - `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
-- `callback` - metodo richiamata alla fine della execute
 
 
-## ActionMultiDelete
+
+##action-delete-selected
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.
 
-### Proprietà
+### data
 
 - `className` : 'ActionMultiDelete',
 - `title` : 'Cancella selezionati',
 - `icon`:  'fa fa-trash text-danger',
 - `cssClass` : 'btn btn-default btn-xs text-danger',
 - `text` : 'Selezionati',
-- `needSelection` : true,
-- `multiText` : 'Cancella Selezionati',
-     
-### Metodi
-
-- `execute` - utilizza al route delete per eseguire la richiesta di cancellazione. Prima chiede conferma
-- `callback` - metodo richiamata alla fine della execute
+- `needSelection` : true,     
 
 
-## ActionSearch
+##action-search
 Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.
 
-### Proprietà
+### data
 
 - `className` : 'ActionSearch',
 - `title` : 'Ricerca',
@@ -219,73 +155,10 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search
 - `execute` - richiama la pagina con i parametri in get presenti nella form della vista
 
 
-## ActionReset
-Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search il reset dei parametri di 
-ricerca impostati
+##action-order
 
-### Proprietà
+##action-edit-mode
 
-- `className` : 'ActionReset',
-- `title` : 'Annulla filtri ricerca',
-- `cssClass` : 'btn btn-xs btn-default',
-- `text` : 'Annulla filtri',
-     
-### Metodi
+##action-view-mode
 
-- `execute` - richiama il metodo clear su tutti i renders della view e richiama la callback
-- `callback` - metodo chiamato dopo il reset dei controlli
-
-
-
-
-## ActionNextPage
-nextpage del navigatore di una lista
-
-Proprietà    
-- `icon` : 'fa fa-angle-right',
-- `cssClass` : 'btn btn-default btn-xs',
-
-### Metodi 
-
-- `execute` : incrementa di uno il parametro page della route associata alla lista
-
-## ActionPrevPage
-Pagina precendente di una view
-
-### Proprietà
-
-- `icon` : 'fa fa-angle-left',
-- `cssClass` : 'btn btn-default btn-xs'
-
-- `execute` : Decrementa di uno il parametro page della route associata alla lista
-
-
-## ActionFirstPage
-
-- `icon` : 'fa fa fa-angle-double-left',
-- `cssClass` : 'btn btn-default btn-xs',
-- `execute` : Setta il parametro page a uno della route associata alla lista
-
-## ActionLastPage
-
-- `icon` : 'fa fa fa-angle-double-right',
-- `cssClass` : 'btn btn-default btn-xs',
-- `execute` : Setta il parametro page all'ultima pagina della route associata alla lista
-
-## ActionPerPage
-
-- `icon` : 'fa fa fa-angle-double-right',
-- `htmlEvent` : 'onchange',
-- `cssClass` : 'btn btn-default btn-xs',
-- `execute` : setta il parametro page e paginateNumber della route associata alla lista
-
-- `_getData` : setta i valori della select prendendoli da data.pagination.pagination_steps
-
-- `buttonTemplate` : 
-```html
-<select crud-field="pagination.per_page" crud-source="pagination.pagination_steps" 
-        crud-sourceorder="pagination.pagination_order"
-        crud-attrs=`+ special_attrs + `  class="pagination-input">
-
-</select>  
-```
+##action-save-row

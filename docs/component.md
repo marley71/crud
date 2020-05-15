@@ -1,9 +1,9 @@
-# Component
+# c-component
 
 La classe principale di tutte le componenti grafiche è `c-component`, definisce il comportamento
 generale che un componente deve avere nella visualizzazione di un html e della gestione dei dati. Definisce
 la proprietà cConf per la configurazione del componente, la carica ed estende l'oggetto con tutte le proprietà
-trovate in cConf. Definisce il metodo _getRoute, che carica l'eventuale route dei dati del componente.
+trovate in cConf.
 
 Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
 sostanzialmente il comportamento della classe a basso livello.
@@ -11,125 +11,37 @@ sostanzialmente il comportamento della classe a basso livello.
 
 #### Proprietà
 
-- `className` : 'Component' - Questa proprietà è stata introdotta a causa del fatto che javascript non è un linguaggio 
-ad oggetti e per avere la possibilità di poter estendere le classi, è stato utilizzata un trucchetto. Questo trucchetto 
-rende impossibile sapere, a runtime, in quale classe ci si trovi.
+- `cConf` : rappresenta la configurazione iniziale del componente. E' formata da un vettore associativo. Tutte le 
+proprietà di cConf vengono spalmate flat nel `data` del componente vue.
 
-- `defaultTraitsTemplate` : ['TraitTranslate','TraitTemplate','TraitPlaceholder'] - vettore di traits definiti di default
-in particolare :
-    - `TraitTranslate` ha il compito per la sostituzione di tutti i marcatori crud-label presenti nel template con le nostre 
-    definizioni. Molto utile nei siti multi lingua, o dove ci sono delle parti di un html che hanno label variabili.
-    - `TraitTemplate`: Ha il compito di poter spezzare un template complesso in sottotemplate magari interscambiabili.
-    utilizza i marcatori crud-template che si trovano dentro la stringa template e ci inietta il risultato della
-    chiamata {valore}Template. Per esempio se dentro il marcatore crud-template troviamo il valore *subItem* verrà chiamata
-    il metodo componente.subItemTemplate() e il risultato sarà iniettato dentro il tag dove è presente il marcatore crud-template="subItem" 
-    - `TraitPlaceholder`: ha il compito di inserire il risultato della traduzione del valore del marcatore crud-placeholder nell'attributo
-    placeholder che si trovano negli input.
-- `traitsTemplate` : [] - vettore di eventuali altri traits custom che vogliamo siano eseguiti subito dopo avere iniettato il template
-- `traits` : [] - traits per estendere funzionalità del component senza ridefinirne la classe.
-- `container` : null - rappresenta l'eventuale container html prensente nel dom della pagina dove verrà
-disegnato il componente.
-- templateFile : il template può essere caricato da un file esterno. Valorizzare questa proprietà. Il formato
-accetta "nomefile.html#id", in caso sia passato un id la libreria carica il file e cerca un nodo con id={id}, altrimenti
-assegna al template tutto l'html caricato dal file.
 
 #### Metodi
 
-- `init(attributes)`: costruttore, attributes rappresentano gli attributi
-che si vogliono sostituire, è possibile passare anche delle function e ridefinire i metodi della classe
-o aggiungerne dei nuovi. 
-
-- `attrs(attrs)` : permettere di ridefinire proprietà o metodi dell'oggetto
-
-- `template()` :  metodo che restituisce il template html del componente
-
-- `getTemplate()` : metodo che un oggetto jquery('div') che wrappa il template del componente.
-
-- `html()` : ritorna l'html puntato dalla proprietà container del componente
-- `jQe(selector)` : ritorna l'oggetto jquery associato al container del componente, se viene
+- `jQe(selector)` : shortcut jquery, ritorna l'oggetto jquery associato al container del componente, se viene
 passato il parametro *selector* allora si posiziona all'elemento puntato dal selector all'interno
-del container, compreso il container stesso.
+del container.
 
-- `beforeRender(callback)` : questo metodo viene chiamato prima di eseguire il render. Questo metodo rappresenta
-il primo punto in cui scrivere codice che si vuole eseguire prima di renderizzare il componente
+- `_loadConf()` : Carica l'oggetto cConf e spalma le proprietà nell'oggetto.
 
-- `render(callback)` : metodo dove viene iniettato nel container l'html del componente in 
-base alle proprie politiche.
-
-- `afterRender(callback)` : metodo che viene chiamato dopo il metodo render.
-
-- `beforeFinalize(callback)` : metodo per il proprio codice custom chiamato prima del finalize
-- `finalize(callback)` : metodo per aggiungere eventi o istanziare plugins 
-- `afterFinalize(callback)` : metodo custom per eventuali esigenze su oggetti dopo che sono stati visualizzati agganciati
-eventi e istanziati plugins.
-
-- `_prepareContainer(callback)`  : scrive l'html che viene restituito dal metodo *template* dentro il container.
-Se il container è null viene creato un oggetto jquery contentente l'html. Dopo viene chiamato *_executeTraitsTemplate*
-
-- `_executeTraitsTemplate()` : metodo eseguito dopo che si è scritto l'html. Utilizzare questo metodo
-se si vogliono eseguire dei particolari filtri con il concetto di trait
-
-- `_loadExternalResources(callback)` : carica eventuali risorse esterne prima di far partire il render del component
-@param callback : funzione di ritorno 
-    
-- `draw(callback)` : disegna l'html del componente e poi richiama la callback.
-Il metodo draw esegue in seguenza diversi metodi che vengono richiamati attraverso la
-callback e che permettono la possibilità di definire il comporamento del componente mentre viene disegnato.
-Permette di aggangiare eventi custom. 
-Tutti questi metodi hanno una callback come parametro che rappresenta la funzione da chiamare dopo che si
-è finito di operare dentro il metodo. Questo permette di poter inserire anche delle funzioni
-asincrone aspettare il termine delle chiamate prima di procedere. Se si vuole bloccare il flusso
-basta semplicemente non richiamare la callback. 
-Sotto viene rappresentato il flusso delle chiamate del metodo draw.
+- `_getConf` : risolve il nome cConf, cConf può essere un array associativo o una stringa. In caso di stringa ricerca
+la configurazione nella window o nella configurazione generale dell'applicazione chiamata crud. Può essere usato il
+punto per configurazioni gerarchiche. Esempio potrei creare una configurazione tipo:
 
 ```javascript
-// carico le risorse esterne
-this._loadExternalResources(function () {
-    // prima di renderizzare il contenuto
-    this.beforeRender(function () {
-        // preparo il container
-        this._prepareContainer(function () {
-            // applico i traits sull'html appena generato
-            this._executeTraitsTemplate();
-            // renderizzo gli oggetti presenti nel componente
-            this.render(function () {
-                // eseguo il metodo per aggiungere eventuali pezzi html custom
-                this.afterRender( function () {
-                    // prima di attivare eventi 
-                    this.beforeFinalize(function () {
-                        // chiamo il metodo dove vengono attivati gli eventi
-                        this.finalize(function () {
-                            // eventuali alti eventi custom
-                            this.afterFinalize(function () {
-                                // richiamo la callback del metodo draw
-                                return callback();
-                            });
-                        });
-                    });
-                });
-            });
-        });
+window.conf1 = {
+    paginax : {
+        elementoa: {
+            var1 :'v1',
+            var2 :'v2'
+        }   
+    }
+}
+```
+posso passare come attributo del componente c-conf="conf1.paginax.elementoa";
 
-    });
-})
-``` 
+- `_getRoute(routeName)` : Crea l'oggetto Route di nome routeName. La definizione della route viene cercata nell'oggetto
+$crud.routes[routeName];
 
-
-
-
-`Component.parseHtml(templateString,tplData)` : metodo statico che crea un oggetto jquery eseguendo
-il parse della stringa passata. In caso vengono passati dei con tplData tutti i tag che hanno il marcatore
-crud-field="field" vengono iniettati i valori. Vedere la sezione ... per ulteriori dettagli.
-
-`Component.uid` = 0; variabile statica per la generazione di id univoci.
-
-`Component.newID()` : metodo statico che ritorna un id univoco fomato da 'c_{int}'+ dove {int} è un intero incrementale
-
-
-## Traits che agiscono sui template
-
-coming soon.
-
-## Render dei template con dati dinamici
-
-coming soon
+- `beforeLoadResources()` : metodo chiamato prima di caricare risorse esterne di particolari plugins di terze parti 
+- `afterLoadResources()` : metodo chiamato dopo aver caricato risorse esterne di plugins. Questo permette di eseguire
+eventuali azioni del plugins dopo che le risorse siano state caricate.

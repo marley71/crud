@@ -1,36 +1,55 @@
-# Protocollo dati
+#Protocollo dati
 
-In questa pagina mostro cosa si aspettano le view come dati da un eventuale server backend. Questi esempi 
-sono a titolo di esempio.
-La libreria accetta dati json strutturalmente diversi che andiamo ad adattare creando  una classe javascript che 
-estenderà la classe principale Protocol dove potete definire il match
-tra quello che arriva dal server e quello che si aspettano i componenti della libreria.
+La classe protocollo serve per mediare tra la struttura dati che arriva dal server con la struttura interna delle views.
+In questo modo, se dovessero cambiare le strutture dati di uscita di un server, implementando il protocollo opportuno,
+l'applicazione puo' continuare a funzionare.
+E' stato implementato un protocollo di base, per una risposta tipica da parte di un backend. In caso il nostro backend
+rispondesse con un json diverso, si devono implementare nuovi protocolli di trasformazione.
 
-Le view lavorano con questo protocollo
+Esiste la classe base astratta `Protocol` che definisce due metodi:
+- `getData()` : ritorna tutte le proprietà della classe
+- `jsonToData(json)' : dato un json applica la politica di trasformazione per le strutture interne della view.
 
-## GET di un record
+I protocolli attuali sono di due tipi. 
+- `ProtocolRecord`: per la gestione delle view di un singolo record
+- `ProtocolList` : per la gestione delle view list che gestiscono la lista di records.
+
+##ProtocolRecord
+Questo protocollo si aspetta una json fatto in questo modo.
 
 ```javascript
 {
+    error : 0, // 0 o 1. indica la presenza di errori nella richiesta 
+    msg : "", // messaggio di errore o di success 
     result : {
         field1 : value // nome campo : valore campo 
         // ... ecc
     },
     metadata : {
-        field1 : {} // array associativo degli eventuali metadati 
-    },
-    validationRules : { //array assocativo di eventuali regole di validazione javascript da applicare al campo
-        
-    },
-    translations : {} // eventuali traduzioni private di labels presenti nella view
+        fields : {
+            field1 : { // array associativo degli eventuali metadati 
+                options : {}, // vettore di valori di dominio, per esempio nelle select,
+                options_order : [] //  vettore ordinamento delle options.
+                
+            } 
+        }
+        relations : { // vettore relazioni presenti nel modello dati
+            relazione1 : {
+                fields : {},  // vettore dei campi della relazione 
+                // altre informazioni che potete usare
+            }   
+        }       
+    }
 }
 ```
 
 
-## GET di una lista di record
+##ProtocolList
 
 ```javascript
 {
+    error : 0, // 0 o 1. indica la presenza di errori nella richiesta 
+    msg : "", // messaggio di errore o di success 
     result : {
         current_page : 1,   // pagina corrente
         from : 1,           // numero partenza del primo elemento
@@ -55,17 +74,30 @@ Le view lavorano con questo protocollo
         
     },
     metadata : {
-        field1 : {} // array associativo degli eventuali metadati 
-    },
-    validationRules : { //array assocativo di eventuali regole di validazione javascript
-        
-    },
-    translations : {} // eventuali traduzioni private di labels presenti nella view
+        fields : {
+            field1 : { // array associativo degli eventuali metadati 
+                options : {}, // vettore di valori di dominio, per esempio nelle select,
+                options_order : [] //  vettore ordinamento delle options.
+                
+            } 
+        }
+        relations : { // vettore relazioni presenti nel modello dati
+            relazione1 : {
+                fields : {},  // vettore dei campi della relazione 
+                // altre informazioni che potete usare
+            }   
+        },
+        order : {  // ordinamento della lista, se presente
+            direction : "ASC o DESC",
+            field : 'nomecampo'
+        }             
+    }
 }
 ```
 
-## POST di un record in modifica
+##POST di un record in modifica
 
+L'invio dei dati in post viene inviato attraverso il post normale di una form html.
 esempio di dati inviati al backend da una view in modifica
 
 ```rest
@@ -73,60 +105,24 @@ _method: PUT  // variabile speciale per simulare l'azione put REST
 field1 : value  
 field2 : value  
 // in caso di relazioni esterne ci saranno   
-id: 1  
-stringa: Pariatur itaque commodi voluptatem suscipit quae est.  
-intero: 10  
-fotos_exists: 1  
-attachments_exists: 1  
-hasmanytests_exists: 1  
-captcha:   
-test_hasmanytests_exists: 1  
+relazione1-field1[] : value
+relazione1-field2[] : value
+
 ```
 
 
-## POST di un record in inserimento
+##POST di un record in inserimento
+Questo è un esempio di cosa invia la form di una view in inserimento al server, rispetto alla modifica cambia
+il valore del campo _method,
 
-Questo è un esempio di cosa invia la form di una view in inserimento al server
 ```rest
-id:  
-stringa: ffadf  
-intero: 3  
-captcha: 
+_method: POST  // variabile speciale per simulare l'azione inserimento REST  
+field1 : value  
+field2 : value  
+// in caso di relazioni esterne ci saranno   
+relazione1-field1[] : value
+relazione1-field2[] : value
 
---- questa sezione rappresenta gli foto che sono in relazione hasmany  
-fotos-ext[]: jpg  
-fotos-random[]: 154719847888307  
-fotos-id[]:   
-fotos-status[]: new  
-fotos-original_name[]: 1768904457040870023.jpg  
-fotos-filename[]: temp_fotos_154719847888307.jpg  
-fotos-mimetype[]: image/jpeg  
-fotos-nome[]:   
-fotos-descrizione[]: 
-fotos_exists: 1 
---- fotos_exists e' un campo di controllo per dire che la relazione veniva gestita nella form della view. 
---- serve perche' in caso di eliminazione di tutti gli elementi posso non riuscire a distinguere tra una
---- view che non gestisce la relazione e una view che la gestisce ma l'utente ha cancellato tutti gli elementi
-
---- questa sezione rappresenta gli attachment che sono in relazione hasmany  ----
-attachments-ext[]: pdf  
-attachments-random[]: 154719851213896  
-attachments-id[]:   
-attachments-status[]: new  
-attachments-original_name[]: Menu.pdf  
-attachments-filename[]: temp_attachments_154719851213896.pdf  
-attachments-mimetype[]: application/pdf  
-attachments-nome[]:  
-attachments-descrizione[]:  
-attachments_exists: 1 
---- fine sezione variabili attachment-----   
- 
---- relazione esterna hasmany ma senza upload 
-relazione3-status[]: new  
-relazione3-id[]:   
-relazione3_exists: 1  
-
-_method: POST  
 ```
 
 ## DELETE di un record

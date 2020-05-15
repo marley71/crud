@@ -1,105 +1,47 @@
 # Template
 
-Classe che estende `Component` e incapsula il template per la visualizzazione di un render,
-all'interno di una vista. Questo ci permette di avere strutture per ogni singolo render all'interno
-di una vista. In questo modo possiamo coprire tutte le esigenze di layout della nostra applicazione.
+Il componente `template` è formato dal da un template html per la visualizzazione di un widget,
+all'interno di una view. Questo ci permette,volendo, di avere strutture diverse per ogni singolo widget. 
+In questo modo possiamo coprire tutte le esigenze di layout della nostra applicazione e render meno statiche
+le views. Ogni view ha di default il suo template, possiamo modifcarlo per tutti o per solo per alcuni widget.
 
 
-#### Metodi
+##tpl-record
+componente per la visualizzazione semplice di un widget all'interno di una view record
 
-- `html()` : ritorna l'html del template 
-
-
-`Template.factory `: metodo statico per creare un template a partire nome
-e attrs secondo la convenzione sui nomi 
-
-`Template.getRenderContainer` : ritorna l'elemento dom destinato
-a contenere il render
-
-
-## Template Implementati
-
-La libreria mette a disposizione dei template standard usati dalle view di default. Questi possono 
-essere sovrascritti o inventati di nuovi
-
-
-## TemplateLeft
-Utilizzato soprattuto dalle views edit,insert,view
-
-#### Metodi 
-
-- `template() `
-
+####template
 ```html
-<div class="view-field clearfix">
-    <div class="col col-sm-12 view-msg" crud-label="msg">
-            
-    </div>
-    <div class="col col-sm-4">
-        <div class="col col-sm-10">
+<div>
+    <label>{{cWidget.label | translate}}</label>
+    <v-widget :c-widget="cWidget"></v-widget>
+</div>
+```
 
-            <label crud-html_label crud-label="label"></label>
-        
-        </div>
-    </div>
-    
- 
-    <div class="col col-sm-8" crud-render>
-            
-    </div>
-    <div class="col col-sm-12">
-        <small crud-label="addedLabel" class="view-addedLabel"></small>
-    </div>
-    <div class="col col-sm-12 view-field-error text-danger" crud-label="error">
-            
+##tpl-record2
+componente per la visualizzazione semplice di un widget all'interno di una view record a due colonne
+
+####template
+```html
+<div class="row">
+    <div class="col col-sm-6">{{cWidget.label | translate}}</div>
+    <div class="col col-sm-6">
+        <v-widget :c-widget="cWidget"></v-widget>
     </div>
 </div>
 ```
 
-## TemplateTop
-Utilizzato soprattutto dalle views edit,insert,view per i controlli
-che hanno bisogno di spazio
+##tpl-list
+componente per la visualizzazione semplice di un widget all'interno di una view list
 
-#### Metodi 
-
-#### template
+####template
 ```html
-<div class="view-field clearfix">
-    <div class="col col-sm-12">
-        <label crud-label="label">
-
-        </label>
-    </div>
-    <div class="col col-sm-12 view-msg" crud-label="msg">
-
-    </div>
-    <div class="col col-sm-12" crud-render>
-
-    </div>
-    <div class="col col-sm-12 view-field-error" crud-label="error">
-
-    </div>
-</div>
+<v-widget :c-widget="cWidget"></v-widget>
 ```
 
-## TemplateNo 
+##tpl-no
+componente per la visualizzazione di un widget senza template
 
-nessun template solo un div  utilizzato soprattutto dalla viewlist
-
-Metodi 
-
-- template() 
+####template
 ```html
-<div class="col col-xs-12" crud-render>
-</div>
-```
-
-## TemplateSimple
-nessun template solo un div utilizzato soprattutto dalla viewlist
-Metodi 
-
-- template() 
-```html
-<div crud-render>
-</div>
+<v-widget :c-widget="cWidget"></v-widget>
 ```
