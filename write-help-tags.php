@@ -17,7 +17,7 @@ $data = [
             'w-swap-template','w-texthtml-template','w-b2-select2-template',
             'w-b2m-select2-template'
         ],
-        'mdFile' => './docs/actions.md',
+        'mdFile' => './docs/widgets.md',
     ]
 ];
 echo "sostituizione tags ...\n";
