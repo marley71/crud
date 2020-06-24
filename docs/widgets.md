@@ -40,6 +40,11 @@ La definizione del template è nel container con id `w-input-template`
 ####data
 - `inputType` : rappresenta il type del controllo input html. Può essere tutti quelli accettati dal type input html
 
+####template
+```html
+{{{w-input-template}}}
+```
+
 ```javascript
 {{{example_render_input_edit}}}
 ```
@@ -47,13 +52,24 @@ La definizione del template è nel container con id `w-input-template`
 
 ---
 
-##w-input-hidden
-DAFINIRE
+##w-hidden
+Componente per la gestione di input di tipo hidden, è stato creato un tipo apposta per avere una gestione separata
+degli hidden
+
+####template
+```html
+{{{w-hidden-template}}}
+```
 
 
 ## w-text
 Componente per la visualizzazione di un testo. La sua definizione è in `crud.components.widgets.wText`
 La definizione del template è nel container con id  `w-text-template`
+
+####template
+```html
+{{{w-text-template}}}
+```
 
 - esempio
 
@@ -70,6 +86,12 @@ La definizione del template è nel container con id  `w-text-template`
 Componente per la gestione di una textarea. La sua definizione è in `crud.components.widgets.wTextarea`
 La definizione del template è nel container con id `w-textarea-template`
 
+
+####template
+```html
+{{{w-textarea-template}}}
+```
+
 ---
 
 ## w-select
@@ -80,6 +102,11 @@ La definizione del template è nel container con id `w-select-template`
 ####data
 - `domainValues` : vettore associativo key => valore che rappresenta tutti i possibili valori della select
 - `domainValueOrder` : array, facoltativo,eventuale ordinamento dei domainValues.
+
+####template
+```html
+{{{w-select-template}}}
+```
 
 ---
 
@@ -95,6 +122,12 @@ La definizione del template è nel container con id `w-input-helped-template`
 - `domainValues` : vettore associativo key => valore che rappresenta tutti i possibili valori che possono essere scelti
 - `domainValueOrder` : array, facoltativo,eventuale ordinamento dei domainValues.
 
+
+####template
+```html
+{{{w-input-helped-template}}}
+```
+
 ---
 
 ## w-radio
@@ -105,6 +138,11 @@ La definizione del template è nel container con id `w-radio-template`
 ####data
 - `domainValues` : vettore associativo key => valore che rappresenta tutti i possibili valori della select
 - `domainValueOrder` : array, facoltativo,eventuale ordinamento dei domainValues.
+
+####template
+```html
+{{{w-radio-template}}}
+```
 
 ---
 
@@ -117,6 +155,11 @@ La definizione del template è nel container con id `w-checkbox-template`
 - `domainValues` : vettore associativo key => valore che rappresenta tutti i possibili valori della select
 - `domainValueOrder` : array, facoltativo,eventuale ordinamento dei domainValues.
 
+####template
+```html
+{{{w-checkbox-template}}}
+```
+
 ---
 
 ## w-custom
@@ -124,6 +167,11 @@ Oggetto per chi vuole poter modificare l'html da renderizzare.
 La sua definizione è in `crud.components.widgets.wCustom`
 La definizione del template è nel container con id `w-custom-template`
 
+
+####template
+```html
+{{{w-custom-template}}}
+```
 
 ---
 
@@ -157,6 +205,12 @@ questo metodo per instanziarla e inserire i parametri giusti.
 - `_getLabel` : politica per il riempimento della label che visualizza l'elemento scelto
 - `_getSuggestion` : metodo per il riempimento dei valori trovati mostrati dal widget
 
+####template
+```html
+{{{w-autocomplete-template}}}
+```
+
+---
 
 ## w-belongsto
 
@@ -167,7 +221,13 @@ La sua definizione è in `crud.components.widgets.wBelongsto`
 La definizione del template è nel container con id `w-belongsto-template`
 
 #### data
-- fields: [], vettore nomi dei campi da visualizzare
+- labelFields: [], vettore nomi dei campi da visualizzare
+
+
+####template
+```html
+{{{w-belongsto-template}}}
+```
 
 ---
 
@@ -201,6 +261,13 @@ La definizione del template è nel container con id `w-date-select-template`
 - cMonth : crea la configurazione iniziale per la select mesi
 - cYear : crea la configurazione iniziale per la select anni
 
+####template
+```html
+{{{w-date-select-template}}}
+```
+
+---
+
 ## w-date-picker
 Questo widget è per l'inserimento di una data. Utilizza il picker bootstrap per 
 l'inserimento di una data.
@@ -218,6 +285,11 @@ resources : [
     'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css',
     'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js'
 ]
+```
+
+####template
+```html
+{{{w-date-picker-template}}}
 ```
 
 ---
@@ -247,13 +319,22 @@ La definizione del template è nel container con id `w-hasmany-template`
 - showItem(index)
 - outOfLimit()
        
-
+####template
+```html
+{{{w-hasmany-template}}}
+```
+---
 
 ### w-hasmany-view
 
 Componente per la visualizzazione di dati in una relazione esterna di tipo hasmany 
 La sua definizione è in `crud.components.widgets.wHasmanyView`
 La definizione del template è nel container con id `w-hasmany-view-template`
+
+####template
+```html
+{{{w-hasmany-view-template}}}
+```
 
 ---
 
@@ -334,6 +415,12 @@ La definizione del template è nel container con id `w-upload-ajax-template`
 - _setUploadFieldsType : function () {
 - _setFieldsType : function () {
 
+
+####template
+```html
+{{{w-upload-ajax-template}}}
+```
+
 ---
 
 
@@ -364,6 +451,13 @@ La definizione del template è nel container con id `w-upload-template`
 - _setFieldsType : function () {
 - afterUpload : function (data) {
 
+
+####template
+```html
+{{{w-upload-template}}}
+```
+
+
 ---
 
 
@@ -379,25 +473,10 @@ DAFINIRE
 <a href="http://www.pierpaolociullo.it/example?f=example_render_hasmany_upload_image_view" target="_blank">provalo online</a>
 
 
-- template
+####template
 ```html
-<div crud-render_element>
-    <ul class="list-unstyled" crud-render_list >
-        <!--  -- contenitore lista fotos -- -->
-    </ul>
-</div>
+{{{w-preview-template}}}
 ```
-
-#### itemTemplate
-```html
-<li>
-    <img class="img-circle img-list" src="" crud-attrs="{src:Server.getUrl(urls+'icon')}" />
-</li>
-```
-
-
-- marcatori
-
 
 ---
 
@@ -429,15 +508,10 @@ iconClass : {
 
 <a href="http://www.pierpaolociullo.it/example?f=example_render_swap_edit" target="_blank">provalo online</a>
 
-- template
+####template
 ```html
-<button type="button" class="btn btn-default btn-xs" crud-render_element title="">
-    <i crud-icon class=""></i>
-</button>
+{{{w-swap-template}}}
 ```
-
-- marcatori
-
 
 ---
 
@@ -463,20 +537,26 @@ editor html summernote.
       _pluginObject : null,
 
 
-
-- template
+####template
 ```html
-    <textarea crud-render_element crud-render_control class="summernote form-control" crud-summernote-lang="it-IT"></textarea>
-
+{{{w-texthtml-template}}}
 ```
+
 ---
 
-## w-preview
-DAFINIRE
----
 
 ##w-b2-select2
 DAFINIRE
 
+####template
+```html
+{{{w-b2-select2-template}}}
+```
+
 ##w-b2m-select2
 DAFINIRE
+
+####template
+```html
+{{{w-b2m-select2-template}}}
+```

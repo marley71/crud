@@ -4,6 +4,20 @@ $data = [
         'tplFile' => './crud-vue/dist/components/actions.html',
         'ids' => ['action-template','action-order-template'],
         'mdFile' => './docs/actions.md',
+    ],
+    [
+        'tplFile' => './crud-vue/dist/components/widgets.html',
+        'ids' => [
+            'w-input-template','w-hidden-template','w-text-template',
+            'w-textarea-template','w-select-template','w-input-helped-template',
+            'w-radio-template','w-checkbox-template','w-custom-template',
+            'w-autocomplete-template','w-belongsto-template','w-date-select-template',
+            'w-date-picker-template','w-hasmany-template','w-hasmany-view-template',
+            'w-upload-ajax-template','w-upload-template','w-preview-template',
+            'w-swap-template','w-texthtml-template','w-b2-select2-template',
+            'w-b2m-select2-template'
+        ],
+        'mdFile' => './docs/actions.md',
     ]
 ];
 echo "sostituizione tags ...\n";
