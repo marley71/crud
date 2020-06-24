@@ -14,7 +14,7 @@ $tpl =  $dom->saveHtml($dom->getElementById('action-template'));
 $filemd = file_get_contents('./docs/actions.md');
 $filemd = str_replace('{{{action-template}}}',$tpl,$filemd);
 file_put_contents('./docs/actions.md',$filemd);
-exec ('git revert')
+//exec ('git revert')
 
 
 
