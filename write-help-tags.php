@@ -13,7 +13,13 @@ $tpl =  $dom->saveHtml($dom->getElementById('action-template'));
 
 $filemd = file_get_contents('./docs/actions.md');
 $filemd = str_replace('{{{action-template}}}',$tpl,$filemd);
-fil
+file_put_contents('./docs/actions.md',$filemd);
+exec ('git revert')
+
+
+
+
+exit;
 exec("sed -i 's/{{{action-template}}}/" . $tpl . "/g' ./docs/actions.md" );
 file_put_contents('result.txt',$tpl) ;
 
