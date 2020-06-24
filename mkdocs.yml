@@ -14,6 +14,7 @@ pages:
     - Routes: routes.md
     - Server : server.md
     - App : app.md
+    - Dashboards : dashboards.md
     - Protocols : protocollo_dati.md
     - Esempi Views : esempi_views.md
 

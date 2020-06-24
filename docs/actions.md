@@ -4,44 +4,50 @@ Le actions sono dei componenti che agiscono su delle view. Attraverso le azioni 
 standard di azioni sono la save, insert, stampa, ecc.
 
 ##action-base
-Classe principale delle azioni. Estende la classe principale `c-component` Le azioni rappresentano l'aggancio per le interazioni con 
-l'utente sulle views, dashboard oppure semplici bottoni html. Da questa classe
-sono state definite altri due azioni generali la `RecordAction` e la `CollectionAction` che
-fondamentalmente dividono il comportamento in azioni che agiscono sul singolo record
-e azioni che agiscono su una collezione di record.
+Classe principale delle azioni. Estende la classe principale `c-component`. Definisce le proprietà comuni e di default
+per tutte le azioni. Estendere questa classe se volete creare una nuova azione.
 
 ####data
 
-- `type` : default collection può essere `record` o `collection`
-- `controlType` : default 'button',
+- `type` : default null, le views di tipo collection richiedono questa proprietà per discriminare le azioni che agiscono
+sul singolo record o collection. Il type puo' essere: `record` o `collection`
+- `controlType` : button o link, default 'button',
 - `text` : '',
 - `icon` : '',
 - `css` : 'btn btn-outline-secondary',
 - `target` : '',
-- `href` : '',
+- `href` : '_self',
 - `enabled` : true,
 - `visible` : true,
 - `title` : '',
-- `view` : default this.$parent
+- `needSelection`  : default false, indica se l'azione lavora su un set selezionati di elementi. Utilizzato dalla view di 
+tipo collection.
+- `view` : default null, view associata all'azione, viene iniettata dalla view al momento della creazione dell'action
 
 
 ####Metodi
 
-- `_beforeExecute(callback)` : metodo chiamato quando l'azione viene cliccata, prima di essere eseguita
+- `_beforeExecute(callback)` : metodo chiamato quando l'azione viene cliccata, prima di essere eseguita. Se viene passata
+una callback viene chiamata a fine esecuzione. Serve per operazioni asincrone.
 - `_execute` : esecuzione dell'azione 
 - `_afterExecute` : metodo chiamato dopo che l'azione è stata eseguita.
 - `setEnabled(enable)` : abilita o disablita l'azione
 - `setVisible(visible)` : se definita viene chiamata al termi dell'execute
 
     
+####template
+```html
+{{{action-template}}}
+```
+
+
 
 # Actions Implementate
 
 La libreria, come per tutti gli altri componenti, mette a disposizione delle azioni già predefinite, 
-utilizzabili immediamente. Queste azioni rappresentano le azioni più comuni in una libreria crud. Ovviamente
+utilizzabili immediamente. Queste azioni rappresentano le azioni più comuni del framework crud-vue. Ovviamente
 possono essere estese o definite delle nuove. Le configurazioni di tale azioni le potete trovare sotto
-crud.recordActions e crud.collectionActions. Potete ridefinire qui le varie opzioni grafiche o del metodo
-execute.
+$crud.actions. Potete ridefinire qui le varie opzioni grafiche o del metodo execute.
 
 ##action-edit
 Azione di tipo record pensata per l'utilizzo dentro una view list e rappresenta l'edit di un record 
@@ -88,7 +94,7 @@ Azione di tipo record pensata per l'utilizzo dentro una view edit per salvare le
 
 ##action-back
 
-Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
+Azione pensata per l'utilizzo dentro una view edit ritorna alla pagina di provienienza
 
 - `title` : 'Indietro',
 - `text` : 'Torna indietro',
@@ -112,7 +118,7 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 
 
 ##action-delete
-Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.
+Azione pensata per l'utilizzo dentro una view list  per la cancellazione di un record all'interno della lista.
 
 ### data
 
@@ -127,7 +133,7 @@ Estende `RecordAction`. Azione pensata per l'utilizzo dentro una view list  per 
 
 
 ##action-delete-selected
-Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.
+Azione pensata per l'utilizzo dentro una view list  per la cancellazione di tutti i record selezionati nella lista.
 
 ### data
 
@@ -140,7 +146,7 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view list  
 
 
 ##action-search
-Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.
+Azione pensata per l'utilizzo dentro una view search  per la ricerca dei record con i filtri della view.
 
 ### data
 
@@ -157,8 +163,18 @@ Estende `CollectionAction`. Azione pensata per l'utilizzo dentro una view search
 
 ##action-order
 
+Azione pensata per l'ordinamento di una lista.
+### data
+- iconSortUp : icona per l'ordinamento ASC,
+- iconSortDown :  icon per l'ordinamento desc,
+- iconSort : icon per definire il campo che si puo' ordinare ma nessun ordinamento attivo.
+
 ##action-edit-mode
+Azione pensata per modalità editMode in una v-list-edit. La lista che permette l'editing al volo di una riga
 
 ##action-view-mode
+Azione per passare in modalità viewMode in una v-list-edit.
 
 ##action-save-row
+Azione per salvare la riga corrente dopo la modifica
+

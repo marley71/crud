@@ -13,6 +13,8 @@ sostanzialmente il comportamento della classe a basso livello.
 
 - `cConf` : rappresenta la configurazione iniziale del componente. E' formata da un vettore associativo. Tutte le 
 proprietà di cConf vengono spalmate flat nel `data` del componente vue.
+- `compRef` : chiave per marcare il componente creato per poi poterlo riprendere successivamente attraverso il vettore
+delle componenti marcate $crud.cRefs[compRef].
 
 
 #### Metodi
@@ -23,9 +25,11 @@ del container.
 
 - `_loadConf()` : Carica l'oggetto cConf e spalma le proprietà nell'oggetto.
 
-- `_getConf` : risolve il nome cConf, cConf può essere un array associativo o una stringa. In caso di stringa ricerca
-la configurazione nella window o nella configurazione generale dell'applicazione chiamata crud. Può essere usato il
-punto per configurazioni gerarchiche. Esempio potrei creare una configurazione tipo:
+- `_getConf` : risolve il nome cConf, cConf può essere un array associativo o una stringa. In caso di stringa,
+ la configurazione viene ricercata nell'oggetto window o nella configurazione generale dell'applicazione chiamata 
+ $crud.conf
+
+Può essere usato il punto per configurazioni gerarchiche. Esempio potrei creare una configurazione tipo:
 
 ```javascript
 window.conf1 = {

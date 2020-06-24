@@ -3,17 +3,36 @@
 CrudApp è la classe per la gestione dell'applicazione. Estende Vue, definisce due mixin
 - `core_mixin` : qui vengono definiti metodi di utilità generale.
 - `dialogs_mixin` : metodi generali per la gestione di dialog.
+quando CrudApp ha caricato tutto emette un evento 'crud-app-loaded', in questo modo siamo sicuri
+che tutto sia stato caricato.
 
 
 ####data
 
-- `templatesFile` : defaul '/crud-vue/crud-vue.html' file html dove si trovano tutti i template dei vari
-widgets,views e componenti in generale. 
+- `templatesFiles` : files html dove si trovano tutti i template dei vari widgets,views e componenti in generale. default 
+```javascript
+[
+    '/crud-vue/components/actions.html',
+    '/crud-vue/components/misc.html',
+    '/crud-vue/components/widgets.html',
+    '/crud-vue/components/views.html',
+]
+```
 - `el` : default '#app', contenitore della nostra applicazione
-- `appConfig` = null  : eventuale file javascript per le modifiche della configurazione iniziale `crud`
-
+- `appConfig` = null  : eventuale file javascript per le modifiche delle varie configurazioni iniziali e defaults di `crud`
+- `componentsFiles`: files js dove si trovano le definizioni dei componenti per poterli estendere facilimente. Default:
+```javascript
+componentsFiles : 
+[
+    '/crud-vue/components/actions.js',
+    '/crud-vue/components/misc.js',
+    '/crud-vue/components/widgets.js',
+    '/crud-vue/components/views.js',
+]
+```
 
 ###core_mixin
+contiene metodi di utilizzo generale.
 
 ####metodi
 
@@ -70,7 +89,7 @@ pluginsPath quando lo script e' stato caricato chiama la callback
 
 
 ###dialogs_mixin
-
+contiene metodo per la generazione di popup o modal 
 ####metodi
 
 - `messageDialog : function (bodyProps,callbacks)`
