@@ -169,6 +169,14 @@ Azione pensata per l'ordinamento di una lista.
 - iconSortDown :  icon per l'ordinamento desc,
 - iconSort : icon per definire il campo che si puo' ordinare ma nessun ordinamento attivo.
 
+####template
+```html
+{{{action-order-template}}}
+```
+
+
+
+
 ##action-edit-mode
 Azione pensata per modalità editMode in una v-list-edit. La lista che permette l'editing al volo di una riga
 

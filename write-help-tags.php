@@ -1,4 +1,40 @@
 <?php
+$data = [
+    [
+        'tplFile' => './crud-vue/dist/components/actions.html',
+        'ids' => ['action-template','action-order-template'],
+        'mdFile' => './docs/actions.md',
+    ]
+];
+echo "sostituizione tags ...\n";
+foreach ($data as $proc) {
+    $dom = new DomDocument();
+    $template = file_get_contents($proc['tplFile']);
+    $template = str_replace('<script','<template',$template);
+    $template = str_replace('</script','</template',$template);
+    $dom->loadHTML($template);
+    $filemd = file_get_contents($proc['mdFile']);
+    foreach ($proc['ids'] as $id) {
+        $tpl =  $dom->saveHtml($dom->getElementById($id));
+        $filemd = str_replace('{{{' . $id .'}}}',$tpl,$filemd);
+    }
+    file_put_contents($proc['mdFile'],$filemd);
+}
+echo "fine sostituzione tags\n";
+
+echo "generazione help... \n";
+exec ('sh publish.sh ./crud-vue/help/');
+echo "fine generazione help\n";
+
+echo "ripristino files md originali ... \n";
+foreach ($data as $proc) {
+    exec ('git checkout ' . $proc['mdFile']);
+}
+echo "FINE\n";
+
+exit;
+
+
 
 $dom = new DomDocument();
 $template = file_get_contents('./crud-vue/dist/components/actions.html');
@@ -14,7 +50,7 @@ $tpl =  $dom->saveHtml($dom->getElementById('action-template'));
 $filemd = file_get_contents('./docs/actions.md');
 $filemd = str_replace('{{{action-template}}}',$tpl,$filemd);
 file_put_contents('./docs/actions.md',$filemd);
-//exec ('git revert')
+exec ('git checkout ./docs/actions.md');
 
 
 
