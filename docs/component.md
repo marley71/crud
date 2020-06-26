@@ -2,8 +2,8 @@
 
 La classe principale di tutte le componenti grafiche è `c-component`, definisce il comportamento
 generale che un componente deve avere nella visualizzazione di un html e della gestione dei dati. Definisce
-la proprietà cConf per la configurazione del componente, la carica ed estende l'oggetto con tutte le proprietà
-trovate in cConf.
+la proprietà fondamentale cConf che server per la configurazione del componente.
+Viene caricata ed estende il component con tutte le proprietà trovate in cConf.
 
 Per convenzione i metodi preceduti da "_" sono da considerarsi privati e non andrebbero mai ridefiniti se non per cambiare
 sostanzialmente il comportamento della classe a basso livello.
@@ -20,7 +20,7 @@ delle componenti marcate $crud.cRefs[compRef].
 #### Metodi
 
 - `jQe(selector)` : shortcut jquery, ritorna l'oggetto jquery associato al container del componente, se viene
-passato il parametro *selector* allora si posiziona all'elemento puntato dal selector all'interno
+passato il parametro **selector** allora si posiziona all'elemento puntato dal selector all'interno
 del container.
 
 - `_loadConf()` : Carica l'oggetto cConf e spalma le proprietà nell'oggetto.

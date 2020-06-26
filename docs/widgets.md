@@ -45,11 +45,6 @@ La definizione del template è nel container con id `w-input-template`
 {{{w-input-template}}}
 ```
 
-```javascript
-{{{example_render_input_edit}}}
-```
-<a href="http://www.pierpaolociullo.it/example?f=example_render_input_edit" target="_blank">Provalo online</a>
-
 ---
 
 ##w-hidden
@@ -61,7 +56,6 @@ degli hidden
 {{{w-hidden-template}}}
 ```
 
-
 ## w-text
 Componente per la visualizzazione di un testo. La sua definizione è in `crud.components.widgets.wText`
 La definizione del template è nel container con id  `w-text-template`
@@ -70,15 +64,6 @@ La definizione del template è nel container con id  `w-text-template`
 ```html
 {{{w-text-template}}}
 ```
-
-- esempio
-
-```javascript
-{{{example_render_text_view}}}
-```
-
-<a href="http://www.pierpaolociullo.it/example?f=example_render_text_view" target="_blank">provalo online</a>
-
 
 ---
 
@@ -185,13 +170,17 @@ La sua definizione è in `crud.components.widgets.wAutocomplete`
 La definizione del template è nel container con id `w-autocomplete-template`
 
 #### data
-- `routeName` : 'autocomplete' - nome della route da utilizzare per reperire i dati dal server
-- `resources` : '[
-                    'https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.css',
-                    'https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js'           
-                 ]
+- `routeName` : default `autocomplete` - nome della route da utilizzare per reperire i dati dal server
+- `resources` :
+ ```javascript
+ [
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js'           
+ ]
+```
+
 - `primaryKey` : 'id' - nome campo da salvare nel campo nascosto.
-- `fields` : [], vettore dei campi da visualizzare nella tendina degli elementi trovati
+- `labelFields` : [], vettore dei campi da visualizzare nella tendina degli elementi trovati
 - `modelName` : 'nome modello dati da passare alla route'
 
 
@@ -233,9 +222,9 @@ La definizione del template è nel container con id `w-belongsto-template`
 
 ## w-date-select
 
-Questo widget è per l'inserimento di una data. Questo widget utilizza tre componenti w-select per 
+Questo widget è per l'inserimento di una data. Utilizza tre componenti w-select per 
 l'inserimento di una data. Il valore viene salvato in un input nascosto nel formato yyyy-mm-dd;
-Usa moment per il controllo di validità della data.
+Usa moment.js per il controllo di validità della data.
 La sua definizione è in `crud.components.widgets.wDateSelect`
 La definizione del template è nel container con id `w-date-select-template`
 
@@ -243,9 +232,13 @@ La definizione del template è nel container con id `w-date-select-template`
 
 - minYear    : null, anno minimo se non settatto viene preso l'anno corrente - 5 ,
 - maxYear    : null, anno massimo se non settato viene preso l'anno corrente + 5,
-- resources :[
+- resources :
+```javascript
+[
     'moment-with-locales.min.js',
 ]
+```
+
 
 #### Metodi
 
